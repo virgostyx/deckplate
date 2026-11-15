@@ -1,0 +1,34 @@
+/* Theme nocturne: dimmed, low luminance, for night use */
+@layer dp.tokens {
+  [data-dp-theme="nocturne"] {
+    color-scheme: dark;
+    --dp-primary: var(--dp-bourbon);
+    --dp-primary-ink: var(--dp-bourbon-ink);
+    --dp-secondary: var(--dp-husk);
+    --dp-secondary-ink: var(--dp-husk-ink);
+    --dp-tertiary: var(--dp-lavender-purple);
+    --dp-tertiary-ink: var(--dp-lavender-purple-ink);
+    --dp-accent: var(--dp-hopbush);
+    --dp-accent-ink: var(--dp-hopbush-ink);
+    --dp-muted: var(--dp-gray);
+    --dp-muted-ink: var(--dp-gray-ink);
+    --dp-info: var(--dp-danub);
+    --dp-info-ink: var(--dp-danub-ink);
+    --dp-success: var(--dp-fern);
+    --dp-success-ink: var(--dp-fern-ink);
+    --dp-warning: var(--dp-bourbon);
+    --dp-warning-ink: var(--dp-bourbon-ink);
+    --dp-danger: var(--dp-chestnut-rose);
+    --dp-danger-ink: var(--dp-chestnut-rose-ink);
+    --dp-emergency: var(--dp-signal-red);
+    --dp-emergency-ink: var(--dp-signal-red-ink);
+    --dp-canvas: #000000;
+    --dp-surface: #080809;
+    --dp-surface-raised: #111113;
+    --dp-ink: #B8B0A8;
+    --dp-ink-muted: #948E88;
+    --dp-line: #6A6560;
+    --dp-focus: #E0D0B0;
+    --dp-disabled: #55524F;
+  }
+}

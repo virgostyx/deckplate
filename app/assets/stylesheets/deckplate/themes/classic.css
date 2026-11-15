@@ -1,0 +1,35 @@
+/* Theme classic: warm amber / lilac / blue on black (default) */
+@layer dp.tokens {
+  :root,
+  [data-dp-theme="classic"] {
+    color-scheme: dark;
+    --dp-primary: var(--dp-neon-carrot);
+    --dp-primary-ink: var(--dp-neon-carrot-ink);
+    --dp-secondary: var(--dp-golden-tanoi);
+    --dp-secondary-ink: var(--dp-golden-tanoi-ink);
+    --dp-tertiary: var(--dp-hopbush);
+    --dp-tertiary-ink: var(--dp-hopbush-ink);
+    --dp-accent: var(--dp-lilac);
+    --dp-accent-ink: var(--dp-lilac-ink);
+    --dp-muted: var(--dp-blue-bell);
+    --dp-muted-ink: var(--dp-blue-bell-ink);
+    --dp-info: var(--dp-anakiwa);
+    --dp-info-ink: var(--dp-anakiwa-ink);
+    --dp-success: var(--dp-pale-canary);
+    --dp-success-ink: var(--dp-pale-canary-ink);
+    --dp-warning: var(--dp-orange-peel);
+    --dp-warning-ink: var(--dp-orange-peel-ink);
+    --dp-danger: var(--dp-chestnut-rose);
+    --dp-danger-ink: var(--dp-chestnut-rose-ink);
+    --dp-emergency: var(--dp-signal-red);
+    --dp-emergency-ink: var(--dp-signal-red-ink);
+    --dp-canvas: #000000;
+    --dp-surface: #0B0B10;
+    --dp-surface-raised: #16161E;
+    --dp-ink: var(--dp-periwinkle);
+    --dp-ink-muted: var(--dp-blue-bell);
+    --dp-line: var(--dp-blue-bell);
+    --dp-focus: #FFFFFF;
+    --dp-disabled: #777777;
+  }
+}

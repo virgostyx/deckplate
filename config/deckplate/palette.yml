@@ -28,7 +28,7 @@ stops:
   medium-carmine:
     hex: "#CC3333"
     ink: "#FFFFFF"
-  emergency:
+  signal-red:
     hex: "#FF0000"
     ink: "#000000"
   anakiwa:
@@ -92,3 +92,31 @@ stops:
   gray:
     hex: "#999999"
     ink: "#000000"
+  # --- Extension stops (not in the original guide): green for Q-003 and darker hues so `daylight` can meet contrast ---
+  fern:
+    hex: "#55AA66"
+    ink: "#000000"
+  forest:
+    hex: "#2D6A3E"
+    ink: "#FFFFFF"
+  copper:
+    hex: "#8F4A12"
+    ink: "#FFFFFF"
+  ochre:
+    hex: "#7A5C00"
+    ink: "#FFFFFF"
+  plum:
+    hex: "#8A3F68"
+    ink: "#FFFFFF"
+  violet:
+    hex: "#5E3E99"
+    ink: "#FFFFFF"
+  steel:
+    hex: "#2F5F8F"
+    ink: "#FFFFFF"
+  garnet:
+    hex: "#A12A2A"
+    ink: "#FFFFFF"
+  slate:
+    hex: "#5F6577"
+    ink: "#FFFFFF"

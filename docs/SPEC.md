@@ -131,13 +131,16 @@ and `color: var(--dp-c-ink)`. This avoids generating bg/text class pairs per col
 
 Source: `~/Projects/LCARS_styleguide/LCARS_STYLE_GUIDE.md` §2.1. Port the hex values; **apply these corrections**:
 - `atomic-tangerine` and `sandy-brown` are both `#FF9966` → keep one stop (`atomic-tangerine`).
-- Rename `red-alert` (`#FF0000`) to `emergency` (neutral vocabulary).
+- Rename `red-alert` (`#FF0000`) to `signal-red` (neutral vocabulary; not `emergency`, which is a *role* name and would make
+  `--dp-emergency: var(--dp-emergency)` a cycle).
+- Phase 1 added extension stops: `fern`, `forest` (greens, Q-003), `copper`, `ochre`, `plum`, `violet`, `steel`, `garnet`, `slate`
+  (darker hues so `daylight` meets contrast).
 - `navy-blue` (`#000099`) fails contrast on black: mark **background-only**, never use for text/lines on canvas.
 - Add `-ink` for every stop; verify by the contrast spec.
 
 Stops (hex): pale-canary FFFF99 · golden-tanoi FFCC66 · neon-carrot FF9933 · atomic-tangerine FF9966 ·
 orange-peel FF9900 · hopbush CC6699 · chestnut-rose CC6666 · red-damask CC6644 · medium-carmine CC3333 ·
-emergency FF0000 · anakiwa 99CCFF · periwinkle CCCCFF · blue-bell 9999CC · melrose 9999FF · mariner 4466AA ·
+signal-red FF0000 · anakiwa 99CCFF · periwinkle CCCCFF · blue-bell 9999CC · melrose 9999FF · mariner 4466AA ·
 danub 6688CC · dodger-blue 4499FF · indigo 336699 · bahama-blue 006699 · navy-blue 000099 (bg only) ·
 lilac CC99CC · lavender-purple 9966CC · cosmic 774466 · eggplant 330066 · husk BB9944 · bourbon BB6633 ·
 rust 883311 · tamarillo 882211 · white FFFFFF · gray 999999.

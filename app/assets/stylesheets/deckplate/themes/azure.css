@@ -1,0 +1,34 @@
+/* Theme azure: cool blues and violets */
+@layer dp.tokens {
+  [data-dp-theme="azure"] {
+    color-scheme: dark;
+    --dp-primary: var(--dp-dodger-blue);
+    --dp-primary-ink: var(--dp-dodger-blue-ink);
+    --dp-secondary: var(--dp-anakiwa);
+    --dp-secondary-ink: var(--dp-anakiwa-ink);
+    --dp-tertiary: var(--dp-melrose);
+    --dp-tertiary-ink: var(--dp-melrose-ink);
+    --dp-accent: var(--dp-lavender-purple);
+    --dp-accent-ink: var(--dp-lavender-purple-ink);
+    --dp-muted: var(--dp-mariner);
+    --dp-muted-ink: var(--dp-mariner-ink);
+    --dp-info: var(--dp-periwinkle);
+    --dp-info-ink: var(--dp-periwinkle-ink);
+    --dp-success: var(--dp-pale-canary);
+    --dp-success-ink: var(--dp-pale-canary-ink);
+    --dp-warning: var(--dp-orange-peel);
+    --dp-warning-ink: var(--dp-orange-peel-ink);
+    --dp-danger: var(--dp-chestnut-rose);
+    --dp-danger-ink: var(--dp-chestnut-rose-ink);
+    --dp-emergency: var(--dp-signal-red);
+    --dp-emergency-ink: var(--dp-signal-red-ink);
+    --dp-canvas: #000000;
+    --dp-surface: #050A14;
+    --dp-surface-raised: #0E1626;
+    --dp-ink: var(--dp-periwinkle);
+    --dp-ink-muted: var(--dp-blue-bell);
+    --dp-line: var(--dp-mariner);
+    --dp-focus: #FFFFFF;
+    --dp-disabled: #6A7285;
+  }
+}

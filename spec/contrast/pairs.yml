@@ -1,0 +1,22 @@
+# Text/background pairs checked in every theme (WCAG 2.2 AA). Names are --dp-<name> variables.
+# min: 4.5 for text, 3.0 for large text and UI boundaries.
+pairs:
+  - { fg: ink,        bg: canvas,         min: 4.5 }
+  - { fg: ink-muted,  bg: canvas,         min: 4.5 }
+  - { fg: ink,        bg: surface,        min: 4.5 }
+  - { fg: ink-muted,  bg: surface,        min: 4.5 }
+  - { fg: ink,        bg: surface-raised, min: 4.5 }
+  - { fg: ink-muted,  bg: surface-raised, min: 4.5 }
+  - { fg: line,       bg: canvas,         min: 3.0 }
+  - { fg: line,       bg: surface,        min: 3.0 }
+  - { fg: focus,      bg: canvas,         min: 3.0 }
+  - { fg: focus,      bg: surface,        min: 3.0 }
+  - { fg: focus,      bg: surface-raised, min: 3.0 }
+# Each role's -ink on the role colour (blocks, buttons, pills).
+role_ink_min: 4.5
+# Roles used as text on the canvas (links, status text, readouts).
+roles_as_text: { roles: [primary, secondary, info, success, warning, danger], min: 4.5 }
+# Every role as a UI boundary / large text / icon on the canvas.
+roles_as_ui: { min: 3.0 }
+# Palette stops: -ink on the stop (theme independent), skipped nowhere.
+stop_ink_min: 4.5

@@ -23,8 +23,8 @@
     --dp-red-damask-ink: #000000;
     --dp-medium-carmine: #CC3333;
     --dp-medium-carmine-ink: #FFFFFF;
-    --dp-emergency: #FF0000;
-    --dp-emergency-ink: #000000;
+    --dp-signal-red: #FF0000;
+    --dp-signal-red-ink: #000000;
     --dp-anakiwa: #99CCFF;
     --dp-anakiwa-ink: #000000;
     --dp-periwinkle: #CCCCFF;
@@ -65,6 +65,24 @@
     --dp-white-ink: #000000;
     --dp-gray: #999999;
     --dp-gray-ink: #000000;
+    --dp-fern: #55AA66;
+    --dp-fern-ink: #000000;
+    --dp-forest: #2D6A3E;
+    --dp-forest-ink: #FFFFFF;
+    --dp-copper: #8F4A12;
+    --dp-copper-ink: #FFFFFF;
+    --dp-ochre: #7A5C00;
+    --dp-ochre-ink: #FFFFFF;
+    --dp-plum: #8A3F68;
+    --dp-plum-ink: #FFFFFF;
+    --dp-violet: #5E3E99;
+    --dp-violet-ink: #FFFFFF;
+    --dp-steel: #2F5F8F;
+    --dp-steel-ink: #FFFFFF;
+    --dp-garnet: #A12A2A;
+    --dp-garnet-ink: #FFFFFF;
+    --dp-slate: #5F6577;
+    --dp-slate-ink: #FFFFFF;
   }
 
   .dp-c-pale-canary { --dp-c: var(--dp-pale-canary); --dp-c-ink: var(--dp-pale-canary-ink); }
@@ -76,7 +94,7 @@
   .dp-c-chestnut-rose { --dp-c: var(--dp-chestnut-rose); --dp-c-ink: var(--dp-chestnut-rose-ink); }
   .dp-c-red-damask { --dp-c: var(--dp-red-damask); --dp-c-ink: var(--dp-red-damask-ink); }
   .dp-c-medium-carmine { --dp-c: var(--dp-medium-carmine); --dp-c-ink: var(--dp-medium-carmine-ink); }
-  .dp-c-emergency { --dp-c: var(--dp-emergency); --dp-c-ink: var(--dp-emergency-ink); }
+  .dp-c-signal-red { --dp-c: var(--dp-signal-red); --dp-c-ink: var(--dp-signal-red-ink); }
   .dp-c-anakiwa { --dp-c: var(--dp-anakiwa); --dp-c-ink: var(--dp-anakiwa-ink); }
   .dp-c-periwinkle { --dp-c: var(--dp-periwinkle); --dp-c-ink: var(--dp-periwinkle-ink); }
   .dp-c-blue-bell { --dp-c: var(--dp-blue-bell); --dp-c-ink: var(--dp-blue-bell-ink); }
@@ -97,6 +115,15 @@
   .dp-c-tamarillo { --dp-c: var(--dp-tamarillo); --dp-c-ink: var(--dp-tamarillo-ink); }
   .dp-c-white { --dp-c: var(--dp-white); --dp-c-ink: var(--dp-white-ink); }
   .dp-c-gray { --dp-c: var(--dp-gray); --dp-c-ink: var(--dp-gray-ink); }
+  .dp-c-fern { --dp-c: var(--dp-fern); --dp-c-ink: var(--dp-fern-ink); }
+  .dp-c-forest { --dp-c: var(--dp-forest); --dp-c-ink: var(--dp-forest-ink); }
+  .dp-c-copper { --dp-c: var(--dp-copper); --dp-c-ink: var(--dp-copper-ink); }
+  .dp-c-ochre { --dp-c: var(--dp-ochre); --dp-c-ink: var(--dp-ochre-ink); }
+  .dp-c-plum { --dp-c: var(--dp-plum); --dp-c-ink: var(--dp-plum-ink); }
+  .dp-c-violet { --dp-c: var(--dp-violet); --dp-c-ink: var(--dp-violet-ink); }
+  .dp-c-steel { --dp-c: var(--dp-steel); --dp-c-ink: var(--dp-steel-ink); }
+  .dp-c-garnet { --dp-c: var(--dp-garnet); --dp-c-ink: var(--dp-garnet-ink); }
+  .dp-c-slate { --dp-c: var(--dp-slate); --dp-c-ink: var(--dp-slate-ink); }
   .dp-c-primary { --dp-c: var(--dp-primary); --dp-c-ink: var(--dp-primary-ink); }
   .dp-c-secondary { --dp-c: var(--dp-secondary); --dp-c-ink: var(--dp-secondary-ink); }
   .dp-c-tertiary { --dp-c: var(--dp-tertiary); --dp-c-ink: var(--dp-tertiary-ink); }
@@ -138,5 +165,186 @@
     --dp-z-overlay: 100;
     --dp-z-modal: 200;
     --dp-z-toast: 300;
+  }
+}
+
+/* deckplate/themes/classic.css */
+/* Theme classic: warm amber / lilac / blue on black (default) */
+@layer dp.tokens {
+  :root,
+  [data-dp-theme="classic"] {
+    color-scheme: dark;
+    --dp-primary: var(--dp-neon-carrot);
+    --dp-primary-ink: var(--dp-neon-carrot-ink);
+    --dp-secondary: var(--dp-golden-tanoi);
+    --dp-secondary-ink: var(--dp-golden-tanoi-ink);
+    --dp-tertiary: var(--dp-hopbush);
+    --dp-tertiary-ink: var(--dp-hopbush-ink);
+    --dp-accent: var(--dp-lilac);
+    --dp-accent-ink: var(--dp-lilac-ink);
+    --dp-muted: var(--dp-blue-bell);
+    --dp-muted-ink: var(--dp-blue-bell-ink);
+    --dp-info: var(--dp-anakiwa);
+    --dp-info-ink: var(--dp-anakiwa-ink);
+    --dp-success: var(--dp-pale-canary);
+    --dp-success-ink: var(--dp-pale-canary-ink);
+    --dp-warning: var(--dp-orange-peel);
+    --dp-warning-ink: var(--dp-orange-peel-ink);
+    --dp-danger: var(--dp-chestnut-rose);
+    --dp-danger-ink: var(--dp-chestnut-rose-ink);
+    --dp-emergency: var(--dp-signal-red);
+    --dp-emergency-ink: var(--dp-signal-red-ink);
+    --dp-canvas: #000000;
+    --dp-surface: #0B0B10;
+    --dp-surface-raised: #16161E;
+    --dp-ink: var(--dp-periwinkle);
+    --dp-ink-muted: var(--dp-blue-bell);
+    --dp-line: var(--dp-blue-bell);
+    --dp-focus: #FFFFFF;
+    --dp-disabled: #777777;
+  }
+}
+
+/* deckplate/themes/azure.css */
+/* Theme azure: cool blues and violets */
+@layer dp.tokens {
+  [data-dp-theme="azure"] {
+    color-scheme: dark;
+    --dp-primary: var(--dp-dodger-blue);
+    --dp-primary-ink: var(--dp-dodger-blue-ink);
+    --dp-secondary: var(--dp-anakiwa);
+    --dp-secondary-ink: var(--dp-anakiwa-ink);
+    --dp-tertiary: var(--dp-melrose);
+    --dp-tertiary-ink: var(--dp-melrose-ink);
+    --dp-accent: var(--dp-lavender-purple);
+    --dp-accent-ink: var(--dp-lavender-purple-ink);
+    --dp-muted: var(--dp-mariner);
+    --dp-muted-ink: var(--dp-mariner-ink);
+    --dp-info: var(--dp-periwinkle);
+    --dp-info-ink: var(--dp-periwinkle-ink);
+    --dp-success: var(--dp-pale-canary);
+    --dp-success-ink: var(--dp-pale-canary-ink);
+    --dp-warning: var(--dp-orange-peel);
+    --dp-warning-ink: var(--dp-orange-peel-ink);
+    --dp-danger: var(--dp-chestnut-rose);
+    --dp-danger-ink: var(--dp-chestnut-rose-ink);
+    --dp-emergency: var(--dp-signal-red);
+    --dp-emergency-ink: var(--dp-signal-red-ink);
+    --dp-canvas: #000000;
+    --dp-surface: #050A14;
+    --dp-surface-raised: #0E1626;
+    --dp-ink: var(--dp-periwinkle);
+    --dp-ink-muted: var(--dp-blue-bell);
+    --dp-line: var(--dp-mariner);
+    --dp-focus: #FFFFFF;
+    --dp-disabled: #6A7285;
+  }
+}
+
+/* deckplate/themes/crimson.css */
+/* Theme crimson: alert-state theme (reds); used by ConditionBanner when condition is critical */
+@layer dp.tokens {
+  [data-dp-theme="crimson"] {
+    color-scheme: dark;
+    --dp-primary: var(--dp-red-damask);
+    --dp-primary-ink: var(--dp-red-damask-ink);
+    --dp-secondary: var(--dp-chestnut-rose);
+    --dp-secondary-ink: var(--dp-chestnut-rose-ink);
+    --dp-tertiary: var(--dp-hopbush);
+    --dp-tertiary-ink: var(--dp-hopbush-ink);
+    --dp-accent: var(--dp-lilac);
+    --dp-accent-ink: var(--dp-lilac-ink);
+    --dp-muted: var(--dp-gray);
+    --dp-muted-ink: var(--dp-gray-ink);
+    --dp-info: var(--dp-anakiwa);
+    --dp-info-ink: var(--dp-anakiwa-ink);
+    --dp-success: var(--dp-fern);
+    --dp-success-ink: var(--dp-fern-ink);
+    --dp-warning: var(--dp-orange-peel);
+    --dp-warning-ink: var(--dp-orange-peel-ink);
+    --dp-danger: var(--dp-signal-red);
+    --dp-danger-ink: var(--dp-signal-red-ink);
+    --dp-emergency: var(--dp-signal-red);
+    --dp-emergency-ink: var(--dp-signal-red-ink);
+    --dp-canvas: #000000;
+    --dp-surface: #120606;
+    --dp-surface-raised: #1E0A0A;
+    --dp-ink: #FFD9D9;
+    --dp-ink-muted: #D9A0A0;
+    --dp-line: var(--dp-chestnut-rose);
+    --dp-focus: #FFFFFF;
+    --dp-disabled: #7A5555;
+  }
+}
+
+/* deckplate/themes/daylight.css */
+/* Theme daylight: light variant: pale canvas, dark ink, for print and bright rooms */
+@layer dp.tokens {
+  [data-dp-theme="daylight"] {
+    color-scheme: light;
+    --dp-primary: var(--dp-copper);
+    --dp-primary-ink: var(--dp-copper-ink);
+    --dp-secondary: var(--dp-ochre);
+    --dp-secondary-ink: var(--dp-ochre-ink);
+    --dp-tertiary: var(--dp-plum);
+    --dp-tertiary-ink: var(--dp-plum-ink);
+    --dp-accent: var(--dp-violet);
+    --dp-accent-ink: var(--dp-violet-ink);
+    --dp-muted: var(--dp-slate);
+    --dp-muted-ink: var(--dp-slate-ink);
+    --dp-info: var(--dp-steel);
+    --dp-info-ink: var(--dp-steel-ink);
+    --dp-success: var(--dp-forest);
+    --dp-success-ink: var(--dp-forest-ink);
+    --dp-warning: var(--dp-rust);
+    --dp-warning-ink: var(--dp-rust-ink);
+    --dp-danger: var(--dp-garnet);
+    --dp-danger-ink: var(--dp-garnet-ink);
+    --dp-emergency: var(--dp-signal-red);
+    --dp-emergency-ink: var(--dp-signal-red-ink);
+    --dp-canvas: #F4F1EA;
+    --dp-surface: #FFFFFF;
+    --dp-surface-raised: #FAF8F3;
+    --dp-ink: #1B1B22;
+    --dp-ink-muted: #4A4A55;
+    --dp-line: var(--dp-slate);
+    --dp-focus: #1B1B22;
+    --dp-disabled: #9A9AA3;
+  }
+}
+
+/* deckplate/themes/nocturne.css */
+/* Theme nocturne: dimmed, low luminance, for night use */
+@layer dp.tokens {
+  [data-dp-theme="nocturne"] {
+    color-scheme: dark;
+    --dp-primary: var(--dp-bourbon);
+    --dp-primary-ink: var(--dp-bourbon-ink);
+    --dp-secondary: var(--dp-husk);
+    --dp-secondary-ink: var(--dp-husk-ink);
+    --dp-tertiary: var(--dp-lavender-purple);
+    --dp-tertiary-ink: var(--dp-lavender-purple-ink);
+    --dp-accent: var(--dp-hopbush);
+    --dp-accent-ink: var(--dp-hopbush-ink);
+    --dp-muted: var(--dp-gray);
+    --dp-muted-ink: var(--dp-gray-ink);
+    --dp-info: var(--dp-danub);
+    --dp-info-ink: var(--dp-danub-ink);
+    --dp-success: var(--dp-fern);
+    --dp-success-ink: var(--dp-fern-ink);
+    --dp-warning: var(--dp-bourbon);
+    --dp-warning-ink: var(--dp-bourbon-ink);
+    --dp-danger: var(--dp-chestnut-rose);
+    --dp-danger-ink: var(--dp-chestnut-rose-ink);
+    --dp-emergency: var(--dp-signal-red);
+    --dp-emergency-ink: var(--dp-signal-red-ink);
+    --dp-canvas: #000000;
+    --dp-surface: #080809;
+    --dp-surface-raised: #111113;
+    --dp-ink: #B8B0A8;
+    --dp-ink-muted: #948E88;
+    --dp-line: #6A6560;
+    --dp-focus: #E0D0B0;
+    --dp-disabled: #55524F;
   }
 }
