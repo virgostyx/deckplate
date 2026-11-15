@@ -1,0 +1,22 @@
+fr:
+  deckplate:
+    common:
+      close: "Fermer"
+      loading: "Chargement"
+      required: "obligatoire"
+      optional: "facultatif"
+      skip_to_content: "Aller au contenu principal"
+    pagination:
+      label: "Pagination"
+      previous: "Page précédente"
+      next: "Page suivante"
+      page: "Page %{page}"
+      current_page: "Page %{page}, page courante"
+    breadcrumb:
+      label: "Fil d'Ariane"
+    nav:
+      label: "Navigation principale"
+    table:
+      sort_ascending: "Trié par ordre croissant"
+      sort_descending: "Trié par ordre décroissant"
+      empty: "Aucune donnée"

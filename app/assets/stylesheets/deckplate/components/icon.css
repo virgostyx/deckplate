@@ -1,0 +1,8 @@
+@layer dp.components {
+  .dp-icon {
+    width: 1em;
+    height: 1em;
+    flex: none;
+    vertical-align: -0.125em;
+  }
+}

@@ -1,0 +1,22 @@
+en:
+  deckplate:
+    common:
+      close: "Close"
+      loading: "Loading"
+      required: "required"
+      optional: "optional"
+      skip_to_content: "Skip to main content"
+    pagination:
+      label: "Pagination"
+      previous: "Previous page"
+      next: "Next page"
+      page: "Page %{page}"
+      current_page: "Page %{page}, current page"
+    breadcrumb:
+      label: "Breadcrumb"
+    nav:
+      label: "Main navigation"
+    table:
+      sort_ascending: "Sorted ascending"
+      sort_descending: "Sorted descending"
+      empty: "No data"

@@ -13,23 +13,27 @@ module Deckplate
         @valid_colors ||= (ROLES + palette_stops).freeze
       end
 
-      private
-
       # Returns a valid colour Symbol. Invalid input raises (strict_colors) or logs and falls back to `default`.
-      def resolve_color(value, default: :primary)
+      def self.resolve(value, default: :primary)
         sym = value.respond_to?(:to_sym) ? value.to_sym : nil
-        return sym if sym && Colorable.valid_colors.include?(sym)
+        return sym if sym && valid_colors.include?(sym)
 
-        message = "unknown colour #{value.inspect}; valid: #{Colorable.valid_colors.map(&:inspect).join(', ')}"
+        message = "unknown colour #{value.inspect}; valid: #{valid_colors.map(&:inspect).join(', ')}"
         raise ArgumentError, message if Deckplate.configuration.strict_colors
 
         Rails.logger.warn("[Deckplate] #{message}; falling back to :#{default}")
         default
       end
 
-      def color_class(color)
+      def self.css_class(color)
         "dp-c-#{color.to_s.tr('_', '-')}"
       end
+
+      private
+
+      def resolve_color(value, default: :primary) = Colorable.resolve(value, default:)
+
+      def color_class(color) = Colorable.css_class(color)
     end
   end
 end
