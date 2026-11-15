@@ -1,0 +1,16 @@
+@layer dp.shapes {
+  .dp-cap {
+    --dp-cap-r: calc(var(--dp-bar) / 2);
+    display: inline-block;
+    flex: none;
+    inline-size: var(--dp-cap-r);
+    block-size: var(--dp-bar);
+    background-color: var(--dp-c);
+  }
+  .dp-cap--start {
+    border-radius: var(--dp-cap-r) 0 0 var(--dp-cap-r);
+  }
+  .dp-cap--end {
+    border-radius: 0 var(--dp-cap-r) var(--dp-cap-r) 0;
+  }
+}

@@ -57,6 +57,24 @@ RSpec.describe Deckplate::BaseComponent, type: :component do
     end
   end
 
+  describe "style merging" do
+    it "appends the caller's inline style after the component's, never replacing it" do
+      stub_const("Deckplate::StyledComponent", Class.new(Deckplate::BaseComponent) do
+        def call = tag.div(**html_attributes(style: "--dp-n: 3"))
+      end)
+      render_inline(Deckplate::StyledComponent.new(style: "margin: 0"))
+      expect(page.find("div")[:style]).to eq("--dp-n: 3; margin: 0")
+    end
+
+    it "keeps the component style when the caller gives none" do
+      stub_const("Deckplate::StyledComponent", Class.new(Deckplate::BaseComponent) do
+        def call = tag.div(**html_attributes(style: "--dp-n: 3;"))
+      end)
+      render_inline(Deckplate::StyledComponent.new)
+      expect(page.find("div")[:style]).to eq("--dp-n: 3")
+    end
+  end
+
   describe "id and other attributes" do
     it "passes id and arbitrary attributes through" do
       el = render_demo(id: "x1", title: "T", lang: "fr")

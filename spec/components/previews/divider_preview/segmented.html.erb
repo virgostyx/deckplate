@@ -1,0 +1,10 @@
+<div class="dp-root gx-page">
+  <% [ 1, 2, 3, 5, 8 ].each do |n| %>
+    <p class="gx-label">segments: <%= n %></p>
+    <%= render Deckplate::Shapes::DividerComponent.new(segments: n, color: :info) %>
+  <% end %>
+  <p class="gx-label">one colour per segment</p>
+  <%= render Deckplate::Shapes::DividerComponent.new(segments: %i[primary secondary tertiary accent info success warning danger]) %>
+  <p class="gx-label">narrow container (8rem)</p>
+  <div style="inline-size: 8rem"><%= render Deckplate::Shapes::DividerComponent.new(segments: 5, color: :warning) %></div>
+</div>

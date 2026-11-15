@@ -1,0 +1,16 @@
+<div class="dp-root gx-page">
+  <% [ 0, 0.25, 0.5, 1, 2, 4 ].each do |n| %>
+    <p class="gx-label">size: <%= n %></p>
+    <div class="gx-demo-bar"></div>
+    <%= render Deckplate::Shapes::SpacerComponent.new(size: n) %>
+    <div class="gx-demo-bar"></div>
+  <% end %>
+  <p class="gx-label">axis: :inline (size 1, 3)</p>
+  <div class="gx-row">
+    <span class="gx-demo-chip"></span>
+    <%= render Deckplate::Shapes::SpacerComponent.new(size: 1, axis: :inline) %>
+    <span class="gx-demo-chip"></span>
+    <%= render Deckplate::Shapes::SpacerComponent.new(size: 3, axis: :inline) %>
+    <span class="gx-demo-chip"></span>
+  </div>
+</div>

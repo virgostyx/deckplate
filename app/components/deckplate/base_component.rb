@@ -17,6 +17,7 @@ module Deckplate
     # Merges the component's own attributes with the caller's `**html_options`:
     #  - class: appended (never replaced), blanks dropped
     #  - data / aria: deep-merged, caller wins, except data-controller / data-action which are concatenated
+    #  - style: component's declarations first, then the caller's
     #  - everything else (id, title, ...): caller wins
     def html_attributes(classes: [], data: {}, aria: {}, **own)
       opts = @html_options
@@ -24,6 +25,8 @@ module Deckplate
       merged[:class] = [ *classes, *Array(opts[:class]) ].flatten.compact_blank
       merged[:data] = merge_data(data, opts[:data] || {})
       merged[:aria] = (aria || {}).merge(opts[:aria] || {})
+      style = [ own[:style], opts[:style] ].map { _1.to_s.strip.delete_suffix(";").strip }.compact_blank.join("; ")
+      style.empty? ? merged.delete(:style) : merged[:style] = style
       merged.delete(:data) if merged[:data].empty?
       merged.delete(:aria) if merged[:aria].empty?
       merged

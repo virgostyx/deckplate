@@ -1,0 +1,5 @@
+<%= tag.div(**html_attributes(classes: [ block_name, color_class(@colors.first) ], aria: { hidden: true })) do %>
+  <% @colors.each do |color| %>
+    <%= tag.span(class: [ "dp-divider__segment", color_class(color) ]) %>
+  <% end %>
+<% end %>

@@ -20,3 +20,7 @@
 .gx-surface { background: var(--dp-surface); padding: .5rem; margin: .5rem 0 0; }
 .gx-surface--raised { background: var(--dp-surface-raised); }
 .gx-focus { margin-top: .75rem; background: var(--dp-surface); color: var(--dp-ink); border: 1px solid var(--dp-line); padding: .5rem .75rem; outline: 2px solid var(--dp-focus); outline-offset: 2px; }
+.gx-label { font-family: var(--dp-font-data); font-size: .8125rem; color: var(--dp-ink-muted); margin: 1rem 0 .25rem; }
+.gx-row { display: flex; align-items: center; gap: .5rem; margin: .25rem 0; flex-wrap: wrap; }
+.gx-demo-bar { block-size: .5rem; background: var(--dp-line); }
+.gx-demo-chip { inline-size: 1rem; block-size: 1rem; background: var(--dp-line); }

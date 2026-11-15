@@ -1,0 +1,20 @@
+@layer dp.shapes {
+  .dp-divider {
+    display: flex;
+    gap: var(--dp-gap);
+    inline-size: 100%;
+    block-size: calc(0.375 * var(--dp-u));
+  }
+  .dp-divider__segment {
+    flex: 1 1 0;
+    background-color: var(--dp-c);
+  }
+  .dp-divider__segment:first-child {
+    border-start-start-radius: var(--dp-pill-r);
+    border-end-start-radius: var(--dp-pill-r);
+  }
+  .dp-divider__segment:last-child {
+    border-start-end-radius: var(--dp-pill-r);
+    border-end-end-radius: var(--dp-pill-r);
+  }
+}

@@ -1,0 +1,14 @@
+@layer dp.shapes {
+  .dp-spacer {
+    flex: none;
+    display: block;
+  }
+  .dp-spacer--block {
+    block-size: calc(var(--dp-n, 1) * var(--dp-u));
+  }
+  .dp-spacer--inline {
+    display: inline-block;
+    inline-size: calc(var(--dp-n, 1) * var(--dp-u));
+    block-size: 0;
+  }
+}

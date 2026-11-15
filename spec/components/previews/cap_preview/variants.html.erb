@@ -1,0 +1,9 @@
+<div class="dp-root gx-page">
+  <% roles.each do |role| %>
+    <div class="gx-row">
+      <%= render Deckplate::Shapes::CapComponent.new(side: :start, color: role) %>
+      <span class="gx-label"><%= role %></span>
+      <%= render Deckplate::Shapes::CapComponent.new(side: :end, color: role) %>
+    </div>
+  <% end %>
+</div>
