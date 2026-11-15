@@ -13,3 +13,5 @@
 /tools/visual/node_modules/
 /Gemfile.lock
 /gemfiles/*.lock
+/spec/visual/__diff__/
+/tools/visual/previews.json

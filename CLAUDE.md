@@ -27,7 +27,7 @@ Capybara + Cuprite, axe-core-rspec, SimpleCov, RuboCop (rubocop-rails-omakase).
 
 ```bash
 bin/setup                 # install deps, prepare dummy app
-bin/ci                    # rubocop + rspec + contrast + a11y + gem build + budgets (must be green before every PR)
+bin/ci                    # rubocop + rspec (incl. contrast, axe a11y, stale-CSS check, budgets) + gem build (must be green before every PR)
 bundle exec rspec         # full test suite
 bundle exec rspec spec/components/deckplate/button_component_spec.rb   # one file
 bin/rubocop               # lint (rubocop-rails-omakase, overrides in .rubocop.yml)
@@ -35,7 +35,8 @@ bin/dev                   # dummy app + Lookbook on http://localhost:3000/lookbo
 bin/visual                # visual regression run (Playwright, dev-only tool under tools/visual)
 bin/visual --update       # refresh baselines (review the diff images before committing!)
 bin/integration           # generate throwaway Rails apps and test `rails g deckplate:install`
-bin/build-css             # concatenate CSS sources into the shipped stylesheet
+bin/build-css             # regenerate tokens.css from palette.yml and concatenate CSS sources into deckplate.css
+bin/budgets               # print CSS/JS/font sizes against the SPEC section 12 budgets
 ```
 
 ## Working rules

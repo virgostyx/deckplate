@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require_relative "../tools/budgets"
+budgets = DeckplateBuild::Budgets.new(File.expand_path("..", __dir__))
+puts budgets.report
+exit(budgets.rows.all?(&:ok?) ? 0 : 1)

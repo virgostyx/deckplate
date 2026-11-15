@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Visual regression run (Playwright, dev-only tool under tools/visual).
+#   bin/visual            compare previews x themes x widths with spec/visual/__baseline__
+#   bin/visual --update   accept the current screenshots as the new baselines (review the diff images first!)
+# Extra flags are passed through: --only token_gallery --themes classic,azure --widths 375,1280
+set -euo pipefail
+cd "$(dirname "$0")/.."
+PORT="${VISUAL_PORT:-3099}"
+[ -d tools/visual/node_modules ] || (cd tools/visual && npm install --no-audit --no-fund)
+(cd spec/dummy && RAILS_ENV=development bundle exec rails runner ../../tools/visual/previews.rb) > tools/visual/previews.json
+(cd spec/dummy && RAILS_ENV=development bundle exec rails server -p "$PORT" -P tmp/pids/visual.pid -d >/dev/null)
+trap 'kill "$(cat spec/dummy/tmp/pids/visual.pid)" 2>/dev/null || true' EXIT
+for _ in $(seq 1 40); do curl -sf "http://localhost:$PORT/up" >/dev/null && break; sleep 0.5; done
+(cd tools/visual && node run.mjs --base "http://localhost:$PORT" "$@")

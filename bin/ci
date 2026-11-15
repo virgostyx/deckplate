@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-# Must be green before every PR. Later phases add: contrast, a11y, gem build, budgets.
+# Must be green before every PR: rubocop, rspec (incl. contrast, axe a11y, stale-CSS check, budgets), gem build, budget report.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 echo "== rubocop"; bundle exec rubocop
 echo "== rspec";   CI=1 bundle exec rspec
+echo "== budgets"; bin/budgets
 echo "== gem build"; gem build deckplate.gemspec --output tmp/deckplate.gem >/dev/null && echo ok
