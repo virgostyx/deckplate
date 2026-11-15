@@ -1155,10 +1155,12 @@
   .dp-button:hover { filter: brightness(1.1); }
   .dp-button:active { filter: brightness(1.45); }
 
+  /* Unavailable: an outline with muted text (its contrast is checked in every theme), never a filled colour */
   .dp-button:disabled,
   .dp-button[aria-disabled="true"] {
-    background-color: var(--dp-disabled);
-    color: var(--dp-canvas);
+    background-color: transparent;
+    box-shadow: inset 0 0 0 2px var(--dp-disabled);
+    color: var(--dp-ink-muted);
     cursor: not-allowed;
     filter: none;
   }
@@ -1460,8 +1462,9 @@
     box-shadow: inset 0 calc(-0.2 * var(--dp-u)) 0 var(--dp-ink);
   }
   .dp-pagination__link[aria-disabled="true"] {
-    background-color: var(--dp-disabled);
-    color: var(--dp-canvas);
+    background-color: transparent;
+    box-shadow: inset 0 0 0 2px var(--dp-disabled);
+    color: var(--dp-ink-muted);
     cursor: not-allowed;
   }
   .dp-pagination__gap { padding-inline: 0.25em; color: var(--dp-ink-muted); }
