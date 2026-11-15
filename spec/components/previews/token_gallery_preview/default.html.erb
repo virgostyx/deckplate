@@ -1,0 +1,47 @@
+<div class="dp-root gx-page">
+  <h1 class="gx-title">Token gallery</h1>
+
+  <h2 class="gx-h">Palette stops</h2>
+  <div class="gx-grid">
+    <% stops.each do |name, stop| %>
+      <div class="gx-swatch dp-c-<%= name %>" data-token="stop-<%= name %>">
+        <strong><%= name %></strong>
+        <span><%= stop["hex"] %><%= " · bg only" if stop["background_only"] %></span>
+      </div>
+    <% end %>
+  </div>
+
+  <h2 class="gx-h">Semantic roles</h2>
+  <div class="gx-grid">
+    <% roles.each do |role| %>
+      <div class="gx-swatch dp-c-<%= role %>" data-token="role-<%= role %>">
+        <strong><%= role %></strong>
+        <span>--dp-<%= role %></span>
+      </div>
+    <% end %>
+  </div>
+
+  <h2 class="gx-h">Surfaces and text</h2>
+  <div class="gx-grid">
+    <% surfaces.each do |token| %>
+      <div class="gx-token" data-token="surface-<%= token %>" style="--gx-bg: var(--dp-<%= token %>)">
+        <span class="gx-chip"></span>
+        <strong>--dp-<%= token %></strong>
+      </div>
+    <% end %>
+  </div>
+
+  <h2 class="gx-h">Type scale</h2>
+  <p class="gx-display" data-token="font-display">Display · Antonio — Engage warp drive 0123456789</p>
+  <p class="gx-display gx-display--lg" data-token="font-display-lg">Condition normal</p>
+  <p class="gx-data" data-token="font-data">Data · Share Tech Mono — 0042.17 +3.50 MHz -12.8%</p>
+  <p class="gx-text" data-token="font-text">Text · system sans — Running text stays readable at small sizes. Accents: é è ê ï ç ü ï.</p>
+
+  <h2 class="gx-h">Spacing (multiples of --dp-u)</h2>
+  <% [ 0.25, 0.5, 1, 1.25, 2, 3, 6 ].each do |n| %>
+    <div class="gx-space" data-token="space-<%= n %>">
+      <span class="gx-space__label"><%= n %> u</span>
+      <span class="gx-space__bar" style="width: calc(<%= n %> * var(--dp-u))"></span>
+    </div>
+  <% end %>
+</div>

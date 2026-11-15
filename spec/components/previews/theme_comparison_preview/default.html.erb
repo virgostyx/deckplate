@@ -1,0 +1,16 @@
+<div class="gx-compare">
+  <% themes.each do |theme| %>
+    <%= dp_root(theme: theme, class: "gx-themebox") do %>
+      <h2 class="gx-h"><%= theme %></h2>
+      <p class="gx-text">Ink on canvas. <span style="color: var(--dp-ink-muted)">Muted ink.</span></p>
+      <div class="gx-roles">
+        <% roles.each do |role| %>
+          <span class="gx-swatch gx-swatch--sm dp-c-<%= role %>" data-token="role-<%= role %>"><%= role %></span>
+        <% end %>
+      </div>
+      <p class="gx-surface">Surface</p>
+      <p class="gx-surface gx-surface--raised">Raised surface</p>
+      <button type="button" class="gx-focus">Focus ring sample</button>
+    <% end %>
+  <% end %>
+</div>

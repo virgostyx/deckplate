@@ -40,5 +40,10 @@ module Dummy
 
     # Previews live in the spec tree and are never shipped with the gem.
     config.view_component.previews.paths = [ Rails.root.join("../components/previews").to_s ]
+    config.view_component.previews.default_layout = "preview"
+
+    # Lookbook toolbar: a "theme" dropdown that reaches the preview layout as params[:_display][:theme].
+    config.lookbook.preview_layout = "preview"
+    config.lookbook.preview_display_options = { theme: %w[classic azure nocturne daylight crimson] }
   end
 end

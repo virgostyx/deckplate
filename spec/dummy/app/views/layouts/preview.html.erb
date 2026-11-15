@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>" data-dp-theme="<%= preview_theme %>">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Deckplate preview</title>
+    <%= dp_font_tags %>
+    <%= stylesheet_link_tag "deckplate" %>
+    <%= stylesheet_link_tag "gallery" %>
+  </head>
+  <body class="dp-root">
+    <%= yield %>
+  </body>
+</html>

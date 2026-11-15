@@ -6,6 +6,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= yield :head %>
+    <%= dp_font_tags %>
+    <%= stylesheet_link_tag "deckplate" %>
     <%= javascript_importmap_tags %>
   </head>
   <body class="dp-root">
