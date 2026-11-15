@@ -9,9 +9,9 @@
       </div>
     <% end %>
   </div>
-  <table class="dp-sr-only">
+  <div class="dp-sr-only"><table>
     <caption><%= t("deckplate.data.graph", label: @label) %></caption>
     <thead><tr><th scope="col"><%= t("deckplate.data.graph_item") %></th><th scope="col"><%= t("deckplate.data.graph_value") %></th></tr></thead>
     <tbody><% @series.each do |text, value| %><tr><th scope="row"><%= text %></th><td><%= value %></td></tr><% end %></tbody>
-  </table>
+  </table></div>
 <% end %>

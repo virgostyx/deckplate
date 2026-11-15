@@ -54,5 +54,6 @@
     font-family: var(--dp-font-data);
     font-variant-numeric: tabular-nums;
   }
+  .dp-table__footer th { text-align: start; }
   .dp-table__empty { padding: 1.5em; color: var(--dp-ink-muted); text-align: center; }
 }

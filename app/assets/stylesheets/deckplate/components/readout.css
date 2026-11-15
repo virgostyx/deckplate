@@ -1,6 +1,7 @@
 @layer dp.components {
   .dp-readout {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.1em;
     min-inline-size: 0;
     padding: 0.4em 0.75em;
@@ -16,12 +17,13 @@
   .dp-readout__value {
     display: flex;
     align-items: baseline;
+    flex-wrap: wrap;
     justify-content: flex-end;
-    gap: 0.4em;
+    gap: 0 0.4em;
     font-family: var(--dp-font-data);
     font-variant-numeric: tabular-nums;
   }
-  .dp-readout__number { color: var(--dp-ink); font-size: 1.75rem; line-height: 1.1; }
+  .dp-readout__number { color: var(--dp-ink); font-size: 1.75rem; line-height: 1.1; overflow-wrap: anywhere; }
   .dp-readout__unit { color: var(--dp-ink-muted); font-size: 1rem; }
   .dp-readout__trend { display: inline-flex; align-self: center; color: var(--dp-ink); }
 }

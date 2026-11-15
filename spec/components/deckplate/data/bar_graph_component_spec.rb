@@ -29,7 +29,8 @@ RSpec.describe Deckplate::Data::BarGraphComponent, type: :component do
   it "keeps the data available to everyone: the plot is decorative and a hidden table repeats it" do
     render_inline(build)
     expect(page).to have_css(".dp-bar-graph__plot[aria-hidden='true']", visible: :all)
-    table = page.find("table.dp-sr-only", visible: :all)
+    expect(page).to have_css("div.dp-sr-only > table", visible: :all)
+    table = page.find("div.dp-sr-only > table", visible: :all)
     expect(table).to have_css("caption", text: "Data for Sensors", visible: :all)
     expect(table.all("th[scope='col']", visible: :all).map { _1.text(:all) }).to eq(%w[Item Value])
     expect(table.all("tbody tr", visible: :all).map { |r| r.all("th, td", visible: :all).map { _1.text(:all) } }).to eq([ %w[Alpha 10], %w[Beta 25], %w[Gamma 50] ])
@@ -38,8 +39,8 @@ RSpec.describe Deckplate::Data::BarGraphComponent, type: :component do
 
   it "translates the table texts" do
     I18n.with_locale(:fr) { render_inline(build) }
-    expect(page.find("table.dp-sr-only caption", visible: :all).text(:all)).to eq("Données de Sensors")
-    expect(page.all("table.dp-sr-only th[scope='col']", visible: :all).map { _1.text(:all) }).to eq(%w[Élément Valeur])
+    expect(page.find(".dp-sr-only caption", visible: :all).text(:all)).to eq("Données de Sensors")
+    expect(page.all(".dp-sr-only th[scope='col']", visible: :all).map { _1.text(:all) }).to eq(%w[Élément Valeur])
   end
 
   it "accepts a Hash and escapes labels" do

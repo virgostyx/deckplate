@@ -1,11 +1,13 @@
 @layer dp.components {
   .dp-nav__list {
     display: grid;
+    grid-template-columns: minmax(0, 1fr); /* a long label truncates; it never widens the column */
     gap: var(--dp-gap);
     margin: 0;
     padding: 0;
     list-style: none;
   }
+  .dp-nav__item { min-inline-size: 0; }
   .dp-nav__link {
     display: flex;
     align-items: flex-end;
