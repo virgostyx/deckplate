@@ -15,6 +15,12 @@ module Deckplate
 
     private
 
+    # Dynamic values for a child element (a bar of a graph, a segment...): {class:, data:, style:} without the caller's options
+    def dynamic_attributes(classes: [], vars: {}, percent: nil)
+      classes, data, own = dynamic_values(classes, {}, {}, vars, percent)
+      { class: classes.presence, data: data.presence, style: own[:style].presence }.compact
+    end
+
     # Merges the component's own attributes with the caller's `**html_options`:
     #  - class: appended (never replaced), blanks dropped
     #  - data / aria: deep-merged, caller wins, except data-controller / data-action / aria-describedby which are concatenated

@@ -27,3 +27,19 @@ fr:
     forms:
       error_prefix: "Erreur"
       select_prompt: "Choisir…"
+    status:
+      ok: "OK"
+      warn: "Avertissement"
+      fail: "Échec"
+      idle: "Inactif"
+      info: "Info"
+    trend:
+      up: "En hausse"
+      down: "En baisse"
+      flat: "Stable"
+    data:
+      no_value: "Aucune valeur"
+      sparkline: "%{label} : de %{first} à %{last}, minimum %{min}, maximum %{max}"
+      graph: "Données de %{label}"
+      graph_item: "Élément"
+      graph_value: "Valeur"

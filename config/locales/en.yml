@@ -27,3 +27,19 @@ en:
     forms:
       error_prefix: "Error"
       select_prompt: "Select…"
+    status:
+      ok: "OK"
+      warn: "Warning"
+      fail: "Failed"
+      idle: "Idle"
+      info: "Info"
+    trend:
+      up: "Rising"
+      down: "Falling"
+      flat: "Steady"
+    data:
+      no_value: "No value"
+      sparkline: "%{label}: from %{first} to %{last}, minimum %{min}, maximum %{max}"
+      graph: "Data for %{label}"
+      graph_item: "Item"
+      graph_value: "Value"

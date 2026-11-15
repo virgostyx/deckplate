@@ -1,0 +1,43 @@
+<%= tag.div(**wrap_attributes) do %>
+  <table class="dp-table__table">
+    <%= tag.caption(@caption, class: [ "dp-table__caption", ("dp-sr-only" if @caption_hidden) ]) %>
+    <thead>
+      <tr>
+        <% columns.each do |column| %>
+          <%= tag.th(scope: "col", class: cell_classes(column, "dp-table__th"), aria: { sort: aria_sort(column) }.compact) do %>
+            <% if column.sortable %>
+              <%= link_to @sort_url.call(column.key, next_dir(column)), class: "dp-table__sort" do %>
+                <%= column.header %>
+                <% if sorted?(column) %>
+                  <%= helpers.dp_icon(sorted_dir == "asc" ? :sort_asc : :sort_desc) %>
+                  <span class="dp-sr-only"><%= t("deckplate.table.sort_#{sorted_dir == 'asc' ? 'ascending' : 'descending'}") %></span>
+                <% end %>
+              <% end %>
+            <% else %>
+              <%= column.header %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @rows.empty? %>
+        <tr><%= tag.td(empty? ? empty : t("deckplate.table.empty"), colspan: columns.size, class: "dp-table__empty") %></tr>
+      <% else %>
+        <% @rows.each do |row| %>
+          <%= tag.tr(id: @row_id&.call(row)) do %>
+            <% columns.each do |column| %>
+              <% cell = render_cell(column, row) %>
+              <% if column.row_header %>
+                <%= tag.th(cell, scope: "row", class: cell_classes(column, "dp-table__cell")) %>
+              <% else %>
+                <%= tag.td(cell, class: cell_classes(column, "dp-table__cell")) %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </tbody>
+    <% if footer? %><tfoot class="dp-table__footer"><%= footer %></tfoot><% end %>
+  </table>
+<% end %>

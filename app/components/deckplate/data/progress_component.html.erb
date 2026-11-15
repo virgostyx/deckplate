@@ -1,0 +1,11 @@
+<%= tag.div(**progress_attributes) do %>
+  <span class="dp-progress__label" id="<%= label_id %>"><%= @label %></span>
+  <% if @show_value && !indeterminate? %><span class="dp-progress__value"><%= number %>%</span><% end %>
+  <% if @segments %>
+    <span class="dp-progress__track dp-progress__track--segments" aria-hidden="true">
+      <% @segments.times do |i| %><span class="dp-progress__segment<%= ' dp-progress__segment--on' if !indeterminate? && i < lit_segments %>"></span><% end %>
+    </span>
+  <% else %>
+    <span class="dp-progress__track" aria-hidden="true"><span class="dp-progress__fill"></span></span>
+  <% end %>
+<% end %>

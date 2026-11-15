@@ -1,0 +1,14 @@
+<%= tag.div(**readout_attributes) do %>
+  <span class="dp-readout__label"><%= @label %></span>
+  <span class="dp-readout__value">
+    <% if blank_value? %>
+      <span class="dp-readout__number" aria-hidden="true">—</span><span class="dp-sr-only"><%= t("deckplate.data.no_value") %></span>
+    <% else %>
+      <span class="dp-readout__number"><%= @value %></span>
+    <% end %>
+    <% if @unit.present? %><span class="dp-readout__unit"><%= @unit %></span><% end %>
+    <% if @trend %>
+      <span class="dp-readout__trend dp-readout__trend--<%= @trend %>"><%= helpers.dp_icon(TRENDS.fetch(@trend)) %><span class="dp-sr-only"><%= t("deckplate.trend.#{@trend}") %></span></span>
+    <% end %>
+  </span>
+<% end %>

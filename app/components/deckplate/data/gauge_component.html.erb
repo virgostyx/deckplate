@@ -1,0 +1,5 @@
+<%= tag.div(**gauge_attributes) do %>
+  <span class="dp-gauge__dial" aria-hidden="true"></span>
+  <span class="dp-gauge__reading"><span class="dp-gauge__value"><%= number %></span><span class="dp-gauge__unit"><%= @unit %></span></span>
+  <span class="dp-gauge__label"><%= @label %></span>
+<% end %>

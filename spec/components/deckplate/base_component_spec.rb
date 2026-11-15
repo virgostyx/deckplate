@@ -141,6 +141,34 @@ RSpec.describe Deckplate::BaseComponent, type: :component do
     end
   end
 
+  describe "dynamic_attributes (for child elements of a component)" do
+    before do
+      stub_const("Deckplate::ChildAttrsComponent", Class.new(Deckplate::BaseComponent) do
+        def call = tag.div(tag.span(**dynamic_attributes(classes: [ "child" ], percent: 40, vars: { "--dp-n": 3 })), class: "root")
+      end)
+    end
+
+    after { Deckplate.reset_configuration! }
+
+    it "returns class/data/style for a child, without the caller's html options" do
+      render_inline(Deckplate::ChildAttrsComponent.new(class: "extra", id: "r"))
+      child = page.find(".child")
+      expect(child[:style]).to eq("--dp-n: 3; --dp-value: 40")
+      expect(child[:id]).to be_nil
+      expect(page.find(".root")[:class]).to eq("root")
+    end
+
+    it "follows the CSP-safe mode" do
+      Deckplate.configure { |c| c.csp_safe_values = true }
+      render_inline(Deckplate::ChildAttrsComponent.new)
+      child = page.find(".child")
+      expect(child[:style]).to be_nil
+      expect(child[:class].split).to include("child", "dp-v-40")
+      expect(child["data-dp-value"]).to eq("40")
+      expect(JSON.parse(child["data-dp-values-vars-value"])).to eq("--dp-n" => "3")
+    end
+  end
+
   describe "style merging" do
     it "appends the caller's inline style after the component's, never replacing it" do
       stub_const("Deckplate::StyledComponent", Class.new(Deckplate::BaseComponent) do

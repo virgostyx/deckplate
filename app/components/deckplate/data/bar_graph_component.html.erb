@@ -1,0 +1,17 @@
+<%= tag.figure(**graph_attributes) do %>
+  <figcaption class="dp-bar-graph__caption"><%= @label %></figcaption>
+  <div class="dp-bar-graph__plot" aria-hidden="true">
+    <% @series.each do |text, value| %>
+      <div class="dp-bar-graph__row">
+        <span class="dp-bar-graph__label"><%= text %></span>
+        <span class="dp-bar-graph__track"><%= tag.span(**bar_attributes(value)) %></span>
+        <span class="dp-bar-graph__value"><%= value %></span>
+      </div>
+    <% end %>
+  </div>
+  <table class="dp-sr-only">
+    <caption><%= t("deckplate.data.graph", label: @label) %></caption>
+    <thead><tr><th scope="col"><%= t("deckplate.data.graph_item") %></th><th scope="col"><%= t("deckplate.data.graph_value") %></th></tr></thead>
+    <tbody><% @series.each do |text, value| %><tr><th scope="row"><%= text %></th><td><%= value %></td></tr><% end %></tbody>
+  </table>
+<% end %>

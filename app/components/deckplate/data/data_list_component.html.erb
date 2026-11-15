@@ -1,0 +1,6 @@
+<% if @pairs.any? || items? %>
+  <%= tag.dl(**list_attributes) do %>
+    <% @pairs.each do |label, value| %><%= tag.dt(label, class: "dp-data-list__term") %><%= tag.dd(value, class: "dp-data-list__detail") %><% end %>
+    <% items.each do |item| %><%= item %><% end %>
+  <% end %>
+<% end %>
