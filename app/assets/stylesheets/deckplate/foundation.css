@@ -1,0 +1,30 @@
+@layer dp.tokens {
+  :root {
+    /* Geometry: everything scales from --dp-u (never px for shapes) */
+    --dp-u: 1.375rem;
+    --dp-bar: calc(1.25 * var(--dp-u));
+    --dp-gap: calc(0.25 * var(--dp-u));
+    --dp-elbow-col: calc(6 * var(--dp-u));
+    --dp-elbow-r: calc(3 * var(--dp-u));
+    --dp-elbow-ri: calc(1.5 * var(--dp-u));
+    --dp-pill-r: 9999px;
+    --dp-touch-min: 2.75rem;
+
+    /* Typography (hosts may override the three families) */
+    --dp-font-display: "Antonio", "Arial Narrow", "Helvetica Neue Condensed", sans-serif;
+    --dp-font-data: "Share Tech Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --dp-font-text: ui-sans-serif, system-ui, sans-serif;
+
+    /* Motion */
+    --dp-t-fast: 100ms;
+    --dp-t-base: 200ms;
+    --dp-t-slow: 400ms;
+    --dp-ease: cubic-bezier(0.2, 0, 0, 1);
+
+    /* Stacking */
+    --dp-z-sticky: 10;
+    --dp-z-overlay: 100;
+    --dp-z-modal: 200;
+    --dp-z-toast: 300;
+  }
+}
