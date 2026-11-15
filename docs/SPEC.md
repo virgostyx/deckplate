@@ -263,10 +263,9 @@ shrink to caps. `main` scrolls; frame chrome stays fixed (`height: 100dvh` optio
 
 **Engine**: `Deckplate::Engine` with `isolate_namespace Deckplate`; no routes, no migrations, no models.
 Initializers must:
-- add the engine's `app/assets` to the asset paths (Propshaft does this for engines automatically — verify);
-- expose importmap pins: engine `config/importmap.rb` + `Rails.application.config.importmap.paths << ...`
-  and cache sweepers per importmap-rails docs *(spike S4)*;
-- register ViewComponent preview paths only in the dummy app (previews are not shipped);
+- add `app/javascript` to the asset paths (`app.config.assets.paths <<`; Propshaft already adds `app/assets/*` subdirs of engines; ADR 0001);
+- expose importmap pins: engine `config/importmap.rb` + `config.importmap.paths <<` and `cache_sweepers <<` (ADR 0001, 0004);
+- register ViewComponent preview paths (`config.view_component.previews.paths`, v4 name) only in the dummy app (previews are not shipped; ADR 0005);
 - load `config/locales/*.yml`;
 - include `Deckplate::Helpers` in `ActionView::Base` via `ActiveSupport.on_load(:action_view)`.
 
@@ -291,7 +290,7 @@ end
 4. if Tailwind 4 is detected, adds the layer prelude / bridge import per ADR 0003;
 5. adds font preload tags helper usage.
 
-**Tailwind bridge (optional)**: `tailwind-bridge.css` declares `@theme inline { --color-dp-primary:
+**Tailwind bridge (optional)** (shipped as `app/assets/tailwind/deckplate/engine.css` so tailwindcss-rails picks it up; ADR 0001): `tailwind-bridge.css` declares `@theme inline { --color-dp-primary:
 var(--dp-primary); ... }` so hosts get `bg-dp-primary`, `text-dp-ink`, etc. Components never rely on
 Tailwind classes, so utility detection (`@source`) is not an issue for the gem's own markup.
 
@@ -428,8 +427,8 @@ disconnect, no inline handlers.
 | `dp-sidebar` | mobile collapse of the frame sidebar |
 | `dp-values` | CSP-safe application of per-instance CSS values (section 11) |
 
-Registration: `import { registerDeckplate } from "deckplate"; registerDeckplate(application)` or
-`eagerLoadControllersFrom("deckplate/controllers", application)` — choose in spike S4 and document.
+Registration (ADR 0004): primary `import { registerDeckplate } from "deckplate"; registerDeckplate(application, { only, except })`;
+also supported: `eagerLoadControllersFrom("deckplate/controllers", application)`.
 
 ---
 

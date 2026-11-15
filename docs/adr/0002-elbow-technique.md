@@ -10,7 +10,7 @@ is the same thing for rendering) in Chrome (system channel) and Firefox 159, via
 Metrics per pixel, using the analytic shape with a 1.5 css px margin around every boundary:
 **seam** = pixel clearly inside the shape that is not exactly the fill colour, or clearly outside that is not exactly the
 background; **leak** = pixels of the cut-out that differ from a patterned page background (transparency check).
-The harness lives in `tmp/spikes/pw/elbow.{html,mjs}` (not committed; the technique is documented here).
+The harness lives in `tools/visual/spikes/s2-elbow/` (dev-only; run `node elbow.mjs chrome,firefox,webkit` after `npm i playwright pngjs`).
 
 ## Results
 | Technique | Chrome seams | Firefox seams | Transparent over a pattern |

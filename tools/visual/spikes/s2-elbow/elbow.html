@@ -1,0 +1,33 @@
+<!doctype html><meta charset=utf-8>
+<style>
+  html,body{margin:0;background:#000}
+  :root{--u:1.375rem}
+  body{width:400px;height:360px;position:relative;
+       --bg:#000}
+  body.pattern{background:
+    repeating-conic-gradient(#3355ff 0 25%, #ffffff 0 50%) 0 0/ 13px 13px}
+  .e{position:absolute;left:var(--x,10.37px);top:var(--y,7.61px);
+     width:calc(6*var(--u));height:calc(9*var(--u));
+     --col:calc(2.5*var(--u));--bar:calc(1.25*var(--u));--r:calc(3*var(--u));--ri:calc(1.5*var(--u));
+     background:#FF9933;border-top-left-radius:var(--r)}
+  body.hide .e{display:none}
+  /* A: mask, naive */
+  .a .e{ -webkit-mask:
+      linear-gradient(#000 0 0) 0 0/100% var(--bar) no-repeat,
+      linear-gradient(#000 0 0) 0 0/var(--col) 100% no-repeat,
+      radial-gradient(circle at 100% 100%, transparent calc(var(--ri) - .5px), #000 calc(var(--ri) + .5px)) var(--col) var(--bar)/var(--ri) var(--ri) no-repeat;
+    mask:
+      linear-gradient(#000 0 0) 0 0/100% var(--bar) no-repeat,
+      linear-gradient(#000 0 0) 0 0/var(--col) 100% no-repeat,
+      radial-gradient(circle at 100% 100%, transparent calc(var(--ri) - .5px), #000 calc(var(--ri) + .5px)) var(--col) var(--bar)/var(--ri) var(--ri) no-repeat;}
+  /* A2: mask, fillet tile overlaps the arms by 1px */
+  .a2 .e{
+    mask:
+      linear-gradient(#000 0 0) 0 0/100% var(--bar) no-repeat,
+      linear-gradient(#000 0 0) 0 0/var(--col) 100% no-repeat,
+      radial-gradient(circle at 100% 100%, transparent calc(var(--ri) - .5px), #000 calc(var(--ri) + .5px)) calc(var(--col) - 1px) calc(var(--bar) - 1px)/calc(var(--ri) + 1px) calc(var(--ri) + 1px) no-repeat;}
+  /* B: canvas-coloured pseudo-element */
+  .b .e::after{content:"";position:absolute;left:var(--col);top:var(--bar);right:0;bottom:0;
+     background:#000;border-top-left-radius:var(--ri)}
+</style>
+<body><div class="e"></div></body>
