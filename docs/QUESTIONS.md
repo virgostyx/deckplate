@@ -36,3 +36,20 @@ The owner answers by editing the entry (change **Status** to `answered`) and the
 - **Default applied**: pale-canary (yellow) with mandatory text/icon; `daylight` maps success to a green.
 - **Status**: answered
 - **Answer**: pale-canary in `classic` (confirmed by the owner).
+
+## Raised during implementation
+
+### Q-004 — WebKit cannot run on the dev machine
+- **Phase / task**: Phase 0, spike S2 (elbow); later all of `bin/visual`
+- **Question**: Playwright's WebKit needs a system library (`libmanette-0.2-0`, installed with `sudo apt-get install
+  libmanette-0.2-0` or `sudo npx playwright install-deps`). May this be installed on the dev machine?
+- **Default applied**: ADR 0002 accepted on Chrome + Firefox evidence only; Safari/WebKit verification is a pending item
+  to re-run `elbow.mjs` and later the visual suite. The agent does not run `sudo`.
+- **Status**: open
+
+### Q-005 — Ruby version on the dev machine
+- **Phase / task**: Phase 0, skeleton
+- **Question**: `~/.rbenv/version` is 3.3.0, which cannot load Rails 8.1.4.1 (syntax error fixed in Ruby 3.3.1). CLAUDE.md
+  says 3.3.5.
+- **Default applied**: project-local `.ruby-version` = 3.3.5 (installed); the global rbenv version is untouched.
+- **Status**: open
