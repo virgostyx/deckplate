@@ -32,7 +32,7 @@ without writing bespoke CSS.
 | Layer | Target | Notes |
 |---|---|---|
 | Ruby | >= 3.3 | CI also on latest stable |
-| Rails | 8.0 and 8.1 | Appraisal gemfiles for both |
+| Rails | 8.0 and 8.1 | Appraisal gemfiles for both. Rails 8.0 needs `json < 3` (it passes `quirks_mode` to `JSON.generate`; fixed in 8.1); a host on 8.0 must pin it too |
 | ViewComponent | 4.x | read the v4 docs first (slots, previews, test helpers) |
 | Assets | Propshaft + importmap-rails | primary, fully supported |
 | Other pipelines | Sprockets / jsbundling / cssbundling | best effort, documented, not CI-gated in v1.0 |

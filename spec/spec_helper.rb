@@ -1,7 +1,7 @@
 require "simplecov"
 SimpleCov.start do
   enable_coverage :branch
-  add_filter "/spec/"
+  skip "/spec/"
   minimum_coverage line: 95 if ENV["CI"]
 end
 
