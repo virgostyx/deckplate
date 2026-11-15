@@ -57,7 +57,7 @@ module Deckplate
       end
       if vars.any?
         if csp_safe_values?
-          data = merge_data(data, { controller: "dp-values", dp_values_vars_value: vars.to_json })
+          data = merge_data(data, { controller: "dp-values", action: "turbo:before-morph-attribute->dp-values#keepState", dp_values_vars_value: vars.to_json })
         else
           own = own.merge(style: [ own[:style], vars.map { |k, v| "#{k}: #{v}" }.join("; ") ].compact_blank.join("; "))
         end

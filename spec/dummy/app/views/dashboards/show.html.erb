@@ -1,0 +1,11 @@
+<%= render Deckplate::Layout::PageHeaderComponent.new(title: "Dashboard", subtitle: "Updated in place with Turbo Streams") %>
+<div class="gx-dash">
+  <%= render Deckplate::Data::GaugeComponent.new(label: "Power", value: [ @power, 100 ].min, id: "power-gauge") %>
+  <%= render Deckplate::Data::ReadoutComponent.new(label: "Coolant", value: @temp, unit: "°C", trend: :up, id: "temp-readout") %>
+</div>
+<%= button_to "Refresh readings", dashboard_path, method: :patch, class: "dp-button dp-button--pill dp-button--md dp-c-primary", id: "refresh" %>
+<%= render(Deckplate::Data::TableComponent.new(rows: @readings, caption: "Readings", sort: @sort, dir: @dir, id: "readings",
+      sort_url: ->(key, dir) { dashboard_path(sort: key, dir: dir) }, row_id: ->(r) { "reading_#{r[:id]}" })) do |t|
+  t.with_column(:name, header: "Sensor", sortable: true, row_header: true) { |r| r[:name] }
+  t.with_column(:value, header: "Value", sortable: true, align: :end, numeric: true) { |r| number_with_precision(r[:value], precision: 2) }
+end %>

@@ -466,7 +466,8 @@ attributes setting custom properties (`style="--dp-value: 72"`). Strict CSPs wit
 styles block this. Therefore:
 - `config.csp_safe_values = true` switches components to emit `data-dp-value="72"` plus quantised classes
   `dp-v-0 … dp-v-100` (1 % steps, generated in CSS) which need no JS and no inline style;
-  `dp-values` Stimulus controller handles arbitrary values via CSSOM (`style.setProperty`, allowed by CSP).
+  `dp-values` Stimulus controller handles arbitrary values via CSSOM (`style.setProperty`, allowed by CSP),
+  fed by `data-dp-values-vars-value` (ADR 0010). One entry point in `BaseComponent`: `html_attributes(vars:, percent:)`.
 - No inline `<script>`; no `eval`; fonts and CSS served same-origin.
 - A spec renders every preview with `csp_safe_values = true` and asserts the HTML contains no `style=`
   attribute.

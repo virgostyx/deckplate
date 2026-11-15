@@ -118,6 +118,11 @@ RSpec.describe Deckplate::BaseComponent, type: :component do
         expect(JSON.parse(el["data-dp-values-vars-value"])).to eq("--dp-n" => "2", "--dp-x" => "1.5")
       end
 
+      it "wires the morph protection: the style attribute written through the CSSOM must survive a Turbo morph" do
+        render_inline(Deckplate::DynamicComponent.new(vars: { "--dp-n": 2 }))
+        expect(page.find("div")["data-action"]).to eq("turbo:before-morph-attribute->dp-values#keepState")
+      end
+
       it "adds dp-values to the caller's controllers instead of replacing them" do
         render_inline(Deckplate::DynamicComponent.new(vars: { "--dp-n": 2 }, data: { controller: "mine" }))
         expect(page.find("div")["data-controller"]).to eq("dp-values mine")

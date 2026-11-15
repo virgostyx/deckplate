@@ -1,0 +1,10 @@
+<%= render Deckplate::Layout::PageHeaderComponent.new(title: "Strict CSP") %>
+<div class="gx-row" id="csp-demo">
+  <%= render Deckplate::Data::GaugeComponent.new(label: "Power", value: 72, id: "csp-gauge") %>
+  <%= render Deckplate::Data::ProgressComponent.new(label: "Upload", value: 40, id: "csp-progress") %>
+  <%= render Deckplate::Shapes::SpacerComponent.new(size: 2, axis: :inline, id: "csp-spacer") %>
+  <%= render Deckplate::Shapes::ElbowComponent.new(width: 9, height: 6, id: "csp-elbow") %>
+  <%= render(Deckplate::Shapes::BarComponent.new(thickness: 2.5, id: "csp-bar")) { |b| b.with_segment(color: :info, size: 6, id: "csp-segment") } %>
+  <%= render Deckplate::Data::BarGraphComponent.new(label: "Graph", series: [ [ "A", 25 ], [ "B", 100 ] ], id: "csp-graph") %>
+  <%= render Deckplate::SliderComponent.new(name: "csp-slider", label: "Slider", value: 30, id: "csp-slider") %>
+</div>
