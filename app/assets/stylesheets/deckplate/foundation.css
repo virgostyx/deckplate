@@ -2,11 +2,11 @@
   :root {
     /* Geometry: everything scales from --dp-u (never px for shapes) */
     --dp-u: 1.375rem;
-    --dp-bar: calc(1.25 * var(--dp-u));
-    --dp-gap: calc(0.25 * var(--dp-u));
-    --dp-elbow-col: calc(6 * var(--dp-u));
-    --dp-elbow-r: calc(3 * var(--dp-u));
-    --dp-elbow-ri: calc(1.5 * var(--dp-u));
+    --dp-bar: calc(0.9 * var(--dp-u));
+    --dp-gap: calc(0.35 * var(--dp-u));
+    --dp-elbow-col: calc(8 * var(--dp-u));
+    --dp-elbow-r: calc(4.5 * var(--dp-u));
+    --dp-elbow-ri: calc(1.8 * var(--dp-u));
     --dp-pill-r: 9999px;
     --dp-touch-min: 2.75rem;
 

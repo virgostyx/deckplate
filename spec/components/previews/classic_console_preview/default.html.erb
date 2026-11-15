@@ -1,0 +1,47 @@
+<div class="dp-root gx-console">
+  <%# column: lilac block, then the upper elbow (bar at its bottom, colour continues into the first bar) %>
+  <div class="gx-console__col-top">
+    <%= render(Deckplate::Shapes::BlockComponent.new(color: :accent, class: "gx-console__panel-1")) { "Console" } %>
+    <%= render(Deckplate::Shapes::ElbowComponent.new(corner: :bottom_left, color: :melrose, height: 6.5, class: "gx-console__elbow-top")) { |e| e.with_label { "02-262000" } } %>
+  </div>
+
+  <div class="gx-console__top">
+    <div class="gx-console__title">Console · 47988</div>
+    <div class="gx-console__pills">
+      <%= render(Deckplate::Shapes::BlockComponent.new(shape: :pill, color: :melrose, number: "01")) { "" } %>
+      <%= render(Deckplate::Shapes::BlockComponent.new(shape: :pill, color: :atomic_tangerine, number: "02")) { "" } %>
+      <%= render(Deckplate::Shapes::BlockComponent.new(shape: :pill, color: :orange_peel, number: "03")) { "" } %>
+      <%= render(Deckplate::Shapes::BlockComponent.new(shape: :pill, color: :medium_carmine, number: "04")) { "" } %>
+    </div>
+    <div class="gx-console__bars">
+      <%= render(Deckplate::Shapes::BarComponent.new(thickness: 0.9)) do |b|
+        b.with_segment(color: :melrose, size: 19.5)
+        b.with_segment(color: :orange_peel, size: 2)
+        b.with_segment(color: :lilac, size: 8.3)
+        b.with_segment(color: :lilac)
+        b.with_segment(color: :medium_carmine, size: 2)
+      end %>
+    </div>
+  </div>
+
+  <div class="gx-console__col-bottom">
+    <%= render(Deckplate::Shapes::ElbowComponent.new(corner: :top_left, color: :medium_carmine, height: 7, class: "gx-console__elbow-bottom")) %>
+    <%= render(Deckplate::Shapes::BlockComponent.new(color: :medium_carmine, number: "03", class: "gx-console__panel-4")) { "111968" } %>
+    <%= render(Deckplate::Shapes::BlockComponent.new(color: :orange_peel, number: "05", class: "gx-console__panel-5")) { "1701D" } %>
+    <%= render(Deckplate::Shapes::BlockComponent.new(color: :atomic_tangerine, number: "06", class: "gx-console__panel-6")) { "071984" } %>
+  </div>
+
+  <div class="gx-console__main">
+    <div class="gx-console__bars">
+      <%= render(Deckplate::Shapes::BarComponent.new(thickness: 0.9)) do |b|
+        b.with_segment(color: :medium_carmine, size: 19.5)
+        b.with_segment(color: :atomic_tangerine, size: 2)
+        b.with_segment(color: :lilac, size: 8.3)
+        b.with_segment(color: :lilac)
+        b.with_segment(color: :atomic_tangerine, size: 2)
+      end %>
+    </div>
+    <h1 class="gx-console__hello">Hello</h1>
+    <p class="gx-console__line gx-console__line--lg">Welcome to the console · classic theme · standard layout</p>
+  </div>
+</div>

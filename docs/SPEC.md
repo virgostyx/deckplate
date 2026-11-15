@@ -166,9 +166,11 @@ rust 883311 · tamarillo 882211 · white FFFFFF · gray 999999.
 
 - Layout unit `--dp-u: 1.375rem` (≈22 px at 16 px root). Everything in `rem`/`em`/`u`; never `px` for shapes,
   so zoom and root font-size changes scale the whole console.
-- Starting values (tune against reference pages, see PLAN Phase 2): bar thickness `--dp-bar: 1.25 u`,
-  gap `--dp-gap: 0.25 u`, elbow column `--dp-elbow-col: 6 u`, elbow outer radius `--dp-elbow-r: 3 u`,
-  elbow inner radius `--dp-elbow-ri: 1.5 u`, pill radius `9999px`, min touch target `2.75rem`.
+- **Final values (Phase 2, tuned against a classic console page at 1280x800, u = 22px; proportions matched, not copied)**:
+  bar thickness `--dp-bar: 0.9 u` (reference 20px), gap `--dp-gap: 0.35 u` (8px), elbow column `--dp-elbow-col: 8 u`
+  (180px), elbow outer radius `--dp-elbow-r: 4.5 u` (100px), elbow inner radius `--dp-elbow-ri: 1.8 u` (~40px),
+  pill radius `9999px`, min touch target `2.75rem`. Pill blocks 8.18 u x 3 u. Previous starting values were
+  bar 1.25 u, gap 0.25 u, column 6 u, r 3 u, ri 1.5 u. Side-by-side check: `Reference / Classic console` preview.
 - Fonts (self-hosted woff2, SIL OFL, licence files included, `font-display: swap`, latin + latin-ext
   because French/Dutch accents are required): display/labels **Antonio** (uppercase, letter-spacing), data
   **Share Tech Mono** (tabular figures), running text falls back to `--dp-font-text: ui-sans-serif,

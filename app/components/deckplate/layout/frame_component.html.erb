@@ -7,7 +7,7 @@
       <button type="button" class="dp-frame__menu" popovertarget="<%= sidebar_id %>"><%= t("deckplate.frame.menu") %></button>
       <%= tag.div(sidebar, id: sidebar_id, class: "dp-frame__sidebar", popover: "auto") %>
     <% end %>
-    <%= tag.main(main, id: main_id, class: "dp-frame__main") if main? %>
+    <%= tag.main(main, id: main_id, class: "dp-frame__main", tabindex: (0 if @fixed)) if main? %>
     <% if double? %><%= aside %><% end %>
     <% if show_corners? %><%= bottom_left_corner %><% end %>
     <%= footer %>

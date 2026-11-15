@@ -33,3 +33,21 @@
 .gx-big { font-family: var(--dp-font-data); font-size: 2rem; font-variant-numeric: tabular-nums; color: var(--dp-info); }
 .gx-side { display: grid; gap: var(--dp-gap); }
 .gx-filler { margin: .75rem 0; max-inline-size: 60ch; }
+
+/* Reference comparison layout (Phase 2, task 7). Pure CSS grid; every shape is a Deckplate component. */
+.gx-console { --cw: calc(8 * var(--dp-u)); display: grid; grid-template-columns: var(--cw) minmax(0, 1fr); grid-template-rows: auto auto 1fr; column-gap: 0; row-gap: var(--dp-gap); padding: calc(0.45 * var(--dp-u)); min-block-size: 100vh; box-sizing: border-box; }
+.gx-console__col-top { grid-column: 1; grid-row: 1; display: flex; flex-direction: column; gap: calc(0.18 * var(--dp-u)); }
+.gx-console__panel-1 { min-block-size: calc(6.4 * var(--dp-u)); }
+.gx-console__elbow-top, .gx-console__elbow-bottom { --dp-elbow-w: calc(var(--cw) + var(--dp-elbow-ri)); }
+.gx-console__top { grid-column: 2; grid-row: 1; display: grid; grid-template-rows: 1fr auto; position: relative; padding-inline-start: calc(var(--dp-elbow-ri)); }
+.gx-console__title { font-family: var(--dp-font-display); font-size: 3.5rem; text-align: end; text-transform: uppercase; color: var(--dp-primary); line-height: 1; }
+.gx-console__pills { margin-block-end: calc(1.4 * var(--dp-u)); display: grid; grid-template-columns: repeat(2, calc(8.18 * var(--dp-u))); gap: calc(0.35 * var(--dp-u)); justify-content: end; }
+.gx-console__pills .dp-block { min-block-size: calc(3 * var(--dp-u)); }
+.gx-console__col-bottom { grid-column: 1; grid-row: 2 / span 2; display: flex; flex-direction: column; gap: calc(0.18 * var(--dp-u)); }
+.gx-console__panel-4 { min-block-size: calc(8 * var(--dp-u)); }
+.gx-console__panel-5 { min-block-size: calc(3.7 * var(--dp-u)); }
+.gx-console__panel-6 { min-block-size: calc(10 * var(--dp-u)); }
+.gx-console__main { grid-column: 2; grid-row: 2 / span 2; padding-inline-start: var(--dp-elbow-ri); }
+.gx-console__hello { font-family: var(--dp-font-display); font-weight: 400; font-size: 4.5rem; text-align: end; text-transform: uppercase; color: var(--dp-accent); margin: .25em 0 0; line-height: 1; }
+.gx-console__line { font-family: var(--dp-font-display); text-transform: uppercase; color: var(--dp-accent); margin: .5em 0; padding-inline-start: calc(0.9 * var(--dp-u)); }
+.gx-console__line--lg { font-size: 2.5rem; }

@@ -86,6 +86,16 @@ RSpec.describe Deckplate::Layout::FrameComponent, type: :component do
       expect(page).to have_css(".dp-frame.dp-frame--fixed")
     end
 
+    it "makes main keyboard-focusable when it scrolls (fixed), so keyboard users can scroll it" do
+      render_frame(fixed: true)
+      expect(page.find("main.dp-frame__main")[:tabindex]).to eq("0")
+    end
+
+    it "leaves main out of the tab order when the page itself scrolls" do
+      render_frame
+      expect(page.find("main.dp-frame__main")[:tabindex]).to be_nil
+    end
+
     it "can pin a theme on the frame" do
       render_frame(theme: :azure)
       expect(page).to have_css(".dp-frame[data-dp-theme='azure']")

@@ -1,7 +1,7 @@
 <div class="dp-root gx-page">
   <p class="gx-label">header actions + footer</p>
   <%= render(Deckplate::Layout::PanelComponent.new(title: "Cargo", color: :accent, corners: :left)) do |p|
-    p.with_header_actions { tag.span("[edit]", class: "gx-label") }
+    p.with_header_actions { tag.span("[edit]") }
     p.with_footer { "Updated 14:02" }
     "Bay 3: 128 units"
   end %>
