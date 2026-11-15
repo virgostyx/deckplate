@@ -65,7 +65,8 @@ The owner answers by editing the entry (change **Status** to `answered`) and the
   and feedback keep their namespaces (`Shapes::`, `Layout::`, `Forms::`, `Data::`, `Feedback::`).
 - **Why this default is safe**: the public API is what users type; folder layout is internal and can be regrouped later with
   Zeitwerk `collapse` without changing any constant.
-- **Status**: open
+- **Status**: answered
+- **Answer**: keep the top-level constants (owner decision). SPEC section 3 is aligned below.
 
 ### Q-007 — Size of the visual baselines
 - **Phase / task**: Phase 4 review, `bin/visual`

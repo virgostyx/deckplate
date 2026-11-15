@@ -53,7 +53,8 @@ deckplate/
 ├── app/
 │   ├── components/deckplate/            # Ruby + sidecar .html.erb, one folder per family
 │   │   ├── base_component.rb  concerns/ (colorable, sizeable, variants)
-│   │   ├── shapes/ layout/ controls/ navigation/ forms/ data/ feedback/
+│   │   ├── shapes/ layout/ forms/ data/ feedback/   # namespaced families (Shapes::, Layout::, Forms::, Data::, Feedback::)
+│   │   └── *.rb                                      # controls and navigation: top-level (Deckplate::ButtonComponent, ...) — Q-006
 │   ├── helpers/deckplate/               # dp_theme_attrs, dp_root, dp_font_tags, dp_toast_container ...
 │   ├── assets/
 │   │   ├── stylesheets/deckplate/       # SOURCE css (tokens, themes, base, shapes, layout, components/*)
