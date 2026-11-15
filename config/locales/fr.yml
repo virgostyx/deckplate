@@ -20,3 +20,5 @@ fr:
       sort_ascending: "Trié par ordre croissant"
       sort_descending: "Trié par ordre décroissant"
       empty: "Aucune donnée"
+    frame:
+      menu: "Menu"

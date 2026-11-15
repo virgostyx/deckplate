@@ -380,6 +380,7 @@
 @layer dp.base {
   .dp-root {
     box-sizing: border-box;
+    margin: 0;
     background-color: var(--dp-canvas);
     color: var(--dp-ink);
     font-family: var(--dp-font-text);
@@ -740,6 +741,148 @@
     display: inline-block;
     inline-size: calc(var(--dp-n, 1) * var(--dp-u));
     block-size: 0;
+  }
+}
+
+/* deckplate/layout/frame.css */
+@layer dp.layout {
+  .dp-frame {
+    /* Knobs: --dp-frame-side (sidebar + corner column), --dp-frame-aside (double variant) */
+    --dp-frame-side: calc(8 * var(--dp-u));
+    --dp-frame-aside: calc(8 * var(--dp-u));
+    --dp-elbow-col: var(--dp-frame-side);
+    --dp-frame-stub: calc(var(--dp-elbow-ri) + var(--dp-u)); /* how far a corner elbow's arm runs past the side column */
+    container: dp-frame / inline-size;
+    position: relative;
+    min-inline-size: 0;
+    background-color: var(--dp-canvas);
+    color: var(--dp-ink);
+  }
+  .dp-frame--fixed { block-size: 100dvh; }
+
+  /* Skip link: visible only when focused */
+  .dp-frame__skip {
+    position: absolute;
+    inset-block-start: 0.5rem;
+    inset-inline-start: 0.5rem;
+    z-index: var(--dp-z-overlay);
+    padding: 0.5em 1em;
+    border-radius: var(--dp-pill-r);
+    background-color: var(--dp-primary);
+    color: var(--dp-primary-ink);
+    font-family: var(--dp-font-display);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transform: translateY(-300%);
+  }
+  .dp-frame__skip:focus { transform: none; }
+
+  /* Narrow (default): one column. header, menu button, main, aside, footer. Corners are dropped. */
+  .dp-frame__grid {
+    display: grid;
+    gap: var(--dp-gap);
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "header" "menu" "main" "aside" "footer";
+    min-block-size: 100%;
+  }
+  .dp-frame--fixed .dp-frame__grid {
+    block-size: 100%;
+    grid-template-rows: auto auto minmax(0, 1fr) auto auto;
+  }
+  .dp-frame__header { grid-area: header; min-inline-size: 0; }
+  .dp-frame__main { grid-area: main; min-inline-size: 0; min-block-size: 0; padding: var(--dp-u); }
+  .dp-frame--fixed .dp-frame__main { overflow: auto; }
+  .dp-frame__aside { grid-area: aside; min-inline-size: 0; }
+  .dp-frame__footer { grid-area: footer; min-inline-size: 0; }
+  .dp-frame__corner { display: none; min-inline-size: 0; }
+  .dp-frame__corner--top-start { grid-area: corner-tl; }
+  .dp-frame__corner--bottom-start { grid-area: corner-bl; }
+
+  .dp-frame__menu {
+    grid-area: menu;
+    justify-self: start;
+    min-block-size: var(--dp-touch-min);
+    padding: 0.25em 1.5em;
+    border: 0;
+    border-radius: var(--dp-pill-r);
+    background-color: var(--dp-primary);
+    color: var(--dp-primary-ink);
+    font-family: var(--dp-font-display);
+    font-size: 1.125rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  /* The sidebar is a native popover (drawer) while narrow */
+  .dp-frame__sidebar { grid-area: sidebar; min-inline-size: 0; }
+  .dp-frame__sidebar:popover-open {
+    position: fixed;
+    inset: 0 auto 0 0;
+    inline-size: min(20rem, 85vw);
+    block-size: 100dvh;
+    margin: 0;
+    padding: var(--dp-u);
+    border: 0;
+    border-inline-end: var(--dp-gap) solid var(--dp-primary);
+    overflow: auto;
+    background-color: var(--dp-canvas);
+    color: var(--dp-ink);
+  }
+  .dp-frame__sidebar::backdrop { background: rgb(0 0 0 / 0.6); }
+
+  /* Minimal: header, main, footer in one column at any width */
+  .dp-frame--minimal .dp-frame__grid {
+    grid-template-areas: "header" "main" "footer";
+    grid-template-rows: auto minmax(0, 1fr) auto;
+  }
+
+  /* Wide: corners, sidebar column, optional aside column */
+  @container dp-frame (min-width: 48rem) {
+    .dp-frame--classic .dp-frame__grid,
+    .dp-frame--double .dp-frame__grid {
+      grid-template-columns: var(--dp-frame-side) minmax(0, 1fr);
+      grid-template-areas: "corner-tl header" "sidebar main" "corner-bl footer";
+      grid-template-rows: auto minmax(0, 1fr) auto;
+    }
+    .dp-frame--double .dp-frame__grid {
+      grid-template-columns: var(--dp-frame-side) minmax(0, 1fr) var(--dp-frame-aside);
+      grid-template-areas: "corner-tl header header" "sidebar main aside" "corner-bl footer footer";
+    }
+    .dp-frame--classic .dp-frame__corner,
+    .dp-frame--double .dp-frame__corner { display: flex; }
+
+    /* Corner elbows: side column + stub wide, as tall as their row; header/footer bars start after the stub */
+    .dp-frame__corner > .dp-elbow {
+      --dp-elbow-w: calc(var(--dp-frame-side) + var(--dp-frame-stub));
+      --dp-elbow-h: auto;
+      min-block-size: calc(var(--dp-bar) + var(--dp-elbow-ri) + 0.5 * var(--dp-u));
+    }
+    .dp-frame__grid:has(> .dp-frame__corner--top-start) > .dp-frame__header {
+      align-self: start;
+      margin-inline-start: calc(var(--dp-frame-stub) + var(--dp-gap));
+    }
+    .dp-frame__grid:has(> .dp-frame__corner--bottom-start) > .dp-frame__footer {
+      align-self: end;
+      margin-inline-start: calc(var(--dp-frame-stub) + var(--dp-gap));
+    }
+    .dp-frame__menu { display: none; }
+
+    /* Show the sidebar inline: author styles override the UA popover defaults (display: none, fixed, inset: 0, ...) */
+    .dp-frame__sidebar {
+      display: block;
+      position: static;
+      inset: auto;
+      inline-size: auto;
+      block-size: auto;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      overflow: visible;
+      background: transparent;
+      color: inherit;
+    }
+    .dp-frame--fixed .dp-frame__sidebar { overflow: auto; }
   }
 }
 

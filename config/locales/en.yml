@@ -20,3 +20,5 @@ en:
       sort_ascending: "Sorted ascending"
       sort_descending: "Sorted descending"
       empty: "No data"
+    frame:
+      menu: "Menu"

@@ -16,6 +16,10 @@ RSpec.describe "base styles and scoping" do
     expect(css).to match(/\.dp-root\s*\{[^}]*font-family:\s*var\(--dp-font-text\)/m)
   end
 
+  it "removes the default margin of the root (it is usually <body>, and a 100dvh frame must not overflow by 2 x 8px)" do
+    expect(css).to match(/\.dp-root\s*\{[^}]*margin:\s*0;/m)
+  end
+
   it "draws a visible focus ring from --dp-focus" do
     expect(css).to match(/\.dp-root\s+:focus-visible\s*\{[^}]*outline:\s*2px solid var\(--dp-focus\)/m)
   end

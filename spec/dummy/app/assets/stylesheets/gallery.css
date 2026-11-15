@@ -31,3 +31,5 @@
 .gx-tall { min-block-size: calc(4 * var(--dp-u)); }
 .gx-dash { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: calc(1.5 * var(--dp-u)); margin-top: var(--dp-u); }
 .gx-big { font-family: var(--dp-font-data); font-size: 2rem; font-variant-numeric: tabular-nums; color: var(--dp-info); }
+.gx-side { display: grid; gap: var(--dp-gap); }
+.gx-filler { margin: .75rem 0; max-inline-size: 60ch; }

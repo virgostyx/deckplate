@@ -1,6 +1,7 @@
 @layer dp.base {
   .dp-root {
     box-sizing: border-box;
+    margin: 0;
     background-color: var(--dp-canvas);
     color: var(--dp-ink);
     font-family: var(--dp-font-text);
