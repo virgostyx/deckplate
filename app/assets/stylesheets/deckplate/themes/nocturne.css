@@ -16,8 +16,8 @@
     --dp-info-ink: var(--dp-danub-ink);
     --dp-success: var(--dp-fern);
     --dp-success-ink: var(--dp-fern-ink);
-    --dp-warning: var(--dp-bourbon);
-    --dp-warning-ink: var(--dp-bourbon-ink);
+    --dp-warning: var(--dp-orange-peel);
+    --dp-warning-ink: var(--dp-orange-peel-ink);
     --dp-danger: var(--dp-chestnut-rose);
     --dp-danger-ink: var(--dp-chestnut-rose-ink);
     --dp-emergency: var(--dp-signal-red);

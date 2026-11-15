@@ -30,6 +30,19 @@ RSpec.describe "Theme contrast (WCAG 2.2 AA)" do
     end
   end
 
+  # Found while reviewing the visual baselines: nocturne once mapped primary and warning to the same stop.
+  # Roles that carry different meaning must not resolve to the same colour, except where a theme documents it.
+  SAME_COLOUR_ALLOWED = { "crimson" => [ %w[danger emergency] ] }.freeze
+
+  THEMES.each do |theme|
+    it "#{theme} gives distinct colours to distinct roles" do
+      vars = CssVars.stop_vars.merge(CssVars.theme_vars(theme))
+      colours = ROLES.to_h { |r| [ r, CssVars.resolve("var(--dp-#{r})", vars) ] }
+      clashes = colours.group_by { |_, hex| hex }.values.select { _1.size > 1 }.map { |g| g.map(&:first).sort }
+      expect(clashes - SAME_COLOUR_ALLOWED.fetch(theme, [])).to eq([])
+    end
+  end
+
   it "keeps every palette stop's ink readable on the stop" do
     bad = CssVars.palette.select { |_, s| CssVars.contrast(s["hex"], s["ink"]) < rules["stop_ink_min"] }.keys
     expect(bad).to eq([])
