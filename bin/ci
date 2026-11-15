@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Must be green before every PR. Later phases add: contrast, a11y, gem build, budgets.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+echo "== rubocop"; bundle exec rubocop
+echo "== rspec";   CI=1 bundle exec rspec
+echo "== gem build"; gem build deckplate.gemspec --output tmp/deckplate.gem >/dev/null && echo ok

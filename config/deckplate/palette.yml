@@ -1,0 +1,94 @@
+# Single source for CSS generation, docs and the contrast spec.
+# ink = readable text colour on the stop (best of black/white). background_only: never use as text/line on canvas.
+stops:
+  pale-canary:
+    hex: "#FFFF99"
+    ink: "#000000"
+  golden-tanoi:
+    hex: "#FFCC66"
+    ink: "#000000"
+  neon-carrot:
+    hex: "#FF9933"
+    ink: "#000000"
+  atomic-tangerine:
+    hex: "#FF9966"
+    ink: "#000000"
+  orange-peel:
+    hex: "#FF9900"
+    ink: "#000000"
+  hopbush:
+    hex: "#CC6699"
+    ink: "#000000"
+  chestnut-rose:
+    hex: "#CC6666"
+    ink: "#000000"
+  red-damask:
+    hex: "#CC6644"
+    ink: "#000000"
+  medium-carmine:
+    hex: "#CC3333"
+    ink: "#FFFFFF"
+  emergency:
+    hex: "#FF0000"
+    ink: "#000000"
+  anakiwa:
+    hex: "#99CCFF"
+    ink: "#000000"
+  periwinkle:
+    hex: "#CCCCFF"
+    ink: "#000000"
+  blue-bell:
+    hex: "#9999CC"
+    ink: "#000000"
+  melrose:
+    hex: "#9999FF"
+    ink: "#000000"
+  mariner:
+    hex: "#4466AA"
+    ink: "#FFFFFF"
+  danub:
+    hex: "#6688CC"
+    ink: "#000000"
+  dodger-blue:
+    hex: "#4499FF"
+    ink: "#000000"
+  indigo:
+    hex: "#336699"
+    ink: "#FFFFFF"
+  bahama-blue:
+    hex: "#006699"
+    ink: "#FFFFFF"
+  navy-blue:
+    hex: "#000099"
+    ink: "#FFFFFF"
+    background_only: true
+  lilac:
+    hex: "#CC99CC"
+    ink: "#000000"
+  lavender-purple:
+    hex: "#9966CC"
+    ink: "#000000"
+  cosmic:
+    hex: "#774466"
+    ink: "#FFFFFF"
+  eggplant:
+    hex: "#330066"
+    ink: "#FFFFFF"
+  husk:
+    hex: "#BB9944"
+    ink: "#000000"
+  bourbon:
+    hex: "#BB6633"
+    ink: "#000000"
+  rust:
+    hex: "#883311"
+    ink: "#FFFFFF"
+  tamarillo:
+    hex: "#882211"
+    ink: "#FFFFFF"
+  white:
+    hex: "#FFFFFF"
+    ink: "#000000"
+  gray:
+    hex: "#999999"
+    ink: "#000000"

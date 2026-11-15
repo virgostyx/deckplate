@@ -1,0 +1,15 @@
+/.bundle/
+/tmp/
+/log/
+/coverage/
+/pkg/
+*.gem
+/spec/dummy/log/
+/spec/dummy/tmp/
+/spec/dummy/storage/
+/spec/dummy/db/*.sqlite3*
+/spec/dummy/.bundle/
+/spec/visual/__current__/
+/tools/visual/node_modules/
+/Gemfile.lock
+/gemfiles/*.lock

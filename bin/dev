@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Dummy app + Lookbook on http://localhost:3000/lookbook
+cd "$(dirname "$0")/../spec/dummy"
+exec bundle exec rails server -p "${PORT:-3000}" "$@"
