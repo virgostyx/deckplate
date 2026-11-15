@@ -45,11 +45,13 @@ The owner answers by editing the entry (change **Status** to `answered`) and the
   libmanette-0.2-0` or `sudo npx playwright install-deps`). May this be installed on the dev machine?
 - **Default applied**: ADR 0002 accepted on Chrome + Firefox evidence only; Safari/WebKit verification is a pending item
   to re-run `elbow.mjs` and later the visual suite. The agent does not run `sudo`.
-- **Status**: open
+- **Status**: answered
+- **Answer**: owner installed `libmanette-0.2-0`; WebKit run done, ADR 0002 verified on all three engines.
 
 ### Q-005 — Ruby version on the dev machine
 - **Phase / task**: Phase 0, skeleton
 - **Question**: `~/.rbenv/version` is 3.3.0, which cannot load Rails 8.1.4.1 (syntax error fixed in Ruby 3.3.1). CLAUDE.md
   says 3.3.5.
 - **Default applied**: project-local `.ruby-version` = 3.3.5 (installed); the global rbenv version is untouched.
-- **Status**: open
+- **Status**: answered
+- **Answer**: keep the project-local `.ruby-version` (confirmed by the owner).
