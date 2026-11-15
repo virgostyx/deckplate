@@ -14,6 +14,8 @@ en:
       current_page: "Page %{page}, current page"
     breadcrumb:
       label: "Breadcrumb"
+    top_nav:
+      label: "Secondary navigation"
     nav:
       label: "Main navigation"
     table:

@@ -1,0 +1,27 @@
+<%= tag.nav(**nav_attributes) do %>
+  <ul class="dp-pagination__list">
+    <li>
+      <% if @page > 1 %>
+        <%= link_to url(@page - 1), rel: "prev", class: "dp-pagination__link dp-pagination__link--prev", aria: { label: t("deckplate.pagination.previous") } do %><%= helpers.dp_icon(:chevron_left) %><% end %>
+      <% else %>
+        <span class="dp-pagination__link dp-pagination__link--prev" aria-disabled="true"><%= helpers.dp_icon(:chevron_left) %><span class="dp-sr-only"><%= t("deckplate.pagination.previous") %></span></span>
+      <% end %>
+    </li>
+    <% entries.each do |entry| %>
+      <% if entry == :gap %>
+        <li aria-hidden="true" class="dp-pagination__gap">…</li>
+      <% elsif entry == @page %>
+        <li><span class="dp-pagination__link dp-pagination__link--current" aria-current="page" aria-label="<%= t('deckplate.pagination.current_page', page: entry) %>"><%= entry %></span></li>
+      <% else %>
+        <li><%= link_to entry, url(entry), class: "dp-pagination__link", aria: { label: t("deckplate.pagination.page", page: entry) } %></li>
+      <% end %>
+    <% end %>
+    <li>
+      <% if @page < @pages %>
+        <%= link_to url(@page + 1), rel: "next", class: "dp-pagination__link dp-pagination__link--next", aria: { label: t("deckplate.pagination.next") } do %><%= helpers.dp_icon(:chevron_right) %><% end %>
+      <% else %>
+        <span class="dp-pagination__link dp-pagination__link--next" aria-disabled="true"><%= helpers.dp_icon(:chevron_right) %><span class="dp-sr-only"><%= t("deckplate.pagination.next") %></span></span>
+      <% end %>
+    </li>
+  </ul>
+<% end %>

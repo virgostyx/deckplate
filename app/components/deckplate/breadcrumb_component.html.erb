@@ -1,0 +1,13 @@
+<%= tag.nav(**nav_attributes) do %>
+  <ol class="dp-breadcrumb__list">
+    <% @items.each_with_index do |item, i| %>
+      <% if i == @items.size - 1 || item[:href].blank? && i == @items.size - 1 %>
+        <li class="dp-breadcrumb__item" aria-current="page"><%= item[:label] %></li>
+      <% elsif item[:href].present? %>
+        <li class="dp-breadcrumb__item"><%= link_to item[:label], item[:href], class: "dp-breadcrumb__link" %></li>
+      <% else %>
+        <li class="dp-breadcrumb__item"><%= item[:label] %></li>
+      <% end %>
+    <% end %>
+  </ol>
+<% end %>

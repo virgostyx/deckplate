@@ -1,0 +1,10 @@
+<div class="dp-root gx-page">
+  <div style="inline-size: 12rem">
+    <%= render(Deckplate::NavComponent.new) do |n|
+      n.with_item(label: "Overview", href: "/overview", number: "01", color: :primary)
+      n.with_item(label: "Ships", href: "/ships", number: "02", color: :tertiary, current: true)
+      n.with_item(label: "Crew", href: "/crew", number: "03", color: :info)
+      n.with_item(label: "Cargo", href: "/cargo", number: "04", color: :accent)
+    end %>
+  </div>
+</div>

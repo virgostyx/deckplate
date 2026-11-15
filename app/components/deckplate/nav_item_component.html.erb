@@ -1,0 +1,6 @@
+<li class="dp-nav__item">
+  <%= tag.a(href: @href, **link_attributes) do %>
+    <% if @number.present? %><%= tag.span(@number, class: "dp-nav__number") %><% end %>
+    <%= tag.span(@label, class: "dp-nav__label") %>
+  <% end %>
+</li>

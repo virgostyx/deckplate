@@ -1,0 +1,8 @@
+<div class="dp-root gx-page">
+  <% [ 1, 10, 20 ].each do |current| %>
+    <p class="gx-label">page <%= current %> of 20</p>
+    <%= render Deckplate::PaginationComponent.new(page: current, pages: 20, url_for: ->(n) { "/ships?page=#{n}" }) %>
+  <% end %>
+  <p class="gx-label">narrow container (14rem)</p>
+  <div style="max-inline-size: 14rem"><%= render Deckplate::PaginationComponent.new(page: 10, pages: 20, url_for: ->(n) { "/ships?page=#{n}" }) %></div>
+</div>

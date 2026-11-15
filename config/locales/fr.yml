@@ -14,6 +14,8 @@ fr:
       current_page: "Page %{page}, page courante"
     breadcrumb:
       label: "Fil d'Ariane"
+    top_nav:
+      label: "Navigation secondaire"
     nav:
       label: "Navigation principale"
     table:

@@ -1,0 +1,10 @@
+<div class="dp-root gx-page">
+  <div style="inline-size: 12rem">
+    <%= render(Deckplate::NavComponent.new(label: "Decks")) do |n|
+      %i[primary secondary tertiary accent info warning].each_with_index do |c, i|
+        n.with_item(label: "Deck #{i + 1}", href: "/deck-#{i + 1}", color: c)
+      end
+      n.with_item(label: "A label that is much too long for this column", href: "/long", number: "99")
+    end %>
+  </div>
+</div>

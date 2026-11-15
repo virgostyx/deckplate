@@ -1,0 +1,3 @@
+<div class="dp-root gx-page">
+  <%= render Deckplate::PaginationComponent.new(page: page, pages: pages, url_for: ->(n) { "/ships?page=#{n}" }) %>
+</div>

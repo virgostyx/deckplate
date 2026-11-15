@@ -1071,6 +1071,32 @@
   }
 }
 
+/* deckplate/components/breadcrumb.css */
+@layer dp.components {
+  .dp-breadcrumb__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25em 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--dp-ink-muted);
+    font-family: var(--dp-font-data);
+    font-size: 0.9375rem;
+  }
+  .dp-breadcrumb__item + .dp-breadcrumb__item::before {
+    content: "/" / "";
+    padding-inline: 0.6em;
+    color: var(--dp-line);
+  }
+  .dp-breadcrumb__link {
+    color: var(--dp-info);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .dp-breadcrumb__item[aria-current="page"] { color: var(--dp-ink); }
+}
+
 /* deckplate/components/button-group.css */
 @layer dp.components {
   .dp-button-group {
@@ -1174,6 +1200,114 @@
     height: 1em;
     flex: none;
     vertical-align: -0.125em;
+  }
+}
+
+/* deckplate/components/nav.css */
+@layer dp.components {
+  .dp-nav__list {
+    display: grid;
+    gap: var(--dp-gap);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .dp-nav__link {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.75em;
+    box-sizing: border-box;
+    min-block-size: calc(2 * var(--dp-u));
+    padding: 0.25em 0.75em;
+    background-color: var(--dp-c);
+    color: var(--dp-c-ink);
+    font-family: var(--dp-font-display);
+    line-height: 1.1;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: filter 50ms linear;
+  }
+  .dp-nav__number {
+    flex: none;
+    margin-inline-end: auto;
+    font-family: var(--dp-font-data);
+    letter-spacing: 0;
+  }
+  .dp-nav__label { min-inline-size: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .dp-nav__link:hover { filter: brightness(1.1); }
+  .dp-nav__link:active { filter: brightness(1.45); }
+
+  /* Current page: not colour alone. The block is squared off on the start side and gets a bar at its end. */
+  .dp-nav__link--current {
+    border-inline-end: calc(0.5 * var(--dp-u)) solid var(--dp-ink);
+  }
+  .dp-nav__link--current .dp-nav__label { font-weight: 700; }
+  .dp-nav__link--current .dp-nav__label::before { content: "\25B8\00a0" / ""; }
+
+  /* TopNav: a horizontal run of pills */
+  .dp-top-nav .dp-nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--dp-gap);
+  }
+  .dp-top-nav .dp-nav__link {
+    align-items: center;
+    min-block-size: var(--dp-touch-min);
+    border-radius: var(--dp-pill-r);
+    padding-inline: 1.25em;
+  }
+  .dp-top-nav .dp-nav__link--current { border-inline-end: 0; box-shadow: inset 0 calc(-0.25 * var(--dp-u)) 0 var(--dp-ink); }
+
+  @media (forced-colors: active) {
+    .dp-nav__link { border: 1px solid LinkText; }
+    .dp-nav__link--current { border-color: Highlight; }
+  }
+}
+
+/* deckplate/components/pagination.css */
+@layer dp.components {
+  .dp-pagination__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--dp-gap);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .dp-pagination__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-inline-size: var(--dp-touch-min);
+    min-block-size: var(--dp-touch-min);
+    padding-inline: 0.5em;
+    border-radius: var(--dp-pill-r);
+    background-color: var(--dp-secondary);
+    color: var(--dp-secondary-ink);
+    font-family: var(--dp-font-data);
+    font-variant-numeric: tabular-nums;
+    text-decoration: none;
+    transition: filter 50ms linear;
+  }
+  .dp-pagination__link:is(a):hover { filter: brightness(1.1); }
+  .dp-pagination__link:is(a):active { filter: brightness(1.45); }
+  .dp-pagination__link--current {
+    background-color: var(--dp-primary);
+    color: var(--dp-primary-ink);
+    box-shadow: inset 0 calc(-0.2 * var(--dp-u)) 0 var(--dp-ink);
+  }
+  .dp-pagination__link[aria-disabled="true"] {
+    background-color: var(--dp-disabled);
+    color: var(--dp-canvas);
+    cursor: not-allowed;
+  }
+  .dp-pagination__gap { padding-inline: 0.25em; color: var(--dp-ink-muted); }
+  @media (forced-colors: active) {
+    .dp-pagination__link { border: 1px solid LinkText; }
+    .dp-pagination__link--current { border-color: Highlight; }
   }
 }
 

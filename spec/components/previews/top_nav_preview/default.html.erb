@@ -1,0 +1,8 @@
+<div class="dp-root gx-page">
+  <%= render(Deckplate::TopNavComponent.new) do |n|
+    n.with_item(label: "Status", href: "/status", color: :secondary, current: true)
+    n.with_item(label: "Crew", href: "/crew", color: :secondary)
+    n.with_item(label: "Logs", href: "/logs", color: :secondary)
+    n.with_item(label: "Settings", href: "/settings", color: :secondary)
+  end %>
+</div>
