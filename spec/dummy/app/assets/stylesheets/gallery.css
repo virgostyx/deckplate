@@ -24,3 +24,4 @@
 .gx-row { display: flex; align-items: center; gap: .5rem; margin: .25rem 0; flex-wrap: wrap; }
 .gx-demo-bar { block-size: .5rem; background: var(--dp-line); }
 .gx-demo-chip { inline-size: 1rem; block-size: 1rem; background: var(--dp-line); }
+.gx-gap-bottom { margin-block-end: .25rem; }

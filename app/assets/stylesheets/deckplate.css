@@ -441,6 +441,99 @@
   }
 }
 
+/* deckplate/shapes/bar.css */
+@layer dp.shapes {
+  .dp-bar {
+    /* --dp-bar-t (a number of units) is set inline when `thickness:` is given; otherwise the fallbacks below apply */
+    --dp-bar-len: calc(var(--dp-bar-t) * var(--dp-u));
+    --dp-bar-thick: var(--dp-bar-len, var(--dp-bar));
+    display: flex;
+    gap: var(--dp-gap);
+    flex: none;
+    min-inline-size: 0;
+    color: var(--dp-c-ink);
+    font-family: var(--dp-font-display);
+    font-size: min(1rem, calc(var(--dp-bar-thick) * 0.7));
+    line-height: 1;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .dp-bar--horizontal {
+    flex-direction: row;
+    block-size: var(--dp-bar-thick);
+  }
+  .dp-bar--vertical {
+    flex-direction: column;
+    inline-size: var(--dp-bar-thick);
+    align-self: stretch;
+    min-block-size: 0;
+  }
+  .dp-bar--fill {
+    flex: 1 1 0;
+  }
+
+  .dp-bar__segment {
+    flex: 1 1 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-inline-size: 0;
+    padding-inline: 0.5em;
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: var(--dp-c);
+    color: var(--dp-c-ink);
+  }
+  .dp-bar__segment--sized {
+    flex: 0 0 calc(var(--dp-seg) * var(--dp-u));
+  }
+  .dp-bar--vertical .dp-bar__segment {
+    writing-mode: vertical-rl;
+    /* vertical-rl: the inline axis runs top to bottom, so inline padding clears the rounded caps */
+    padding-inline: calc(var(--dp-bar-thick) / 2 + 0.25em);
+    padding-block: 0;
+    justify-content: flex-start;
+  }
+  .dp-bar--vertical .dp-bar__title {
+    margin-inline-start: 0;
+  }
+  .dp-bar__title {
+    min-inline-size: 0;
+    margin-inline-start: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  /* A title that sits next to the segments (not inside one) is plain text on the canvas */
+  .dp-bar > .dp-bar__title {
+    padding-inline: 0.5em;
+    color: var(--dp-ink);
+  }
+
+  /* Caps: rounded ends on the first/last segment. start = left (top when vertical), end = right (bottom).
+     Vertical bars use physical radii: logical ones follow the segment's vertical writing mode. */
+  .dp-bar--horizontal.dp-bar--start > .dp-bar__segment:nth-child(1 of .dp-bar__segment),
+  .dp-bar--horizontal.dp-bar--both > .dp-bar__segment:nth-child(1 of .dp-bar__segment) {
+    border-start-start-radius: var(--dp-pill-r);
+    border-end-start-radius: var(--dp-pill-r);
+  }
+  .dp-bar--horizontal.dp-bar--end > .dp-bar__segment:nth-last-child(1 of .dp-bar__segment),
+  .dp-bar--horizontal.dp-bar--both > .dp-bar__segment:nth-last-child(1 of .dp-bar__segment) {
+    border-start-end-radius: var(--dp-pill-r);
+    border-end-end-radius: var(--dp-pill-r);
+  }
+  .dp-bar--vertical.dp-bar--start > .dp-bar__segment:nth-child(1 of .dp-bar__segment),
+  .dp-bar--vertical.dp-bar--both > .dp-bar__segment:nth-child(1 of .dp-bar__segment) {
+    border-top-left-radius: var(--dp-pill-r);
+    border-top-right-radius: var(--dp-pill-r);
+  }
+  .dp-bar--vertical.dp-bar--end > .dp-bar__segment:nth-last-child(1 of .dp-bar__segment),
+  .dp-bar--vertical.dp-bar--both > .dp-bar__segment:nth-last-child(1 of .dp-bar__segment) {
+    border-bottom-left-radius: var(--dp-pill-r);
+    border-bottom-right-radius: var(--dp-pill-r);
+  }
+}
+
 /* deckplate/shapes/cap.css */
 @layer dp.shapes {
   .dp-cap {

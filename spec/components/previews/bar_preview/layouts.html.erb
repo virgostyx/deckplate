@@ -1,0 +1,23 @@
+<div class="dp-root gx-page">
+  <p class="gx-label">fill in a flex row, between two sized neighbours</p>
+  <div class="gx-row" style="flex-wrap: nowrap">
+    <%= render Deckplate::Shapes::BarComponent.new(color: :primary, caps: :start) %>
+    <%= render Deckplate::Shapes::BarComponent.new(color: :info, fill: true) %>
+    <%= render Deckplate::Shapes::CapComponent.new(color: :accent) %>
+  </div>
+  <p class="gx-label">long title in a narrow bar (must be clipped, not overflow the page)</p>
+  <div style="inline-size: 12rem">
+    <%= render(Deckplate::Shapes::BarComponent.new(caps: :both)) { |b| b.with_title { "A very long title that does not fit in the bar" } } %>
+  </div>
+  <p class="gx-label">vertical bars (start, end, both)</p>
+  <div class="gx-row" style="block-size: 12rem; align-items: stretch">
+    <% %i[start end both].each do |caps| %>
+      <%= render(Deckplate::Shapes::BarComponent.new(orientation: :vertical, caps: caps, color: :tertiary)) { |b| b.with_title { caps.to_s } } %>
+    <% end %>
+    <%= render(Deckplate::Shapes::BarComponent.new(orientation: :vertical, thickness: 2.5)) do |b|
+      b.with_segment(color: :primary, size: 3)
+      b.with_segment(color: :info)
+      b.with_segment(color: :accent, size: 2)
+    end %>
+  </div>
+</div>

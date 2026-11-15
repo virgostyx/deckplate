@@ -1,0 +1,14 @@
+<div class="dp-root gx-page">
+  <% %i[none start end both].each do |caps| %>
+    <p class="gx-label">caps: <%= caps %></p>
+    <%= render Deckplate::Shapes::BarComponent.new(caps: caps, color: :info) %>
+  <% end %>
+  <% [ 0.5, 1.25, 2, 3 ].each do |t| %>
+    <p class="gx-label">thickness: <%= t %></p>
+    <%= render Deckplate::Shapes::BarComponent.new(thickness: t, caps: :both, color: :secondary) %>
+  <% end %>
+  <p class="gx-label">every role</p>
+  <% roles.each do |role| %>
+    <%= render Deckplate::Shapes::BarComponent.new(color: role, caps: :both, class: "gx-gap-bottom") %>
+  <% end %>
+</div>

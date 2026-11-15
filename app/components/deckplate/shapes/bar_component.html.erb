@@ -1,0 +1,8 @@
+<%= tag.div(**bar_attributes) do %>
+  <% if segments? %>
+    <% segments.each do |segment| %><%= segment %><% end %>
+    <%= title %>
+  <% else %>
+    <%= tag.span(class: "dp-bar__segment") do %><%= title %><% end %>
+  <% end %>
+<% end %>

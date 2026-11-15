@@ -1,0 +1,18 @@
+<div class="dp-root gx-page">
+  <p class="gx-label">title</p>
+  <%= render(Deckplate::Shapes::BarComponent.new(color: :tertiary, caps: :both)) { |b| b.with_title { "Engineering" } } %>
+  <p class="gx-label">segments</p>
+  <%= render(Deckplate::Shapes::BarComponent.new(caps: :both)) do |b|
+    b.with_segment(color: :primary, size: 8)
+    b.with_segment(color: :secondary, size: 2)
+    b.with_segment(color: :accent)
+    b.with_segment(color: :info, size: 4)
+  end %>
+  <p class="gx-label">segments with text, and a title</p>
+  <%= render(Deckplate::Shapes::BarComponent.new(caps: :both, thickness: 1.75)) do |b|
+    b.with_segment(color: :danger, size: 6) { "Shields" }
+    b.with_segment(color: :warning) { "Caution" }
+    b.with_segment(color: :success, size: 6) { "Power" }
+    b.with_title { "Status" }
+  end %>
+</div>
