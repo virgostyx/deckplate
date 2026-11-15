@@ -10,7 +10,7 @@ module DeckplateBuild
     BUNDLE = "app/assets/stylesheets/deckplate.css".freeze
     TOKENS = "#{SRC}/tokens.css".freeze
     # Fixed concatenation order; globs are sorted. Each file declares its own @layer.
-    ORDER = [ "layers.css", "tokens.css", "foundation.css", "themes/classic.css", "themes/*.css",
+    ORDER = [ "layers.css", "tokens.css", "foundation.css", "fonts.css", "themes/classic.css", "themes/*.css",
               "base.css", "shapes/*.css", "layout/*.css", "components/**/*.css", "states.css" ].freeze
 
     def initialize(root)

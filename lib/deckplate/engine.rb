@@ -2,6 +2,10 @@ module Deckplate
   class Engine < ::Rails::Engine
     isolate_namespace Deckplate
 
+    initializer "deckplate.helpers" do
+      ActiveSupport.on_load(:action_view) { include Deckplate::Helpers }
+    end
+
     initializer "deckplate.assets" do |app|
       if app.config.respond_to?(:assets)
         app.config.assets.paths << root.join("app/javascript")
