@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" <%= tag.attributes(dp_theme_attrs) %>>
   <head>
     <title><%= content_for(:title) || "Deckplate dummy" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-refresh-method" content="morph">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= yield :head %>
     <%= dp_font_tags %>
     <%= stylesheet_link_tag "deckplate" %>
+    <%= stylesheet_link_tag "gallery" %>
     <%= javascript_importmap_tags %>
   </head>
   <body class="dp-root">
-    <%= yield %>
+    <main class="gx-page">
+      <%# Placeholder for the Toast component (Phase 6) %>
+      <% if notice %><div class="gx-flash" role="status"><%= notice %></div><% end %>
+      <%= yield %>
+    </main>
   </body>
 </html>

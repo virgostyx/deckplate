@@ -1,0 +1,16 @@
+<%= form_with(model: profile, url: profile_path, method: (Profile.stored ? :patch : :post), builder: Deckplate::FormBuilder, html: { novalidate: true }) do |f| %>
+  <div class="gx-form">
+    <%= f.dp_text_field :callsign, hint: "Between 3 and 20 characters", autocomplete: "nickname" %>
+    <%= f.dp_email_field :email, autocomplete: "email" %>
+    <%= f.dp_text_area :bio, hint: "Up to 200 characters", rows: 4 %>
+    <%= f.dp_select :role, Profile::ROLES, include_blank: true %>
+    <%= f.dp_check_box :shields, label: "Raise shields on arrival" %>
+    <%= f.dp_radio_group :contact, Profile::CONTACTS %>
+    <%= f.dp_range :clearance, min: 0, max: 100, step: 5, unit: "%" %>
+    <%= f.dp_date_field :birthday %>
+    <%= f.dp_actions do %>
+      <%= f.dp_submit(color: :success) %>
+      <%= render Deckplate::ButtonComponent.new(label: "Cancel", href: (Profile.stored ? profile_path : root_path), color: :muted) %>
+    <% end %>
+  </div>
+<% end %>

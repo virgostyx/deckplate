@@ -80,7 +80,15 @@ RSpec.describe Deckplate::FormBuilder, type: :helper do
       expect(html).to have_css("#ship_callsign-error[role='alert']")
       expect(html).to have_css("input[autofocus]", count: 1)
       expect(html).to have_css("input#ship_callsign[autofocus]")
+      # Turbo ignores `autofocus` when it morphs the page: a controller focuses the field when it is connected
+      expect(html).to have_css("input#ship_callsign[data-controller='dp-autofocus']")
+      expect(html).to have_css("[data-controller='dp-autofocus']", count: 1)
       expect(html).not_to have_css("#ship_email-error[role='alert']")
+    end
+
+    it "keeps the caller's own data attributes and controllers on the focused field" do
+      html = form(invalid_ship) { |f| f.dp_text_field :callsign, data: { controller: "mine", foo: "1" } }
+      expect(html).to have_css("input#ship_callsign[data-controller='dp-autofocus mine'][data-foo='1']")
     end
 
     it "shows nothing for a valid object and for a new object that was never validated" do

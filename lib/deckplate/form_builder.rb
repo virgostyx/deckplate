@@ -44,7 +44,11 @@ module Deckplate
       if defaults[:errors].any? && !dp_state[:first_error_seen]
         dp_state[:first_error_seen] = true
         defaults[:alert] = true
-        defaults[:autofocus] = true if autofocus
+        if autofocus
+          defaults[:autofocus] = true
+          # Turbo ignores `autofocus` on a morph: dp-autofocus focuses the field when it gets connected
+          options[:data] = { controller: "dp-autofocus" }.merge(options[:data] || {}) { |key, ours, theirs| key == :controller ? "#{ours} #{theirs}" : theirs }
+        end
       end
       @template.render(component.new(**defaults, **options))
     end

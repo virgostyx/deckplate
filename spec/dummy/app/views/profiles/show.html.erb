@@ -1,0 +1,8 @@
+<%= render Deckplate::Layout::PageHeaderComponent.new(title: "Profile", subtitle: @profile.callsign) %>
+<dl class="gx-dl" id="profile-details">
+  <% %i[callsign email role contact clearance birthday].each do |attr| %>
+    <dt><%= Profile.human_attribute_name(attr) %></dt><dd data-attr="<%= attr %>"><%= @profile.public_send(attr) %></dd>
+  <% end %>
+  <dt>Shields</dt><dd data-attr="shields"><%= @profile.shields ? "Yes" : "No" %></dd>
+</dl>
+<%= render Deckplate::ButtonComponent.new(label: "Edit", href: edit_profile_path) %>

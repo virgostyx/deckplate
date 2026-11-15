@@ -94,6 +94,13 @@ RSpec.describe Deckplate::Forms::FormFieldComponent, type: :component do
     expect(page).not_to have_css("label")
   end
 
+  it "wires dp-field, which protects what the user typed from a Turbo morph" do
+    render_field
+    field = page.find(".dp-field")
+    expect(field["data-controller"]).to eq("dp-field")
+    expect(field["data-action"]).to include("input->dp-field#touch", "change->dp-field#touch", "turbo:before-morph-attribute->dp-field#keepState")
+  end
+
   it "passes class and data through to the wrapper" do
     render_field(class: "x", data: { a: 1 })
     expect(page).to have_css(".dp-field.x[data-a='1']")

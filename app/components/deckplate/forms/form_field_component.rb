@@ -30,6 +30,7 @@ module Deckplate
       def field_attributes
         html_attributes(
           classes: [ block_name, ("dp-field--invalid" if invalid?) ],
+          data: { controller: "dp-field", action: "input->dp-field#touch change->dp-field#touch turbo:before-morph-attribute->dp-field#keepState" },
           aria: (fieldset? ? { describedby: describedby_ids }.compact : {})
         )
       end

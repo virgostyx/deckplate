@@ -16,6 +16,10 @@ All notable changes are documented here. Format: [Keep a Changelog](https://keep
 - Phase 3 controls and navigation: `Button`, `ButtonGroup`, `Toggle`, `Slider` (`dp-slider`), `Nav`/`NavItem`, `TopNav`,
   `Breadcrumb`, `Pagination`, `Disclosure`, `Tabs` (`dp-tabs`), `Menu` (`dp-menu`), `Tooltip` (`dp-tooltip`), `Modal` (`dp-modal`).
   Stateful controllers survive Turbo cache restores and morph refreshes (ADR 0007).
+- Phase 4 forms: `FormField`, `TextInput`, `Textarea`, `Select`, `Checkbox`, `RadioGroup`, `Range`, `FileInput`, `DateInput`,
+  `FormActions` and `Deckplate::FormBuilder` (`dp_*` methods, labels/hints/errors/required from the model, nested `fields_for`,
+  first-error alert and focus). Typed values survive Turbo morph refreshes (ADR 0008). Guide: `docs/guides/forms.md`.
+- The shipped `deckplate.css` no longer contains comments or blank lines (-23% gzip); the sources keep them.
 - `bin/visual --geometry`: elbow seam, edge-straightness and transparency check in Chrome, Firefox and WebKit.
 
 ### Changed
