@@ -2,6 +2,7 @@ require "view_component"
 require "deckplate/version"
 require "deckplate/configuration"
 require "deckplate/engine"
+require "deckplate/form_builder"
 
 module Deckplate
   class << self
