@@ -40,7 +40,7 @@ module Dummy
 
     # Nonces: the importmap tag needs one for script-src; Turbo injects a <style> for its progress bar and reads the same nonce.
     # Deckplate itself never needs a style exception (csp_safe_values).
-    config.content_security_policy_nonce_generator = ->(_request) { SecureRandom.base64(16) }
+    config.content_security_policy_nonce_generator = ->(request) { SecureRandom.base64(16) if request.path == "/csp" }
     config.content_security_policy_nonce_directives = %w[script-src style-src]
 
     # Previews live in the spec tree and are never shipped with the gem.

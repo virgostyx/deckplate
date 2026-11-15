@@ -58,6 +58,8 @@ Set `config.csp_safe_values = true` (in `config/initializers/deckplate.rb`) when
 
 * percentages become classes (`dp-v-72`), arbitrary values travel in `data-dp-values-vars-value` and are applied with the CSSOM;
 * no component writes a `style` attribute or an inline script (checked over every preview, and in a browser under a strict policy);
+* Keep `<%= csp_meta_tag %>` in your layout: Turbo reads the nonce from it, and without it a per-request nonce on the tracked importmap tag
+  makes every Turbo visit a full page load (measured in the dummy app).
 * Turbo's own progress-bar `<style>` needs the nonce: add `style-src` to `config.content_security_policy_nonce_directives`
   (or style `.turbo-progress-bar` yourself). See ADR 0010.
 
