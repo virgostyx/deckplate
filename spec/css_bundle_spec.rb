@@ -10,6 +10,23 @@ RSpec.describe DeckplateBuild::CssBuilder do
     end
   end
 
+  it "ships the bundle without comments (sources keep them), and without runs of blank lines" do
+    bundle = File.read(root.join("app/assets/stylesheets/deckplate.css"))
+    expect(bundle).not_to match(%r{/\*})
+    expect(bundle).not_to match(/\n{3,}/)
+    expect(bundle).not_to match(/[ \t]+$/)
+  end
+
+  it "keeps the comments in the sources" do
+    expect(File.read(root.join("app/assets/stylesheets/deckplate/shapes/elbow.css"))).to include("/*")
+  end
+
+  it "does not change what the CSS means: same rules once comments are removed" do
+    sources = described_class.new(root).sources.map { |f| f.read.gsub(%r{/\*.*?\*/}m, "") }.join
+    normalise = ->(css) { css.gsub(/\s+/, "") }
+    expect(normalise.(File.read(root.join("app/assets/stylesheets/deckplate.css")))).to eq(normalise.(sources))
+  end
+
   it "starts the bundle with the layer prelude" do
     bundle = File.read(root.join("app/assets/stylesheets/deckplate.css"))
     expect(bundle).to start_with("@layer theme, base, dp, components, utilities;")

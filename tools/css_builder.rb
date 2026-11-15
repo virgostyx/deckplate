@@ -50,14 +50,17 @@ module DeckplateBuild
       out.join("\n")
     end
 
+    # The shipped bundle has no comments and no blank lines (the sources keep their documentation).
     def bundle(tokens)
       parts = sources.map do |file|
         rel = file.relative_path_from(@root).to_s
-        content = rel == TOKENS ? tokens : file.read
-        header = rel.end_with?("/layers.css") ? "" : "/* #{rel.delete_prefix("app/assets/stylesheets/")} */\n"
-        "#{header}#{content.rstrip}\n"
+        strip(rel == TOKENS ? tokens : file.read)
       end
-      parts.join("\n")
+      parts.reject(&:empty?).join("\n") + "\n"
+    end
+
+    def strip(css)
+      css.gsub(%r{/\*.*?\*/}m, "").gsub(/[ \t]+$/, "").gsub(/^\s*\n/, "").strip
     end
   end
 end
