@@ -27,7 +27,7 @@ module Deckplate
       def bar_attributes
         html_attributes(
           classes: [ block_name, *variant_classes, color_class(@color), ("dp-bar--fill" if @fill) ],
-          style: (@thickness && "--dp-bar-t: #{@thickness}"),
+          vars: (@thickness ? { "--dp-bar-t": @thickness } : {}),
           aria: (decorative? ? { hidden: true } : {})
         )
       end

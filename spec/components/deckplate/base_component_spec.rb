@@ -77,6 +77,70 @@ RSpec.describe Deckplate::BaseComponent, type: :component do
     end
   end
 
+  describe "dynamic CSS values (vars: and percent:)" do
+    before do
+      stub_const("Deckplate::DynamicComponent", Class.new(Deckplate::BaseComponent) do
+        def initialize(vars: {}, percent: nil, **options)
+          super(**options)
+          @vars, @percent = vars, percent
+        end
+
+        def call = tag.div(**html_attributes(vars: @vars, percent: @percent))
+      end)
+    end
+
+    after { Deckplate.reset_configuration! }
+
+    it "writes custom properties in an inline style by default" do
+      render_inline(Deckplate::DynamicComponent.new(vars: { "--dp-n": 2, "--dp-x": "1.5" }))
+      expect(page.find("div")[:style]).to eq("--dp-n: 2; --dp-x: 1.5")
+      expect(page.find("div")["data-controller"]).to be_nil
+    end
+
+    it "appends to the caller's inline style" do
+      render_inline(Deckplate::DynamicComponent.new(vars: { "--dp-n": 2 }, style: "margin: 0"))
+      expect(page.find("div")[:style]).to eq("--dp-n: 2; margin: 0")
+    end
+
+    it "passes a percentage as --dp-value" do
+      render_inline(Deckplate::DynamicComponent.new(percent: 72.5))
+      expect(page.find("div")[:style]).to eq("--dp-value: 72.5")
+    end
+
+    context "with csp_safe_values" do
+      before { Deckplate.configure { |c| c.csp_safe_values = true } }
+
+      it "emits no style attribute: the values travel in a data attribute applied by dp-values through the CSSOM" do
+        render_inline(Deckplate::DynamicComponent.new(vars: { "--dp-n": 2, "--dp-x": "1.5" }))
+        el = page.find("div")
+        expect(el[:style]).to be_nil
+        expect(el["data-controller"]).to eq("dp-values")
+        expect(JSON.parse(el["data-dp-values-vars-value"])).to eq("--dp-n" => "2", "--dp-x" => "1.5")
+      end
+
+      it "adds dp-values to the caller's controllers instead of replacing them" do
+        render_inline(Deckplate::DynamicComponent.new(vars: { "--dp-n": 2 }, data: { controller: "mine" }))
+        expect(page.find("div")["data-controller"]).to eq("dp-values mine")
+      end
+
+      it "turns a percentage into a quantised class and data-dp-value: no style, no JavaScript" do
+        render_inline(Deckplate::DynamicComponent.new(percent: 72.4))
+        el = page.find("div")
+        expect(el[:class].split).to include("dp-v-72")
+        expect(el["data-dp-value"]).to eq("72")
+        expect(el[:style]).to be_nil
+        expect(el["data-controller"]).to be_nil
+      end
+
+      it "clamps percentages to 0..100" do
+        render_inline(Deckplate::DynamicComponent.new(percent: 140))
+        expect(page.find("div")[:class].split).to include("dp-v-100")
+        render_inline(Deckplate::DynamicComponent.new(percent: -3))
+        expect(page.find("div")[:class].split).to include("dp-v-0")
+      end
+    end
+  end
+
   describe "style merging" do
     it "appends the caller's inline style after the component's, never replacing it" do
       stub_const("Deckplate::StyledComponent", Class.new(Deckplate::BaseComponent) do

@@ -1,1 +1,1 @@
-<%= tag.span(**html_attributes(classes: [ block_name, *variant_classes ], style: "--dp-n: #{@size}", aria: { hidden: true })) %>
+<%= tag.span(**html_attributes(classes: [ block_name, *variant_classes ], vars: { "--dp-n": @size }, aria: { hidden: true })) %>

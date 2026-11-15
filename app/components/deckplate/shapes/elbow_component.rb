@@ -20,10 +20,9 @@ module Deckplate
       private
 
       def elbow_attributes
-        dims = [ ("--dp-elbow-w: #{@width}" if @width), ("--dp-elbow-h: #{@height}" if @height) ].compact.join("; ")
         html_attributes(
           classes: [ block_name, *variant_classes, color_class(@color) ],
-          style: dims.presence,
+          vars: { "--dp-elbow-w": @width, "--dp-elbow-h": @height }.compact,
           aria: (label? ? {} : { hidden: true })
         )
       end

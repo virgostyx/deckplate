@@ -1,1 +1,1 @@
-<%= tag.span(**html_attributes(classes: [ "dp-bar__segment", ("dp-bar__segment--sized" if @size), (color_class(@color) if @color) ], style: (@size && "--dp-seg: #{@size}"))) do %><%= content %><% end %>
+<%= tag.span(**html_attributes(classes: [ "dp-bar__segment", ("dp-bar__segment--sized" if @size), (color_class(@color) if @color) ], vars: (@size ? { "--dp-seg": @size } : {}))) do %><%= content %><% end %>

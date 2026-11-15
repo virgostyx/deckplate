@@ -10,6 +10,13 @@ RSpec.describe DeckplateBuild::CssBuilder do
     end
   end
 
+  it "generates the quantised percentage classes dp-v-0 .. dp-v-100 used by the CSP-safe mode (SPEC section 11)" do
+    values = described_class.new(root).build.fetch("app/assets/stylesheets/deckplate/values.css")
+    (0..100).each { |n| expect(values).to include(".dp-v-#{n} { --dp-value: #{n}; }") }
+    expect(values.scan(/\.dp-v-\d+ /).size).to eq(101)
+    expect(File.read(root.join("app/assets/stylesheets/deckplate.css"))).to include(".dp-v-72{--dp-value:72;}".then { ".dp-v-72 { --dp-value: 72; }" })
+  end
+
   it "ships the bundle without comments (sources keep them), and without runs of blank lines" do
     bundle = File.read(root.join("app/assets/stylesheets/deckplate.css"))
     expect(bundle).not_to match(%r{/\*})
