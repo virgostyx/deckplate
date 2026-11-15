@@ -1,0 +1,5 @@
+<% if @http_method %>
+  <%= helpers.button_to(@label, @href, method: @http_method, form_class: "dp-menu__form", **item_attributes) %>
+<% else %>
+  <%= tag.a(@label, href: @href, **item_attributes) %>
+<% end %>

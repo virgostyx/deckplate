@@ -1,0 +1,7 @@
+<div class="dp-root gx-page">
+  <%= render(Deckplate::TabsComponent.new(selected: selected, hash: hash, label: "Ship sections")) do |t|
+    t.with_tab(label: "Overview", id: "overview") { "Overview: the Aurora is on course." }
+    t.with_tab(label: "Crew", id: "crew") { "Crew: 212 aboard." }
+    t.with_tab(label: "Cargo", id: "cargo") { "Cargo: bay 3 is full." }
+  end %>
+</div>

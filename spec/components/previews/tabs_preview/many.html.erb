@@ -1,0 +1,9 @@
+<div class="dp-root gx-page">
+  <div style="max-inline-size: 28rem">
+    <%= render(Deckplate::TabsComponent.new(label: "Many", color: :info)) do |t|
+      [ "Overview", "Navigation and helm", "Engineering", "Medical bay", "Security", "Science laboratories", "Cargo" ].each do |label|
+        t.with_tab(label: label, id: label.parameterize) { "Panel for #{label}." }
+      end
+    end %>
+  </div>
+</div>

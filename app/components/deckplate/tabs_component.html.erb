@@ -1,0 +1,11 @@
+<%= tag.div(**tabs_attributes) do %>
+  <%= tag.div(role: "tablist", class: "dp-tabs__list", aria: { label: @label }.compact) do %>
+    <% tabs.each do |tab| %>
+      <%= tag.button(tab.label, type: "button", role: "tab", id: "#{tab.tab_id}-tab", class: "dp-tabs__tab",
+                     tabindex: (tab.selected? ? 0 : -1),
+                     aria: { selected: tab.selected?.to_s, controls: "#{tab.tab_id}-panel" },
+                     data: { dp_tabs_target: "tab", action: "click->dp-tabs#select keydown->dp-tabs#keydown" }) %>
+    <% end %>
+  <% end %>
+  <% tabs.each do |tab| %><%= tab %><% end %>
+<% end %>

@@ -1,0 +1,10 @@
+<div class="dp-root gx-page">
+  <div class="gx-row" style="gap: 3rem">
+    <%= render(Deckplate::TooltipComponent.new(text: "Raises or lowers the deflector shields", id: "tip-shields")) do %>
+      <%= render Deckplate::ButtonComponent.new(label: "Shields", color: :info) %>
+    <% end %>
+    <%= render(Deckplate::TooltipComponent.new(text: "Opens the crew roster", id: "tip-link")) do %>
+      <a class="dp-breadcrumb__link" href="/crew">Crew roster</a>
+    <% end %>
+  </div>
+</div>

@@ -51,3 +51,4 @@
 .gx-console__hello { font-family: var(--dp-font-display); font-weight: 400; font-size: 4.5rem; text-align: end; text-transform: uppercase; color: var(--dp-accent); margin: .25em 0 0; line-height: 1; }
 .gx-console__line { font-family: var(--dp-font-display); text-transform: uppercase; color: var(--dp-accent); margin: .5em 0; padding-inline-start: calc(0.9 * var(--dp-u)); }
 .gx-console__line--lg { font-size: 2.5rem; }
+.gx-input { margin-inline-start: .5rem; padding: .4rem .6rem; background: var(--dp-surface-raised); color: var(--dp-ink); border: 1px solid var(--dp-line); font: inherit; }

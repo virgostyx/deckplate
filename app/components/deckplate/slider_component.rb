@@ -25,7 +25,7 @@ module Deckplate
     def wrapper_attributes
       html_attributes(
         classes: [ block_name, color_class(@color), ("dp-slider--disabled" if @disabled) ],
-        data: { controller: "dp-slider", dp_slider_unit_value: @unit }.compact,
+        data: { controller: "dp-slider", action: "turbo:before-morph-attribute->dp-slider#keepState turbo:morph-element->dp-slider#update", dp_slider_unit_value: @unit }.compact,
         id: nil
       ).except(:id)
     end

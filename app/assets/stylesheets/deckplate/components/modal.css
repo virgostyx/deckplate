@@ -1,0 +1,75 @@
+@layer dp.components {
+  .dp-scroll-lock { overflow: hidden; }
+
+  .dp-modal {
+    --dp-modal-w: 36rem;
+    inline-size: min(var(--dp-modal-w), calc(100vw - 2rem));
+    max-inline-size: none;
+    max-block-size: calc(100dvh - 2rem);
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--dp-ink);
+    overflow: visible;
+  }
+  .dp-modal--sm { --dp-modal-w: 24rem; }
+  .dp-modal--md { --dp-modal-w: 36rem; }
+  .dp-modal--lg { --dp-modal-w: 52rem; }
+  .dp-modal::backdrop { background: rgb(0 0 0 / 0.72); }
+
+  .dp-modal__panel {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    max-block-size: calc(100dvh - 2rem);
+    border-inline-start: calc(1.25 * var(--dp-u)) solid var(--dp-accent);
+    border-start-start-radius: var(--dp-elbow-r);
+    border-end-start-radius: var(--dp-elbow-r);
+    background-color: var(--dp-surface);
+  }
+  .dp-modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--dp-u);
+    padding: 0.5em 0.75em 0.5em var(--dp-u);
+    background-color: var(--dp-accent);
+    color: var(--dp-accent-ink);
+    border-start-start-radius: calc(var(--dp-elbow-r) - 1.25 * var(--dp-u));
+  }
+  .dp-modal__title {
+    margin: 0;
+    font-family: var(--dp-font-display);
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+  }
+  .dp-modal__close {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    inline-size: var(--dp-touch-min);
+    block-size: var(--dp-touch-min);
+    border: 0;
+    border-radius: var(--dp-pill-r);
+    background: transparent;
+    color: inherit;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  .dp-modal__close:hover { background-color: color-mix(in srgb, currentColor 18%, transparent); }
+  .dp-modal__body { padding: var(--dp-u); overflow: auto; overflow-wrap: anywhere; }
+  .dp-modal__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--dp-gap);
+    padding: 0 var(--dp-u) var(--dp-u);
+  }
+  @media (forced-colors: active) {
+    .dp-modal__panel { border: 2px solid CanvasText; }
+  }
+}

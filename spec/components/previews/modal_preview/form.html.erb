@@ -1,0 +1,17 @@
+<div class="dp-root gx-page">
+  <%= render(Deckplate::ModalComponent.new(title: "Rename ship", id: "rename")) do |m|
+    m.with_trigger { render Deckplate::ButtonComponent.new(label: "Rename", data: { action: "dp-modal#open" }) }
+    form_with(url: "/demo/ships", id: "rename-form") do |f|
+      safe_join([
+        tag.label("Name", for: "ship-name"),
+        tag.input(id: "ship-name", name: "name", value: "Aurora", class: "gx-input"),
+        tag.div(class: "dp-modal__actions") do
+          safe_join([
+            render(Deckplate::ButtonComponent.new(label: "Save", type: "submit", color: :success)),
+            render(Deckplate::ButtonComponent.new(label: "Fail (422)", type: "submit", color: :danger, name: "fail", value: "1", formnovalidate: true))
+          ])
+        end
+      ])
+    end
+  end %>
+</div>

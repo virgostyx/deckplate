@@ -7,6 +7,11 @@ export default class extends Controller {
 
   connect() { this.update() }
 
+  // Turbo morph: keep the user's value and the fill; the readout text is re-synced by update() after the morph
+  keepState(event) {
+    if (["value", "style"].includes(event.detail.attributeName)) event.preventDefault()
+  }
+
   update() {
     const { value, min, max } = this.inputTarget
     const span = Number(max) - Number(min) || 1

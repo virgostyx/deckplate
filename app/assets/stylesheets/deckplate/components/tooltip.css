@@ -1,0 +1,19 @@
+@layer dp.components {
+  .dp-tooltip { display: inline-block; }
+  .dp-tooltip__bubble {
+    position: fixed;
+    inset: auto;
+    inset-block-start: var(--dp-tip-top, 0);
+    inset-inline-start: var(--dp-tip-left, 0);
+    max-inline-size: min(18rem, calc(100vw - 1rem));
+    margin: 0;
+    padding: 0.4em 0.75em;
+    border: 1px solid var(--dp-line);
+    border-radius: calc(var(--dp-u) * 0.5);
+    background-color: var(--dp-surface-raised);
+    color: var(--dp-ink);
+    font-family: var(--dp-font-data);
+    font-size: 0.875rem;
+    line-height: 1.35;
+  }
+}

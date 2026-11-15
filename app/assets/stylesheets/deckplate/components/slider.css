@@ -66,4 +66,5 @@
   }
   .dp-slider--disabled .dp-slider__input { cursor: not-allowed; }
   .dp-slider--disabled { --dp-c: var(--dp-disabled); }
+  .dp-slider--disabled .dp-slider__value { color: var(--dp-ink-muted); } /* the readout is text: it keeps its contrast */
 }

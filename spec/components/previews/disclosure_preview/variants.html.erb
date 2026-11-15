@@ -1,0 +1,7 @@
+<div class="dp-root gx-page">
+  <div style="max-inline-size: 30rem; display: grid; gap: .75rem">
+    <%= render(Deckplate::DisclosureComponent.new(summary: "Open by default", open: true, color: :info)) { "Content visible at load." } %>
+    <%= render(Deckplate::DisclosureComponent.new(summary: "Warning colour", color: :warning)) { "Closed." } %>
+    <%= render(Deckplate::DisclosureComponent.new(summary: "A very long summary that has to wrap inside the narrow column without breaking the layout", color: :accent, open: true)) { "Averyveryverylongunbreakablewordthatmustwrapinsidethebodyofthedisclosurewithoutoverflowing" } %>
+  </div>
+</div>

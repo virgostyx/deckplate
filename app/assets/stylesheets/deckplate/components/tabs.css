@@ -1,0 +1,38 @@
+@layer dp.components {
+  .dp-tabs { min-inline-size: 0; }
+  .dp-tabs__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--dp-gap);
+  }
+  .dp-tabs__tab {
+    box-sizing: border-box;
+    min-block-size: var(--dp-touch-min);
+    padding: 0 1.25em;
+    border: 2px solid var(--dp-c);
+    border-radius: var(--dp-pill-r);
+    background-color: transparent;
+    color: var(--dp-ink);
+    font-family: var(--dp-font-display);
+    font-size: 1.0625rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: filter 50ms linear;
+  }
+  .dp-tabs__tab:hover { filter: brightness(1.2); }
+  .dp-tabs__tab[aria-selected="true"] {
+    background-color: var(--dp-c);
+    color: var(--dp-c-ink);
+  }
+  .dp-tabs__panel {
+    margin-block-start: var(--dp-gap);
+    padding: var(--dp-u);
+    border-block-start: calc(0.25 * var(--dp-u)) solid var(--dp-c);
+    overflow-wrap: anywhere;
+  }
+  .dp-tabs__panel[hidden] { display: none; }
+  @media (forced-colors: active) {
+    .dp-tabs__tab[aria-selected="true"] { border-color: Highlight; text-decoration: underline; }
+  }
+}

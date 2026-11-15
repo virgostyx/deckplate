@@ -1,0 +1,12 @@
+<div class="dp-root gx-page">
+  <%= render(Deckplate::ModalComponent.new(title: "Confirm jump", id: "jump-open", open: true)) do |m|
+    m.with_actions do
+      safe_join([
+        render(Deckplate::ButtonComponent.new(label: "Cancel", color: :muted, data: { action: "dp-modal#close" })),
+        render(Deckplate::ButtonComponent.new(label: "Engage", color: :primary, data: { action: "dp-modal#close" }))
+      ])
+    end
+    "Engage the jump drive? This cannot be undone."
+  end %>
+  <p class="gx-filler">Page content behind the dialog.</p>
+</div>

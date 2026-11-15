@@ -1,0 +1,14 @@
+<%= tag.div(**host_attributes) do %>
+  <%= trigger %>
+  <%= tag.dialog(id: modal_id, class: dialog_classes, aria: { labelledby: title_id },
+                 data: { dp_modal_target: "dialog", action: "click->dp-modal#backdrop close->dp-modal#closed turbo:submit-end->dp-modal#submitEnd" }) do %>
+    <div class="dp-modal__panel">
+      <header class="dp-modal__header">
+        <h2 id="<%= title_id %>" class="dp-modal__title"><%= @title %></h2>
+        <button type="button" class="dp-modal__close" aria-label="<%= t('deckplate.common.close') %>" data-action="dp-modal#close"><%= helpers.dp_icon(:close) %></button>
+      </header>
+      <div class="dp-modal__body"><%= content %></div>
+      <%= actions %>
+    </div>
+  <% end %>
+<% end %>

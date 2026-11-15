@@ -1,0 +1,6 @@
+<div class="dp-root gx-page" style="display: flex; justify-content: flex-end">
+  <%= render(Deckplate::MenuComponent.new(label: "Right edge", id: "edge-menu", color: :accent)) do |m|
+    m.with_item(label: "A fairly long menu item label", href: "/a")
+    m.with_item(label: "Second", href: "/b")
+  end %>
+</div>

@@ -1,0 +1,44 @@
+@layer dp.components {
+  .dp-menu { display: inline-block; }
+  /* Popover: placed under the trigger by the controller (--dp-menu-top/-left, written with CSSOM) */
+  .dp-menu__list {
+    position: fixed;
+    inset: auto;
+    inset-block-start: var(--dp-menu-top, 0);
+    inset-inline-start: var(--dp-menu-left, 0);
+    min-inline-size: 12rem;
+    max-inline-size: min(24rem, calc(100vw - 1rem));
+    margin: 0;
+    padding: var(--dp-gap);
+    border: 2px solid var(--dp-c);
+    border-radius: calc(var(--dp-u) * 0.75);
+    background-color: var(--dp-surface-raised);
+    color: var(--dp-ink);
+  }
+  .dp-menu__list:popover-open { display: grid; gap: calc(var(--dp-gap) / 2); }
+  .dp-menu__item {
+    display: block;
+    box-sizing: border-box;
+    inline-size: 100%;
+    min-block-size: var(--dp-touch-min);
+    padding: 0.5em 1em;
+    border: 0;
+    border-radius: calc(var(--dp-u) * 0.5);
+    background: transparent;
+    color: var(--dp-ink);
+    font-family: var(--dp-font-display);
+    font-size: 1.0625rem;
+    letter-spacing: 0.06em;
+    text-align: start;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .dp-menu__item:hover,
+  .dp-menu__item:focus-visible {
+    background-color: var(--dp-c);
+    color: var(--dp-c-ink);
+  }
+  .dp-menu__item:focus-visible { outline-offset: -2px; }
+  .dp-menu__form { display: contents; }
+}

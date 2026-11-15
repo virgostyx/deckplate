@@ -429,7 +429,7 @@ disconnect, no inline handlers.
 | `dp-clock` | 1 Hz update from server-provided epoch offset; pauses when tab hidden |
 | `dp-theme` | theme switcher; sets `data-dp-theme` and `dp_theme` cookie |
 | `dp-sound` | opt-in synthesised beeps (WebAudio), mute toggle persisted; never autoplays; no files |
-| `dp-sidebar` | mobile collapse of the frame sidebar |
+| ~~`dp-sidebar`~~ | dropped (ADR 0006): the frame sidebar collapses with a native popover and CSS only |
 | `dp-values` | CSP-safe application of per-instance CSS values (section 11) |
 
 Registration (ADR 0004): primary `import { registerDeckplate } from "deckplate"; registerDeckplate(application, { only, except })`;

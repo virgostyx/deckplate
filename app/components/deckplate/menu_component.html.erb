@@ -1,0 +1,8 @@
+<%= tag.div(**host_attributes) do %>
+  <%= render Deckplate::ButtonComponent.new(label: @label, color: @color, icon: :chevron_down, popovertarget: menu_id,
+        aria: { haspopup: "menu", expanded: "false" }, data: { dp_menu_target: "trigger", action: "keydown->dp-menu#triggerKey" }) %>
+  <%= tag.div(id: menu_id, popover: "auto", role: "menu", class: "dp-menu__list", aria: { label: @label },
+              data: { dp_menu_target: "list", action: "toggle->dp-menu#toggled keydown->dp-menu#keydown" }) do %>
+    <% items.each do |item| %><%= item %><% end %>
+  <% end %>
+<% end %>

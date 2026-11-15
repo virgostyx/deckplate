@@ -3,10 +3,6 @@ require "spec_helper"
 RSpec.describe "Controls behaviour", type: :system, js: true do
   before { driven_by :dp_cuprite }
 
-  # Real keyboard input: Capybara's send_keys clicks the element first, which changes a range value.
-  def focus(selector) = page.execute_script("document.querySelector(#{selector.to_json}).focus()")
-  def press(*keys) = keys.each { |k| page.driver.browser.keyboard.type(k) }
-
   describe "Toggle" do
     before { visit "/rails/view_components/toggle/default" }
 

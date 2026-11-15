@@ -1,0 +1,6 @@
+<div class="dp-root gx-page">
+  <%= render(Deckplate::ModalComponent.new(title: "Long content", id: "long-modal", size: :lg, open: true)) do |m|
+    m.with_actions { render Deckplate::ButtonComponent.new(label: "Close", data: { action: "dp-modal#close" }) }
+    safe_join(Array.new(30) { |i| tag.p("Paragraph #{i + 1}: the dialog body scrolls while its header and actions stay in view.") })
+  end %>
+</div>

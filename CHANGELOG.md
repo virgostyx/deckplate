@@ -13,6 +13,9 @@ All notable changes are documented here. Format: [Keep a Changelog](https://keep
 - Phase 2 shapes and layout: `Spacer`, `Cap`, `Divider`, `Bar` (segments, caps, vertical), `Elbow` (four corners, transparent
   inner arc, labels), `Block`, `Bracket`, `Panel` (plain bars or elbow corners), `PageHeader`, `Section`, `Frame`
   (classic / double / minimal, container-query collapse, native-popover sidebar, `fixed` mode, skip link).
+- Phase 3 controls and navigation: `Button`, `ButtonGroup`, `Toggle`, `Slider` (`dp-slider`), `Nav`/`NavItem`, `TopNav`,
+  `Breadcrumb`, `Pagination`, `Disclosure`, `Tabs` (`dp-tabs`), `Menu` (`dp-menu`), `Tooltip` (`dp-tooltip`), `Modal` (`dp-modal`).
+  Stateful controllers survive Turbo cache restores and morph refreshes (ADR 0007).
 - `bin/visual --geometry`: elbow seam, edge-straightness and transparency check in Chrome, Firefox and WebKit.
 
 ### Changed

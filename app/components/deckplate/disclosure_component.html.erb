@@ -1,0 +1,4 @@
+<%= tag.details(open: @open, **disclosure_attributes) do %>
+  <summary class="dp-disclosure__summary"><span class="dp-disclosure__marker" aria-hidden="true"></span><span class="dp-disclosure__text"><%= @summary %></span></summary>
+  <div class="dp-disclosure__body"><%= content %></div>
+<% end %>

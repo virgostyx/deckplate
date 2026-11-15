@@ -1,0 +1,8 @@
+<div class="dp-root gx-page">
+  <%= render(Deckplate::MenuComponent.new(label: "Actions", id: "ship-menu")) do |m|
+    m.with_item(label: "Edit", href: "/ships/1/edit")
+    m.with_item(label: "Archive", href: "/ships/1/archive", method: :post)
+    m.with_item(label: "Delete", href: "/ships/1", method: :delete)
+  end %>
+  <p class="gx-filler">Text after the menu: it must not move when the menu opens.</p>
+</div>
