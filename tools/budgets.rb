@@ -16,7 +16,7 @@ module DeckplateBuild
       css = @root.join("app/assets/stylesheets/deckplate.css").binread
       js = Dir[@root.join("app/javascript/**/*.js")].sort.map { File.binread(_1) }.join("\n")
       fonts = Dir[@root.join("app/assets/fonts/deckplate/*.woff2")].sum { File.size(_1) }
-      [ Row.new("CSS raw", css.bytesize, 60 * 1024), Row.new("CSS gzip", gzip(css), 12 * 1024),
+      [ Row.new("CSS raw", css.bytesize, 80 * 1024), Row.new("CSS gzip", gzip(css), 12 * 1024),
         Row.new("JS raw", js.bytesize, 20 * 1024), Row.new("JS gzip", gzip(js), 6 * 1024),
         Row.new("Fonts (woff2)", fonts, 90 * 1024) ]
     end

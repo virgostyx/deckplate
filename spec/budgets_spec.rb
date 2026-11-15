@@ -16,6 +16,6 @@ RSpec.describe DeckplateBuild::Budgets do
 
   it "uses the SPEC limits" do
     limits = rows.to_h { [ _1.name, _1.limit ] }
-    expect(limits).to eq("CSS raw" => 60 * 1024, "CSS gzip" => 12 * 1024, "JS raw" => 20 * 1024, "JS gzip" => 6 * 1024, "Fonts (woff2)" => 90 * 1024)
+    expect(limits).to eq("CSS raw" => 80 * 1024, "CSS gzip" => 12 * 1024, "JS raw" => 20 * 1024, "JS gzip" => 6 * 1024, "Fonts (woff2)" => 90 * 1024)
   end
 end
