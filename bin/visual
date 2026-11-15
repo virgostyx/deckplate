@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Visual regression run (Playwright, dev-only tool under tools/visual).
 #   bin/visual            compare previews x themes x widths with spec/visual/__baseline__
+#   bin/visual --geometry elbow seams/edges/transparency check in Chrome, Firefox and WebKit
 #   bin/visual --update   accept the current screenshots as the new baselines (review the diff images first!)
 # Extra flags are passed through: --only token_gallery --themes classic,azure --widths 375,1280
 set -euo pipefail
@@ -11,4 +12,9 @@ PORT="${VISUAL_PORT:-3099}"
 (cd spec/dummy && RAILS_ENV=development bundle exec rails server -p "$PORT" -P tmp/pids/visual.pid -d >/dev/null)
 trap 'kill "$(cat spec/dummy/tmp/pids/visual.pid)" 2>/dev/null || true' EXIT
 for _ in $(seq 1 40); do curl -sf "http://localhost:$PORT/up" >/dev/null && break; sleep 0.5; done
-(cd tools/visual && node run.mjs --base "http://localhost:$PORT" "$@")
+if [ "${1:-}" = "--geometry" ]; then
+  # Elbow geometry in Chrome, Firefox and WebKit (ADR 0002)
+  (cd tools/visual && node elbow_geometry.mjs --base "http://localhost:$PORT" --browsers "${ELBOW_BROWSERS:-chrome,firefox,webkit}")
+else
+  (cd tools/visual && node run.mjs --base "http://localhost:$PORT" "$@")
+fi

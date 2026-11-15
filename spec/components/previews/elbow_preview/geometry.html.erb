@@ -1,0 +1,8 @@
+<div class="dp-root gx-page gx-pattern">
+  <p class="gx-label" style="background: var(--dp-canvas)">Checker background: the inner arc must show it (no canvas-coloured patch). Grid step = 1u.</p>
+  <div class="gx-grid-overlay" data-geometry>
+    <% %i[top_left top_right bottom_left bottom_right].each do |corner| %>
+      <%= render Deckplate::Shapes::ElbowComponent.new(corner: corner, color: :primary, size: :sm, data: { geometry_elbow: corner }) %>
+    <% end %>
+  </div>
+</div>

@@ -44,3 +44,13 @@ Other corners mirror the layer positions. Backgrounds: no canvas-colour dependen
   metrics above for all four corners.
 - WebKit showed the same seams as Chrome for the naive version and none for A2, so the 1px overlap is required in all three engines.
 - Safari >= 15.4 and current Chrome/Firefox support unprefixed `mask` shorthand; no `-webkit-` prefix planned.
+
+## Addendum (Phase 2, real component)
+The geometry check on the shipped component (`tools/visual/elbow_geometry.mjs`, all four corners, DPR 1 to 2) found a
+defect the spike could not see because its tolerance hid it: on **bottom corners**, Chrome drew a 0.5-1 px stair-step on the
+outer bottom edge (the full-height vertical-arm layer and the bottom-anchored arm layer are snapped differently).
+Fix, now part of the technique: **the two arm layers extend 1px beyond the box on the outer sides**
+(`left -1px top -1px / calc(100% + 2px) ...`), so outer edges come from the element's own box only.
+New metric "edge spread" (position of each straight edge along its length): 0.00 px everywhere in Chrome and Firefox,
+at most 0.24 px in WebKit (anti-aliasing noise; failing threshold 0.3 px). The check runs in `spec/visual/elbow_geometry_spec.rb`
+(Chrome) and for all engines with `bin/visual --geometry`.

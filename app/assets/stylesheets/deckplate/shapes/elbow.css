@@ -1,0 +1,81 @@
+@layer dp.shapes {
+  /* Technique A2 (ADR 0002): outer arc = border-radius on one corner; inner arc = transparent cut-out made with a mask.
+     Two 1px rules remove hairline defects at fractional device pixel ratios (measured by tools/visual/elbow_geometry.mjs):
+       - the fillet tile overlaps the arms by 1px (no seam where layers abut);
+       - the arm layers extend 1px beyond the box on the outer sides, so the outer edges come from the element's own box
+         alone (two layers defining the same edge are snapped differently and draw a 1px stair-step on bottom corners). */
+  .dp-elbow {
+    --_col: var(--dp-elbow-col);
+    --_bar: var(--dp-elbow-bar, var(--dp-bar));
+    --_r: var(--dp-elbow-r);
+    --_ri: var(--dp-elbow-ri);
+    --_arm-h-size: calc(100% + 2px) calc(var(--_bar) + 1px);
+    --_arm-v-size: calc(var(--_col) + 1px) calc(100% + 2px);
+    --_fillet: radial-gradient(circle at var(--_fx) var(--_fy), transparent calc(var(--_ri) - 0.5px), #000 calc(var(--_ri) + 0.5px));
+    position: relative;
+    flex: none;
+    inline-size: var(--dp-elbow-w);
+    block-size: var(--dp-elbow-h);
+    background-color: var(--dp-c);
+    color: var(--dp-c-ink);
+    font-family: var(--dp-font-display);
+    letter-spacing: 0.06em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .dp-elbow--sm { --dp-elbow-w: calc(8 * var(--dp-u)); --dp-elbow-h: calc(6 * var(--dp-u)); }
+  .dp-elbow--md { --dp-elbow-w: calc(10 * var(--dp-u)); --dp-elbow-h: calc(8 * var(--dp-u)); }
+  .dp-elbow--lg { --dp-elbow-w: calc(12 * var(--dp-u)); --dp-elbow-h: calc(10 * var(--dp-u)); }
+
+  .dp-elbow--top-left {
+    --_fx: 100%; --_fy: 100%;
+    border-top-left-radius: var(--_r);
+    mask:
+      linear-gradient(#000 0 0) left -1px top -1px / var(--_arm-h-size) no-repeat,
+      linear-gradient(#000 0 0) left -1px top -1px / var(--_arm-v-size) no-repeat,
+      var(--_fillet) left calc(var(--_col) - 1px) top calc(var(--_bar) - 1px) / calc(var(--_ri) + 1px) calc(var(--_ri) + 1px) no-repeat;
+  }
+  .dp-elbow--top-right {
+    --_fx: 0%; --_fy: 100%;
+    border-top-right-radius: var(--_r);
+    mask:
+      linear-gradient(#000 0 0) right -1px top -1px / var(--_arm-h-size) no-repeat,
+      linear-gradient(#000 0 0) right -1px top -1px / var(--_arm-v-size) no-repeat,
+      var(--_fillet) right calc(var(--_col) - 1px) top calc(var(--_bar) - 1px) / calc(var(--_ri) + 1px) calc(var(--_ri) + 1px) no-repeat;
+  }
+  .dp-elbow--bottom-left {
+    --_fx: 100%; --_fy: 0%;
+    border-bottom-left-radius: var(--_r);
+    mask:
+      linear-gradient(#000 0 0) left -1px bottom -1px / var(--_arm-h-size) no-repeat,
+      linear-gradient(#000 0 0) left -1px top -1px / var(--_arm-v-size) no-repeat,
+      var(--_fillet) left calc(var(--_col) - 1px) bottom calc(var(--_bar) - 1px) / calc(var(--_ri) + 1px) calc(var(--_ri) + 1px) no-repeat;
+  }
+  .dp-elbow--bottom-right {
+    --_fx: 0%; --_fy: 0%;
+    border-bottom-right-radius: var(--_r);
+    mask:
+      linear-gradient(#000 0 0) right -1px bottom -1px / var(--_arm-h-size) no-repeat,
+      linear-gradient(#000 0 0) right -1px top -1px / var(--_arm-v-size) no-repeat,
+      var(--_fillet) right calc(var(--_col) - 1px) bottom calc(var(--_bar) - 1px) / calc(var(--_ri) + 1px) calc(var(--_ri) + 1px) no-repeat;
+  }
+
+  /* Label: sits in the vertical arm, at the end away from the corner */
+  .dp-elbow__label {
+    position: absolute;
+    inline-size: var(--_col);
+    padding: 0.25em 0.5em;
+    font-size: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .dp-elbow--top-left .dp-elbow__label,
+  .dp-elbow--top-right .dp-elbow__label { inset-block-end: 0; }
+  .dp-elbow--bottom-left .dp-elbow__label,
+  .dp-elbow--bottom-right .dp-elbow__label { inset-block-start: 0; }
+  .dp-elbow--top-left .dp-elbow__label,
+  .dp-elbow--bottom-left .dp-elbow__label { left: 0; text-align: end; }
+  .dp-elbow--top-right .dp-elbow__label,
+  .dp-elbow--bottom-right .dp-elbow__label { right: 0; text-align: start; }
+}

@@ -1,0 +1,25 @@
+<div class="dp-root gx-page">
+  <p class="gx-label">corners (md)</p>
+  <div class="gx-row" style="align-items: flex-start">
+    <% %i[top_left top_right bottom_left bottom_right].each_with_index do |corner, i| %>
+      <%= render Deckplate::Shapes::ElbowComponent.new(corner: corner, color: %i[primary secondary tertiary accent][i]) %>
+    <% end %>
+  </div>
+  <p class="gx-label">sizes: sm, md, lg</p>
+  <div class="gx-row" style="align-items: flex-start">
+    <% %i[sm md lg].each do |size| %>
+      <%= render Deckplate::Shapes::ElbowComponent.new(size: size, color: :info) %>
+    <% end %>
+  </div>
+  <p class="gx-label">custom: width 14u, height 5u / width 6u, height 12u</p>
+  <div class="gx-row" style="align-items: flex-start">
+    <%= render Deckplate::Shapes::ElbowComponent.new(width: 14, height: 5, color: :warning) %>
+    <%= render Deckplate::Shapes::ElbowComponent.new(width: 6, height: 12, color: :danger) %>
+  </div>
+  <p class="gx-label">palette stops</p>
+  <div class="gx-row" style="align-items: flex-start">
+    <% %i[neon_carrot lilac anakiwa melrose].each do |c| %>
+      <%= render Deckplate::Shapes::ElbowComponent.new(size: :sm, color: c, corner: :bottom_right) %>
+    <% end %>
+  </div>
+</div>

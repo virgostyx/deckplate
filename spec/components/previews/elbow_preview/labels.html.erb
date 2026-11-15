@@ -1,0 +1,7 @@
+<div class="dp-root gx-page">
+  <div class="gx-row" style="align-items: flex-start">
+    <% { top_left: "02-262000", top_right: "Engage", bottom_left: "03-111968", bottom_right: "A very long label that cannot fit" }.each do |corner, text| %>
+      <%= render(Deckplate::Shapes::ElbowComponent.new(corner: corner, color: :accent)) { |e| e.with_label { text } } %>
+    <% end %>
+  </div>
+</div>
