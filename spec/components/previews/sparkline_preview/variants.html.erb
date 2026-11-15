@@ -1,0 +1,5 @@
+<div class="dp-root gx-page"><div class="gx-form">
+  <% [ [ "Rising", [ 1, 2, 3, 5, 8, 13 ], :success ], [ "Falling", [ 13, 8, 5, 3, 2, 1 ], :danger ], [ "Flat", [ 4, 4, 4, 4 ], :muted ], [ "Noisy", [ 5, 1, 9, 2, 8, 3, 7 ], :accent ], [ "Two points", [ 1, 2 ], :info ] ].each do |label, points, color| %>
+    <div class="gx-row"><span class="gx-label" style="inline-size: 6rem"><%= label %></span><%= render Deckplate::Data::SparklineComponent.new(label: label, points: points, color: color) %></div>
+  <% end %>
+</div></div>

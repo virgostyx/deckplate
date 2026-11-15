@@ -1,0 +1,4 @@
+<div class="dp-root gx-page"><div style="display: grid; gap: 2rem; max-inline-size: 34rem">
+  <%= render Deckplate::Data::BarGraphComponent.new(label: "Vertical", orientation: :vertical, color: :accent, series: [ [ "Mon", 4 ], [ "Tue", 9 ], [ "Wed", 6 ], [ "Thu", 12 ], [ "Fri", 3 ] ]) %>
+  <%= render Deckplate::Data::BarGraphComponent.new(label: "Fixed maximum, zero and long labels", max: 100, color: :info, series: { "Zero" => 0, "A label that is much longer than its column" => 35, "Full" => 100 }) %>
+</div></div>

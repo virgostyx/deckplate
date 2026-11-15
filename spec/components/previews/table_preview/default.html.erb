@@ -1,0 +1,7 @@
+<div class="dp-root gx-page">
+  <%= render(Deckplate::Data::TableComponent.new(rows: rows, caption: "Sensor readings")) do |t|
+    t.with_column(:name, header: "Sensor", row_header: true) { |r| r[0] }
+    t.with_column(:value, header: "Value", align: :end, numeric: true) { |r| number_with_precision(r[1], precision: 2) }
+    t.with_column(:status, header: "Status") { |r| render Deckplate::Data::StatusPillComponent.new(status: r[2].to_sym) }
+  end %>
+</div>

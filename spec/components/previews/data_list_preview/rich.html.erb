@@ -1,0 +1,7 @@
+<div class="dp-root gx-page"><div style="max-inline-size: 22rem">
+  <%= render(Deckplate::Data::DataListComponent.new(color: :accent)) do |l|
+    l.with_item(label: "Status") { render Deckplate::Data::StatusPillComponent.new(status: :ok) }
+    l.with_item(label: "Power") { render Deckplate::Data::ReadoutComponent.new(label: "Output", value: 72, unit: "%") }
+    l.with_item(label: "Notes") { "Averyveryverylongunbreakablevaluethatmustwrapinsidethenarrowcolumn and then ordinary words." }
+  end %>
+</div></div>

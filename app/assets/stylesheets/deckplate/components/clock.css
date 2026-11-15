@@ -1,0 +1,9 @@
+@layer dp.components {
+  .dp-clock {
+    color: var(--dp-ink);
+    font-family: var(--dp-font-data);
+    font-size: 1.25rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+}

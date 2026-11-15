@@ -1,0 +1,8 @@
+<div class="dp-root gx-page"><div class="gx-row" style="gap: 2rem; align-items: flex-start">
+  <%= render Deckplate::Data::GaugeComponent.new(label: "Zero", value: 0, color: :muted) %>
+  <%= render Deckplate::Data::GaugeComponent.new(label: "Half", value: 50, color: :primary) %>
+  <%= render Deckplate::Data::GaugeComponent.new(label: "Full", value: 100, color: :success) %>
+  <%= render Deckplate::Data::GaugeComponent.new(label: "Temperature", value: 38.5, unit: "°", color: :warning) %>
+  <%= render Deckplate::Data::GaugeComponent.new(label: "Semicircle", value: 72, variant: :semicircle) %>
+  <%= render Deckplate::Data::GaugeComponent.new(label: "Semi low", value: 15, variant: :semicircle, color: :danger) %>
+</div></div>

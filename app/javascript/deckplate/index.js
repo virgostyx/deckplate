@@ -1,5 +1,6 @@
 // Identifier -> controller table (ADR 0004). Add each controller here as it is built.
 import DpAutofocus from "deckplate/controllers/dp_autofocus_controller"
+import DpClock from "deckplate/controllers/dp_clock_controller"
 import DpField from "deckplate/controllers/dp_field_controller"
 import DpMenu from "deckplate/controllers/dp_menu_controller"
 import DpModal from "deckplate/controllers/dp_modal_controller"
@@ -10,6 +11,7 @@ import DpTooltip from "deckplate/controllers/dp_tooltip_controller"
 
 const controllers = {
   "dp-autofocus": DpAutofocus,
+  "dp-clock": DpClock,
   "dp-field": DpField,
   "dp-menu": DpMenu,
   "dp-modal": DpModal,

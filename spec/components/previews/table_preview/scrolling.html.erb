@@ -1,0 +1,11 @@
+<div class="dp-root gx-page"><div style="display: grid; gap: 2rem">
+  <%= render(Deckplate::Data::TableComponent.new(rows: (1..30).to_a, caption: "Sticky header", sticky: true, zebra: true)) do |t|
+    t.with_column(:n, header: "N", numeric: true, align: :end) { |n| n }
+    t.with_column(:sq, header: "Square", numeric: true, align: :end) { |n| n * n }
+  end %>
+  <div style="max-inline-size: 18rem">
+    <%= render(Deckplate::Data::TableComponent.new(rows: [ [ "a", "b", "c", "d", "e" ] ], caption: "Wide table in a narrow container")) do |t|
+      5.times { |i| t.with_column(:"c#{i}", header: "A fairly long header #{i}") { |r| "Cell content #{r[i]} that is not short" } }
+    end %>
+  </div>
+</div></div>

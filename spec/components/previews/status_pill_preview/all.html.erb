@@ -1,0 +1,4 @@
+<div class="dp-root gx-page"><div class="gx-row">
+  <% %i[ok warn fail idle info].each do |status| %><%= render Deckplate::Data::StatusPillComponent.new(status: status) %><% end %>
+  <%= render Deckplate::Data::StatusPillComponent.new(status: :ok, label: "All systems nominal") %>
+</div></div>

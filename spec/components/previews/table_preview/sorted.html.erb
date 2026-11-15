@@ -1,0 +1,7 @@
+<div class="dp-root gx-page">
+  <%= render(Deckplate::Data::TableComponent.new(rows: rows, caption: "Sensor readings", sort: "value", dir: "desc", sort_url: ->(key, dir) { "/rails/view_components/table/sorted?sort=#{key}&dir=#{dir}" })) do |t|
+    t.with_column(:name, header: "Sensor", sortable: true, row_header: true) { |r| r[0] }
+    t.with_column(:value, header: "Value", sortable: true, align: :end, numeric: true) { |r| number_with_precision(r[1], precision: 2) }
+    t.with_column(:status, header: "Status") { |r| r[2] }
+  end %>
+</div>

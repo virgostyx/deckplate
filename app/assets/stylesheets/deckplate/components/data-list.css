@@ -1,0 +1,23 @@
+@layer dp.components {
+  .dp-data-list {
+    display: grid;
+    grid-template-columns: minmax(6rem, max-content) minmax(0, 1fr);
+    gap: 0.3em 1.5em;
+    margin: 0;
+    padding-inline-start: 0.9em;
+    border-inline-start: calc(0.35 * var(--dp-u)) solid var(--dp-c);
+  }
+  .dp-data-list__term {
+    color: var(--dp-ink-muted);
+    font-family: var(--dp-font-display);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .dp-data-list__detail {
+    margin: 0;
+    color: var(--dp-ink);
+    font-family: var(--dp-font-data);
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
+  }
+}

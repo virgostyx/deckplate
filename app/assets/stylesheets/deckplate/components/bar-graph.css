@@ -1,0 +1,40 @@
+@layer dp.components {
+  .dp-bar-graph { display: grid; gap: 0.6em; margin: 0; min-inline-size: 0; }
+  .dp-bar-graph__caption {
+    color: var(--dp-ink);
+    font-family: var(--dp-font-display);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .dp-bar-graph__plot { display: grid; gap: 0.4em; }
+  .dp-bar-graph__row {
+    display: grid;
+    grid-template-columns: minmax(4rem, 9rem) minmax(0, 1fr) minmax(2.5rem, auto);
+    align-items: center;
+    gap: 0.75em;
+    font-size: 0.9375rem;
+  }
+  .dp-bar-graph__label { color: var(--dp-ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .dp-bar-graph__value { color: var(--dp-ink); font-family: var(--dp-font-data); font-variant-numeric: tabular-nums; text-align: end; }
+  .dp-bar-graph__track {
+    display: flex;
+    block-size: var(--dp-bar);
+    background-color: var(--dp-surface-raised);
+    box-shadow: inset 0 0 0 1px var(--dp-line);
+  }
+  .dp-bar-graph__bar {
+    inline-size: calc(var(--dp-value, 0) * 1%);
+    background-color: var(--dp-c);
+    border-start-end-radius: var(--dp-pill-r);
+    border-end-end-radius: var(--dp-pill-r);
+  }
+
+  /* Vertical: value on top, the track in the middle (bars grow upwards), label below */
+  .dp-bar-graph--vertical .dp-bar-graph__plot { grid-auto-flow: column; grid-auto-columns: minmax(2.5rem, 1fr); align-items: end; gap: 0.75em; }
+  .dp-bar-graph--vertical .dp-bar-graph__row { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 10rem auto; justify-items: center; gap: 0.35em; }
+  .dp-bar-graph--vertical .dp-bar-graph__value { grid-row: 1; text-align: center; }
+  .dp-bar-graph--vertical .dp-bar-graph__track { grid-row: 2; inline-size: 100%; max-inline-size: 4rem; block-size: 100%; align-items: flex-end; }
+  .dp-bar-graph--vertical .dp-bar-graph__label { grid-row: 3; max-inline-size: 100%; }
+  .dp-bar-graph--vertical .dp-bar-graph__bar { inline-size: 100%; block-size: calc(var(--dp-value, 0) * 1%); border-radius: var(--dp-pill-r) var(--dp-pill-r) 0 0; }
+  @media (forced-colors: active) { .dp-bar-graph__bar { background-color: Highlight; } }
+}

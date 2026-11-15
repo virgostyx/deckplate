@@ -1,0 +1,7 @@
+<div class="dp-root gx-page"><div class="gx-form">
+  <%= render Deckplate::Data::ReadoutComponent.new(label: "Rising", value: "1,204.50", unit: "m/s", trend: :up, color: :success) %>
+  <%= render Deckplate::Data::ReadoutComponent.new(label: "Falling", value: "-3.2", unit: "°C", trend: :down, color: :danger) %>
+  <%= render Deckplate::Data::ReadoutComponent.new(label: "Steady", value: 100, unit: "%", trend: :flat, color: :accent) %>
+  <%= render Deckplate::Data::ReadoutComponent.new(label: "No value", value: nil, color: :muted) %>
+  <%= render Deckplate::Data::ReadoutComponent.new(label: "A label that is long enough to wrap", value: "123,456,789,012.345678", unit: "units") %>
+</div></div>

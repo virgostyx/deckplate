@@ -1,0 +1,7 @@
+<div class="dp-root gx-page">
+  <%= render(Deckplate::Data::TableComponent.new(rows: rows, caption: "Readings with totals", zebra: true, caption_hidden: false)) do |t|
+    t.with_column(:name, header: "Sensor", row_header: true) { |r| r[0] }
+    t.with_column(:value, header: "Value", align: :end, numeric: true) { |r| number_with_precision(r[1], precision: 2) }
+    t.with_footer { tag.tr { safe_join([ tag.th("Total", scope: "row"), tag.td(number_with_precision(rows.sum { _1[1] }, precision: 2), class: "dp-table__cell--end") ]) } }
+  end %>
+</div>

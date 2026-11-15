@@ -1,0 +1,27 @@
+@layer dp.components {
+  .dp-readout {
+    display: grid;
+    gap: 0.1em;
+    min-inline-size: 0;
+    padding: 0.4em 0.75em;
+    border-inline-start: calc(0.35 * var(--dp-u)) solid var(--dp-c);
+  }
+  .dp-readout__label {
+    color: var(--dp-ink-muted);
+    font-family: var(--dp-font-display);
+    font-size: 0.9375rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .dp-readout__value {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 0.4em;
+    font-family: var(--dp-font-data);
+    font-variant-numeric: tabular-nums;
+  }
+  .dp-readout__number { color: var(--dp-ink); font-size: 1.75rem; line-height: 1.1; }
+  .dp-readout__unit { color: var(--dp-ink-muted); font-size: 1rem; }
+  .dp-readout__trend { display: inline-flex; align-self: center; color: var(--dp-ink); }
+}

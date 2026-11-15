@@ -1,0 +1,6 @@
+<div class="dp-root gx-page"><div class="gx-form">
+  <% t = Time.utc(2026, 3, 9, 14, 5, 59) %>
+  <%= render Deckplate::Data::ClockComponent.new(time: t, zone: "UTC", format: :time) %>
+  <%= render Deckplate::Data::ClockComponent.new(time: t, zone: "Europe/Brussels", format: :datetime) %>
+  <%= render Deckplate::Data::ClockComponent.new(time: t, zone: "Asia/Tokyo", format: :date) %>
+</div></div>

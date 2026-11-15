@@ -1,0 +1,18 @@
+@layer dp.components {
+  .dp-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    box-sizing: border-box;
+    padding: 0.15em 0.9em 0.15em 0.6em;
+    border-radius: var(--dp-pill-r);
+    background-color: var(--dp-c);
+    color: var(--dp-c-ink);
+    font-family: var(--dp-font-display);
+    font-size: 0.9375rem;
+    line-height: 1.3;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+}

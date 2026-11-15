@@ -1,0 +1,53 @@
+@layer dp.components {
+  .dp-gauge {
+    --_size: calc(10 * var(--dp-u));
+    --_ring: calc(1.1 * var(--dp-u));
+    display: inline-grid;
+    justify-items: center;
+    gap: 0.35em;
+    color: var(--dp-ink);
+  }
+  .dp-gauge__dial {
+    grid-area: 1 / 1;
+    position: relative;
+    inline-size: var(--_size);
+    aspect-ratio: 1;
+    overflow: hidden;
+  }
+  /* A full circle painted with a conic gradient; the ring is cut out with a mask. The half gauge crops it. */
+  .dp-gauge__dial::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(var(--dp-c) calc(var(--dp-value, 0) * 3.6deg), var(--dp-line) 0);
+    mask: radial-gradient(farthest-side, transparent calc(100% - var(--_ring)), #000 calc(100% - var(--_ring) + 0.5px));
+  }
+  .dp-gauge--semicircle .dp-gauge__dial { aspect-ratio: 2; }
+  .dp-gauge--semicircle .dp-gauge__dial::before {
+    inset: 0 0 auto;
+    aspect-ratio: 1;
+    background: conic-gradient(from -90deg, var(--dp-c) calc(var(--dp-value, 0) * 1.8deg), var(--dp-line) 0 180deg, transparent 0);
+  }
+  .dp-gauge__reading {
+    grid-area: 1 / 1;
+    align-self: center;
+    display: flex;
+    align-items: baseline;
+    gap: 0.15em;
+    font-family: var(--dp-font-data);
+    font-variant-numeric: tabular-nums;
+  }
+  .dp-gauge--semicircle .dp-gauge__reading { align-self: end; }
+  .dp-gauge__value { font-size: 2rem; line-height: 1; }
+  .dp-gauge__unit { color: var(--dp-ink-muted); font-size: 1rem; }
+  .dp-gauge__label {
+    grid-area: 2 / 1;
+    font-family: var(--dp-font-display);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  @media (forced-colors: active) {
+    .dp-gauge__dial::before { background: conic-gradient(Highlight calc(var(--dp-value, 0) * 3.6deg), CanvasText 0); }
+  }
+}

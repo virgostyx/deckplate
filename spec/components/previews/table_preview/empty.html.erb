@@ -1,0 +1,7 @@
+<div class="dp-root gx-page"><div style="display: grid; gap: 2rem">
+  <%= render(Deckplate::Data::TableComponent.new(rows: [], caption: "Default empty state")) { |t| t.with_column(:a, header: "Sensor") { |r| r }; t.with_column(:b, header: "Value", numeric: true) { |r| r } } %>
+  <%= render(Deckplate::Data::TableComponent.new(rows: [], caption: "Custom empty state")) do |t|
+    t.with_column(:a, header: "Sensor") { |r| r }
+    t.with_empty { "Nothing recorded yet." }
+  end %>
+</div></div>
