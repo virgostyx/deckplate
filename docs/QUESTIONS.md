@@ -66,3 +66,12 @@ The owner answers by editing the entry (change **Status** to `answered`) and the
 - **Why this default is safe**: the public API is what users type; folder layout is internal and can be regrouped later with
   Zeitwerk `collapse` without changing any constant.
 - **Status**: open
+
+### Q-007 — Size of the visual baselines
+- **Phase / task**: Phase 4 review, `bin/visual`
+- **Question**: Baselines weigh 29 MB for 1,215 screenshots (5 themes x 3 widths per preview) and grow with every phase. Reduce the
+  matrix, move them to Git LFS, or keep them as they are?
+- **Default applied / decision**: keep the full matrix in Git, unchanged.
+- **Status**: answered
+- **Answer**: no change (owner decision). Revisit if the baselines pass 80 MB or the repository becomes slow to clone; the first
+  options to consider then are a reduced matrix for secondary previews and Git LFS.
