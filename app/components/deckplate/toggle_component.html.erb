@@ -1,0 +1,6 @@
+<%= tag.label(class: label_classes) do %>
+  <% if @unchecked_value %><%= tag.input(type: "hidden", name: @name, value: @unchecked_value, autocomplete: "off") %><% end %>
+  <%= tag.input(type: "checkbox", role: "switch", name: @name, value: @value, checked: @checked, disabled: @disabled, **input_attributes) %>
+  <span class="dp-toggle__track" aria-hidden="true"><span class="dp-toggle__thumb"></span></span>
+  <%= tag.span(@label.presence || content, class: "dp-toggle__label") %>
+<% end %>

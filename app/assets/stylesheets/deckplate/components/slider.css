@@ -1,0 +1,69 @@
+@layer dp.components {
+  .dp-slider {
+    --dp-pct: 0;
+    display: grid;
+    gap: 0.25em;
+    min-inline-size: 0;
+    color: var(--dp-ink);
+  }
+  .dp-slider__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--dp-u);
+  }
+  .dp-slider__label {
+    font-family: var(--dp-font-display);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .dp-slider__value {
+    font-family: var(--dp-font-data);
+    font-variant-numeric: tabular-nums;
+    color: var(--dp-c);
+  }
+
+  .dp-slider__input {
+    --_track: calc(0.6 * var(--dp-u));
+    --_thumb: calc(1.6 * var(--dp-u));
+    appearance: none;
+    inline-size: 100%;
+    block-size: max(var(--_thumb), var(--dp-touch-min));
+    margin: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+  /* Track with a filled part: --dp-pct is set by the controller (0 without JS: the thumb still shows the value) */
+  .dp-slider__input::-webkit-slider-runnable-track {
+    block-size: var(--_track);
+    border-radius: var(--dp-pill-r);
+    background: linear-gradient(to right, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-line) 0);
+  }
+  .dp-slider__input::-moz-range-track {
+    block-size: var(--_track);
+    border-radius: var(--dp-pill-r);
+    background: linear-gradient(to right, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-line) 0);
+  }
+  .dp-slider__input::-webkit-slider-thumb {
+    appearance: none;
+    inline-size: var(--_thumb);
+    block-size: var(--_thumb);
+    margin-block-start: calc((var(--_track) - var(--_thumb)) / 2);
+    border: 0;
+    border-radius: var(--dp-pill-r);
+    background-color: var(--dp-c);
+  }
+  .dp-slider__input::-moz-range-thumb {
+    inline-size: var(--_thumb);
+    block-size: var(--_thumb);
+    border: 0;
+    border-radius: var(--dp-pill-r);
+    background-color: var(--dp-c);
+  }
+  .dp-slider__input:focus-visible {
+    outline: 2px solid var(--dp-focus);
+    outline-offset: 2px;
+  }
+  .dp-slider--disabled .dp-slider__input { cursor: not-allowed; }
+  .dp-slider--disabled { --dp-c: var(--dp-disabled); }
+}

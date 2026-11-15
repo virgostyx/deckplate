@@ -1,0 +1,71 @@
+@layer dp.components {
+  .dp-toggle {
+    --dp-toggle-h: calc(1.5 * var(--dp-u));
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75em;
+    min-block-size: var(--dp-touch-min);
+    cursor: pointer;
+    color: var(--dp-ink);
+  }
+  /* The native checkbox stays in the layout and focusable; it is only visually replaced by the track */
+  .dp-toggle__input {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    margin: 0;
+    opacity: 0;
+  }
+  .dp-toggle__track {
+    position: relative;
+    flex: none;
+    inline-size: calc(var(--dp-toggle-h) * 1.9);
+    block-size: var(--dp-toggle-h);
+    border: 2px solid var(--dp-line);
+    border-radius: var(--dp-pill-r);
+    background-color: transparent;
+    transition: background-color var(--dp-t-base) var(--dp-ease), border-color var(--dp-t-base) var(--dp-ease);
+  }
+  .dp-toggle__thumb {
+    position: absolute;
+    inset-block: 2px;
+    inset-inline-start: 2px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--dp-ink-muted);
+    transition: inset-inline-start var(--dp-t-base) var(--dp-ease), background-color var(--dp-t-base) var(--dp-ease);
+  }
+  .dp-toggle__input:checked + .dp-toggle__track {
+    border-color: var(--dp-c);
+    background-color: var(--dp-c);
+  }
+  .dp-toggle__input:checked + .dp-toggle__track .dp-toggle__thumb {
+    inset-inline-start: calc(100% - var(--dp-toggle-h) + 2px);
+    background-color: var(--dp-c-ink);
+  }
+  /* A tick mark in the thumb: the state does not rely on colour alone */
+  .dp-toggle__input:checked + .dp-toggle__track .dp-toggle__thumb::after {
+    content: "";
+    position: absolute;
+    inset: 25% 30% 30%;
+    border: solid var(--dp-c);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  .dp-toggle__input:focus-visible + .dp-toggle__track {
+    outline: 2px solid var(--dp-focus);
+    outline-offset: 2px;
+  }
+  .dp-toggle__label {
+    font-family: var(--dp-font-display);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .dp-toggle--disabled { cursor: not-allowed; }
+  .dp-toggle--disabled .dp-toggle__track { border-color: var(--dp-disabled); }
+  .dp-toggle--disabled .dp-toggle__label { color: var(--dp-ink-muted); }
+  @media (forced-colors: active) {
+    .dp-toggle__track { border-color: ButtonText; }
+    .dp-toggle__input:checked + .dp-toggle__track { background-color: Highlight; }
+  }
+}
