@@ -202,11 +202,11 @@ A `.min` variant is not shipped (gzip at the web server is enough).
 ### 6.2 Cascade layers
 
 ```css
+@layer theme, base, dp, components, utilities;   /* prelude, see ADR 0003 */
 @layer dp.tokens, dp.base, dp.shapes, dp.layout, dp.components, dp.states;
 ```
 Intent: host utilities (including Tailwind's `utilities` layer) can override Deckplate without `!important`.
-*(Spike S3: verify the resulting order when `deckplate.css` is linked before/after Tailwind 4's output; document
-the required link order or the `@layer` prelude the installer adds.)*
+Verified in spike S3 (ADR 0003): the prelude must also be added to the Tailwind source by the installer.
 
 ### 6.3 Scoping
 
@@ -226,7 +226,7 @@ arc** cut-out. Candidates:
   background/gradient/theme. **Preferred.**
 - (B) black/canvas-coloured pseudo-element carving the inner arc (the technique used by the reference
   projects) → needs `--dp-canvas` to equal the background behind it.
-Decide by Playwright screenshots at device pixel ratios 1, 1.25, 1.5, 2 and browser zoom 100–200 %:
+Decided in ADR 0002 (technique A with a 1px overlapping fillet tile). Original wording: decide by Playwright screenshots at device pixel ratios 1, 1.25, 1.5, 2 and browser zoom 100–200 %:
 no hairline seams, no overdraw, identical result in Chrome/Firefox/Safari. Record in ADR 0002.
 
 Variables: `--dp-elbow-w`, `--dp-elbow-h` (overall), `--dp-elbow-col` (vertical arm thickness),
