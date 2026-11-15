@@ -1,0 +1,15 @@
+<div class="dp-root gx-page">
+  <% %i[square pill start end].each do |shape| %>
+    <p class="gx-label">shape: <%= shape %></p>
+    <div class="gx-row" style="align-items: stretch">
+      <% %i[start center end].each_with_index do |align, i| %>
+        <div style="inline-size: 12rem">
+          <%= render(Deckplate::Shapes::BlockComponent.new(shape: shape, align: align, color: %i[info accent warning][i])) { "#{align}" } %>
+        </div>
+      <% end %>
+      <div style="inline-size: 12rem">
+        <%= render(Deckplate::Shapes::BlockComponent.new(shape: shape, number: "04", color: :tertiary)) { "Numbered" } %>
+      </div>
+    </div>
+  <% end %>
+</div>

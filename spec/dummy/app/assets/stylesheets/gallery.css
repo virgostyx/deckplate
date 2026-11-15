@@ -28,3 +28,4 @@
 .gx-pattern { background: repeating-conic-gradient(#3355ff 0 25%, #ffffff 0 50%) 0 0 / 1.375rem 1.375rem; }
 .gx-grid-overlay { display: flex; gap: calc(2 * var(--dp-u)); flex-wrap: wrap; align-items: flex-start; }
 .gx-flat .gx-pattern, .gx-flat.gx-pattern { background: #000 !important; } body.gx-flat { background: #000 !important; }
+.gx-tall { min-block-size: calc(4 * var(--dp-u)); }

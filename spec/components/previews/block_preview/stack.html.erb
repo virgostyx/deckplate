@@ -1,0 +1,9 @@
+<div class="dp-root gx-page">
+  <div style="inline-size: 11rem; display: grid; gap: var(--dp-gap)">
+    <%= render(Deckplate::Shapes::BlockComponent.new(color: :accent, number: "01", tag: :div)) { "Bridge" } %>
+    <%= render(Deckplate::Shapes::BlockComponent.new(color: :info, number: "02-262000")) { "Sensors" } %>
+    <%= render(Deckplate::Shapes::BlockComponent.new(color: :tertiary, number: "03", class: "gx-tall")) { "Engineering" } %>
+    <%= render(Deckplate::Shapes::BlockComponent.new(color: :primary, number: "04")) { "Cargo bay and long corridor names that must be clipped" } %>
+    <%= render(Deckplate::Shapes::BlockComponent.new(color: :secondary, number: "05", shape: :end)) { "Medical" } %>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+<%= content_tag(@tag, **block_attributes) do %>
+  <% if @number.present? %><%= tag.span(@number, class: "dp-block__number") %><% end %>
+  <%= tag.span(class: "dp-block__content") do %><%= content %><% end %>
+<% end %>

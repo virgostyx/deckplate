@@ -105,6 +105,16 @@ RSpec.describe Deckplate::BaseComponent, type: :component do
       expect { Deckplate::DemoComponent.new.send(:assign_variants, colour: :x) }.to raise_error(ArgumentError, /unknown variant :colour/)
     end
 
+    it "prefixes the modifier with the variant name when values would clash (prefix: true)" do
+      stub_const("Deckplate::ClashComponent", Class.new(described_class) do
+        variant :shape, %i[square start end], default: :square
+        variant :align, %i[start center end], default: :end, prefix: true
+        def call = tag.div(class: variant_classes)
+      end)
+      render_inline(Deckplate::ClashComponent.new)
+      expect(page.find("div")[:class].split).to contain_exactly("dp-clash--square", "dp-clash--align-end")
+    end
+
     it "inherits variants in subclasses without leaking to the parent" do
       child = Class.new(Deckplate::DemoComponent) { variant :tone, %i[a b], default: :a }
       expect(child.variant_definitions.keys).to eq(%i[size shape tone])

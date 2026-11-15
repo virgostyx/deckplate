@@ -1,0 +1,18 @@
+@layer dp.shapes {
+  .dp-bracket {
+    --dp-bracket-w: calc(0.375 * var(--dp-u));
+    --dp-bracket-r: var(--dp-u);
+    padding: 0.5em 1em;
+    border: 0 solid var(--dp-c);
+  }
+  .dp-bracket--top { border-block-start-width: var(--dp-bracket-w); }
+  .dp-bracket--bottom { border-block-end-width: var(--dp-bracket-w); }
+  .dp-bracket--start { border-inline-start-width: var(--dp-bracket-w); }
+  .dp-bracket--end { border-inline-end-width: var(--dp-bracket-w); }
+
+  /* Round the corner where two framed sides meet */
+  .dp-bracket--top.dp-bracket--start { border-start-start-radius: var(--dp-bracket-r); }
+  .dp-bracket--top.dp-bracket--end { border-start-end-radius: var(--dp-bracket-r); }
+  .dp-bracket--bottom.dp-bracket--start { border-end-start-radius: var(--dp-bracket-r); }
+  .dp-bracket--bottom.dp-bracket--end { border-end-end-radius: var(--dp-bracket-r); }
+}

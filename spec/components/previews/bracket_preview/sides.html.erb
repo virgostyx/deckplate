@@ -1,0 +1,6 @@
+<div class="dp-root gx-page">
+  <% [ %i[top], %i[bottom], %i[start], %i[end], %i[top bottom], %i[start end], %i[top start], %i[bottom end], %i[top bottom start end] ].each do |sides| %>
+    <p class="gx-label">sides: <%= sides.join(", ") %></p>
+    <%= render(Deckplate::Shapes::BracketComponent.new(sides: sides, color: :warning)) { "Framed content" } %>
+  <% end %>
+</div>

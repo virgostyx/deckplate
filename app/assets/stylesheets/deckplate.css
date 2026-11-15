@@ -534,6 +534,76 @@
   }
 }
 
+/* deckplate/shapes/block.css */
+@layer dp.shapes {
+  .dp-block {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.75em;
+    min-block-size: calc(2 * var(--dp-u));
+    min-inline-size: 0;
+    padding: 0.25em 0.75em;
+    list-style: none;
+    background-color: var(--dp-c);
+    color: var(--dp-c-ink);
+    font-family: var(--dp-font-display);
+    line-height: 1.1;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .dp-block--align-start { justify-content: flex-start; }
+  .dp-block--align-center { justify-content: center; }
+  .dp-block--align-end { justify-content: flex-end; }
+
+  .dp-block__number {
+    flex: none;
+    font-family: var(--dp-font-data);
+    letter-spacing: 0;
+  }
+  .dp-block--align-end .dp-block__number { margin-inline-end: auto; }
+  .dp-block__content {
+    min-inline-size: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .dp-block--pill {
+    padding-inline: 1.25em;
+    border-radius: var(--dp-pill-r);
+  }
+  .dp-block--start {
+    border-start-start-radius: var(--dp-pill-r);
+    border-end-start-radius: var(--dp-pill-r);
+    padding-inline-start: 1.25em;
+  }
+  .dp-block--end {
+    border-start-end-radius: var(--dp-pill-r);
+    border-end-end-radius: var(--dp-pill-r);
+    padding-inline-end: 1.25em;
+  }
+}
+
+/* deckplate/shapes/bracket.css */
+@layer dp.shapes {
+  .dp-bracket {
+    --dp-bracket-w: calc(0.375 * var(--dp-u));
+    --dp-bracket-r: var(--dp-u);
+    padding: 0.5em 1em;
+    border: 0 solid var(--dp-c);
+  }
+  .dp-bracket--top { border-block-start-width: var(--dp-bracket-w); }
+  .dp-bracket--bottom { border-block-end-width: var(--dp-bracket-w); }
+  .dp-bracket--start { border-inline-start-width: var(--dp-bracket-w); }
+  .dp-bracket--end { border-inline-end-width: var(--dp-bracket-w); }
+
+  /* Round the corner where two framed sides meet */
+  .dp-bracket--top.dp-bracket--start { border-start-start-radius: var(--dp-bracket-r); }
+  .dp-bracket--top.dp-bracket--end { border-start-end-radius: var(--dp-bracket-r); }
+  .dp-bracket--bottom.dp-bracket--start { border-end-start-radius: var(--dp-bracket-r); }
+  .dp-bracket--bottom.dp-bracket--end { border-end-end-radius: var(--dp-bracket-r); }
+}
+
 /* deckplate/shapes/cap.css */
 @layer dp.shapes {
   .dp-cap {

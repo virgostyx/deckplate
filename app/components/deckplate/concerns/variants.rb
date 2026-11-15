@@ -2,15 +2,16 @@ module Deckplate
   module Concerns
     # Declares closed sets of modifiers:  variant :size, %i[sm md lg], default: :md
     # They become BEM modifier classes (dp-button--lg). Values are validated, class strings are never built from free input.
+    # Use `prefix: true` when two variants share a value name (dp-block--align-start vs dp-block--start).
     module Variants
       extend ActiveSupport::Concern
 
       class_methods do
-        def variant(name, values, default:)
+        def variant(name, values, default:, prefix: false)
           values = values.map(&:to_sym)
           raise ArgumentError, "default #{default.inspect} is not one of #{values.inspect}" unless values.include?(default.to_sym)
 
-          variant_definitions[name.to_sym] = { values: values.freeze, default: default.to_sym }
+          variant_definitions[name.to_sym] = { values: values.freeze, default: default.to_sym, prefix: prefix }
         end
 
         def variant_definitions
@@ -42,7 +43,10 @@ module Deckplate
       def variants = @variants || assign_variants
 
       def variant_classes
-        variants.map { |_, value| "#{block_name}--#{value.to_s.tr('_', '-')}" }
+        variants.map do |name, value|
+          modifier = self.class.variant_definitions.fetch(name)[:prefix] ? "#{name}-#{value}" : value.to_s
+          "#{block_name}--#{modifier.tr('_', '-')}"
+        end
       end
     end
   end
