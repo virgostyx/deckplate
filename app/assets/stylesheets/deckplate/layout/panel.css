@@ -1,0 +1,107 @@
+@layer dp.layout {
+  .dp-panel {
+    /* Knobs: --dp-panel-rail (width of the side rail), --dp-panel-r (outer elbow radius) */
+    --dp-panel-rail: calc(3 * var(--dp-u));
+    --dp-panel-r: calc(2 * var(--dp-u));
+    --_stub: calc(var(--dp-elbow-ri) + var(--dp-u));   /* how far the elbow's horizontal arm runs past the rail */
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto;
+    min-inline-size: 0;
+    color: var(--dp-ink);
+  }
+
+  /* Header bar */
+  .dp-panel__header {
+    display: flex;
+    align-items: center;
+    gap: var(--dp-u);
+    min-block-size: var(--dp-bar);
+    padding-inline: 0.75em;
+    background-color: var(--dp-c);
+    color: var(--dp-c-ink);
+  }
+  .dp-panel__title {
+    margin: 0;
+    min-inline-size: 0;
+    font-family: var(--dp-font-display);
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    overflow-wrap: break-word;
+  }
+  .dp-panel__actions {
+    display: flex;
+    gap: var(--dp-gap);
+    margin-inline-start: auto;
+  }
+  .dp-panel__body {
+    min-inline-size: 0;
+    padding: var(--dp-u);
+    overflow-wrap: anywhere;
+  }
+  .dp-panel__footer {
+    display: flex;
+    align-items: center;
+    min-block-size: var(--dp-bar);
+    padding-inline: 0.75em;
+    background-color: var(--dp-c);
+    color: var(--dp-c-ink);
+    font-family: var(--dp-font-data);
+    font-size: 0.875rem;
+  }
+
+  /* Plain bars: the footer sits flush under the body */
+  .dp-panel--none .dp-panel__header { grid-row: 1; }
+  .dp-panel--none .dp-panel__body { grid-row: 2; }
+  .dp-panel--none .dp-panel__footer { grid-row: 3; }
+
+  /* Elbows and rails: the C-shape */
+  .dp-panel--left,
+  .dp-panel--both {
+    --dp-elbow-col: var(--dp-panel-rail);
+    --dp-elbow-r: var(--dp-panel-r);
+    column-gap: 0;
+  }
+  .dp-panel--left { grid-template-columns: var(--dp-panel-rail) minmax(0, 1fr); }
+  .dp-panel--both { grid-template-columns: var(--dp-panel-rail) minmax(0, 1fr) var(--dp-panel-rail); }
+
+  /* The elbow is as tall as its grid row (a header that wraps to several lines must not leave a gap above the rail) */
+  .dp-panel__elbow {
+    --dp-elbow-w: calc(var(--dp-panel-rail) + var(--_stub));
+    --dp-elbow-h: auto;
+    min-block-size: calc(var(--dp-bar) + var(--dp-elbow-ri) + 0.5 * var(--dp-u));
+  }
+  .dp-panel__corner { display: flex; }
+  .dp-panel__corner--top-end,
+  .dp-panel__corner--bottom-end { justify-content: flex-end; }
+
+  .dp-panel--left .dp-panel__corner--top-start,
+  .dp-panel--both .dp-panel__corner--top-start { grid-column: 1; grid-row: 1; }
+  .dp-panel--left .dp-panel__header { grid-column: 2; grid-row: 1; align-self: start; margin-inline-start: calc(var(--_stub) + var(--dp-gap)); }
+  .dp-panel--left .dp-panel__rail--start,
+  .dp-panel--both .dp-panel__rail--start { grid-column: 1; grid-row: 2; background-color: var(--dp-c); }
+  .dp-panel--left .dp-panel__body { grid-column: 2; grid-row: 2; }
+  .dp-panel--left .dp-panel__corner--bottom-start,
+  .dp-panel--both .dp-panel__corner--bottom-start { grid-column: 1; grid-row: 3; }
+  .dp-panel--left .dp-panel__footer { grid-column: 2; grid-row: 3; align-self: end; margin-inline-start: calc(var(--_stub) + var(--dp-gap)); }
+
+  .dp-panel--both .dp-panel__header { grid-column: 2; grid-row: 1; align-self: start; margin-inline: calc(var(--_stub) + var(--dp-gap)); }
+  .dp-panel--both .dp-panel__corner--top-end { grid-column: 3; grid-row: 1; }
+  .dp-panel--both .dp-panel__body { grid-column: 2; grid-row: 2; }
+  .dp-panel--both .dp-panel__rail--end { grid-column: 3; grid-row: 2; background-color: var(--dp-c); }
+  .dp-panel--both .dp-panel__footer { grid-column: 2; grid-row: 3; align-self: end; margin-inline: calc(var(--_stub) + var(--dp-gap)); }
+  .dp-panel--both .dp-panel__corner--bottom-end { grid-column: 3; grid-row: 3; }
+
+  /* Narrow viewports: a panel closed on both sides would crush its title, so it falls back to the left-only shape */
+  @media (max-width: 40rem) {
+    .dp-panel--both { grid-template-columns: var(--dp-panel-rail) minmax(0, 1fr); }
+    .dp-panel--both .dp-panel__corner--top-end,
+    .dp-panel--both .dp-panel__corner--bottom-end,
+    .dp-panel--both .dp-panel__rail--end { display: none; }
+    .dp-panel--both .dp-panel__header,
+    .dp-panel--both .dp-panel__footer { margin-inline: calc(var(--_stub) + var(--dp-gap)) 0; }
+  }
+}

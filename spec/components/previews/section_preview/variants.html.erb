@@ -1,0 +1,6 @@
+<div class="dp-root gx-page">
+  <% %i[primary secondary tertiary accent info warning].each_with_index do |color, i| %>
+    <%= render(Deckplate::Layout::SectionComponent.new(title: color.to_s.humanize, color: color, level: 2 + (i % 2), class: "gx-gap-bottom")) { "Body for #{color}." } %>
+  <% end %>
+  <%= render(Deckplate::Layout::SectionComponent.new(title: "A very long section title that has to wrap inside a narrow column")) { "Body" } %>
+</div>

@@ -1,0 +1,28 @@
+@layer dp.layout {
+  .dp-section {
+    display: grid;
+    gap: calc(0.5 * var(--dp-u));
+    min-inline-size: 0;
+  }
+  .dp-section__title {
+    justify-self: start;
+    max-inline-size: 100%;
+    margin: 0;
+    padding: 0.15em 1.25em 0.15em 0.75em;
+    border-start-end-radius: var(--dp-pill-r);
+    border-end-end-radius: var(--dp-pill-r);
+    background-color: var(--dp-c);
+    color: var(--dp-c-ink);
+    font-family: var(--dp-font-display);
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+  }
+  .dp-section__body {
+    padding-inline-start: 0.75em;
+    border-inline-start: calc(0.25 * var(--dp-u)) solid var(--dp-c);
+  }
+}

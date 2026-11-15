@@ -29,3 +29,5 @@
 .gx-grid-overlay { display: flex; gap: calc(2 * var(--dp-u)); flex-wrap: wrap; align-items: flex-start; }
 .gx-flat .gx-pattern, .gx-flat.gx-pattern { background: #000 !important; } body.gx-flat { background: #000 !important; }
 .gx-tall { min-block-size: calc(4 * var(--dp-u)); }
+.gx-dash { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: calc(1.5 * var(--dp-u)); margin-top: var(--dp-u); }
+.gx-big { font-family: var(--dp-font-data); font-size: 2rem; font-variant-numeric: tabular-nums; color: var(--dp-info); }

@@ -1,0 +1,9 @@
+<div class="dp-root gx-page">
+  <%= render Deckplate::Layout::PageHeaderComponent.new(title: "Engineering", subtitle: "Deck 7") %>
+  <div class="gx-dash">
+    <%= render(Deckplate::Layout::PanelComponent.new(title: "Power", color: :primary, corners: :left)) { tag.span("72%", class: "gx-big") } %>
+    <%= render(Deckplate::Layout::PanelComponent.new(title: "Coolant", color: :info, corners: :left)) { tag.span("18.4 °C", class: "gx-big") } %>
+    <%= render(Deckplate::Layout::PanelComponent.new(title: "Shields", color: :accent, corners: :both)) { tag.span("100%", class: "gx-big") } %>
+    <%= render(Deckplate::Layout::PanelComponent.new(title: "Alerts", color: :warning)) { "No active alerts." } %>
+  </div>
+</div>

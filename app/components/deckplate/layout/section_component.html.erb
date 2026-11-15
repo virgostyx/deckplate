@@ -1,0 +1,4 @@
+<%= tag.section(**section_attributes) do %>
+  <%= content_tag("h#{@level}", @title, id: heading_id, class: "dp-section__title") %>
+  <%= tag.div(class: "dp-section__body") do %><%= content %><% end %>
+<% end %>

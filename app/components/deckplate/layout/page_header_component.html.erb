@@ -1,0 +1,10 @@
+<%= tag.header(**html_attributes(classes: [ block_name ])) do %>
+  <%= breadcrumb %>
+  <div class="dp-page-header__row">
+    <div class="dp-page-header__titles">
+      <%= content_tag("h#{@level}", @title, class: "dp-page-header__title") %>
+      <% if @subtitle.present? %><%= tag.p(@subtitle, class: "dp-page-header__subtitle") %><% end %>
+    </div>
+    <%= actions %>
+  </div>
+<% end %>

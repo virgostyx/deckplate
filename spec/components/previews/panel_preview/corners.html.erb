@@ -1,0 +1,6 @@
+<div class="dp-root gx-page">
+  <p class="gx-label">corners: :left</p>
+  <%= render(Deckplate::Layout::PanelComponent.new(title: "Navigation", color: :tertiary, corners: :left)) { "Heading 214 mark 7. Course corrections applied." } %>
+  <p class="gx-label">corners: :both</p>
+  <%= render(Deckplate::Layout::PanelComponent.new(title: "Sensors", color: :info, corners: :both)) { "Long-range scan complete." } %>
+</div>

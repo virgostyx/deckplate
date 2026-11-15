@@ -1,0 +1,10 @@
+<div class="dp-root gx-page">
+  <%= render(Deckplate::Layout::PageHeaderComponent.new(title: "Sensor array diagnostics", subtitle: "Deck 4 · last sweep 14:02")) do |h|
+    h.with_breadcrumb { "Ships / Aurora / Sensors" }
+    h.with_actions { tag.span("[actions go here]", class: "gx-label") }
+  end %>
+  <p class="gx-label">long title in a narrow container (14rem)</p>
+  <div style="inline-size: 14rem">
+    <%= render Deckplate::Layout::PageHeaderComponent.new(title: "Extraordinarily long diagnostics title that wraps", subtitle: "Narrow") %>
+  </div>
+</div>
