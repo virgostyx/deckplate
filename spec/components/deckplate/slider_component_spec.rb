@@ -52,6 +52,18 @@ RSpec.describe Deckplate::SliderComponent, type: :component do
     expect(page).to have_css(".dp-slider.dp-c-info.x", visible: :all)
   end
 
+  it "merges input_html into the native input (class, data, aria), keeping the controller wiring" do
+    render_inline(described_class.new(name: "p", label: "P", value: 1,
+      input_html: { class: "extra", data: { action: "focus->x#y", foo: 1 }, aria: { invalid: "true", describedby: "p-hint" }, required: true }))
+    expect(input[:class].split).to include("dp-slider__input", "extra")
+    expect(input["data-action"]).to eq("input->dp-slider#update focus->x#y")
+    expect(input["data-foo"]).to eq("1")
+    expect(input["aria-invalid"]).to eq("true")
+    expect(input["aria-describedby"]).to eq("p-hint")
+    expect(input[:required]).not_to be_nil
+    expect(input["data-dp-slider-target"]).to eq("input")
+  end
+
   it "rejects inconsistent input" do
     expect { described_class.new(name: "", label: "P") }.to raise_error(ArgumentError, /name/)
     expect { described_class.new(name: "p", label: "") }.to raise_error(ArgumentError, /label/)

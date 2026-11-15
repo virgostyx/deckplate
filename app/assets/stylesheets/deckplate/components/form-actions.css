@@ -1,0 +1,9 @@
+@layer dp.components {
+  .dp-form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--dp-gap);
+  }
+  .dp-form-actions--end { justify-content: flex-end; }
+}

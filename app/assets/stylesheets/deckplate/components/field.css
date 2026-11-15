@@ -1,0 +1,39 @@
+@layer dp.components {
+  .dp-field {
+    display: grid;
+    gap: 0.3em;
+    min-inline-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .dp-field__label {
+    padding: 0;
+    color: var(--dp-ink);
+    font-family: var(--dp-font-display);
+    font-size: 1.0625rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .dp-field__required { margin-inline-start: 0.2em; color: var(--dp-danger); }
+  .dp-field__hint {
+    margin: 0;
+    color: var(--dp-ink-muted);
+    font-family: var(--dp-font-data);
+    font-size: 0.875rem;
+  }
+  .dp-field__control { min-inline-size: 0; }
+
+  /* Errors: an icon and text, never colour alone */
+  .dp-field__error {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5em;
+    color: var(--dp-danger);
+    font-size: 0.9375rem;
+  }
+  .dp-field__error .dp-icon { flex: none; margin-block-start: 0.2em; }
+  .dp-field__error-list { margin: 0; padding: 0; list-style: none; }
+  .dp-field--invalid .dp-input,
+  .dp-field--invalid .dp-choice__mark { border-color: var(--dp-danger); }
+}

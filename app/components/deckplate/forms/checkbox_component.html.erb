@@ -1,0 +1,8 @@
+<%= render_field do %>
+  <label class="dp-choice" for="<%= @field_id %>">
+    <% if @unchecked_value %><%= tag.input(type: "hidden", name: @name, value: @unchecked_value, autocomplete: "off") %><% end %>
+    <%= tag.input(type: "checkbox", value: @value, checked: @checked, **control_attributes(css: "dp-choice__input")) %>
+    <span class="dp-choice__mark" aria-hidden="true"></span>
+    <span class="dp-choice__text"><%= @label %><% if @required %><span class="dp-field__required" aria-hidden="true">*</span><span class="dp-sr-only"> (<%= t("deckplate.common.required") %>)</span><% end %></span>
+  </label>
+<% end %>

@@ -57,6 +57,26 @@ RSpec.describe Deckplate::BaseComponent, type: :component do
     end
   end
 
+  describe "aria-describedby merging" do
+    it "adds the component's ids to the caller's instead of replacing them" do
+      stub_const("Deckplate::DescribedComponent", Class.new(Deckplate::BaseComponent) do
+        def call = tag.div(**html_attributes(aria: { describedby: "hint-1 error-1", label: "Own" }))
+      end)
+      render_inline(Deckplate::DescribedComponent.new(aria: { describedby: "mine", label: "Theirs" }))
+      el = page.find("div")
+      expect(el["aria-describedby"]).to eq("hint-1 error-1 mine")
+      expect(el["aria-label"]).to eq("Theirs") # other aria keys: caller wins
+    end
+
+    it "leaves the component's value alone when the caller gives none" do
+      stub_const("Deckplate::DescribedComponent", Class.new(Deckplate::BaseComponent) do
+        def call = tag.div(**html_attributes(aria: { describedby: "hint-1" }))
+      end)
+      render_inline(Deckplate::DescribedComponent.new)
+      expect(page.find("div")["aria-describedby"]).to eq("hint-1")
+    end
+  end
+
   describe "style merging" do
     it "appends the caller's inline style after the component's, never replacing it" do
       stub_const("Deckplate::StyledComponent", Class.new(Deckplate::BaseComponent) do

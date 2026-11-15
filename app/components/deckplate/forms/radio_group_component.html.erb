@@ -1,0 +1,11 @@
+<%= render_field do %>
+  <%= tag.div(**group_attributes) do %>
+    <% @choices.each do |text, value| %>
+      <label class="dp-choice" for="<%= radio_id(value) %>">
+        <%= tag.input(type: "radio", value: value, checked: (value == @value), class: "dp-choice__input", **radio_attributes(value)) %>
+        <span class="dp-choice__mark dp-choice__mark--radio" aria-hidden="true"></span>
+        <span class="dp-choice__text"><%= text %></span>
+      </label>
+    <% end %>
+  <% end %>
+<% end %>

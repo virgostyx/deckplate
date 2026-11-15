@@ -24,3 +24,6 @@ fr:
       empty: "Aucune donnée"
     frame:
       menu: "Menu"
+    forms:
+      error_prefix: "Erreur"
+      select_prompt: "Choisir…"

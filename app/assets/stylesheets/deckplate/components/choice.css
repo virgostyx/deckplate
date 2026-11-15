@@ -1,0 +1,62 @@
+@layer dp.components {
+  /* Checkbox and radio: the native input stays focusable and in the layout; the mark is drawn next to it */
+  .dp-choice {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75em;
+    min-block-size: var(--dp-touch-min);
+    color: var(--dp-ink);
+    cursor: pointer;
+  }
+  .dp-choice__input {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    margin: 0;
+    opacity: 0;
+  }
+  .dp-choice__mark {
+    position: relative;
+    flex: none;
+    box-sizing: border-box;
+    inline-size: calc(1.4 * var(--dp-u));
+    block-size: calc(1.4 * var(--dp-u));
+    border: 2px solid var(--dp-line);
+    border-radius: calc(var(--dp-u) * 0.3);
+    background-color: var(--dp-surface);
+  }
+  .dp-choice__mark--radio { border-radius: 50%; }
+  /* Checked: filled, with a tick (checkbox) or a dot (radio) so the state is a shape, not only a colour */
+  .dp-choice__input:checked + .dp-choice__mark {
+    border-color: var(--dp-primary);
+    background-color: var(--dp-primary);
+  }
+  .dp-choice__input:checked + .dp-choice__mark::after {
+    content: "";
+    position: absolute;
+    inset: 18% 32% 28%;
+    border: solid var(--dp-primary-ink);
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
+  .dp-choice__input:checked + .dp-choice__mark--radio::after {
+    inset: 28%;
+    border: 0;
+    border-radius: 50%;
+    background-color: var(--dp-primary-ink);
+    transform: none;
+  }
+  .dp-choice__input:focus-visible + .dp-choice__mark {
+    outline: 2px solid var(--dp-focus);
+    outline-offset: 2px;
+  }
+  .dp-choice__input[aria-invalid="true"] + .dp-choice__mark { border-color: var(--dp-danger); border-width: 3px; }
+  .dp-choice__input:disabled + .dp-choice__mark { border-style: dashed; border-color: var(--dp-disabled); background-color: transparent; }
+  .dp-choice__input:disabled ~ .dp-choice__text { color: var(--dp-ink-muted); }
+  .dp-choice:has(.dp-choice__input:disabled) { cursor: not-allowed; }
+  .dp-choice__text { font-family: var(--dp-font-text); }
+
+  .dp-radio-group { display: flex; gap: 0.25em 1.5em; }
+  .dp-radio-group--stack { flex-direction: column; align-items: flex-start; gap: 0.1em; }
+  .dp-radio-group--inline { flex-flow: row wrap; }
+}

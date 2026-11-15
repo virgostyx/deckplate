@@ -3,6 +3,5 @@
     <%= tag.label(@label, for: input_id, class: "dp-slider__label") %>
     <% if @show_value %><%= tag.output(readout, for: input_id, class: "dp-slider__value", data: { dp_slider_target: "output" }) %><% end %>
   </div>
-  <%= tag.input(type: "range", id: input_id, name: @name, min: @min, max: @max, step: @step, value: @value, disabled: @disabled,
-                class: "dp-slider__input", data: { dp_slider_target: "input", action: "input->dp-slider#update" }) %>
+  <%= tag.input(**input_attributes) %>
 <% end %>
