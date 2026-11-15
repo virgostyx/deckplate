@@ -1,0 +1,5 @@
+<div class="dp-root gx-page"><div class="gx-form">
+  <%= render Deckplate::Forms::RangeComponent.new(name: "a", label: "With hint", value: 30, unit: " kW", min: 0, max: 50, hint: "Reactor output") %>
+  <%= render Deckplate::Forms::RangeComponent.new(name: "b", label: "Invalid", value: 5, errors: [ "must be at least 10" ]) %>
+  <%= render Deckplate::Forms::RangeComponent.new(name: "c", label: "Disabled", value: 60, disabled: true) %>
+</div></div>

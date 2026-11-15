@@ -1116,6 +1116,13 @@
   }
   .dp-choice__input[aria-invalid="true"] + .dp-choice__mark { border-color: var(--dp-danger); border-width: 3px; }
   .dp-choice__input:disabled + .dp-choice__mark { border-style: dashed; border-color: var(--dp-disabled); background-color: transparent; }
+  .dp-choice__input:disabled:checked + .dp-choice__mark {
+    border-style: solid;
+    border-color: var(--dp-disabled);
+    background-color: var(--dp-disabled);
+  }
+  .dp-choice__input:disabled:checked + .dp-choice__mark::after { border-color: var(--dp-canvas); }
+  .dp-choice__input:disabled:checked + .dp-choice__mark--radio::after { background-color: var(--dp-canvas); }
   .dp-choice__input:disabled ~ .dp-choice__text { color: var(--dp-ink-muted); }
   .dp-choice:has(.dp-choice__input:disabled) { cursor: not-allowed; }
   .dp-choice__text { font-family: var(--dp-font-text); }

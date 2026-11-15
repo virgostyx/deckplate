@@ -1,0 +1,6 @@
+<div class="dp-root gx-page">
+  <%= render(Deckplate::Forms::FormActionsComponent.new) do %>
+    <%= render Deckplate::ButtonComponent.new(label: "Save", type: "submit", color: :success) %>
+    <%= render Deckplate::ButtonComponent.new(label: "Cancel", href: "/", color: :muted) %>
+  <% end %>
+</div>

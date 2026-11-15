@@ -1,0 +1,5 @@
+<div class="dp-root gx-page"><div class="gx-form">
+  <%= render Deckplate::Forms::FileInputComponent.new(name: "a", label: "Several files", multiple: true, hint: "PNG or JPEG, 2 MB maximum") %>
+  <%= render Deckplate::Forms::FileInputComponent.new(name: "b", label: "Invalid", errors: [ "must be an image" ], required: true) %>
+  <%= render Deckplate::Forms::FileInputComponent.new(name: "c", label: "Disabled", disabled: true) %>
+</div></div>

@@ -1,0 +1,5 @@
+<div class="dp-root gx-page"><div class="gx-form">
+  <%= render Deckplate::Forms::TextareaComponent.new(name: "a", label: "Hint, 8 rows", rows: 8, hint: "Up to 200 characters", maxlength: 200) %>
+  <%= render Deckplate::Forms::TextareaComponent.new(name: "b", label: "Invalid", errors: [ "can't be blank" ], required: true) %>
+  <%= render Deckplate::Forms::TextareaComponent.new(name: "c", label: "Disabled", value: "Locked", disabled: true) %>
+</div></div>

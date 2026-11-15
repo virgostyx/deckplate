@@ -1,0 +1,7 @@
+<div class="dp-root gx-page"><div class="gx-form">
+  <% { date: Date.new(2026, 3, 9), time: Time.utc(2026, 3, 9, 14, 5), datetime_local: Time.utc(2026, 3, 9, 14, 5), month: Date.new(2026, 3, 9), week: Date.new(2026, 3, 9) }.each do |type, value| %>
+    <%= render Deckplate::Forms::DateInputComponent.new(name: "d[#{type}]", label: type.to_s.humanize, type: type, value: value) %>
+  <% end %>
+  <%= render Deckplate::Forms::DateInputComponent.new(name: "bad", label: "Invalid", errors: [ "can't be in the past" ], required: true) %>
+  <%= render Deckplate::Forms::DateInputComponent.new(name: "off", label: "Disabled", disabled: true, value: Date.new(2026, 1, 1)) %>
+</div></div>

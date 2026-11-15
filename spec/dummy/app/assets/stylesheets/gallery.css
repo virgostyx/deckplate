@@ -52,3 +52,4 @@
 .gx-console__line { font-family: var(--dp-font-display); text-transform: uppercase; color: var(--dp-accent); margin: .5em 0; padding-inline-start: calc(0.9 * var(--dp-u)); }
 .gx-console__line--lg { font-size: 2.5rem; }
 .gx-input { margin-inline-start: .5rem; padding: .4rem .6rem; background: var(--dp-surface-raised); color: var(--dp-ink); border: 1px solid var(--dp-line); font: inherit; }
+.gx-form { display: grid; gap: 1.1rem; max-inline-size: 28rem; }

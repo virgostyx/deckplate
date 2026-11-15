@@ -10,8 +10,10 @@
       <label class="dp-field__label" for="<%= @field_id %>"><%= label_content %></label>
     <% end %>
   <% end %>
-  <% if @hint.present? %><p class="dp-field__hint" id="<%= hint_id %>"><%= @hint %></p><% end %>
+  <% hint_html = (tag.p(@hint, class: "dp-field__hint", id: hint_id) if @hint.present?) %>
+  <%= hint_html if @label.present? %>
   <div class="dp-field__control"><%= content %></div>
+  <%= hint_html if @label.blank? %>
   <% if invalid? %>
     <%= tag.div(id: error_id, class: "dp-field__error", role: ("alert" if @alert)) do %>
       <%= helpers.dp_icon(:alert) %>

@@ -80,6 +80,15 @@ RSpec.describe Deckplate::Forms::FormFieldComponent, type: :component do
     end
   end
 
+  it "puts the hint after the control when the control draws its own label (nothing above it to describe)" do
+    render_inline(described_class.new(control_id: "c", label: nil, hint: "Applies to the next jump")) { "CONTROL" }
+    html = page.native.to_html
+    expect(html.index("CONTROL")).to be < html.index("Applies to the next jump")
+    render_inline(described_class.new(control_id: "c", label: "L", hint: "H")) { "CONTROL" }
+    html = page.native.to_html
+    expect(html.index("H</p>")).to be < html.index("CONTROL")
+  end
+
   it "has no label element when the control draws its own (checkbox)" do
     render_inline(described_class.new(control_id: "c", label: nil)) { "x" }
     expect(page).not_to have_css("label")

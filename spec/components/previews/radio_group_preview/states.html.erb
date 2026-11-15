@@ -1,0 +1,5 @@
+<div class="dp-root gx-page"><div class="gx-form">
+  <%= render Deckplate::Forms::RadioGroupComponent.new(name: "a", label: "Inline", layout: :inline, options: %w[Alpha Beta Gamma], hint: "Pick one") %>
+  <%= render Deckplate::Forms::RadioGroupComponent.new(name: "b", label: "Invalid and required", options: %w[Yes No], required: true, errors: [ "can't be blank" ], alert: true) %>
+  <%= render Deckplate::Forms::RadioGroupComponent.new(name: "c", label: "Disabled", options: %w[Yes No], value: "No", disabled: true) %>
+</div></div>

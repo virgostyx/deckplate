@@ -1,0 +1,10 @@
+<div class="dp-root gx-page"><div class="gx-form">
+  <% %i[text email password number search tel url].each do |type| %>
+    <%= render Deckplate::Forms::TextInputComponent.new(name: "t[#{type}]", label: type.to_s.humanize, type: type, value: (type == :password ? "secret" : nil), placeholder: "#{type}…") %>
+  <% end %>
+  <%= render Deckplate::Forms::TextInputComponent.new(name: "ship[hint]", label: "With hint", hint: "Three letters at least", required: true) %>
+  <%= render Deckplate::Forms::TextInputComponent.new(name: "ship[bad]", label: "Invalid", value: "x", errors: [ "is too short (minimum is 3 characters)", "must start with a letter" ], required: true, alert: true) %>
+  <%= render Deckplate::Forms::TextInputComponent.new(name: "ship[off]", label: "Disabled", value: "Locked", disabled: true) %>
+  <%= render Deckplate::Forms::TextInputComponent.new(name: "ship[ro]", label: "Read-only", value: "Fixed", readonly: true) %>
+  <%= render Deckplate::Forms::TextInputComponent.new(name: "ship[long]", label: "An extraordinarily long label that has to wrap in a narrow column", hint: "A long hint text that also has to wrap instead of overflowing the form column on small screens", errors: [ "An error message that is long enough to wrap across several lines in a narrow container" ]) %>
+</div></div>

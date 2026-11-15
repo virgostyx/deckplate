@@ -1,0 +1,7 @@
+<div class="dp-root gx-page"><div class="gx-form">
+  <%= render Deckplate::Forms::CheckboxComponent.new(name: "a", label: "Checked", checked: true, hint: "Applies to the next jump") %>
+  <%= render Deckplate::Forms::CheckboxComponent.new(name: "b", label: "Required", required: true, errors: [ "must be accepted" ]) %>
+  <%= render Deckplate::Forms::CheckboxComponent.new(name: "c", label: "Disabled", disabled: true) %>
+  <%= render Deckplate::Forms::CheckboxComponent.new(name: "d", label: "Disabled and checked", disabled: true, checked: true) %>
+  <%= render Deckplate::Forms::CheckboxComponent.new(name: "e", label: "A label long enough that it wraps onto several lines inside this narrow column of the form") %>
+</div></div>

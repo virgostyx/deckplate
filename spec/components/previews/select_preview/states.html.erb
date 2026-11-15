@@ -1,0 +1,7 @@
+<div class="dp-root gx-page"><div class="gx-form">
+  <%= render Deckplate::Forms::SelectComponent.new(name: "a", label: "Blank option", options: %w[Alpha Beta Gamma], include_blank: true, hint: "Choose one") %>
+  <%= render Deckplate::Forms::SelectComponent.new(name: "b", label: "Groups", options: { "Fast" => %w[Scout Courier], "Slow" => %w[Freighter Tanker] }, value: "Tanker") %>
+  <%= render Deckplate::Forms::SelectComponent.new(name: "c", label: "Invalid", options: %w[Alpha Beta], include_blank: "Pick a ship", errors: [ "can't be blank" ], required: true) %>
+  <%= render Deckplate::Forms::SelectComponent.new(name: "d", label: "Disabled", options: %w[Alpha], disabled: true) %>
+  <%= render Deckplate::Forms::SelectComponent.new(name: "e", label: "Long options", options: [ "An option whose label is far too long for the narrow column it is displayed in" ]) %>
+</div></div>

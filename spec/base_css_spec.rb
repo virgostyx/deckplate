@@ -34,6 +34,10 @@ RSpec.describe "base styles and scoping" do
     expect(css).to match(/@media \(forced-colors: active\)/)
   end
 
+  it "keeps a visible checked mark on a disabled checked choice (state must not be lost)" do
+    expect(css).to match(/\.dp-choice__input:disabled:checked \+ \.dp-choice__mark\s*\{[^}]*background-color:\s*var\(--dp-disabled\)/m)
+  end
+
   it "ships a screen-reader-only utility" do
     expect(css).to match(/\.dp-sr-only\s*\{[^}]*clip/m)
   end
