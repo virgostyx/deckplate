@@ -1,0 +1,11 @@
+@layer dp.components {
+  .dp-button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--dp-gap);
+  }
+  .dp-button-group--vertical {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

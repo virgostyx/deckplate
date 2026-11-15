@@ -1,0 +1,17 @@
+<% inner = capture do %>
+  <% if @icon %><%= helpers.dp_icon(@icon) %><% end %>
+  <%= tag.span(@label.presence || content, class: "dp-button__label") %>
+  <% if @loading %>
+    <span class="dp-button__spinner" aria-hidden="true"></span>
+    <span class="dp-sr-only"><%= t("deckplate.common.loading") %></span>
+  <% end %>
+<% end %>
+<% if @http_method %>
+  <%= helpers.button_to(@href, method: @http_method, form_class: "dp-button-form", disabled: unavailable?, **attributes) { inner } %>
+<% elsif @href && unavailable? %>
+  <%= tag.a(inner, role: "link", tabindex: -1, **attributes) %>
+<% elsif @href %>
+  <%= tag.a(inner, href: @href, **attributes) %>
+<% else %>
+  <%= tag.button(inner, type: @type, disabled: native_disabled?, **attributes) %>
+<% end %>

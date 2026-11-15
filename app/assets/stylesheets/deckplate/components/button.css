@@ -1,0 +1,81 @@
+@layer dp.components {
+  .dp-button {
+    --dp-btn-h: calc(2 * var(--dp-u));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    box-sizing: border-box;
+    max-inline-size: 100%;
+    block-size: var(--dp-btn-h);
+    min-inline-size: var(--dp-btn-h);
+    padding: 0 1.25em;
+    border: 0;
+    background-color: var(--dp-c);
+    color: var(--dp-c-ink);
+    font-family: var(--dp-font-display);
+    font-size: calc(var(--dp-btn-h) * 0.5);
+    line-height: 1;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: filter 50ms linear; /* the press "flash" */
+  }
+  .dp-button--xs { --dp-btn-h: calc(1.1 * var(--dp-u)); padding-inline: 0.9em; }
+  .dp-button--sm { --dp-btn-h: calc(1.5 * var(--dp-u)); }
+  .dp-button--md { --dp-btn-h: calc(2 * var(--dp-u)); }
+  .dp-button--lg { --dp-btn-h: calc(2.5 * var(--dp-u)); }
+  .dp-button--xl { --dp-btn-h: calc(3 * var(--dp-u)); padding-inline: 1.75em; }
+
+  .dp-button--pill { border-radius: var(--dp-pill-r); }
+  .dp-button--block { border-radius: 0; }
+  .dp-button--start {
+    border-start-start-radius: var(--dp-pill-r);
+    border-end-start-radius: var(--dp-pill-r);
+  }
+  .dp-button--end {
+    border-start-end-radius: var(--dp-pill-r);
+    border-end-end-radius: var(--dp-pill-r);
+  }
+
+  .dp-button:hover { filter: brightness(1.1); }
+  .dp-button:active { filter: brightness(1.45); }
+
+  .dp-button:disabled,
+  .dp-button[aria-disabled="true"] {
+    background-color: var(--dp-disabled);
+    color: var(--dp-canvas);
+    cursor: not-allowed;
+    filter: none;
+  }
+  .dp-button--loading { cursor: progress; }
+
+  .dp-button__label { min-inline-size: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .dp-button .dp-icon { flex: none; }
+
+  /* Segmented-bars loader (decorative; the text alternative is a .dp-sr-only span) */
+  .dp-button__spinner {
+    flex: none;
+    inline-size: 1.1em;
+    block-size: 0.9em;
+    background:
+      linear-gradient(currentColor 0 0) 0 100% / 0.25em 40% no-repeat,
+      linear-gradient(currentColor 0 0) 50% 100% / 0.25em 70% no-repeat,
+      linear-gradient(currentColor 0 0) 100% 100% / 0.25em 100% no-repeat;
+    animation: dp-bars 700ms steps(4) infinite alternate;
+  }
+  @keyframes dp-bars {
+    to { background-size: 0.25em 100%, 0.25em 40%, 0.25em 70%; }
+  }
+
+  /* button_to wraps the button in a form: let the button take part in the parent's layout */
+  .dp-button-form { display: contents; }
+
+  @media (pointer: coarse) {
+    .dp-button { min-block-size: var(--dp-touch-min); }
+  }
+  @media (forced-colors: active) {
+    .dp-button { border: 2px solid ButtonText; }
+  }
+}

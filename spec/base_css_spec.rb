@@ -6,6 +6,7 @@ RSpec.describe "base styles and scoping" do
   it "never styles bare elements or global selectors outside .dp-* / :root / [data-dp-theme] (SPEC 6.3)" do
     stripped = css.gsub(%r{/\*.*?\*/}m, "").gsub(/@font-face\s*\{.*?\}/m, "")
     selectors = stripped.scan(/([^{};]+)\{/).flatten.map(&:strip).reject { _1.start_with?("@") }
+                        .reject { _1.match?(/\A(from|to|\d+(\.\d+)?%)(\s*,\s*(from|to|\d+(\.\d+)?%))*\z/) } # @keyframes steps
     offenders = selectors.flat_map { |s| s.split(",").map(&:strip) }
                          .reject { |s| s.match?(/\A(:root\z|\[data-dp-theme=|\.dp-)/) }
     expect(offenders).to eq([])

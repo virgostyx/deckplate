@@ -1,0 +1,16 @@
+<div class="dp-root gx-page">
+  <% %i[pill block start end].each do |shape| %>
+    <p class="gx-label">shape: <%= shape %></p>
+    <div class="gx-row">
+      <% %i[xs sm md lg xl].each do |size| %>
+        <%= render Deckplate::ButtonComponent.new(label: size.to_s, shape: shape, size: size, color: :info) %>
+      <% end %>
+    </div>
+  <% end %>
+  <p class="gx-label">every role</p>
+  <div class="gx-row">
+    <% roles.each do |role| %>
+      <%= render Deckplate::ButtonComponent.new(label: role.to_s, color: role) %>
+    <% end %>
+  </div>
+</div>

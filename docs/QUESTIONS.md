@@ -55,3 +55,14 @@ The owner answers by editing the entry (change **Status** to `answered`) and the
 - **Default applied**: project-local `.ruby-version` = 3.3.5 (installed); the global rbenv version is untouched.
 - **Status**: answered
 - **Answer**: keep the project-local `.ruby-version` (confirmed by the owner).
+
+### Q-006 — Namespace of controls and navigation components
+- **Phase / task**: Phase 3, Button
+- **Question**: SPEC section 3 lists a `controls/` and `navigation/` folder, but the normative API examples (sections 4 and 8.6)
+  write `Deckplate::ButtonComponent` and `Deckplate::NavComponent` (no sub-namespace).
+- **Default applied**: follow the API examples: controls and navigation components are top-level constants
+  (`Deckplate::ButtonComponent`, `Deckplate::TabsComponent`, ...) in `app/components/deckplate/`. Shapes, layout, forms, data
+  and feedback keep their namespaces (`Shapes::`, `Layout::`, `Forms::`, `Data::`, `Feedback::`).
+- **Why this default is safe**: the public API is what users type; folder layout is internal and can be regrouped later with
+  Zeitwerk `collapse` without changing any constant.
+- **Status**: open

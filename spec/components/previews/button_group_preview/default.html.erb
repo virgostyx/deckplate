@@ -1,0 +1,7 @@
+<div class="dp-root gx-page">
+  <%= render(Deckplate::ButtonGroupComponent.new(label: "Ship actions")) do %>
+    <%= render Deckplate::ButtonComponent.new(label: "Engage", color: :primary) %>
+    <%= render Deckplate::ButtonComponent.new(label: "Hold", color: :secondary) %>
+    <%= render Deckplate::ButtonComponent.new(label: "Abort", color: :danger) %>
+  <% end %>
+</div>

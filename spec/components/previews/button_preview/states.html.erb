@@ -1,0 +1,27 @@
+<div class="dp-root gx-page">
+  <p class="gx-label">disabled / loading</p>
+  <div class="gx-row">
+    <%= render Deckplate::ButtonComponent.new(label: "Disabled", disabled: true) %>
+    <%= render Deckplate::ButtonComponent.new(label: "Saving", loading: true, color: :secondary) %>
+    <%= render Deckplate::ButtonComponent.new(label: "Disabled", disabled: true, shape: :block) %>
+  </div>
+  <p class="gx-label">as links (enabled, disabled)</p>
+  <div class="gx-row">
+    <%= render Deckplate::ButtonComponent.new(label: "Docs", href: "/docs", color: :tertiary) %>
+    <%= render Deckplate::ButtonComponent.new(label: "Unavailable", href: "/docs", disabled: true) %>
+  </div>
+  <p class="gx-label">with an icon</p>
+  <div class="gx-row">
+    <%= render Deckplate::ButtonComponent.new(label: "Search", icon: :search, color: :accent) %>
+    <%= render Deckplate::ButtonComponent.new(label: "Open", icon: :external, href: "/docs", shape: :block) %>
+    <%= render Deckplate::ButtonComponent.new(icon: :close, label: "Close", size: :sm, color: :danger) %>
+  </div>
+  <p class="gx-label">button_to (DELETE through a form)</p>
+  <div class="gx-row">
+    <%= render Deckplate::ButtonComponent.new(label: "Delete", href: "/ships/1", method: :delete, color: :danger) %>
+  </div>
+  <p class="gx-label">long label in a narrow container (10rem)</p>
+  <div style="max-inline-size: 10rem; overflow: hidden">
+    <%= render Deckplate::ButtonComponent.new(label: "A very long button label") %>
+  </div>
+</div>

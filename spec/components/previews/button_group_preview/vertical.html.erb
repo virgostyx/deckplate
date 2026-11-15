@@ -1,0 +1,9 @@
+<div class="dp-root gx-page">
+  <div style="inline-size: 12rem">
+    <%= render(Deckplate::ButtonGroupComponent.new(orientation: :vertical, label: "Decks")) do %>
+      <% %i[primary secondary tertiary accent].each_with_index do |c, i| %>
+        <%= render Deckplate::ButtonComponent.new(label: "Deck #{i + 1}", color: c, shape: :start) %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
