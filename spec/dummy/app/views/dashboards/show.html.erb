@@ -1,7 +1,7 @@
 <%= render Deckplate::Layout::PageHeaderComponent.new(title: "Dashboard", subtitle: "Updated in place with Turbo Streams") %>
 <div class="gx-dash">
   <%= render Deckplate::Data::GaugeComponent.new(label: "Power", value: [ @power, 100 ].min, id: "power-gauge") %>
-  <%= render Deckplate::Data::ReadoutComponent.new(label: "Coolant", value: @temp, unit: "°C", trend: :up, id: "temp-readout") %>
+  <%= render Deckplate::Data::ReadoutComponent.new(label: "Coolant", value: @temp, unit: "°C", trend: :up, id: "temp-readout", flicker: true) %>
 </div>
 <%= button_to "Refresh readings", dashboard_path, method: :patch, class: "dp-button dp-button--pill dp-button--md dp-c-primary", id: "refresh" %>
 <%= render(Deckplate::Data::TableComponent.new(rows: @readings, caption: "Readings", sort: @sort, dir: @dir, id: "readings",

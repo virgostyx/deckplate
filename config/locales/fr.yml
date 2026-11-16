@@ -60,3 +60,11 @@ fr:
       note: "Note"
       tip: "Astuce"
       warning: "Avertissement"
+    theme:
+      label: "Thème"
+      names:
+        classic: "Classique"
+        azure: "Azur"
+        nocturne: "Nocturne"
+        daylight: "Jour"
+        crimson: "Cramoisi"

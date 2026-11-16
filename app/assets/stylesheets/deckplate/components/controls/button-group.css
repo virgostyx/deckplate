@@ -9,3 +9,7 @@
     align-items: stretch;
   }
 }
+
+@layer dp.components {
+  .dp-theme-switcher { display: flex; flex-wrap: wrap; gap: var(--dp-gap); }
+}

@@ -222,6 +222,13 @@
   .dp-readout__trend { display: inline-flex; align-self: center; color: var(--dp-ink); }
 }
 @layer dp.components {
+  .dp-readout--flicker { animation: dp-flicker 700ms steps(1) 1; }
+  @keyframes dp-flicker {
+    0%, 40%, 80% { box-shadow: inset 0 0 0 2px var(--dp-c); }
+    20%, 60%, 100% { box-shadow: none; }
+  }
+}
+@layer dp.components {
   .dp-sparkline {
     display: inline-block;
     inline-size: 6rem;

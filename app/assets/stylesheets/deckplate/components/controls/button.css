@@ -53,6 +53,12 @@
   }
   .dp-button--loading { cursor: progress; }
 
+  /* A toggle button that is on: a bar under the label and a heavier weight, so the state is not a colour alone */
+  .dp-button[aria-pressed="true"] {
+    box-shadow: inset 0 calc(-0.25 * var(--dp-u)) 0 var(--dp-c-ink);
+    font-weight: 700;
+  }
+
   .dp-button__label { min-inline-size: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .dp-button .dp-icon { flex: none; }
 

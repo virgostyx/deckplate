@@ -96,6 +96,13 @@ RSpec.describe Deckplate::Layout::FrameComponent, type: :component do
       expect(page.find("main.dp-frame__main")[:tabindex]).to be_nil
     end
 
+    it "has no entrance animation unless asked" do
+      render_frame
+      expect(page).not_to have_css(".dp-frame--animate")
+      render_frame(animate: true)
+      expect(page).to have_css(".dp-frame.dp-frame--animate")
+    end
+
     it "can pin a theme on the frame" do
       render_frame(theme: :azure)
       expect(page).to have_css(".dp-frame[data-dp-theme='azure']")

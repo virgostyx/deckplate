@@ -20,7 +20,7 @@ class DashboardsController < ApplicationController
     load_state
     render turbo_stream: [
       turbo_stream.replace("power-gauge", Deckplate::Data::GaugeComponent.new(label: "Power", value: [ @power, 100 ].min, id: "power-gauge")),
-      turbo_stream.replace("temp-readout", Deckplate::Data::ReadoutComponent.new(label: "Coolant", value: @temp, unit: "°C", trend: :up, id: "temp-readout"))
+      turbo_stream.replace("temp-readout", Deckplate::Data::ReadoutComponent.new(label: "Coolant", value: @temp, unit: "°C", trend: :up, id: "temp-readout", flicker: true))
     ]
   end
 

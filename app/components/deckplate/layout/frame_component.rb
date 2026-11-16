@@ -4,6 +4,7 @@ module Deckplate
     # (the frame is a page-level layout: it fills the width of its parent). Below 48rem the sidebar becomes a native
     # popover opened by a "Menu" button (no JavaScript) and the corners are dropped.
     # Variants: :classic (sidebar left), :double (sidebar + aside), :minimal (header, main, footer only).
+    # `animate: true` plays a short entrance cascade (header bar reveal, sidebar slide, content fade); off under prefers-reduced-motion.
     class FrameComponent < BaseComponent
       variant :variant, %i[classic double minimal], default: :classic
 
@@ -15,10 +16,11 @@ module Deckplate
       renders_one :bottom_left_corner, ->(&block) { tag.div(class: "dp-frame__corner dp-frame__corner--bottom-start", &block) }
       renders_one :main
 
-      def initialize(variant: nil, theme: nil, fixed: false, **html_options)
+      def initialize(variant: nil, theme: nil, fixed: false, animate: false, **html_options)
         super(**html_options)
         assign_variants(variant:)
         @fixed = fixed
+        @animate = animate
         @theme = theme && validated_theme(theme)
       end
 
@@ -33,7 +35,7 @@ module Deckplate
       def show_corners? = !minimal?
 
       def frame_attributes
-        html_attributes(classes: [ block_name, *variant_classes, ("dp-frame--fixed" if @fixed) ],
+        html_attributes(classes: [ block_name, *variant_classes, ("dp-frame--fixed" if @fixed), ("dp-frame--animate" if @animate) ],
                         data: ({ dp_theme: @theme.to_s } if @theme) || {})
       end
 

@@ -1,0 +1,6 @@
+<%= tag.div(**switcher_attributes) do %>
+  <% themes.each do |theme| %>
+    <%= render Deckplate::ButtonComponent.new(label: title(theme), color: :muted, shape: :pill, size: :sm,
+          aria: { pressed: (theme.to_s == current).to_s }, data: { action: "dp-theme#select", dp_theme_name_param: theme.to_s }) %>
+  <% end %>
+<% end %>

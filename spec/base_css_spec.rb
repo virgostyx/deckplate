@@ -28,6 +28,8 @@ RSpec.describe "base styles and scoping" do
   it "neutralises motion under prefers-reduced-motion" do
     block = css[/@media \(prefers-reduced-motion: reduce\)\s*\{.*?^\}/m]
     expect(block).to include("--dp-t-fast", "animation-duration", "transition-duration")
+    # a delayed animation with fill-mode backwards would otherwise keep its element invisible for the whole delay
+    expect(block).to include("animation-delay: 0s", "transition-delay: 0s")
   end
 
   it "keeps focus visible in forced-colors mode" do

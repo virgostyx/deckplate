@@ -52,7 +52,9 @@
   .dp-root *::after {
     animation-duration: 1ms !important;
     animation-iteration-count: 1 !important;
+    animation-delay: 0s !important; /* a delayed, backwards-filled animation would keep its element hidden for the whole delay */
     transition-duration: 1ms !important;
+    transition-delay: 0s !important;
     scroll-behavior: auto !important;
   }
 }

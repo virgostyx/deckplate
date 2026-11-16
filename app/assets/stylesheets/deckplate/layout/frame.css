@@ -84,6 +84,19 @@
   }
   .dp-frame__sidebar::backdrop { background: rgb(0 0 0 / 0.6); }
 
+  /* Entrance cascade (animate: true): header bar reveal, then the sidebar slide, then the content fade. Only transform, opacity and
+     clip-path move: no layout shift. prefers-reduced-motion zeroes duration and delay (base.css). */
+  .dp-frame--animate .dp-frame__header { animation: dp-frame-reveal 300ms var(--dp-ease) both; }
+  .dp-frame--animate .dp-frame__main { animation: dp-frame-fade 500ms var(--dp-ease) 300ms backwards; }
+  @keyframes dp-frame-reveal {
+    from { clip-path: inset(0 100% 0 0); }
+    to { clip-path: inset(0 0 0 0); }
+  }
+  @keyframes dp-frame-fade { from { opacity: 0; } }
+  @keyframes dp-frame-slide {
+    from { transform: translateX(-100%); opacity: 0; }
+  }
+
   /* Minimal: header, main, footer in one column at any width */
   .dp-frame--minimal .dp-frame__grid {
     grid-template-areas: "header" "main" "footer";
@@ -136,5 +149,6 @@
       color: inherit;
     }
     .dp-frame--fixed .dp-frame__sidebar { overflow: auto; }
+    .dp-frame--animate .dp-frame__sidebar { animation: dp-frame-slide 400ms var(--dp-ease) 150ms backwards; }
   }
 }

@@ -60,3 +60,11 @@ en:
       note: "Note"
       tip: "Tip"
       warning: "Warning"
+    theme:
+      label: "Theme"
+      names:
+        classic: "Classic"
+        azure: "Azure"
+        nocturne: "Nocturne"
+        daylight: "Daylight"
+        crimson: "Crimson"
