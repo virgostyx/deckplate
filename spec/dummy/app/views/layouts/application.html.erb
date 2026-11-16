@@ -12,7 +12,7 @@
     <%= stylesheet_link_tag "gallery" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body class="dp-root">
+  <%= tag.body class: "dp-root", **dp_sound_attrs do %>
     <main class="gx-page">
       <%# The flash becomes toasts in the live region; a page may supply its own container (content_for :toast_container) %>
       <% if content_for?(:toast_container) %>
@@ -23,5 +23,5 @@
       <%= yield %>
     </main>
     <footer class="gx-page"><%= render Deckplate::ThemeSwitcherComponent.new %></footer>
-  </body>
+  <% end %>
 </html>

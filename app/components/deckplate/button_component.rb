@@ -28,11 +28,15 @@ module Deckplate
 
     private
 
+    # a short tick on click, only when sounds are enabled (the dp-sound controller is on an ancestor)
+    def sound_data = Deckplate.configuration.sounds ? { action: "click->dp-sound#play", dp_sound_tone_param: "tick" } : {}
+
     def unavailable? = @disabled || @loading
 
     def attributes
       html_attributes(
         classes: [ block_name, *variant_classes, color_class(@color), ("dp-button--loading" if @loading) ],
+        data: sound_data,
         aria: { busy: (true if @loading), disabled: (true if unavailable? && !native_disabled?) }.compact
       )
     end

@@ -68,3 +68,5 @@ en:
         nocturne: "Nocturne"
         daylight: "Daylight"
         crimson: "Crimson"
+    sound:
+      label: "Sound"

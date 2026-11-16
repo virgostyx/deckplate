@@ -36,10 +36,20 @@ module Deckplate
       { data: { dp_theme: dp_current_theme.to_s } }
     end
 
+    # Sound is opt-in (config.sounds): without it this is empty and no controller is attached. The controller listens for `dp:sound`
+    # window events and for the click tone of buttons; it creates no AudioContext before a user gesture.
+    def dp_sound_attrs
+      return {} unless Deckplate.configuration.sounds
+
+      { data: { controller: "dp-sound", action: "dp:sound@window->dp-sound#fromEvent turbo:before-morph-attribute->dp-sound#keepState" } }
+    end
+
     # <div class="dp-root">: canvas colour, fonts and focus ring apply inside it only.
     def dp_root(tag: :div, theme: nil, **options, &block)
       options[:class] = [ "dp-root", *Array(options[:class]) ]
       options[:data] = (options[:data] || {}).merge(dp_theme: dp_validated_theme(theme).to_s) if theme
+      sound = dp_sound_attrs[:data]
+      options[:data] = (options[:data] || {}).merge(sound) if sound
       content_tag(tag, capture(&block), **options)
     end
 

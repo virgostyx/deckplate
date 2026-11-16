@@ -5,6 +5,8 @@ All notable changes are documented here. Format: [Keep a Changelog](https://keep
 ## [Unreleased]
 
 ### Added
+- Phase 7 (in progress): `Frame animate:` entrance cascade, `Readout flicker:`, `ThemeSwitcherComponent` (`dp-theme`, cookie), opt-in sound
+  (`config.sounds`, `dp-sound`, `SoundToggleComponent`, `dp_sound_attrs`; ADR 0013; guide `docs/guides/motion-sound-theme.md`).
 - Project skeleton (Phase 0) and ADRs 0001-0005.
 - Phase 1 foundations: generated colour tokens (palette stops, roles), five themes (`classic`, `azure`, `nocturne`,
   `daylight`, `crimson`), bundled OFL fonts, `.dp-root` base styles, `Deckplate.configure`, `BaseComponent` with

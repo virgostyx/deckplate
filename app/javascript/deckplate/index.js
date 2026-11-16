@@ -7,6 +7,7 @@ import DpFlicker from "deckplate/controllers/dp_flicker_controller"
 import DpMenu from "deckplate/controllers/dp_menu_controller"
 import DpModal from "deckplate/controllers/dp_modal_controller"
 import DpSlider from "deckplate/controllers/dp_slider_controller"
+import DpSound from "deckplate/controllers/dp_sound_controller"
 import DpTheme from "deckplate/controllers/dp_theme_controller"
 import DpTabs from "deckplate/controllers/dp_tabs_controller"
 import DpToast from "deckplate/controllers/dp_toast_controller"
@@ -23,6 +24,7 @@ const controllers = {
   "dp-modal": DpModal,
   "dp-slider": DpSlider,
   "dp-tabs": DpTabs,
+  "dp-sound": DpSound,
   "dp-theme": DpTheme,
   "dp-toast": DpToast,
   "dp-tooltip": DpTooltip,

@@ -25,9 +25,13 @@ module Deckplate
       def color = KINDS.fetch(variants[:kind])[1]
       def icon = KINDS.fetch(variants[:kind])[2]
 
+      TONES = { info: "confirm", success: "confirm", warning: "alert", danger: "error" }.freeze
+
+      def tone = (TONES.fetch(variants[:kind]) if Deckplate.configuration.sounds)
+
       def toast_attributes
         html_attributes(classes: [ block_name, *variant_classes, color_class(color) ], role: role,
-                        data: { controller: "dp-toast", dp_toast_duration_value: @duration,
+                        data: { controller: "dp-toast", dp_toast_duration_value: @duration, dp_toast_tone_value: tone,
                                 action: "mouseenter->dp-toast#pause mouseleave->dp-toast#resume focusin->dp-toast#pause focusout->dp-toast#resume" })
       end
     end

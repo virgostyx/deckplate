@@ -68,3 +68,5 @@ fr:
         nocturne: "Nocturne"
         daylight: "Jour"
         crimson: "Cramoisi"
+    sound:
+      label: "Son"

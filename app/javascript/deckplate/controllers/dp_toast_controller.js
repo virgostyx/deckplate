@@ -3,11 +3,12 @@ import { Controller } from "@hotwired/stimulus"
 // Toast: auto-dismiss after `duration` ms (0 = stays), paused while hovered or focused (WCAG 2.2.1), no timer left behind on
 // disconnect, and the stack is capped by the container's data-dp-toast-max (the oldest toasts are removed first).
 export default class extends Controller {
-  static values = { duration: Number }
+  static values = { duration: Number, tone: String }
 
   connect() {
     this.remaining = this.durationValue
     this.limitStack()
+    if (this.toneValue) window.dispatchEvent(new CustomEvent("dp:sound", { detail: { tone: this.toneValue } }))
     if (this.remaining > 0) this.start()
   }
 
