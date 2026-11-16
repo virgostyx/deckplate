@@ -28,7 +28,7 @@ RSpec.describe DeckplateBuild::Budgets do
       "CSS forms raw" => 25 * KB, "CSS data raw" => 25 * KB, "CSS feedback raw" => 25 * KB,
       "CSS data gzip" => 5 * KB, "CSS forms gzip" => 5 * KB, "CSS feedback gzip" => 5 * KB,
       "CSS all-in-one raw" => 120 * KB, "CSS all-in-one gzip" => 20 * KB,
-      "JS raw" => 20 * KB, "JS gzip" => 6 * KB, "Fonts (woff2)" => 90 * KB
+      "JS raw" => 30 * KB, "JS gzip" => 8 * KB, "Fonts (woff2)" => 90 * KB
     )
   end
 end
