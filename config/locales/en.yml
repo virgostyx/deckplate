@@ -43,3 +43,20 @@ en:
       graph: "Data for %{label}"
       graph_item: "Item"
       graph_value: "Value"
+    alert:
+      info: "Information"
+      success: "Success"
+      warning: "Warning"
+      danger: "Error"
+    condition:
+      normal: "Condition normal"
+      caution: "Caution"
+      critical: "Critical condition"
+    feedback:
+      notifications: "Notifications"
+      dismiss: "Dismiss notification"
+      note: "Note"
+    callout:
+      note: "Note"
+      tip: "Tip"
+      warning: "Warning"

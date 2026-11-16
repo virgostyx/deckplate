@@ -1,0 +1,31 @@
+@layer dp.components {
+  .dp-condition-banner {
+    display: flex;
+    align-items: center;
+    gap: 0.75em;
+    min-block-size: calc(2 * var(--dp-u));
+    padding: 0.35em 1em;
+    background-color: var(--dp-c);
+    color: var(--dp-c-ink);
+    font-family: var(--dp-font-display);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .dp-condition-banner__label { font-size: 1.125rem; }
+  .dp-condition-banner__detail { margin-inline-start: auto; font-family: var(--dp-font-data); letter-spacing: 0; text-transform: none; }
+
+  /* Critical: a static hazard marker (the cue that does not depend on motion) and a pulse that reduced motion turns off */
+  .dp-condition-banner__marker {
+    align-self: stretch;
+    flex: none;
+    inline-size: calc(1.5 * var(--dp-u));
+    margin: -0.35em 0 -0.35em -1em;
+    background: repeating-linear-gradient(-45deg, var(--dp-c-ink) 0 0.35rem, transparent 0.35rem 0.7rem);
+  }
+  .dp-condition-banner--critical { font-weight: 700; animation: dp-pulse 1.4s steps(2) infinite; }
+  @keyframes dp-pulse {
+    0%, 100% { filter: none; }
+    50% { filter: brightness(1.25); }
+  }
+  @media (forced-colors: active) { .dp-condition-banner { border: 2px solid CanvasText; } }
+}

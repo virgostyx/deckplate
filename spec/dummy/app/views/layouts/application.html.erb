@@ -14,8 +14,12 @@
   </head>
   <body class="dp-root">
     <main class="gx-page">
-      <%# Placeholder for the Toast component (Phase 6) %>
-      <% if notice %><div class="gx-flash" role="status"><%= notice %></div><% end %>
+      <%# The flash becomes toasts in the live region; a page may supply its own container (content_for :toast_container) %>
+      <% if content_for?(:toast_container) %>
+        <%= yield :toast_container %>
+      <% else %>
+        <%= dp_toast_container(max: 3) { notice ? render(Deckplate::Feedback::ToastComponent.new(kind: :success).with_content(notice)) : nil } %>
+      <% end %>
       <%= yield %>
     </main>
   </body>

@@ -1,0 +1,4 @@
+<%= tag.span(**spinner_attributes) do %>
+  <span class="dp-spinner__bars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span>
+  <% if @show_label %><span class="dp-spinner__label"><%= text %></span><% else %><span class="dp-sr-only"><%= text %></span><% end %>
+<% end %>

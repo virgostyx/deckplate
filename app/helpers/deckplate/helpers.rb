@@ -43,6 +43,18 @@ module Deckplate
       content_tag(tag, capture(&block), **options)
     end
 
+    # The Turbo Stream target for toasts: <%= dp_toast_container %> once in the layout, then
+    # turbo_stream.append "dp-toasts", Deckplate::Feedback::ToastComponent.new(...). A polite live region that announces additions.
+    # Flash messages can be rendered inside it (block). `max:` caps the stack (oldest removed). `permanent: true` keeps the container
+    # and its toasts across Turbo morphs, at the price that toasts rendered by the next page are ignored (see the feedback guide).
+    def dp_toast_container(max: 5, permanent: false, &block)
+      raise ArgumentError, "max must be an Integer >= 1, got #{max.inspect}" unless max.is_a?(Integer) && max >= 1
+
+      content_tag(:div, (capture(&block) if block), id: "dp-toasts", class: "dp-toast-container", role: "region",
+                  aria: { live: "polite", relevant: "additions", atomic: "false", label: t("deckplate.feedback.notifications") },
+                  data: { dp_toast_max: max, turbo_permanent: (true if permanent) }.compact)
+    end
+
     def dp_color_class(color)
       Concerns::Colorable.css_class(Concerns::Colorable.resolve(color))
     end

@@ -43,3 +43,20 @@ fr:
       graph: "Données de %{label}"
       graph_item: "Élément"
       graph_value: "Valeur"
+    alert:
+      info: "Information"
+      success: "Succès"
+      warning: "Avertissement"
+      danger: "Erreur"
+    condition:
+      normal: "État normal"
+      caution: "Prudence"
+      critical: "État critique"
+    feedback:
+      notifications: "Notifications"
+      dismiss: "Fermer la notification"
+      note: "Note"
+    callout:
+      note: "Note"
+      tip: "Astuce"
+      warning: "Avertissement"

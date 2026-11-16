@@ -1,0 +1,6 @@
+<%= tag.div(**banner_attributes) do %>
+  <% if critical? %><span class="dp-condition-banner__marker" aria-hidden="true"></span><% end %>
+  <%= helpers.dp_icon(icon) %>
+  <span class="dp-condition-banner__label"><%= text %></span>
+  <% if content? %><span class="dp-condition-banner__detail"><%= content %></span><% end %>
+<% end %>

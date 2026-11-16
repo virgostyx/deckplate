@@ -1,0 +1,10 @@
+<% content_for :toast_container do %>
+  <%= dp_toast_container(max: 3, permanent: params[:permanent].present?) %>
+<% end %>
+<%= render Deckplate::Layout::PageHeaderComponent.new(title: "Toasts", subtitle: "Appended to #dp-toasts by Turbo Stream responses") %>
+<div class="gx-row" id="toast-buttons">
+  <%= button_to "Success toast", toasts_path(kind: "success", duration: 700, message: "Saved"), class: "dp-button dp-button--pill dp-button--md dp-c-success", form_class: "dp-button-form" %>
+  <%= button_to "Slow toast", toasts_path(kind: "info", duration: 1500, message: "Slow info"), class: "dp-button dp-button--pill dp-button--md dp-c-info", form_class: "dp-button-form" %>
+  <%= button_to "Error toast", toasts_path(kind: "danger", message: "It failed"), class: "dp-button dp-button--pill dp-button--md dp-c-danger", form_class: "dp-button-form" %>
+  <%= button_to "Sticky toast", toasts_path(kind: "info", duration: 0, message: "Stays"), class: "dp-button dp-button--pill dp-button--md dp-c-secondary", form_class: "dp-button-form" %>
+</div>

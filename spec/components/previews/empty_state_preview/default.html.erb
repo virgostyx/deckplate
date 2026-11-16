@@ -1,0 +1,5 @@
+<div class="dp-root gx-page"><div style="max-inline-size: 36rem">
+  <%= render(Deckplate::Feedback::EmptyStateComponent.new(title: "No ships yet", hint: "Register your first ship to see it here.", icon: :search)) do |e|
+    e.with_action { render Deckplate::ButtonComponent.new(label: "Add a ship", href: "/ships/new") }
+  end %>
+</div></div>

@@ -1,0 +1,17 @@
+@layer dp.components {
+  .dp-skeleton { display: grid; gap: 0.6em; min-inline-size: 0; }
+  .dp-skeleton__shape {
+    display: block;
+    block-size: 1em;
+    border-radius: var(--dp-pill-r);
+    background: linear-gradient(90deg, var(--dp-surface-raised) 30%, var(--dp-line) 50%, var(--dp-surface-raised) 70%) 0 0 / 300% 100%;
+    animation: dp-shimmer 1.6s linear infinite;
+  }
+  .dp-skeleton--text .dp-skeleton__shape:nth-last-child(2):not(:first-child) { inline-size: 60%; }
+  .dp-skeleton--block .dp-skeleton__shape { block-size: 6rem; border-radius: calc(var(--dp-u) * 0.5); }
+  .dp-skeleton--circle .dp-skeleton__shape { inline-size: 4rem; aspect-ratio: 1; block-size: auto; border-radius: 50%; }
+  @keyframes dp-shimmer {
+    from { background-position: 100% 0; }
+    to { background-position: -100% 0; }
+  }
+}

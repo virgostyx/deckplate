@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   mount Lookbook::Engine, at: "/lookbook" if Rails.env.development?
 
   post "/demo/ships", to: "pages#create"
+  resource :toast, only: %i[show create], path: "toasts", as: :toasts
   resource :dashboard, only: %i[show update]
   get "csp", to: "csp#show"
   resource :profile, only: %i[show new create edit update]

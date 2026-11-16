@@ -1,0 +1,5 @@
+<%= tag.div(**toast_attributes) do %>
+  <%= helpers.dp_icon(icon) %>
+  <div class="dp-toast__message"><span class="dp-sr-only"><%= t("deckplate.alert.#{variants[:kind]}") %>:</span> <%= content %></div>
+  <button type="button" class="dp-toast__close" aria-label="<%= t('deckplate.feedback.dismiss') %>" data-action="dp-toast#dismiss"><%= helpers.dp_icon(:close) %></button>
+<% end %>

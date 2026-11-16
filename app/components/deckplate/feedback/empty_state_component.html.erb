@@ -1,0 +1,6 @@
+<%= tag.div(**state_attributes) do %>
+  <% if @icon %><span class="dp-empty-state__icon"><%= helpers.dp_icon(@icon) %></span><% end %>
+  <%= content_tag("h#{@level}", @title, class: "dp-empty-state__title") %>
+  <% if @hint.present? %><p class="dp-empty-state__hint"><%= @hint %></p><% end %>
+  <%= action %>
+<% end %>

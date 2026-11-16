@@ -1,0 +1,22 @@
+@layer dp.components {
+  .dp-spinner { --_h: 1.5rem; display: inline-flex; align-items: center; gap: 0.6em; color: var(--dp-ink); }
+  .dp-spinner--sm { --_h: 1rem; }
+  .dp-spinner--lg { --_h: 2.5rem; }
+  .dp-spinner__bars { display: inline-flex; align-items: flex-end; gap: calc(var(--_h) * 0.12); block-size: var(--_h); }
+  .dp-spinner__bars > span {
+    inline-size: calc(var(--_h) * 0.2);
+    block-size: 100%;
+    background-color: var(--dp-c);
+    transform-origin: bottom;
+    animation: dp-wave 1s steps(5) infinite;
+  }
+  .dp-spinner__bars > span:nth-child(2) { animation-delay: -0.8s; }
+  .dp-spinner__bars > span:nth-child(3) { animation-delay: -0.6s; }
+  .dp-spinner__bars > span:nth-child(4) { animation-delay: -0.4s; }
+  .dp-spinner__bars > span:nth-child(5) { animation-delay: -0.2s; }
+  .dp-spinner__label { font-family: var(--dp-font-display); letter-spacing: 0.06em; text-transform: uppercase; }
+  @keyframes dp-wave {
+    0%, 100% { transform: scaleY(0.35); }
+    50% { transform: scaleY(1); }
+  }
+}

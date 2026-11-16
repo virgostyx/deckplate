@@ -1,0 +1,7 @@
+<div class="dp-root gx-page"><div style="max-inline-size: 34rem; display: grid; gap: .75rem">
+  <% %i[info success warning danger].each do |kind| %>
+    <%= render(Deckplate::Feedback::AlertComponent.new(kind: kind, title: kind.to_s.humanize, dismissible: kind == :danger)) { "This is a #{kind} message with some detail." } %>
+  <% end %>
+  <%= render(Deckplate::Feedback::AlertComponent.new(kind: :warning, dismissible: true, id: "long-alert")) { "Averyveryverylongunbreakablemessagethatmustwrapinsidethealertwithoutoverflowingthescreenatall and then ordinary words." } %>
+  <%= render Deckplate::ButtonComponent.new(label: "Next focusable", color: :muted) %>
+</div></div>

@@ -1,0 +1,4 @@
+<div class="dp-root gx-page"><div class="gx-row" style="gap: 2rem">
+  <% %i[sm md lg].each { |size| %><%= render Deckplate::Feedback::SpinnerComponent.new(size: size, color: :info) %><% } %>
+  <%= render Deckplate::Feedback::SpinnerComponent.new(label: "Fetching sensor data", show_label: true, color: :accent) %>
+</div></div>

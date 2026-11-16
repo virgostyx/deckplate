@@ -1,0 +1,4 @@
+<div class="dp-root gx-page"><div style="max-inline-size: 36rem; display: grid; gap: .75rem">
+  <% %i[note tip warning].each { |kind| %><%= render(Deckplate::Feedback::CalloutComponent.new(kind: kind)) { "A #{kind} inside the running text, long enough to wrap onto a second line when the column is narrow." } %><% } %>
+  <%= render(Deckplate::Feedback::CalloutComponent.new(kind: :warning, title: "Custom title")) { "Averyveryverylongunbreakablewordinsideacalloutthatmustwrapwithoutoverflowing" } %>
+</div></div>

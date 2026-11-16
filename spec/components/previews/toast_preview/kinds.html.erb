@@ -1,0 +1,4 @@
+<div class="dp-root gx-page"><div style="max-inline-size: 26rem; display: grid; gap: .5rem">
+  <% %i[info success warning danger].each { |kind| %><%= render(Deckplate::Feedback::ToastComponent.new(kind: kind, duration: 0)) { "A #{kind} toast." } %><% } %>
+  <%= render(Deckplate::Feedback::ToastComponent.new(kind: :danger, duration: 0)) { "Averyveryverylongunbreakabletoastmessagethatmustwrapinsidethetoast and more words." } %>
+</div></div>

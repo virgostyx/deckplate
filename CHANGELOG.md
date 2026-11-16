@@ -22,6 +22,9 @@ All notable changes are documented here. Format: [Keep a Changelog](https://keep
 - Phase 5 data display: `Readout`, `DataList`, `StatusPill`, `Progress`, `Gauge`, `BarGraph`, `Sparkline`, `Table` (sortable, footer,
   empty state), `Clock` (`dp-clock`), `DataCascade`; CSP-safe mode for every component with dynamic values (`dp-values`, `dp-v-0..100`,
   ADR 0010); Turbo Stream dashboard demo. Guide: `docs/guides/data-display.md`.
+- Phase 6 feedback: `Alert` (`dp-dismiss`), `ConditionBanner`, `Toast` (`dp-toast`, `dp_toast_container`, Turbo Stream usage, pause on
+  hover/focus, stack limit), `Spinner`, `Skeleton`, `EmptyState`, `Callout`. Guide: `docs/guides/feedback.md`.
+- Gzip CSS budget raised to 15 KB (ADR 0011).
 - The shipped `deckplate.css` no longer contains comments or blank lines (-23% gzip); the sources keep them.
 - `bin/visual --geometry`: elbow seam, edge-straightness and transparency check in Chrome, Firefox and WebKit.
 

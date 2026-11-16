@@ -1,0 +1,16 @@
+@layer dp.components {
+  .dp-empty-state {
+    display: grid;
+    justify-items: center;
+    gap: 0.5em;
+    padding: calc(2 * var(--dp-u)) var(--dp-u);
+    border: 2px dashed var(--dp-line);
+    border-radius: calc(var(--dp-u) * 0.75);
+    color: var(--dp-ink);
+    text-align: center;
+  }
+  .dp-empty-state__icon { color: var(--dp-ink-muted); font-size: 2.5rem; line-height: 1; }
+  .dp-empty-state__title { margin: 0; font-family: var(--dp-font-display); font-size: 1.5rem; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; }
+  .dp-empty-state__hint { max-inline-size: 34rem; margin: 0; color: var(--dp-ink-muted); }
+  .dp-empty-state__action { margin-block-start: 0.5em; }
+}

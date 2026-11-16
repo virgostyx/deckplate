@@ -1,0 +1,9 @@
+<%= tag.div(**alert_attributes) do %>
+  <%= helpers.dp_icon(icon) %>
+  <div class="dp-alert__body">
+    <span class="dp-sr-only"><%= t("deckplate.alert.#{variants[:kind]}") %>:</span>
+    <% if @title.present? %><strong class="dp-alert__title"><%= @title %></strong><% end %>
+    <%= content %>
+  </div>
+  <% if @dismissible %><button type="button" class="dp-alert__close" aria-label="<%= t('deckplate.common.close') %>" data-action="dp-dismiss#dismiss"><%= helpers.dp_icon(:close) %></button><% end %>
+<% end %>

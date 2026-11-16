@@ -1,0 +1,6 @@
+<div class="dp-root gx-page"><div style="display: grid; gap: .75rem">
+  <%= render Deckplate::Feedback::ConditionBannerComponent.new(condition: :normal) %>
+  <%= render(Deckplate::Feedback::ConditionBannerComponent.new(condition: :caution, label: "Radiation")) { "Avoid deck 4" } %>
+  <%= render(Deckplate::Feedback::ConditionBannerComponent.new(condition: :critical)) { "Hull breach, deck 7" } %>
+  <div style="max-inline-size: 18rem"><%= render(Deckplate::Feedback::ConditionBannerComponent.new(condition: :critical, label: "A long condition label")) { "With a long detail that has to wrap" } %></div>
+</div></div>

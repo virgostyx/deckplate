@@ -1,0 +1,13 @@
+@layer dp.components {
+  .dp-callout {
+    display: grid;
+    gap: 0.25em;
+    padding: 0.75em 1em;
+    border-inline-start: calc(0.35 * var(--dp-u)) solid var(--dp-c);
+    background-color: var(--dp-surface);
+    color: var(--dp-ink);
+  }
+  .dp-callout__kind { display: inline-flex; align-items: center; gap: 0.5em; font-family: var(--dp-font-display); letter-spacing: 0.06em; text-transform: uppercase; }
+  .dp-callout__kind .dp-icon { color: var(--dp-c); }
+  .dp-callout__body { overflow-wrap: anywhere; }
+}

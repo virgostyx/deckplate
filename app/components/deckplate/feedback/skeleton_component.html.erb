@@ -1,0 +1,4 @@
+<%= tag.div(**skeleton_attributes) do %>
+  <% @lines.times do %><span class="dp-skeleton__shape" aria-hidden="true"></span><% end %>
+  <span class="dp-sr-only"><%= text %></span>
+<% end %>
