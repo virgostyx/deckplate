@@ -7,6 +7,11 @@ All notable changes are documented here. Format: [Keep a Changelog](https://keep
 ### Added
 - Phase 7 (in progress): `Frame animate:` entrance cascade, `Readout flicker:`, `ThemeSwitcherComponent` (`dp-theme`, cookie), opt-in sound
   (`config.sounds`, `dp-sound`, `SoundToggleComponent`, `dp_sound_attrs`; ADR 0013; guide `docs/guides/motion-sound-theme.md`).
+- Metric-matched fallback fonts (ADR 0015) and a layout-shift spec; zoom/reflow (200 %, 400 %), forced-colours and touch-target specs; guides
+  `accessibility.md` and `theming.md`; JS budget 30 KB / 8 KB (ADR 0014).
+
+### Changed
+- Sized `Bar` segments and `Elbow` now shrink on narrow screens (reflow at 400 % zoom).
 - Project skeleton (Phase 0) and ADRs 0001-0005.
 - Phase 1 foundations: generated colour tokens (palette stops, roles), five themes (`classic`, `azure`, `nocturne`,
   `daylight`, `crimson`), bundled OFL fonts, `.dp-root` base styles, `Deckplate.configure`, `BaseComponent` with

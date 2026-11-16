@@ -11,8 +11,8 @@
     --dp-touch-min: 2.75rem;
 
     /* Typography (hosts may override the three families) */
-    --dp-font-display: "Antonio", "Arial Narrow", "Helvetica Neue Condensed", sans-serif;
-    --dp-font-data: "Share Tech Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --dp-font-display: "Antonio", "Antonio Fallback", "Arial Narrow", "Helvetica Neue Condensed", sans-serif;
+    --dp-font-data: "Share Tech Mono", "Share Tech Mono Fallback", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
     --dp-font-text: ui-sans-serif, system-ui, sans-serif;
 
     /* Motion */

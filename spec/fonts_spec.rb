@@ -15,7 +15,7 @@ RSpec.describe "Bundled fonts" do
   end
 
   it "declares font-display: swap and an existing file for every @font-face" do
-    faces = css.scan(/@font-face\s*\{(.*?)\}/m).flatten
+    faces = css.scan(/@font-face\s*\{(.*?)\}/m).flatten.reject { _1.include?("Fallback") } # local fallbacks: see the CLS spec below
     expect(faces.size).to be >= 3
     faces.each do |face|
       expect(face).to include("font-display: swap")
@@ -27,5 +27,16 @@ RSpec.describe "Bundled fonts" do
   it "covers latin and latin-ext for the display face (French/Dutch accents)" do
     expect(css).to include("U+0100-02BA") # latin-ext range
     expect(css).to match(/font-family: "Antonio"/)
+  end
+
+  # CLS: while the web font loads, a local font is scaled to the same width and line metrics, so the swap moves nothing (ADR 0015).
+  it "declares metric-adjusted local fallback faces, placed right after each web font in its stack" do
+    { "Antonio" => "Arial", "Share Tech Mono" => "Courier New" }.each do |family, local|
+      face = css.scan(/@font-face\s*\{(.*?)\}/m).flatten.find { _1.include?(%(font-family: "#{family} Fallback")) }
+      expect(face).to include(%(src: local("#{local}")))
+      expect(face).to match(/size-adjust: \d+(\.\d+)?%/)
+      expect(face).to match(/ascent-override: \d+(\.\d+)?%/).and match(/descent-override: \d+(\.\d+)?%/).and include("line-gap-override: 0%")
+      expect(css).to include(%("#{family}", "#{family} Fallback"))
+    end
   end
 end

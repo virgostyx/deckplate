@@ -141,8 +141,8 @@
     --dp-elbow-ri: calc(1.8 * var(--dp-u));
     --dp-pill-r: 9999px;
     --dp-touch-min: 2.75rem;
-    --dp-font-display: "Antonio", "Arial Narrow", "Helvetica Neue Condensed", sans-serif;
-    --dp-font-data: "Share Tech Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --dp-font-display: "Antonio", "Antonio Fallback", "Arial Narrow", "Helvetica Neue Condensed", sans-serif;
+    --dp-font-data: "Share Tech Mono", "Share Tech Mono Fallback", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
     --dp-font-text: ui-sans-serif, system-ui, sans-serif;
     --dp-t-fast: 100ms;
     --dp-t-base: 200ms;
@@ -177,6 +177,22 @@
   font-display: swap;
   src: url("deckplate/share-tech-mono-latin.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Antonio Fallback";
+  src: local("Arial");
+  size-adjust: 72.8%;
+  ascent-override: 158%;
+  descent-override: 19%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Share Tech Mono Fallback";
+  src: local("Courier New");
+  size-adjust: 90%;
+  ascent-override: 98.9%;
+  descent-override: 26.7%;
+  line-gap-override: 0%;
 }
 @layer dp.tokens {
   :root,
@@ -544,7 +560,7 @@
     color: var(--dp-c-ink);
   }
   .dp-bar__segment--sized {
-    flex: 0 0 calc(var(--dp-seg) * var(--dp-u));
+    flex: 0 1 calc(var(--dp-seg) * var(--dp-u));
   }
   .dp-bar--vertical .dp-bar__segment {
     writing-mode: vertical-rl;
@@ -697,6 +713,7 @@
     position: relative;
     flex: none;
     inline-size: var(--dp-elbow-w);
+    max-inline-size: 100%;
     block-size: var(--dp-elbow-h);
     background-color: var(--dp-c);
     color: var(--dp-c-ink);

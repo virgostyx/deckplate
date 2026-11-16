@@ -84,3 +84,11 @@ The owner answers by editing the entry (change **Status** to `answered`) and the
 - **Default applied**: budget left unchanged; `spec/budgets_spec.rb` stays red on purpose until the owner decides. Nothing was weakened.
 - **Status**: answered
 - **Answer**: raise the budget (owner). ADR 0014: 30 KB raw / 8 KB gzip.
+
+### Q-009 — `classic`: primary and warning are almost the same orange
+- **Phase / task**: Phase 7, theme polish review
+- **Question**: `primary` #FF9933 and `warning` #FF9900 are hard to tell apart. Change one (the palette comes from the author's earlier guide), or keep?
+- **Default applied**: palette unchanged; no component relies on colour alone (icon + text for warnings); documented in `docs/guides/accessibility.md`.
+- **Why this default is safe**: no visual baselines or contrast results change; the risk is a host using both roles for different meanings.
+- **Status**: open
+- **Answer**:

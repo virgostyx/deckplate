@@ -41,7 +41,7 @@
     color: var(--dp-c-ink);
   }
   .dp-bar__segment--sized {
-    flex: 0 0 calc(var(--dp-seg) * var(--dp-u));
+    flex: 0 1 calc(var(--dp-seg) * var(--dp-u)); /* sized, but yields on a narrow screen (reflow at 400% zoom) */
   }
   .dp-bar--vertical .dp-bar__segment {
     writing-mode: vertical-rl;
