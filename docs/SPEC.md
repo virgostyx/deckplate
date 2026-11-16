@@ -483,7 +483,7 @@ styles block this. Therefore:
 | axe (WCAG 2.2 AA tags) | 0 violations on every preview × every theme |
 | Contrast spec | all pairs pass |
 | Visual regression | no diff beyond threshold across previews × 5 themes × 3 widths (375, 768, 1280) |
-| CSS size (`deckplate.css`) | ≤ 80 KB raw / ≤ 12 KB gzip (raw raised from 60 KB by ADR 0009) |
+| CSS size (`deckplate.css`) | ≤ 80 KB raw / ≤ 15 KB gzip (raised from 60 / 12 KB by ADR 0009 and 0011) |
 | JS size (all controllers) | ≤ 20 KB raw / ≤ 6 KB gzip, no runtime dependencies |
 | Fonts | ≤ 90 KB total woff2 |
 | Install | `bin/integration` passes on (a) Rails + Propshaft + importmap, (b) the same + Tailwind 4 |
