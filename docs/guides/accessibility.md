@@ -24,4 +24,6 @@ What is checked automatically, and what is not.
 ## Known limitations
 - `classic`: `primary` (#FF9933) and `warning` (#FF9900) are almost the same orange. Components never rely on colour alone (see above), but do not
   use the two side by side to mean different things. See Q-009.
+- A large `Elbow` (md and up) is a fixed-size decorative shape: alone on a screen narrower than its width (320 px at the default size) it overflows.
+  Inside `Panel` and `Frame` it is laid out by the container. `Bar` segments with `size:` shrink on narrow screens.
 - Decorative shapes (Elbow, Bar, Cap...) are `aria-hidden`; give meaningful content real text.

@@ -15,7 +15,6 @@
     position: relative;
     flex: none;
     inline-size: var(--dp-elbow-w);
-    max-inline-size: 100%; /* reflow: the horizontal arm shortens on a narrow screen */
     block-size: var(--dp-elbow-h);
     background-color: var(--dp-c);
     color: var(--dp-c-ink);

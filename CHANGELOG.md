@@ -11,7 +11,7 @@ All notable changes are documented here. Format: [Keep a Changelog](https://keep
   `accessibility.md` and `theming.md`; JS budget 30 KB / 8 KB (ADR 0014).
 
 ### Changed
-- Sized `Bar` segments and `Elbow` now shrink on narrow screens (reflow at 400 % zoom).
+- Sized `Bar` segments now shrink on narrow screens (reflow at 400 % zoom).
 - Project skeleton (Phase 0) and ADRs 0001-0005.
 - Phase 1 foundations: generated colour tokens (palette stops, roles), five themes (`classic`, `azure`, `nocturne`,
   `daylight`, `crimson`), bundled OFL fonts, `.dp-root` base styles, `Deckplate.configure`, `BaseComponent` with

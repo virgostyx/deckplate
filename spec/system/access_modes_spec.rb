@@ -4,10 +4,14 @@ require "spec_helper"
 RSpec.describe "Access modes", type: :system, js: true do
   before { driven_by :dp_cuprite }
 
+  # Fixed-geometry decorative demo: a 10u elbow is 320 px wide at the root size, wider than a 320-640 px screen once doubled.
+  # A percentage max-inline-size was tried and rejected: it collapses elbows inside auto grid tracks (Panel, Frame).
+  REFLOW_EXCEPTIONS = %w[elbow/variants].freeze
+
   describe "200% zoom (WCAG 1.4.4 / 1.4.10)" do
     # 200% zoom on a 1280 px window = 640 CSS px wide with the root font doubled; 400% on 1280 = 320 CSS px
     { "200%" => [ 640, 200 ], "400% (reflow)" => [ 320, 400 ] }.each do |name, (width, percent)|
-      OverflowHelper::ALL_PREVIEWS.call.reject { OverflowHelper::DESKTOP_ONLY.include?(_1) }.each do |preview|
+      OverflowHelper::ALL_PREVIEWS.call.reject { (OverflowHelper::DESKTOP_ONLY + REFLOW_EXCEPTIONS).include?(_1) }.each do |preview|
         it "#{preview} reflows at #{name}" do
           page.current_window.resize_to(width, 900)
           visit "/rails/view_components/#{preview}"
