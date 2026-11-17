@@ -1,0 +1,35 @@
+/* Optional Tailwind 4 bridge: exposes Deckplate's tokens as utilities (bg-dp-primary, text-dp-ink, font-dp-display, ...).
+   `inline` keeps the values as live CSS variables, so the active theme still decides the colours. Components do not use it. */
+@theme inline {
+  --color-dp-primary: var(--dp-primary);
+  --color-dp-primary-ink: var(--dp-primary-ink);
+  --color-dp-secondary: var(--dp-secondary);
+  --color-dp-secondary-ink: var(--dp-secondary-ink);
+  --color-dp-tertiary: var(--dp-tertiary);
+  --color-dp-tertiary-ink: var(--dp-tertiary-ink);
+  --color-dp-accent: var(--dp-accent);
+  --color-dp-accent-ink: var(--dp-accent-ink);
+  --color-dp-muted: var(--dp-muted);
+  --color-dp-muted-ink: var(--dp-muted-ink);
+  --color-dp-info: var(--dp-info);
+  --color-dp-info-ink: var(--dp-info-ink);
+  --color-dp-success: var(--dp-success);
+  --color-dp-success-ink: var(--dp-success-ink);
+  --color-dp-warning: var(--dp-warning);
+  --color-dp-warning-ink: var(--dp-warning-ink);
+  --color-dp-danger: var(--dp-danger);
+  --color-dp-danger-ink: var(--dp-danger-ink);
+  --color-dp-emergency: var(--dp-emergency);
+  --color-dp-emergency-ink: var(--dp-emergency-ink);
+  --color-dp-canvas: var(--dp-canvas);
+  --color-dp-surface: var(--dp-surface);
+  --color-dp-surface-raised: var(--dp-surface-raised);
+  --color-dp-ink: var(--dp-ink);
+  --color-dp-ink-muted: var(--dp-ink-muted);
+  --color-dp-line: var(--dp-line);
+  --color-dp-focus: var(--dp-focus);
+  --color-dp-disabled: var(--dp-disabled);
+  --font-dp-display: var(--dp-font-display);
+  --font-dp-data: var(--dp-font-data);
+  --font-dp-text: var(--dp-font-text);
+}
