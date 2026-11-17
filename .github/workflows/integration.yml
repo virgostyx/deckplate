@@ -1,0 +1,19 @@
+name: Integration
+# Generates throwaway Rails apps (Propshaft + importmap, and + Tailwind 4), installs Deckplate and runs a headless smoke test.
+on:
+  pull_request: { branches: [main] }
+  schedule: [{ cron: "0 4 * * *" }]
+  workflow_dispatch:
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+      - run: bin/integration
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with: { name: integration-logs, path: tmp/integration/*.log }

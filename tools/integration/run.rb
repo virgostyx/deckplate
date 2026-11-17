@@ -55,7 +55,9 @@ def build_app(variant, tailwind:)
   FileUtils.mkdir_p(File.join(dir, "app/views/smoke"))
   FileUtils.cp(File.join(ROOT, "tools/integration/smoke_page.html.erb"), File.join(dir, "app/views/smoke/home.html.erb"))
   File.write(File.join(dir, "app/controllers/smoke_controller.rb"), "class SmokeController < ApplicationController\n  def home; end\nend\n")
-  File.write(File.join(dir, "config/routes.rb"), %(Rails.application.routes.draw do\n  get "up" => "rails/health#show"\n  root "smoke#home"\nend\n))
+  sh(dir, "bin/rails g deckplate:gallery", log)
+  routes = File.join(dir, "config/routes.rb")
+  File.write(routes, File.read(routes).sub(/^end\s*\z/, %(  root "smoke#home"\nend\n)))
   sh(dir, "bin/rails tailwindcss:build", log) if tailwind
   dir
 end
@@ -94,6 +96,9 @@ def smoke(variant, port, tailwind:)
   check(variant, "button is styled (padding and background)", js.("(function(){ var s = getComputedStyle(document.getElementById('plain-button')); return parseFloat(s.paddingLeft) > 4 && s.backgroundColor !== 'rgba(0, 0, 0, 0)' })()"))
   check(variant, "table rendered with a caption and column headers", js.("document.querySelectorAll('table caption, table th').length >= 3"))
   check(variant, "toast container is a live region with the toast", js.("document.querySelector('#dp-toasts[aria-live] .dp-toast') !== null"))
+
+  gallery = Net::HTTP.get_response(URI("http://127.0.0.1:#{port}/deckplate"))
+  check(variant, "the optional gallery page renders in development", gallery.is_a?(Net::HTTPSuccess) && gallery.body.include?("Colour roles"), gallery.code)
 
   browser.at_css("#open-modal").click
   sleep 0.4
