@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby
-# Concatenates the CSS sources into the shipped stylesheet (and regenerates tokens.css).
+# Concatenates the CSS sources into the shipped stylesheets, regenerates tokens.css and the design tokens export (config/deckplate/tokens.json).
 require_relative "../tools/css_builder"
+require_relative "../tools/tokens_exporter"
 root = File.expand_path("..", __dir__)
 DeckplateBuild::CssBuilder.new(root).write!
+DeckplateBuild::TokensExporter.new(root).write!
+puts "config/deckplate/tokens.json written"
 puts "deckplate.css built (#{File.size(File.join(root, DeckplateBuild::CssBuilder::BUNDLE))} bytes)"

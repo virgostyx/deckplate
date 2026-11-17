@@ -80,7 +80,7 @@ reader has been done yet.
 ## Documentation
 
 Guides are in `docs/guides/` of the repository: installation, stylesheets, Tailwind, theming, forms, data display, feedback, Turbo patterns,
-motion/sound/theme switching, CSP, accessibility, upgrading. The living component catalogue is a Lookbook (`bin/dev`, then
+motion/sound/theme switching, CSP, design tokens export (JSON), accessibility, upgrading. The living component catalogue is a Lookbook (`bin/dev`, then
 `http://localhost:3000/lookbook`).
 
 ## Development
