@@ -16,7 +16,7 @@ What is checked automatically, and what is not.
 - **Layout stability**: fallback fonts are metric-matched; layout shift stays under 0.02 even when the fonts arrive late (ADR 0015).
 
 ## Not checked
-- **No test with a real screen reader** (NVDA, JAWS, VoiceOver, TalkBack). ARIA roles and names are verified by axe and by specs, which does not prove
+- **No test with a real screen reader yet** (a manual checklist is in `screen-reader-checklist.md`) (NVDA, JAWS, VoiceOver, TalkBack). ARIA roles and names are verified by axe and by specs, which does not prove
   how a screen reader announces them. Run one before relying on a component in a critical flow.
 - Forced colours is emulated in Chromium only; Firefox and Windows themselves were not tested.
 - Automatic checks cover only part of WCAG; focus order in a host page, copy and language are the host's responsibility.

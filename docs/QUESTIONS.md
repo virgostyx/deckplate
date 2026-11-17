@@ -90,5 +90,5 @@ The owner answers by editing the entry (change **Status** to `answered`) and the
 - **Question**: `primary` #FF9933 and `warning` #FF9900 are hard to tell apart. Change one (the palette comes from the author's earlier guide), or keep?
 - **Default applied**: palette unchanged; no component relies on colour alone (icon + text for warnings); documented in `docs/guides/accessibility.md`.
 - **Why this default is safe**: no visual baselines or contrast results change; the risk is a host using both roles for different meanings.
-- **Status**: open
-- **Answer**:
+- **Status**: answered
+- **Answer**: keep the palette (owner decision); the limitation stays documented in `docs/guides/accessibility.md`.
