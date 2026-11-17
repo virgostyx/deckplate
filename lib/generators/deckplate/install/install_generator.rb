@@ -13,6 +13,9 @@ module Deckplate
       LAYOUT = "app/views/layouts/application.html.erb".freeze
       STIMULUS_INDEX = "app/javascript/controllers/index.js".freeze
       TAILWIND_SOURCE = "app/assets/tailwind/application.css".freeze
+      BRIDGE_FILE = "app/assets/tailwind/deckplate-bridge.css".freeze
+      BRIDGE_IMPORT = '@import "./deckplate-bridge.css";'.freeze
+      TAILWIND_IMPORT = /^@import\s+["']tailwindcss["'];/
 
       def create_initializer
         if File.exist?(File.join(destination_root, "config/initializers/deckplate.rb"))
@@ -57,12 +60,22 @@ module Deckplate
         return unless File.exist?(path)
 
         content = File.read(path)
-        if content.include?(LAYER_PRELUDE)
-          say_status :identical, "#{TAILWIND_SOURCE} (layer prelude already there)", :blue
-        else
-          File.write(path, "#{LAYER_PRELUDE}\n#{content}")
-          say_status :update, "#{TAILWIND_SOURCE} (layer prelude first, ADR 0003)", :green
+        content = "#{LAYER_PRELUDE}\n#{content}" unless content.include?(LAYER_PRELUDE)
+        unless content.include?(BRIDGE_IMPORT)
+          if content.match?(TAILWIND_IMPORT)
+            content = content.sub(TAILWIND_IMPORT) { "#{$&}\n#{BRIDGE_IMPORT}" }
+          else
+            manual_steps << [ :tailwind, "no @import \"tailwindcss\" found", [ BRIDGE_IMPORT, "(after your Tailwind import, in #{TAILWIND_SOURCE})" ] ]
+            say_status :manual, "no @import \"tailwindcss\" in #{TAILWIND_SOURCE}", :yellow
+          end
         end
+        if File.read(path) == content
+          say_status :identical, "#{TAILWIND_SOURCE} (prelude and bridge import already there)", :blue
+        else
+          File.write(path, content)
+          say_status :update, "#{TAILWIND_SOURCE} (layer prelude first, ADR 0003; bridge import, ADR 0016)", :green
+        end
+        copy_file "tailwind_bridge.css", BRIDGE_FILE, skip: true
       end
 
       def print_summary

@@ -94,18 +94,32 @@ RSpec.describe Deckplate::Generators::InstallGenerator do
   end
 
   describe "Tailwind" do
+    let(:tw) { FixtureApp.build(tailwind: true) }
+    after { FileUtils.remove_entry(tw) }
+
     it "puts the layer prelude on the first line of the Tailwind source (ADR 0003)" do
-      tw = FixtureApp.build(tailwind: true)
       run_install(tw)
       css = FixtureApp.read(tw, "app/assets/tailwind/application.css")
       expect(css.lines.first.strip).to eq("@layer theme, base, dp, components, utilities;")
       expect(css).to include('@import "tailwindcss";')
-      FileUtils.remove_entry(tw)
+    end
+
+    it "copies the bridge into the host and imports it after Tailwind (ADR 0016)" do
+      run_install(tw)
+      css = FixtureApp.read(tw, "app/assets/tailwind/application.css")
+      expect(css.index('@import "tailwindcss";')).to be < css.index('@import "./deckplate-bridge.css";')
+      expect(FixtureApp.read(tw, "app/assets/tailwind/deckplate-bridge.css")).to include("@theme inline {", "--color-dp-primary: var(--dp-primary);")
+    end
+
+    it "prints the import to add when the Tailwind source has no @import \"tailwindcss\"" do
+      FixtureApp.write(tw, "app/assets/tailwind/application.css", "@tailwind base;\n")
+      expect(run_install(tw)).to include('@import "./deckplate-bridge.css";')
     end
 
     it "leaves the CSS alone without Tailwind" do
       run_install
       expect(FixtureApp.exist?(root, "app/assets/tailwind/application.css")).to be(false)
+      expect(FixtureApp.exist?(root, "app/assets/tailwind/deckplate-bridge.css")).to be(false)
     end
   end
 

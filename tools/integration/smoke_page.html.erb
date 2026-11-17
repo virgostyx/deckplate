@@ -1,0 +1,22 @@
+<%# Smoke page of the integration test: Frame, Button, Table, Modal, Toast. %>
+<%= render(Deckplate::Layout::FrameComponent.new) do |f|
+  f.with_header { render(Deckplate::Shapes::BarComponent.new(color: :accent, caps: :end)) { |b| b.with_title { "Host app" } } }
+  f.with_main do
+    safe_join([
+      render(Deckplate::Layout::PageHeaderComponent.new(title: "Smoke test")),
+      render(Deckplate::ButtonComponent.new(label: "Plain", id: "plain-button")),
+      render(Deckplate::ButtonComponent.new(label: "Utility", id: "utility-button", class: "bg-red-500")),
+      tag.div("bridge", id: "bridge", class: "bg-dp-primary text-dp-primary-ink"),
+      render(Deckplate::Data::TableComponent.new(rows: [ [ "Power", 72.5 ] ], caption: "Readings")) do |t|
+        t.with_column(:name, header: "Sensor", row_header: true) { |r| r[0] }
+        t.with_column(:value, header: "Value", align: :end, numeric: true) { |r| r[1] }
+      end,
+      render(Deckplate::ModalComponent.new(title: "Confirm", id: "confirm")) do |m|
+        m.with_trigger { render Deckplate::ButtonComponent.new(label: "Open dialog", id: "open-modal", data: { action: "dp-modal#open" }) }
+        m.with_actions { render Deckplate::ButtonComponent.new(label: "Close", id: "close-modal", data: { action: "dp-modal#close" }) }
+        "Dialog body"
+      end,
+      dp_toast_container { render(Deckplate::Feedback::ToastComponent.new(kind: :success, duration: 0)) { "Saved" } }
+    ])
+  end
+end %>

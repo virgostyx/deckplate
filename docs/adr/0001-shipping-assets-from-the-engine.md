@@ -29,7 +29,7 @@ tailwindcss-rails 4.7.0 (Tailwind 4.3.4), using the dummy app and a throwaway Ta
    so hosts on other pipelines don't crash.
 3. The optional Tailwind bridge ships as `app/assets/tailwind/deckplate/engine.css` (contains only the
    `@theme inline` mapping). It is picked up by tailwindcss-rails with no host config, but only affects hosts that use
-   Tailwind. *(Open: whether to ship it by default or have the installer copy it; revisit in Phase 8, ADR 0003 covers layers.)*
+   Tailwind. *(Superseded by ADR 0016: the installer copies the bridge; tailwindcss-rails does not import engine CSS by itself.)*
 
 ## Consequences
 - The installer must add the stylesheet link and, for importmap hosts, rely on the engine's pins.
