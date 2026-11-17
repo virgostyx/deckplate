@@ -45,6 +45,8 @@
     font-size: 1.25rem;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
+    direction: ltr;
+    unicode-bidi: isolate;
   }
 }
 @layer dp.components {
@@ -219,6 +221,8 @@
   }
   .dp-readout__number { color: var(--dp-ink); font-size: 1.75rem; line-height: 1.1; overflow-wrap: anywhere; }
   .dp-readout__unit { color: var(--dp-ink-muted); font-size: 1rem; }
+  .dp-readout__number,
+  .dp-readout__unit { direction: ltr; unicode-bidi: isolate; }
   .dp-readout__trend { display: inline-flex; align-self: center; color: var(--dp-ink); }
 }
 @layer dp.components {

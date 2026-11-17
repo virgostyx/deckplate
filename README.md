@@ -52,6 +52,8 @@ end %>
 | Feedback | `Alert`, `Toast` (Turbo Streams), `ConditionBanner`, `Callout`, `EmptyState`, `Skeleton`, `Spinner` |
 | Extras | `ThemeSwitcher` (cookie, no flash), opt-in sound (`SoundToggle`), entrance animation (`Frame animate: true`) |
 
+Right-to-left pages are supported (set `dir="rtl"`).
+
 Components take plain values: they never touch the database or `current_user`. All text comes from I18n (`en` and `fr`).
 
 ## Configuration
@@ -80,7 +82,7 @@ reader has been done yet.
 ## Documentation
 
 Guides are in `docs/guides/` of the repository: installation, stylesheets, Tailwind, theming, forms, data display, feedback, Turbo patterns,
-motion/sound/theme switching, CSP, design tokens export (JSON), accessibility, upgrading. The living component catalogue is a Lookbook (`bin/dev`, then
+motion/sound/theme switching, CSP, design tokens export (JSON), right-to-left, accessibility, upgrading. The living component catalogue is a Lookbook (`bin/dev`, then
 `http://localhost:3000/lookbook`).
 
 ## Development

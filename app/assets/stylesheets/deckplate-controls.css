@@ -156,7 +156,7 @@
     position: fixed;
     inset: auto;
     inset-block-start: var(--dp-menu-top, 0);
-    inset-inline-start: var(--dp-menu-left, 0);
+    left: var(--dp-menu-left, 0);
     min-inline-size: 12rem;
     max-inline-size: min(24rem, calc(100vw - 1rem));
     margin: 0;
@@ -412,6 +412,8 @@
     border-radius: var(--dp-pill-r);
     background: linear-gradient(to right, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-line) 0);
   }
+  .dp-slider__input:dir(rtl)::-webkit-slider-runnable-track { background: linear-gradient(to left, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-line) 0); }
+  .dp-slider__input:dir(rtl)::-moz-range-track { background: linear-gradient(to left, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-line) 0); }
   .dp-slider__input::-webkit-slider-thumb {
     appearance: none;
     inline-size: var(--_thumb);
@@ -549,7 +551,7 @@
     position: fixed;
     inset: auto;
     inset-block-start: var(--dp-tip-top, 0);
-    inset-inline-start: var(--dp-tip-left, 0);
+    left: var(--dp-tip-left, 0);
     max-inline-size: min(18rem, calc(100vw - 1rem));
     margin: 0;
     padding: 0.4em 0.75em;

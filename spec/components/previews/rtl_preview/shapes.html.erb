@@ -1,0 +1,23 @@
+<div class="dp-root gx-page"><div id="mirror" style="display: grid; gap: 1rem">
+  <div class="gx-row" style="align-items: flex-start">
+    <% %i[top_start top_end bottom_start bottom_end].each_with_index do |corner, i| %>
+      <%= render Deckplate::Shapes::ElbowComponent.new(corner: corner, size: :sm, color: %i[primary secondary tertiary accent][i]) %>
+    <% end %>
+  </div>
+  <% %i[none start end both].each do |caps| %>
+    <%= render Deckplate::Shapes::BarComponent.new(color: :info, caps: caps) %>
+  <% end %>
+  <%= render(Deckplate::Shapes::BarComponent.new(caps: :both)) do |b|
+    b.with_segment(color: :primary, size: 8)
+    b.with_segment(color: :secondary, size: 2)
+    b.with_segment(color: :accent)
+  end %>
+  <div class="gx-row">
+    <%= render Deckplate::Shapes::CapComponent.new(side: :start, color: :warning) %>
+    <%= render Deckplate::Shapes::CapComponent.new(side: :end, color: :danger) %>
+    <%= render Deckplate::Shapes::BracketComponent.new(sides: %i[start end], color: :success) %>
+    <%= render Deckplate::Shapes::BracketComponent.new(sides: %i[start], color: :muted) %>
+    <%= render Deckplate::Shapes::BlockComponent.new(color: :tertiary, shape: :start) %>
+    <%= render Deckplate::Shapes::BlockComponent.new(color: :accent, shape: :end) %>
+  </div>
+</div></div>

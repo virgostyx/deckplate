@@ -23,11 +23,22 @@ RSpec.describe Deckplate::Layout::PanelComponent, type: :component do
   describe "corners" do
     it "closes the left side with two elbows and a rail" do
       render_inline(described_class.new(title: "T", corners: :left)) { "x" }
-      expect(page).to have_css(".dp-panel--left .dp-elbow--top-left")
-      expect(page).to have_css(".dp-panel--left .dp-elbow--bottom-left")
-      expect(page).not_to have_css(".dp-elbow--top-right")
+      expect(page).to have_css(".dp-panel--left .dp-elbow--top-start")
+      expect(page).to have_css(".dp-panel--left .dp-elbow--bottom-start")
+      expect(page).not_to have_css(".dp-elbow--top-end")
       expect(page).to have_css(".dp-panel__rail", count: 1)
       expect(page).to have_css(".dp-panel__footer") # the bottom bar always exists when there are corners
+    end
+
+    it "draws its elbows with logical corners, so the panel mirrors in right-to-left text (ADR 0017)" do
+      render_inline(described_class.new(title: "T", corners: :both)) { "x" }
+      expect(page).to have_css(".dp-elbow--top-start, .dp-elbow--top-end, .dp-elbow--bottom-start, .dp-elbow--bottom-end", count: 4)
+      expect(page).not_to have_css(".dp-elbow--top-left, .dp-elbow--top-right, .dp-elbow--bottom-left, .dp-elbow--bottom-right")
+    end
+
+    it "accepts :start as the name of the left variant (the side where the text starts)" do
+      render_inline(described_class.new(title: "T", corners: :start)) { "x" }
+      expect(page).to have_css(".dp-panel--left .dp-elbow--top-start")
     end
 
     it "closes both sides with four elbows and two rails" do

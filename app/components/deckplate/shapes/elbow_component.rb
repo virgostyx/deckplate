@@ -1,10 +1,11 @@
 module Deckplate
   module Shapes
     # Signature elbow: a coloured block with an outer arc and a transparent inner arc (ADR 0002, technique A2).
+    # Corners: physical (top_left...) never mirror; logical (top_start, top_end, bottom_start, bottom_end) mirror with the text direction (ADR 0017).
     # Decorative (aria-hidden) unless a label is given. CSS knobs: --dp-elbow-w/-h (overall), --dp-elbow-col (vertical arm),
     # --dp-elbow-bar (horizontal arm), --dp-elbow-r (outer radius), --dp-elbow-ri (inner radius).
     class ElbowComponent < BaseComponent
-      variant :corner, %i[top_left top_right bottom_left bottom_right], default: :top_left
+      variant :corner, %i[top_left top_right bottom_left bottom_right top_start top_end bottom_start bottom_end], default: :top_left
       variant :size, %i[sm md lg], default: :md
 
       renders_one :label, ->(&block) { tag.span(class: "dp-elbow__label", &block) }

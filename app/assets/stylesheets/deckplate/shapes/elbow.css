@@ -27,7 +27,10 @@
   .dp-elbow--md { --dp-elbow-w: calc(10 * var(--dp-u)); --dp-elbow-h: calc(8 * var(--dp-u)); }
   .dp-elbow--lg { --dp-elbow-w: calc(12 * var(--dp-u)); --dp-elbow-h: calc(10 * var(--dp-u)); }
 
-  .dp-elbow--top-left {
+  /* Physical corners never mirror; start/end corners take the physical shape of the current text direction (ADR 0017) */
+  .dp-elbow--top-left,
+  .dp-elbow--top-start:dir(ltr),
+  .dp-elbow--top-end:dir(rtl) {
     --_fx: 100%; --_fy: 100%;
     border-top-left-radius: var(--_r);
     mask:
@@ -35,7 +38,9 @@
       linear-gradient(#000 0 0) left -1px top -1px / var(--_arm-v-size) no-repeat,
       var(--_fillet) left calc(var(--_col) - 1px) top calc(var(--_bar) - 1px) / calc(var(--_ri) + 1px) calc(var(--_ri) + 1px) no-repeat;
   }
-  .dp-elbow--top-right {
+  .dp-elbow--top-right,
+  .dp-elbow--top-end:dir(ltr),
+  .dp-elbow--top-start:dir(rtl) {
     --_fx: 0%; --_fy: 100%;
     border-top-right-radius: var(--_r);
     mask:
@@ -43,7 +48,9 @@
       linear-gradient(#000 0 0) right -1px top -1px / var(--_arm-v-size) no-repeat,
       var(--_fillet) right calc(var(--_col) - 1px) top calc(var(--_bar) - 1px) / calc(var(--_ri) + 1px) calc(var(--_ri) + 1px) no-repeat;
   }
-  .dp-elbow--bottom-left {
+  .dp-elbow--bottom-left,
+  .dp-elbow--bottom-start:dir(ltr),
+  .dp-elbow--bottom-end:dir(rtl) {
     --_fx: 100%; --_fy: 0%;
     border-bottom-left-radius: var(--_r);
     mask:
@@ -51,7 +58,9 @@
       linear-gradient(#000 0 0) left -1px top -1px / var(--_arm-v-size) no-repeat,
       var(--_fillet) left calc(var(--_col) - 1px) bottom calc(var(--_bar) - 1px) / calc(var(--_ri) + 1px) calc(var(--_ri) + 1px) no-repeat;
   }
-  .dp-elbow--bottom-right {
+  .dp-elbow--bottom-right,
+  .dp-elbow--bottom-end:dir(ltr),
+  .dp-elbow--bottom-start:dir(rtl) {
     --_fx: 0%; --_fy: 0%;
     border-bottom-right-radius: var(--_r);
     mask:
@@ -71,11 +80,24 @@
     white-space: nowrap;
   }
   .dp-elbow--top-left .dp-elbow__label,
-  .dp-elbow--top-right .dp-elbow__label { inset-block-end: 0; }
-  .dp-elbow--bottom-left .dp-elbow__label,
-  .dp-elbow--bottom-right .dp-elbow__label { inset-block-start: 0; }
-  .dp-elbow--top-left .dp-elbow__label,
-  .dp-elbow--bottom-left .dp-elbow__label { left: 0; text-align: end; }
   .dp-elbow--top-right .dp-elbow__label,
-  .dp-elbow--bottom-right .dp-elbow__label { right: 0; text-align: start; }
+  .dp-elbow--top-start .dp-elbow__label,
+  .dp-elbow--top-end .dp-elbow__label { inset-block-end: 0; }
+  .dp-elbow--bottom-left .dp-elbow__label,
+  .dp-elbow--bottom-right .dp-elbow__label,
+  .dp-elbow--bottom-start .dp-elbow__label,
+  .dp-elbow--bottom-end .dp-elbow__label { inset-block-start: 0; }
+  /* The label follows the arm: left-shaped corners put it on the left, right-shaped ones on the right */
+  .dp-elbow--top-left .dp-elbow__label,
+  .dp-elbow--bottom-left .dp-elbow__label,
+  .dp-elbow--top-start:dir(ltr) .dp-elbow__label,
+  .dp-elbow--bottom-start:dir(ltr) .dp-elbow__label,
+  .dp-elbow--top-end:dir(rtl) .dp-elbow__label,
+  .dp-elbow--bottom-end:dir(rtl) .dp-elbow__label { left: 0; right: auto; text-align: right; }
+  .dp-elbow--top-right .dp-elbow__label,
+  .dp-elbow--bottom-right .dp-elbow__label,
+  .dp-elbow--top-end:dir(ltr) .dp-elbow__label,
+  .dp-elbow--bottom-end:dir(ltr) .dp-elbow__label,
+  .dp-elbow--top-start:dir(rtl) .dp-elbow__label,
+  .dp-elbow--bottom-start:dir(rtl) .dp-elbow__label { right: 0; left: auto; text-align: left; }
 }

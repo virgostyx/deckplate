@@ -67,7 +67,8 @@ export default class extends Controller {
   position() {
     const trigger = this.triggerTarget.getBoundingClientRect()
     const list = this.listTarget
-    const left = Math.max(8, Math.min(trigger.left, window.innerWidth - list.offsetWidth - 8))
+    const start = getComputedStyle(this.element).direction === "rtl" ? trigger.right - list.offsetWidth : trigger.left // aligned on the side where the text starts
+    const left = Math.max(8, Math.min(start, window.innerWidth - list.offsetWidth - 8))
     list.style.setProperty("--dp-menu-top", `${trigger.bottom + 4}px`)
     list.style.setProperty("--dp-menu-left", `${left}px`)
   }

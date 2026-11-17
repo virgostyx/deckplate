@@ -2,7 +2,7 @@
   <%# column: lilac block, then the upper elbow (bar at its bottom, colour continues into the first bar) %>
   <div class="gx-console__col-top">
     <%= render(Deckplate::Shapes::BlockComponent.new(color: :accent, class: "gx-console__panel-1")) { "Console" } %>
-    <%= render(Deckplate::Shapes::ElbowComponent.new(corner: :bottom_left, color: :melrose, height: 6.5, class: "gx-console__elbow-top")) { |e| e.with_label { "02-262000" } } %>
+    <%= render(Deckplate::Shapes::ElbowComponent.new(corner: :bottom_start, color: :melrose, height: 6.5, class: "gx-console__elbow-top")) { |e| e.with_label { "02-262000" } } %>
   </div>
 
   <div class="gx-console__top">
@@ -25,7 +25,7 @@
   </div>
 
   <div class="gx-console__col-bottom">
-    <%= render(Deckplate::Shapes::ElbowComponent.new(corner: :top_left, color: :medium_carmine, height: 7, class: "gx-console__elbow-bottom")) %>
+    <%= render(Deckplate::Shapes::ElbowComponent.new(corner: :top_start, color: :medium_carmine, height: 7, class: "gx-console__elbow-bottom")) %>
     <%= render(Deckplate::Shapes::BlockComponent.new(color: :medium_carmine, number: "03", class: "gx-console__panel-4")) { "111968" } %>
     <%= render(Deckplate::Shapes::BlockComponent.new(color: :orange_peel, number: "05", class: "gx-console__panel-5")) { "1701D" } %>
     <%= render(Deckplate::Shapes::BlockComponent.new(color: :atomic_tangerine, number: "06", class: "gx-console__panel-6")) { "071984" } %>

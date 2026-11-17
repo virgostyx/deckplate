@@ -5,5 +5,7 @@
     font-size: 1.25rem;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
+    direction: ltr;
+    unicode-bidi: isolate;
   }
 }

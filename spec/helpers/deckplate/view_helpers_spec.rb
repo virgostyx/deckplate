@@ -70,6 +70,11 @@ RSpec.describe Deckplate::Helpers, type: :helper do
       end
     end
 
+    it "marks the icons that point a direction, so they mirror in right-to-left text (ADR 0017)" do
+      %i[chevron_left chevron_right].each { expect(helper.dp_icon(_1)).to include("dp-icon--directional") }
+      (Deckplate::Helpers::ICONS.keys - %i[chevron_left chevron_right]).each { expect(helper.dp_icon(_1)).not_to include("dp-icon--directional") }
+    end
+
     it "ships at least the icons the plan lists" do
       expect(Deckplate::Helpers::ICONS.keys).to include(:close, :chevron_left, :chevron_right, :chevron_up, :chevron_down,
         :check, :alert, :info, :menu, :search, :plus, :minus, :sort_asc, :sort_desc, :external)

@@ -44,6 +44,9 @@
     border-radius: var(--dp-pill-r);
     background: linear-gradient(to right, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-line) 0);
   }
+  /* The fill starts on the side where the value starts (a native range runs right to left in RTL) */
+  .dp-slider__input:dir(rtl)::-webkit-slider-runnable-track { background: linear-gradient(to left, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-line) 0); }
+  .dp-slider__input:dir(rtl)::-moz-range-track { background: linear-gradient(to left, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-line) 0); }
   .dp-slider__input::-webkit-slider-thumb {
     appearance: none;
     inline-size: var(--_thumb);

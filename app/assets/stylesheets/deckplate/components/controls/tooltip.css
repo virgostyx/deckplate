@@ -4,7 +4,7 @@
     position: fixed;
     inset: auto;
     inset-block-start: var(--dp-tip-top, 0);
-    inset-inline-start: var(--dp-tip-left, 0);
+    left: var(--dp-tip-left, 0); /* physical: the controller writes viewport coordinates, which do not mirror */
     max-inline-size: min(18rem, calc(100vw - 1rem));
     margin: 0;
     padding: 0.4em 0.75em;

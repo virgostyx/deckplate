@@ -14,6 +14,16 @@ RSpec.describe Deckplate::Layout::FrameComponent, type: :component do
     end
   end
 
+  it "names its corner slots by logical position; the old left names still work (ADR 0017)" do
+    render_inline(described_class.new) do |f|
+      f.with_top_start_corner { "TS" }
+      f.with_bottom_left_corner { "BL" } # alias of with_bottom_start_corner
+      f.with_main { "m" }
+    end
+    expect(page).to have_css(".dp-frame__corner--top-start", text: "TS")
+    expect(page).to have_css(".dp-frame__corner--bottom-start", text: "BL")
+  end
+
   it "renders the classic frame: header, sidebar, main, footer and the two left corners" do
     render_frame
     expect(page).to have_css(".dp-frame.dp-frame--classic")

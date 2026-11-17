@@ -1,16 +1,16 @@
 <%= tag.section(**panel_attributes) do %>
-  <% if cornered? %><div class="dp-panel__corner dp-panel__corner--top-start"><%= elbow(:top_left) %></div><% end %>
+  <% if cornered? %><div class="dp-panel__corner dp-panel__corner--top-start"><%= elbow(:top_start) %></div><% end %>
   <header class="dp-panel__header">
     <%= content_tag("h#{@level}", @title, id: heading_id, class: "dp-panel__title") %>
     <%= header_actions %>
   </header>
-  <% if both? %><div class="dp-panel__corner dp-panel__corner--top-end"><%= elbow(:top_right) %></div><% end %>
+  <% if both? %><div class="dp-panel__corner dp-panel__corner--top-end"><%= elbow(:top_end) %></div><% end %>
 
   <% if cornered? %><div class="dp-panel__rail dp-panel__rail--start" aria-hidden="true"></div><% end %>
   <div class="dp-panel__body"><%= content %></div>
   <% if both? %><div class="dp-panel__rail dp-panel__rail--end" aria-hidden="true"></div><% end %>
 
-  <% if cornered? %><div class="dp-panel__corner dp-panel__corner--bottom-start"><%= elbow(:bottom_left) %></div><% end %>
+  <% if cornered? %><div class="dp-panel__corner dp-panel__corner--bottom-start"><%= elbow(:bottom_start) %></div><% end %>
   <% if footer_bar? %><footer class="dp-panel__footer"><%= footer %></footer><% end %>
-  <% if both? %><div class="dp-panel__corner dp-panel__corner--bottom-end"><%= elbow(:bottom_right) %></div><% end %>
+  <% if both? %><div class="dp-panel__corner dp-panel__corner--bottom-end"><%= elbow(:bottom_end) %></div><% end %>
 <% end %>

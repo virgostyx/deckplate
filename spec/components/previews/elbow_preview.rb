@@ -15,6 +15,11 @@ class ElbowPreview < ViewComponent::Preview
     render_with_template(template: "elbow_preview/labels")
   end
 
+  # Logical corners (start/end) mirror with the text direction: open it with ?dir=rtl. No text, so RTL must equal LTR flipped (ADR 0017)
+  def logical
+    render_with_template(template: "elbow_preview/logical")
+  end
+
   # Transparency proof over a patterned background, with a grid overlay and computed sizes
   def geometry
     render_with_template(template: "elbow_preview/geometry")

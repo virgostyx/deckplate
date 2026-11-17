@@ -5,4 +5,5 @@
     flex: none;
     vertical-align: -0.125em;
   }
+  .dp-icon--directional:dir(rtl) { transform: scaleX(-1); }
 }

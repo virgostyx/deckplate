@@ -1,7 +1,7 @@
 <%= tag.div(**frame_attributes) do %>
   <a class="dp-frame__skip" href="#<%= main_id %>"><%= t("deckplate.common.skip_to_content") %></a>
   <div class="dp-frame__grid">
-    <% if show_corners? %><%= top_left_corner %><% end %>
+    <% if show_corners? %><%= top_start_corner %><% end %>
     <%= header %>
     <% if show_sidebar? %>
       <button type="button" class="dp-frame__menu" popovertarget="<%= sidebar_id %>"><%= t("deckplate.frame.menu") %></button>
@@ -9,7 +9,7 @@
     <% end %>
     <%= tag.main(main, id: main_id, class: "dp-frame__main", tabindex: (0 if @fixed)) if main? %>
     <% if double? %><%= aside %><% end %>
-    <% if show_corners? %><%= bottom_left_corner %><% end %>
+    <% if show_corners? %><%= bottom_start_corner %><% end %>
     <%= footer %>
   </div>
 <% end %>

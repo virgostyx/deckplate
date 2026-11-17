@@ -17,6 +17,17 @@ RSpec.describe Deckplate::Shapes::ElbowComponent, type: :component do
     end
   end
 
+  it "supports logical corners that mirror with the text direction (start/end), next to the physical ones" do
+    %i[top_start top_end bottom_start bottom_end].each do |corner|
+      render_inline(described_class.new(corner:))
+      expect(page).to have_css(".dp-elbow.dp-elbow--#{corner.to_s.tr('_', '-')}", visible: :all)
+    end
+  end
+
+  it "lists logical and physical corners when the corner is unknown" do
+    expect { described_class.new(corner: :middle) }.to raise_error(ArgumentError, /top_start.*top_left|top_left.*top_start/)
+  end
+
   it "supports the three named sizes" do
     %i[sm md lg].each do |size|
       render_inline(described_class.new(size:))

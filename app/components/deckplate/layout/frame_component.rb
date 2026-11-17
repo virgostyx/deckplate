@@ -12,8 +12,11 @@ module Deckplate
       renders_one :sidebar
       renders_one :aside, ->(&block) { tag.aside(class: "dp-frame__aside", &block) }
       renders_one :footer, ->(&block) { tag.footer(class: "dp-frame__footer", &block) }
-      renders_one :top_left_corner, ->(&block) { tag.div(class: "dp-frame__corner dp-frame__corner--top-start", &block) }
-      renders_one :bottom_left_corner, ->(&block) { tag.div(class: "dp-frame__corner dp-frame__corner--bottom-start", &block) }
+      renders_one :top_start_corner, ->(&block) { tag.div(class: "dp-frame__corner dp-frame__corner--top-start", &block) }
+      renders_one :bottom_start_corner, ->(&block) { tag.div(class: "dp-frame__corner dp-frame__corner--bottom-start", &block) }
+      # the corners sit on the side where the text starts (the left in LTR, the right in RTL); the old names remain
+      alias_method :with_top_left_corner, :with_top_start_corner
+      alias_method :with_bottom_left_corner, :with_bottom_start_corner
       renders_one :main
 
       def initialize(variant: nil, theme: nil, fixed: false, animate: false, **html_options)

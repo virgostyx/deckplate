@@ -15,7 +15,7 @@ module Deckplate
         @title = validate_title!(title)
         @color = resolve_color(color)
         @level = validate_level!(level)
-        assign_variants(corners:)
+        assign_variants(corners: (corners&.to_sym == :start ? :left : corners)) # :start is the logical name of :left
       end
 
       private

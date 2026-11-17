@@ -1,8 +1,8 @@
 <%# A frame composed only of Deckplate pieces. locals: variant, fixed, animate %>
 <%= render(Deckplate::Layout::FrameComponent.new(variant: variant, fixed: fixed, animate: animate)) do |f|
   unless variant == :minimal
-    f.with_top_left_corner { render Deckplate::Shapes::ElbowComponent.new(corner: :top_left, color: :accent) }
-    f.with_bottom_left_corner { render Deckplate::Shapes::ElbowComponent.new(corner: :bottom_left, color: :tertiary) }
+    f.with_top_start_corner { render Deckplate::Shapes::ElbowComponent.new(corner: :top_start, color: :accent) }
+    f.with_bottom_start_corner { render Deckplate::Shapes::ElbowComponent.new(corner: :bottom_start, color: :tertiary) }
   end
   f.with_header do
     tag.div(class: "gx-header") do

@@ -25,6 +25,9 @@
   }
   .dp-readout__number { color: var(--dp-ink); font-size: 1.75rem; line-height: 1.1; overflow-wrap: anywhere; }
   .dp-readout__unit { color: var(--dp-ink-muted); font-size: 1rem; }
+  /* Data stays left-to-right inside an RTL page: "18.4" and "°C" each read as written (ADR 0017) */
+  .dp-readout__number,
+  .dp-readout__unit { direction: ltr; unicode-bidi: isolate; }
   .dp-readout__trend { display: inline-flex; align-self: center; color: var(--dp-ink); }
 }
 

@@ -23,6 +23,9 @@ module Deckplate
       external: [ "M14 4h6v6M20 4l-9 9", "M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5" ]
     }.freeze
 
+    # Icons that point a direction: mirrored in right-to-left text (ADR 0017)
+    DIRECTIONAL_ICONS = %i[chevron_left chevron_right].freeze
+
     # <link rel="preload"> tags for the two latin fonts. Put it in <head>, before the stylesheet.
     def dp_font_tags
       safe_join(PRELOADED_FONTS.map do |name|
@@ -73,7 +76,7 @@ module Deckplate
       paths = ICONS.fetch(name.to_sym) do
         raise ArgumentError, "unknown icon #{name.inspect}; valid: #{ICONS.keys.map(&:inspect).join(', ')}"
       end
-      options[:class] = [ "dp-icon", *Array(options[:class]) ]
+      options[:class] = [ "dp-icon", ("dp-icon--directional" if DIRECTIONAL_ICONS.include?(name.to_sym)), *Array(options[:class]) ].compact
       options.merge!(xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor",
                      "stroke-width": 2, "stroke-linecap": "round", "stroke-linejoin": "round", focusable: "false")
       if title

@@ -4,6 +4,7 @@
 #   bin/visual --geometry elbow seams/edges/transparency check in Chrome, Firefox and WebKit
 #   bin/visual --update   accept the current screenshots as the new baselines (review the diff images first!)
 # Extra flags are passed through: --only token_gallery --themes classic,azure --widths 375,1280
+#   bin/visual --dir rtl --themes classic --widths 768   right-to-left set (ADR 0017); add --update to refresh it
 set -euo pipefail
 cd "$(dirname "$0")/.."
 PORT="${VISUAL_PORT:-3099}"

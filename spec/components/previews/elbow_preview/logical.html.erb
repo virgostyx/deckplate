@@ -1,0 +1,12 @@
+<div class="dp-root gx-page">
+  <div class="gx-row" style="align-items: flex-start" id="logical">
+    <% %i[top_start top_end bottom_start bottom_end].each_with_index do |corner, i| %>
+      <%= render Deckplate::Shapes::ElbowComponent.new(corner: corner, color: %i[primary secondary tertiary accent][i]) %>
+    <% end %>
+  </div>
+  <div class="gx-row" style="align-items: flex-start" id="physical">
+    <% %i[top_left top_right bottom_left bottom_right].each_with_index do |corner, i| %>
+      <%= render Deckplate::Shapes::ElbowComponent.new(corner: corner, color: %i[info warning danger success][i]) %>
+    <% end %>
+  </div>
+</div>

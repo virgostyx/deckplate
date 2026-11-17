@@ -10,6 +10,13 @@ RSpec.describe DeckplateBuild::CssBuilder do
     end
   end
 
+  it "has balanced braces in every source stylesheet (an extra brace is silently tolerated by browsers and hides the rest of a layer)" do
+    Dir[root.join("app/assets/stylesheets/deckplate/**/*.css")].each do |file|
+      css = File.read(file).gsub(%r{/\*.*?\*/}m, "")
+      expect(css.count("{")).to eq(css.count("}")), "#{file.delete_prefix(root.to_s)}: #{css.count('{')} opening, #{css.count('}')} closing"
+    end
+  end
+
   describe "per-family sheets (ADR 0012)" do
     let(:css_dir) { root.join("app/assets/stylesheets") }
     let(:families) { %w[controls forms data feedback] }

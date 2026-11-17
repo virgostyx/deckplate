@@ -1,5 +1,5 @@
 // Visual regression: previews x themes x widths -> screenshots, compared with spec/visual/__baseline__.
-// Usage (via bin/visual):  node run.mjs --base http://localhost:3099 [--update] [--only token_gallery] [--themes classic,azure] [--widths 375,1280]
+// Usage (via bin/visual):  node run.mjs --base http://localhost:3099 [--update] [--only token_gallery] [--themes classic,azure] [--widths 375,1280] [--dir rtl]
 import { chromium } from "playwright"
 import { PNG } from "pngjs"
 import pixelmatch from "pixelmatch"
@@ -16,6 +16,7 @@ const base = args.base ?? "http://localhost:3099"
 const update = args.update === true
 const themes = (args.themes ?? "classic,azure,nocturne,daylight,crimson").split(",")
 const widths = (args.widths ?? "375,768,1280").split(",").map(Number)
+const rtl = args.dir === "rtl" // right-to-left run (ADR 0017): ?dir=rtl, files get an __rtl suffix; use --themes classic --widths 768 for the baseline set
 const previews = JSON.parse(fs.readFileSync(args.previews ?? path.join(here, "previews.json"), "utf8")).filter((p) => !args.only || p.includes(args.only))
 const THRESHOLD = 0.1          // pixelmatch colour tolerance (anti-aliasing noise)
 const MAX_DIFF_RATIO = 0.0005  // fraction of pixels allowed to differ
@@ -31,10 +32,10 @@ for (const width of widths) {
   const page = await ctx.newPage()
   for (const preview of previews) {
     for (const theme of themes) {
-      const name = `${preview.replace("/", "--")}__${theme}__${width}.png`
+      const name = `${preview.replace("/", "--")}__${theme}__${width}${rtl ? "__rtl" : ""}.png`
       const display = encodeURIComponent(JSON.stringify({ theme }))
       try {
-        const res = await page.goto(`${base}/rails/view_components/${preview}?_display=${display}`, { waitUntil: "networkidle" })
+        const res = await page.goto(`${base}/rails/view_components/${preview}?_display=${display}${rtl ? "&dir=rtl" : ""}`, { waitUntil: "networkidle" })
         if (!res.ok()) throw new Error(`HTTP ${res.status()}`)
         await page.evaluate(() => document.fonts.ready)
         await page.screenshot({ path: path.join(dirs.__current__, name), fullPage: true })

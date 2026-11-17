@@ -96,6 +96,15 @@
   @keyframes dp-frame-slide {
     from { transform: translateX(-100%); opacity: 0; }
   }
+  /* Right-to-left: the same movements from the right (ADR 0017) */
+  .dp-frame--animate:dir(rtl) .dp-frame__header { animation-name: dp-frame-reveal-rtl; }
+  @keyframes dp-frame-reveal-rtl {
+    from { clip-path: inset(0 0 0 100%); }
+    to { clip-path: inset(0 0 0 0); }
+  }
+  @keyframes dp-frame-slide-rtl {
+    from { transform: translateX(100%); opacity: 0; }
+  }
 
   /* Minimal: header, main, footer in one column at any width */
   .dp-frame--minimal .dp-frame__grid {
@@ -150,5 +159,6 @@
     }
     .dp-frame--fixed .dp-frame__sidebar { overflow: auto; }
     .dp-frame--animate .dp-frame__sidebar { animation: dp-frame-slide 400ms var(--dp-ease) 150ms backwards; }
+    .dp-frame--animate:dir(rtl) .dp-frame__sidebar { animation-name: dp-frame-slide-rtl; }
   }
 }
