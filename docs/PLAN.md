@@ -258,10 +258,15 @@ CSP-safe mode verified.
          package files, screenshots or git history intended for publication. The dev-only files
          (`CLAUDE.md`, `docs/`) are not part of the gem but name the local reference folders: scrub or
          remove those mentions before the repository itself is made public;
-   - [ ] no studio assets (audio, images, logos, original typefaces) in the repo or the gem;
-   - [ ] fonts and their OFL licence files present; CREDITS.md complete;
-   - [ ] no code copied from reference projects (or licence-compliant with attribution);
-   - [ ] README disclaimer present;
+         *(2026-11-17 run: the built gem, all tracked files outside the dev docs, commit messages and file names in git history: no match. Still
+         to do by the owner before the repo is public: `CLAUDE.md`, `docs/PLAN.md`, `docs/SPEC.md` and `docs/adr/0002-elbow-technique.md` name the
+         local reference folders; the git history carries the author's personal e-mail address.)*
+   - [x] no studio assets (audio, images, logos, original typefaces) in the repo or the gem
+         *(2026-11-17: the only binary files outside the screenshot baselines are the three OFL woff2 fonts; sounds are synthesised)*;
+   - [x] fonts and their OFL licence files present; CREDITS.md complete *(2026-11-17)*;
+   - [x] no code copied from reference projects (or licence-compliant with attribution)
+         *(2026-11-17: none of the 665 lines of 45+ characters of our CSS, JS and Ruby appears verbatim in the three local reference projects)*;
+   - [x] README disclaimer present *(2026-11-17)*;
    - [ ] manual screen reader smoke test done (`docs/guides/screen-reader-checklist.md`) or accepted as a documented limitation (Q-010);
    - [ ] the owner has decided (with legal advice if wanted) whether commercial use is acceptable and has
          recorded the decision in `docs/adr/`.
