@@ -92,3 +92,10 @@ The owner answers by editing the entry (change **Status** to `answered`) and the
 - **Why this default is safe**: no visual baselines or contrast results change; the risk is a host using both roles for different meanings.
 - **Status**: answered
 - **Answer**: keep the palette (owner decision); the limitation stays documented in `docs/guides/accessibility.md`.
+
+### Q-010 — Manual screen reader smoke test postponed
+- **Phase / task**: Phase 7, "done when" (accessibility pass with screen reader notes)
+- **Question**: The manual Orca test (`docs/guides/screen-reader-checklist.md`) was judged too complex for now. Run it before a release?
+- **Default applied**: postponed (owner decision); `accessibility.md` states that no real screen reader test was done. Not a gap to hide: it blocks any public release (add to the Phase 8 checklist).
+- **Status**: answered
+- **Answer**: postponed by the owner. To be done (or accepted as a documented limitation) before the first public release.

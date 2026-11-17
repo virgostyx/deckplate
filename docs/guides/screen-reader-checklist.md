@@ -20,4 +20,4 @@ For each row, note what is announced and mark OK / issue. Record the date, brows
 | 13 | `sound_toggle/default` (with `config.sounds = true`) | Space | "Switch, Sound, on/off"; muting stops the beeps |
 
 ## Results
-_Not run yet._ (Add: date, OS, browser, screen reader + version, and a line per row.)
+_Not run yet (postponed, Q-010). Required or explicitly accepted as a limitation before any public release._ (Add: date, OS, browser, screen reader + version, and a line per row.)

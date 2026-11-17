@@ -262,6 +262,7 @@ CSP-safe mode verified.
    - [ ] fonts and their OFL licence files present; CREDITS.md complete;
    - [ ] no code copied from reference projects (or licence-compliant with attribution);
    - [ ] README disclaimer present;
+   - [ ] manual screen reader smoke test done (`docs/guides/screen-reader-checklist.md`) or accepted as a documented limitation (Q-010);
    - [ ] the owner has decided (with legal advice if wanted) whether commercial use is acceptable and has
          recorded the decision in `docs/adr/`.
 7. Tag, changelog, and publish only if the checklist is fully ticked and the owner approves.
