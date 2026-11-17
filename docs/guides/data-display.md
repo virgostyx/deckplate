@@ -52,6 +52,21 @@ render turbo_stream: [
 `turbo_stream.replace` accepts a component directly. The element is replaced as a whole (its CSS value comes with it), assistive technology
 keeps its place, and no JavaScript of ours is involved. See the demo in `spec/dummy/app/controllers/dashboards_controller.rb`.
 
+## Timeline
+
+```erb
+<%= render(Deckplate::Data::TimelineComponent.new(aria: { label: "Mission log" })) do |t|
+  t.with_event(title: "Launch", time: "14:02", datetime: "2026-11-17T14:02", state: :done) { "Left the dock." }
+  t.with_event(title: "Transit", time: "16:10", state: :current)
+  t.with_event(title: "Arrival", state: :upcoming)
+end %>
+```
+
+States are `:done` (default; a check in a filled marker), `:current` (a ring with a dot, `aria-current="step"`) and `:upcoming` (a dashed empty marker).
+The state is never carried by colour alone: the marker has a shape and a visually hidden text ("Completed", "Current", "Upcoming"; `en` and `fr`) follows the
+title. `time:` takes a text or a `Time` (shown as `YYYY-MM-DD HH:MM`, with its ISO 8601 value in the `datetime` attribute); `datetime:` goes with a text. An event can
+take its own colour role (`color: :danger`). To update a timeline with a Turbo Stream, give it a stable `id` and `turbo_stream.replace` it (see the dashboard in the dummy app).
+
 ## Content-Security-Policy
 
 Set `config.csp_safe_values = true` (in `config/initializers/deckplate.rb`) when your `style-src` forbids `'unsafe-inline'`:

@@ -1,0 +1,25 @@
+<div class="dp-root gx-page"><div style="display: grid; gap: 1.5rem; max-inline-size: 30rem">
+  <p class="gx-label">a single event</p>
+  <%= render(Deckplate::Data::TimelineComponent.new) { |t| t.with_event(title: "Only event", time: "09:00") } %>
+
+  <p class="gx-label">long title and body that wrap, no times</p>
+  <%= render(Deckplate::Data::TimelineComponent.new(color: :info)) do |t|
+    t.with_event(title: "An extraordinarily long event title that has to wrap onto several lines in a narrow column", state: :done) do
+      "A body with a very long unbreakable word: Averyveryverylongunbreakablewordthatmustwrapinsidethetimeline and then ordinary words."
+    end
+    t.with_event(title: "Next", state: :current)
+  end %>
+
+  <p class="gx-label">per-event colours (a fault in the middle)</p>
+  <%= render(Deckplate::Data::TimelineComponent.new) do |t|
+    t.with_event(title: "Start", time: "10:00", state: :done)
+    t.with_event(title: "Fault", time: "10:20", state: :done, color: :danger) { "Shield generator offline." }
+    t.with_event(title: "Repair", time: "10:45", state: :current, color: :warning)
+    t.with_event(title: "Resume", time: "11:30", state: :upcoming)
+  end %>
+
+  <p class="gx-label">many events</p>
+  <%= render(Deckplate::Data::TimelineComponent.new(color: :tertiary)) do |t|
+    12.times { |i| t.with_event(title: "Step #{i + 1}", time: format("%02d:00", 8 + i), state: i < 5 ? :done : (i == 5 ? :current : :upcoming)) }
+  end %>
+</div></div>

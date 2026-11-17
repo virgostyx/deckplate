@@ -118,4 +118,16 @@ RSpec.describe "Right-to-left", type: :system, js: true do
       expect(animation_names).to eq(%w[dp-frame-reveal-rtl dp-frame-slide-rtl])
     end
   end
+
+  describe "Timeline" do
+    %w[ltr rtl].each do |dir|
+      it "keeps the time of an event on the start side of its content, in #{dir}" do
+        visit "/rails/view_components/timeline/default?dir=#{dir}"
+        edge = dir == "rtl" ? "right" : "left"
+        # the position of the text itself (a block's own box spans the whole width whatever its text does)
+        text_edge = ->(selector) { page.evaluate_script("(function(){ var r = document.createRange(); r.selectNodeContents(document.querySelector(#{selector.to_json})); return r.getBoundingClientRect().#{edge} })()") }
+        expect(text_edge.call(".dp-timeline__time")).to be_within(2).of(text_edge.call(".dp-timeline__title"))
+      end
+    end
+  end
 end

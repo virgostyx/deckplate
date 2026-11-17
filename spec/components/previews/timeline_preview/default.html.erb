@@ -1,0 +1,9 @@
+<div class="dp-root gx-page"><div style="max-inline-size: 34rem">
+  <%= render(Deckplate::Data::TimelineComponent.new(id: "mission", aria: { label: "Mission log" })) do |t|
+    t.with_event(title: "Launch", time: "14:02", datetime: "2026-11-17T14:02", state: :done) { "Left the dock without incident." }
+    t.with_event(title: "Jump to warp", time: "15:40", datetime: "2026-11-17T15:40", state: :done)
+    t.with_event(title: "Transit", time: "16:10", state: :current) { "Coolant at 18.4 °C, power at 72 %." }
+    t.with_event(title: "Arrival", time: "18:30", state: :upcoming)
+    t.with_event(title: "Debrief", state: :upcoming)
+  end %>
+</div></div>

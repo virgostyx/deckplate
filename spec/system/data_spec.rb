@@ -27,6 +27,17 @@ RSpec.describe "Data components in the browser", type: :system, js: true do
       expect(page.evaluate_script("document.querySelectorAll('#power-gauge').length")).to eq(1)
     end
 
+    it "updates a Timeline in place from a Turbo Stream: the current event moves on" do
+      expect(page).to have_css("#mission li.dp-timeline__event--current .dp-timeline__title", text: /transit/i)
+      expect(page).to have_css("#mission li[aria-current='step']", count: 1)
+      click_button "Refresh readings"
+      expect(page).to have_css("#mission li.dp-timeline__event--current .dp-timeline__title", text: /arrival/i)
+      expect(page).to have_css("#mission li.dp-timeline__event--done", count: 2)
+      expect(page).to have_css("#mission li[aria-current='step']", count: 1)
+      expect(page.evaluate_script("document.querySelectorAll('#mission').length")).to eq(1)
+      expect(page.evaluate_script("window.__sameDocument")).to be(true)
+    end
+
     it "keeps the fill in sync with the new value (the CSS custom property is replaced with the element)" do
       click_button "Refresh readings"
       wait_until("the new value") { gauge_now == "77" }

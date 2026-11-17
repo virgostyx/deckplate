@@ -282,7 +282,7 @@ in SPEC §12 are green.
 - ~~RTL support (logical corner names, mirrored frame).~~ Done: ADR 0017, `docs/guides/rtl.md`.
 - Component manifest (`components.yml`) to generate ports (Django, Phoenix, plain HTML) and docs.
 - ~~Design tokens export (JSON for Style Dictionary / Figma variables).~~ Done: `config/deckplate/tokens.json`, `docs/guides/design-tokens.md`.
-- `Keypad`, `Timeline`, `Tooltip` extras, richer charts, drag-and-drop-friendly lists.
+- `Keypad`, ~~`Timeline`~~ (done: `Data::TimelineComponent`), `Tooltip` extras, richer charts, drag-and-drop-friendly lists.
 - More themes; per-theme sound packs (synthesised).
 - Hotwire Native considerations (touch density).
 - Pilot adoption in a real application (separate repo; deliberately not part of this project).

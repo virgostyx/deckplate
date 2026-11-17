@@ -1,0 +1,3 @@
+<% if events? %>
+  <%= tag.ol(**list_attributes) do %><% events.each do |event| %><%= event %><% end %><% end %>
+<% end %>

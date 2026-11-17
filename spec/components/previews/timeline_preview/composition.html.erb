@@ -1,0 +1,9 @@
+<div class="dp-root gx-page"><div style="display: grid; gap: 1rem; max-inline-size: 40rem">
+  <%= render(Deckplate::Layout::PanelComponent.new(title: "Mission log", color: :accent, corners: :left)) do %>
+    <%= render(Deckplate::Data::TimelineComponent.new(color: :accent)) do |t|
+      t.with_event(title: "Launch", time: "14:02", state: :done) { "All systems nominal." }
+      t.with_event(title: "Transit", time: "16:10", state: :current) { render Deckplate::Data::ReadoutComponent.new(label: "Power", value: "72", unit: "%", color: :primary) }
+      t.with_event(title: "Arrival", time: "18:30", state: :upcoming)
+    end %>
+  <% end %>
+</div></div>

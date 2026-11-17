@@ -1,0 +1,6 @@
+<%# A timeline updated in place by a Turbo Stream: events before `step` are done, the event at `step` is current. %>
+<%= render(Deckplate::Data::TimelineComponent.new(id: "mission", aria: { label: "Mission log" })) do |t|
+  %w[Launch Transit Arrival Debrief].each_with_index do |title, i|
+    t.with_event(title: title, state: i < step ? :done : (i == step ? :current : :upcoming))
+  end
+end %>

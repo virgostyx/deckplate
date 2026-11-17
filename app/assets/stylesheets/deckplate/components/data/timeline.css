@@ -1,0 +1,83 @@
+@layer dp.components {
+  .dp-timeline {
+    --_marker: 1.5rem;
+    --_rule: calc(0.2 * var(--dp-u));
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .dp-timeline__event {
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--_marker) minmax(0, 1fr);
+    column-gap: 0.9em;
+    padding-block-end: 1.25rem;
+  }
+  .dp-timeline__event:last-child { padding-block-end: 0; }
+
+  /* The rule joins a marker to the next one; it is filled with the colour once the event is done (progress) */
+  .dp-timeline__event:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    inset-block: var(--_marker) 0;
+    inset-inline-start: calc((var(--_marker) - var(--_rule)) / 2);
+    inline-size: var(--_rule);
+    background-color: var(--dp-line);
+  }
+  .dp-timeline__event--done:not(:last-child)::before { background-color: var(--dp-c); }
+
+  .dp-timeline__marker {
+    box-sizing: border-box;
+    display: grid;
+    place-items: center;
+    inline-size: var(--_marker);
+    block-size: var(--_marker);
+    border: 2px solid var(--dp-c);
+    border-radius: 50%;
+    color: var(--dp-c-ink);
+  }
+  .dp-timeline__marker .dp-icon { inline-size: 0.95em; block-size: 0.95em; }
+  /* done: filled with a check; current: a ring with a dot; upcoming: dashed and empty */
+  .dp-timeline__event--done .dp-timeline__marker { background-color: var(--dp-c); }
+  .dp-timeline__event--current .dp-timeline__marker { background: radial-gradient(circle, var(--dp-c) 0 36%, transparent 40%); }
+  .dp-timeline__event--upcoming .dp-timeline__marker { border-style: dashed; border-color: var(--dp-line); }
+
+  .dp-timeline__content { min-inline-size: 0; }
+  .dp-timeline__title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    min-block-size: var(--_marker);
+    margin: 0;
+    color: var(--dp-ink);
+    font-family: var(--dp-font-display);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+  }
+  .dp-timeline__event--current .dp-timeline__title { font-weight: 700; }
+  .dp-timeline__event--upcoming .dp-timeline__title { color: var(--dp-ink-muted); }
+  .dp-timeline__time {
+    display: block;
+    inline-size: fit-content; /* sits on the start side of the event, whatever the page direction */
+    color: var(--dp-ink-muted);
+    font-family: var(--dp-font-data);
+    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+  .dp-timeline__body {
+    margin-block-start: 0.35em;
+    color: var(--dp-ink);
+    overflow-wrap: anywhere;
+  }
+
+  @media (forced-colors: active) {
+    .dp-timeline__marker { border-color: ButtonText; }
+    .dp-timeline__event--done .dp-timeline__marker { background-color: Highlight; color: HighlightText; }
+    .dp-timeline__event--current .dp-timeline__marker { background: radial-gradient(circle, Highlight 0 36%, transparent 40%); }
+    .dp-timeline__event:not(:last-child)::before,
+    .dp-timeline__event--done:not(:last-child)::before { background-color: ButtonText; }
+  }
+}

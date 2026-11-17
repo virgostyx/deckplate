@@ -27,6 +27,11 @@ en:
     forms:
       error_prefix: "Error"
       select_prompt: "Select…"
+    timeline:
+      states:
+        done: "Completed"
+        current: "Current"
+        upcoming: "Upcoming"
     status:
       ok: "OK"
       warn: "Warning"

@@ -376,7 +376,7 @@ Class names follow section 4. "Stim" = Stimulus controller needed.
 | `Sparkline` | `points:`, `color:` | server-rendered inline SVG polyline, `role=img` + `aria-label` summary | P1 |
 | `DataCascade` | `rows:`, `columns:` | decorative animated numbers, `aria-hidden`, disabled under reduced motion | P1 |
 | `Clock` | `time:`, `format:`, `zone:` | `dp-clock` updates every second; initial value server-rendered; `data-turbo-permanent` friendly | P1 |
-| `Timeline` | – | | P2 |
+| `Timeline` | `with_event(title:, time:, datetime:, state:, color:)`, `color:` | `<ol>`; state = icon/shape + hidden text, current event `aria-current="step"`; `<time>` | P2 (done, Phase 9) |
 
 ### 8.5 Feedback
 

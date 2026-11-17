@@ -5,6 +5,8 @@ All notable changes are documented here. Format: [Keep a Changelog](https://keep
 ## [Unreleased]
 
 ### Added
+- `Data::TimelineComponent` (Phase 9): events as an ordered list, state by icon or shape plus hidden text (never colour alone), `aria-current="step"` on the current event,
+  `<time>`, per-event colours; RTL-aware; previews, specs and baselines.
 - Right-to-left support (ADR 0017, guide `docs/guides/rtl.md`): logical `Elbow` corners (`top_start`, `top_end`, `bottom_start`, `bottom_end`; physical names unchanged),
   `Panel` and `Frame` mirror (Frame slots `top_start_corner` / `bottom_start_corner`, old names kept; Panel `corners: :start`), directional icons, slider fill,
   popover alignment, left-to-right data values, mirrored Frame entrance animation; RTL specs, a pixel mirror check and RTL visual baselines (`bin/visual --dir rtl`).
