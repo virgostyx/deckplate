@@ -7,12 +7,18 @@ require "ferrum"
 ROOT = File.expand_path("../..", __dir__)
 WORK = File.join(ROOT, "tmp/integration")
 RAILS = ENV["RAILS_VERSION"] ? "_#{ENV['RAILS_VERSION']}_" : nil
-VARIANTS = { "plain" => { tailwind: false, port: 3811 }, "tailwind" => { tailwind: true, port: 3812 } }.freeze
+VARIANTS = { "plain" => { tailwind: false, port: 3811 }, "tailwind" => { tailwind: true, port: 3812 },
+             "builtgem" => { tailwind: false, port: 3813, built_gem: true } }.freeze # "builtgem": the built .gem is installed (proves the shipped files are enough)
 FAILURES = []
 
-def sh(dir, command, log)
+GEM_HOME_DIR = File.join(WORK, "gemhome")
+
+# The built-gem variant looks Deckplate up in an isolated gem directory (plus the usual gems for its dependencies)
+def gem_env(built_gem) = built_gem ? { "GEM_PATH" => [ GEM_HOME_DIR, Gem.default_path ].flatten.join(":") } : {}
+
+def sh(dir, command, log, built_gem: false)
   Bundler.with_unbundled_env do
-    ok = system({ "BUNDLE_GEMFILE" => nil, "RAILS_ENV" => nil }, "#{command} >> #{log} 2>&1", chdir: dir)
+    ok = system({ "BUNDLE_GEMFILE" => nil, "RAILS_ENV" => nil }.merge(gem_env(built_gem)), "#{command} >> #{log} 2>&1", chdir: dir)
     abort "FAILED (see #{log}): #{command}" unless ok
   end
 end
@@ -26,7 +32,7 @@ def snapshot(dir)
   Dir.glob("{app,config}/**/*", base: dir).select { File.file?(File.join(dir, _1)) }.sort.to_h { [ _1, File.read(File.join(dir, _1)) ] }
 end
 
-def build_app(variant, tailwind:)
+def build_app(variant, tailwind:, built_gem: false)
   dir = File.join(WORK, variant)
   log = File.join(WORK, "#{variant}.log")
   FileUtils.rm_rf(dir)
@@ -37,13 +43,23 @@ def build_app(variant, tailwind:)
              --skip-rubocop --skip-brakeman -a propshaft -j importmap -q]
   flags += %w[--css tailwind] if tailwind
   sh(WORK, "rails #{RAILS} new #{variant} #{flags.join(' ')}", log)
-  File.open(File.join(dir, "Gemfile"), "a") { _1.puts %(\ngem "deckplate", path: "#{ROOT}") }
+  if built_gem
+    puts "== #{variant}: gem build + install into an isolated directory"
+    FileUtils.rm_rf(GEM_HOME_DIR)
+    sh(ROOT, "gem build deckplate.gemspec --output tmp/integration/deckplate.gem", log)
+    sh(ROOT, "gem install --local --ignore-dependencies --no-document --install-dir #{GEM_HOME_DIR} tmp/integration/deckplate.gem", log)
+    version = File.read(File.join(ROOT, "lib/deckplate/version.rb"))[/VERSION = "([^"]+)"/, 1]
+    File.open(File.join(dir, "Gemfile"), "a") { _1.puts %(\ngem "deckplate", "= #{version}") }
+  else
+    File.open(File.join(dir, "Gemfile"), "a") { _1.puts %(\ngem "deckplate", path: "#{ROOT}") }
+  end
   puts "== #{variant}: bundle install"
-  sh(dir, "bundle install", log)
+  sh(dir, "bundle install --local", log, built_gem: built_gem) if built_gem
+  sh(dir, "bundle install", log) unless built_gem
   puts "== #{variant}: rails g deckplate:install (twice)"
-  sh(dir, "bin/rails g deckplate:install", log)
+  sh(dir, "bin/rails g deckplate:install", log, built_gem: built_gem)
   first = snapshot(dir)
-  sh(dir, "bin/rails g deckplate:install", log)
+  sh(dir, "bin/rails g deckplate:install", log, built_gem: built_gem)
   check(variant, "installer is idempotent on a real app", snapshot(dir) == first)
   layout = File.read(File.join(dir, "app/views/layouts/application.html.erb"))
   check(variant, "layout is wired (stylesheet, theme attributes, dp-root)", layout.include?('stylesheet_link_tag "deckplate"') && layout.include?("dp_theme_attrs") && layout.include?('class="dp-root"'))
@@ -55,15 +71,15 @@ def build_app(variant, tailwind:)
   FileUtils.mkdir_p(File.join(dir, "app/views/smoke"))
   FileUtils.cp(File.join(ROOT, "tools/integration/smoke_page.html.erb"), File.join(dir, "app/views/smoke/home.html.erb"))
   File.write(File.join(dir, "app/controllers/smoke_controller.rb"), "class SmokeController < ApplicationController\n  def home; end\nend\n")
-  sh(dir, "bin/rails g deckplate:gallery", log)
+  sh(dir, "bin/rails g deckplate:gallery", log, built_gem: built_gem)
   routes = File.join(dir, "config/routes.rb")
   File.write(routes, File.read(routes).sub(/^end\s*\z/, %(  root "smoke#home"\nend\n)))
   sh(dir, "bin/rails tailwindcss:build", log) if tailwind
   dir
 end
 
-def with_server(dir, port, log)
-  pid = Bundler.with_unbundled_env { Process.spawn({ "BUNDLE_GEMFILE" => nil }, "bin/rails server -p #{port} -b 127.0.0.1", chdir: dir, out: log, err: log, pgroup: true) }
+def with_server(dir, port, log, built_gem: false)
+  pid = Bundler.with_unbundled_env { Process.spawn({ "BUNDLE_GEMFILE" => nil }.merge(gem_env(built_gem)), "bin/rails server -p #{port} -b 127.0.0.1", chdir: dir, out: log, err: log, pgroup: true) }
   60.times do
     break if (Net::HTTP.get_response(URI("http://127.0.0.1:#{port}/up")).is_a?(Net::HTTPSuccess) rescue false)
 
@@ -125,8 +141,8 @@ abort "unknown variant(s): #{unknown.join(', ')} (valid: #{VARIANTS.keys.join(',
 
 wanted.each do |variant|
   config = VARIANTS.fetch(variant)
-  dir = build_app(variant, tailwind: config[:tailwind])
-  with_server(dir, config[:port], File.join(WORK, "#{variant}.server.log")) { smoke(variant, config[:port], tailwind: config[:tailwind]) }
+  dir = build_app(variant, tailwind: config[:tailwind], built_gem: config[:built_gem])
+  with_server(dir, config[:port], File.join(WORK, "#{variant}.server.log"), built_gem: config[:built_gem]) { smoke(variant, config[:port], tailwind: config[:tailwind]) }
 end
 
 puts FAILURES.empty? ? "\nIntegration OK (#{wanted.join(', ')})" : "\nFAILED:\n  #{FAILURES.join("\n  ")}"

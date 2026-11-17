@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Generates throwaway Rails apps, installs Deckplate with `rails g deckplate:install`, boots them and runs a headless smoke test.
-#   bin/integration            both variants (propshaft+importmap, and + Tailwind 4)
+#   bin/integration            all variants: propshaft+importmap, + Tailwind 4, and the built .gem installed in isolation
 #   bin/integration plain      only the first variant        bin/integration tailwind   only the second
 #   RAILS_VERSION=8.0.2 bin/integration   use another installed Rails (default: the newest installed)
 # Needs network (rubygems). Apps live in tmp/integration/ (ignored by git); logs next to them.
