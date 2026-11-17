@@ -9,6 +9,9 @@ All notable changes are documented here. Format: [Keep a Changelog](https://keep
   (`config.sounds`, `dp-sound`, `SoundToggleComponent`, `dp_sound_attrs`; ADR 0013; guide `docs/guides/motion-sound-theme.md`).
 - Metric-matched fallback fonts (ADR 0015) and a layout-shift spec; zoom/reflow (200 %, 400 %), forced-colours and touch-target specs; guides
   `accessibility.md` and `theming.md`; JS budget 30 KB / 8 KB (ADR 0014).
+- Phase 8: `rails g deckplate:install` (idempotent; layout, Stimulus and Tailwind wiring), `rails g deckplate:theme`, `rails g deckplate:gallery`;
+  Tailwind bridge copied by the installer (ADR 0016); `bin/integration` (plain, Tailwind 4 and built-gem host apps, nightly workflow);
+  README and guides (installation, Tailwind, CSP, Turbo, upgrading); legal checklist run.
 
 ### Changed
 - Sized `Bar` segments now shrink on narrow screens (reflow at 400 % zoom).
