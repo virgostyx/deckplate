@@ -18,6 +18,7 @@ module Deckplate
       search: [ "M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z", "M16 16l5 5" ],
       plus: [ "M12 5v14M5 12h14" ],
       minus: [ "M5 12h14" ],
+      backspace: [ "M21 5H9l-6 7 6 7h12a1 1 0 001-1V6a1 1 0 00-1-1z", "M14 9.5l5 5M19 9.5l-5 5" ],
       sort_asc: [ "M12 19V5M6 11l6-6 6 6" ],
       sort_desc: [ "M12 5v14M6 13l6 6 6-6" ],
       external: [ "M14 4h6v6M20 4l-9 9", "M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5" ]

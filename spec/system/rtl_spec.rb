@@ -130,4 +130,23 @@ RSpec.describe "Right-to-left", type: :system, js: true do
       end
     end
   end
+
+  describe "Keypad" do
+    # A numeric keypad keeps its layout in any page direction (like a phone or a cash machine): 1 2 3 from the left
+    def lefts = page.evaluate_script("(function(){ var l = function (sel) { return document.querySelector(sel).getBoundingClientRect().left }; return [ l(\"[data-dp-keypad-digit-param='1']\"), l(\"[data-dp-keypad-digit-param='2']\"), l(\"[data-dp-keypad-digit-param='3']\") ] })()")
+
+    %w[ltr rtl].each do |dir|
+      it "puts 1, 2, 3 from left to right in #{dir}" do
+        visit "/rails/view_components/keypad/default?dir=#{dir}"
+        one, two, three = lefts
+        expect(one).to be < two
+        expect(two).to be < three
+      end
+    end
+
+    it "keeps the digits of the field left to right in RTL" do
+      visit "/rails/view_components/keypad/default?dir=rtl"
+      expect(page.evaluate_script("getComputedStyle(document.querySelector('.dp-keypad__input')).direction")).to eq("ltr")
+    end
+  end
 end

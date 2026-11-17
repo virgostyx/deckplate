@@ -22,7 +22,8 @@ grid mirror under `dir="rtl"`. A side-by-side comparison of every preview (LTR f
 5. Popover JS positions with physical `left` (it computes physical coordinates), not `inset-inline-start`.
 6. Values that are data (the Readout number and unit, each, and the Clock) are isolated as LTR (`direction: ltr; unicode-bidi: isolate`), also in an RTL page.
    The flex row of a Readout still follows the page direction.
-7. Verification: computed-style specs per corner and direction; a pixel mirror check (a text-free preview rendered in RTL must equal the LTR render
+7. A numeric keypad keeps its layout and its field direction (left to right) in RTL, like a phone or cash machine keypad.
+8. Verification: computed-style specs per corner and direction; a pixel mirror check (a text-free preview rendered in RTL must equal the LTR render
    flipped); visual baselines for RTL (classic, 768 px).
 
 ## Consequences

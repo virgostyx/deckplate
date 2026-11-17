@@ -1,0 +1,11 @@
+<%= render_field do %>
+  <%= tag.div(**keypad_attributes) do %>
+    <%= tag.input(type: (@masked ? :password : :text), value: @value, **input_attributes) %>
+    <div class="dp-keypad__pad" role="group" aria-label="<%= t("deckplate.keypad.label") %>">
+      <% DIGITS.each do |digit| %><%= key(digit) %><% end %>
+      <%= clear_key %><%= key("0") %><%= delete_key %>
+    </div>
+    <p class="dp-sr-only" aria-live="polite" data-dp-keypad-target="status"></p>
+    <% if @submit %><%= render Deckplate::ButtonComponent.new(label: @submit, type: "submit", color: @color, disabled: @disabled, class: "dp-keypad__submit") %><% end %>
+  <% end %>
+<% end %>

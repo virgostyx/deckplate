@@ -360,6 +360,7 @@ Class names follow section 4. "Stim" = Stimulus controller needed.
 | `FormField` | label (required marker + `sr-only` text), hint (`aria-describedby`), error (`aria-invalid`, `role=alert` on first error) | P0 |
 | `TextInput` (text/email/password/number/search/tel/url), `Textarea`, `Select` (native, styled), `Checkbox`, `RadioGroup` (`<fieldset><legend>`), `Range`, `FileInput`, `DateInput` (native) | all use native elements; styling via custom properties | P0 |
 | `FormActions` | submit/cancel row | P0 |
+| `Keypad` | `name:`, `label:`, `length:`, `masked:`, `value:`, `submit:`, `color:` | a real `<input inputmode=numeric>` plus a 12-key pad (Buttons); live region says how many digits, never which; works with the physical keyboard | P2 (done, Phase 9) |
 | `InlineField` | compact label+control for dense screens | P1 |
 
 ### 8.4 Data display (`Deckplate::Data::*`)

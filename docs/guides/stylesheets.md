@@ -32,7 +32,8 @@ The families do not depend on each other for their own components, but some comp
 
 * a `Menu` renders a `Button` (controls: same family);
 * an `EmptyState`, an `Alert` or a form often hold a `Button` (link `deckplate-controls`);
-* the form builder's submit is a `Button`; its `FormActions` row is in `forms`.
+* the form builder's submit is a `Button`; its `FormActions` row is in `forms`;
+* a `Keypad` is built from `Button`s (link `deckplate-controls` next to `deckplate-forms`).
 
 When in doubt, use `deckplate.css`.
 

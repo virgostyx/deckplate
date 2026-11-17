@@ -1,0 +1,6 @@
+<div class="dp-root gx-page"><div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); max-inline-size: 60rem">
+  <%= render Deckplate::Forms::KeypadComponent.new(name: "secret", label: "Masked code", length: 6, masked: true, id: "masked") %>
+  <%= render Deckplate::Forms::KeypadComponent.new(name: "qty", label: "Quantity", hint: "Any number of digits", value: "42", color: :info, id: "free") %>
+  <%= render Deckplate::Forms::KeypadComponent.new(name: "bad", label: "Rejected code", length: 4, value: "12", errors: [ "must be 4 digits" ], required: true, id: "invalid") %>
+  <%= render Deckplate::Forms::KeypadComponent.new(name: "off", label: "Locked", length: 4, disabled: true, id: "disabled") %>
+</div></div>

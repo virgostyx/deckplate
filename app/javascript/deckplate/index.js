@@ -4,6 +4,7 @@ import DpClock from "deckplate/controllers/dp_clock_controller"
 import DpDismiss from "deckplate/controllers/dp_dismiss_controller"
 import DpField from "deckplate/controllers/dp_field_controller"
 import DpFlicker from "deckplate/controllers/dp_flicker_controller"
+import DpKeypad from "deckplate/controllers/dp_keypad_controller"
 import DpMenu from "deckplate/controllers/dp_menu_controller"
 import DpModal from "deckplate/controllers/dp_modal_controller"
 import DpSlider from "deckplate/controllers/dp_slider_controller"
@@ -20,6 +21,7 @@ const controllers = {
   "dp-dismiss": DpDismiss,
   "dp-field": DpField,
   "dp-flicker": DpFlicker,
+  "dp-keypad": DpKeypad,
   "dp-menu": DpMenu,
   "dp-modal": DpModal,
   "dp-slider": DpSlider,

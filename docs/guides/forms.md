@@ -78,6 +78,20 @@ value, checked and selected state until the form is submitted. A field they did 
 * Disabled controls are drawn with a dashed outline and muted text (not a filled colour), and stay legible in every theme.
 * The date control is the browser's own: in Chrome it has four tab stops (month, day, year, calendar button).
 
+## Keypad
+
+```erb
+<%= render Deckplate::Forms::KeypadComponent.new(name: "pin", label: "Access code", length: 4, masked: true, submit: "Unlock") %>
+```
+
+A code or number field with an on-screen pad (1-9, clear, 0, delete). It is a real `<input inputmode="numeric">` inside a FormField (label, hint, errors,
+`required`, `disabled` as for the other controls), so the physical keyboard works, anything that is not a digit is dropped, and the value is submitted with the form;
+the pad only fills the input in. `length:` (1 to 12) fixes the digit count (`maxlength` and a `pattern`), `masked: true` makes it a password field (the value is never
+written back into the page), `submit:` adds a submit button with that label. The keys are Buttons, so link `deckplate-controls` with `deckplate-forms`.
+
+Assistive technology: the keys are real buttons with names ("Clear", "Delete last digit"); a polite live region announces "Digits entered: N", never the digits, so a masked
+code stays secret. Every change fires an `input` event, which is how `dp-field` keeps the entered code through a Turbo morph.
+
 ## Not in v1.0
 
 `select multiple`, checkbox groups, client-side (inline) validation, rich text. See the backlog in `docs/PLAN.md`.

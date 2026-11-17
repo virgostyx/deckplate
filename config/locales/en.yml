@@ -27,6 +27,11 @@ en:
     forms:
       error_prefix: "Error"
       select_prompt: "Select…"
+    keypad:
+      label: "Keypad"
+      clear: "Clear"
+      delete: "Delete last digit"
+      status: "Digits entered: %{number}"
     timeline:
       states:
         done: "Completed"

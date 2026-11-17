@@ -27,6 +27,11 @@ fr:
     forms:
       error_prefix: "Erreur"
       select_prompt: "Choisir…"
+    keypad:
+      label: "Pavé numérique"
+      clear: "Effacer tout"
+      delete: "Supprimer le dernier chiffre"
+      status: "Chiffres saisis : %{number}"
     timeline:
       states:
         done: "Terminé"

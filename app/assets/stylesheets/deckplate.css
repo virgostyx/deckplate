@@ -1856,6 +1856,34 @@
   }
 }
 @layer dp.components {
+  .dp-keypad {
+    display: grid;
+    gap: var(--dp-gap);
+    max-inline-size: 16rem;
+  }
+  .dp-keypad__input {
+    direction: ltr;
+    text-align: center;
+    font-family: var(--dp-font-data);
+    font-size: 1.5rem;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.3em;
+  }
+  .dp-keypad__pad {
+    direction: ltr;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--dp-gap);
+  }
+  .dp-keypad__key,
+  .dp-keypad__submit { inline-size: 100%; justify-content: center; }
+  .dp-keypad__key {
+    min-block-size: var(--dp-touch-min);
+    font-family: var(--dp-font-data);
+    font-size: 1.5rem;
+  }
+}
+@layer dp.components {
   .dp-bar-graph { display: grid; gap: 0.6em; margin: 0; min-inline-size: 0; }
   .dp-bar-graph__caption {
     color: var(--dp-ink);

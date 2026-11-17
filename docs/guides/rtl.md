@@ -15,6 +15,7 @@ no locale for it. Components follow the direction (ADR 0017); the layout, the Fr
 ## What stays left to right
 Data: a Readout's number and unit, and a Clock, are isolated as left-to-right text inside an RTL page, so "72.4 kW" and "18.4 °C" keep their characters
 in order. The Readout row itself still follows the page direction (number on the right, unit on its left).
+A `Keypad` keeps its layout (1 2 3 from the left, like a phone) and its digits left to right.
 
 ## Checked
 `spec/system/rtl_spec.rb` (corner shapes, icons, slider, popovers, data), a pixel check that text-free shapes in RTL equal the flipped LTR render

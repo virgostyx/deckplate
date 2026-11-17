@@ -47,7 +47,7 @@ end %>
 |---|---|
 | Shapes and layout | `Elbow`, `Bar`, `Block`, `Cap`, `Bracket`, `Divider`, `Spacer`; `Frame`, `PageHeader`, `Panel`, `Section` |
 | Controls and navigation | `Button`, `ButtonGroup`, `Nav`, `TopNav`, `Tabs`, `Menu`, `Modal`, `Tooltip`, `Disclosure`, `Breadcrumb`, `Pagination`, `Toggle`, `Slider` |
-| Forms | `FormField`, text, textarea, select, checkbox, radio group, range, date and file inputs, `FormActions`, and a `Deckplate::FormBuilder` |
+| Forms | `FormField`, text, textarea, select, checkbox, radio group, range, date and file inputs, `FormActions`, `Keypad`, and a `Deckplate::FormBuilder` |
 | Data display | `Readout`, `Table`, `DataList`, `Gauge`, `Progress`, `BarGraph`, `Sparkline`, `StatusPill`, `Clock`, `DataCascade`, `Timeline` |
 | Feedback | `Alert`, `Toast` (Turbo Streams), `ConditionBanner`, `Callout`, `EmptyState`, `Skeleton`, `Spinner` |
 | Extras | `ThemeSwitcher` (cookie, no flash), opt-in sound (`SoundToggle`), entrance animation (`Frame animate: true`) |

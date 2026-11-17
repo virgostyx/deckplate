@@ -1,0 +1,5 @@
+<div class="dp-root gx-page"><div style="max-inline-size: 18rem">
+  <form method="get" action="/up" id="code-form">
+    <%= render Deckplate::Forms::KeypadComponent.new(name: "pin", label: "Access code", hint: "Four digits", length: 4, submit: "Unlock", id: "pin") %>
+  </form>
+</div></div>

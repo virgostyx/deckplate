@@ -1,0 +1,31 @@
+@layer dp.components {
+  .dp-keypad {
+    display: grid;
+    gap: var(--dp-gap);
+    max-inline-size: 16rem;
+  }
+  /* Digits are data: they read left to right in any page direction (ADR 0017) */
+  .dp-keypad__input {
+    direction: ltr;
+    text-align: center;
+    font-family: var(--dp-font-data);
+    font-size: 1.5rem;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.3em;
+  }
+  /* A numeric keypad keeps its layout in any page direction, like a phone or a cash machine */
+  .dp-keypad__pad {
+    direction: ltr;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--dp-gap);
+  }
+  /* The keys are Buttons (controls family): full cell, centred, touch-sized */
+  .dp-keypad__key,
+  .dp-keypad__submit { inline-size: 100%; justify-content: center; }
+  .dp-keypad__key {
+    min-block-size: var(--dp-touch-min);
+    font-family: var(--dp-font-data);
+    font-size: 1.5rem;
+  }
+}

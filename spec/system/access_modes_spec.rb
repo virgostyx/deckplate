@@ -67,7 +67,7 @@ RSpec.describe "Access modes", type: :system, js: true do
       pg.command("Emulation.setTouchEmulationEnabled", enabled: true, maxTouchPoints: 1)
     end
 
-    %w[button/default text_input/default select/default toggle/default checkbox/default tabs/default pagination/default].each do |preview|
+    %w[button/default text_input/default select/default toggle/default checkbox/default tabs/default pagination/default keypad/default].each do |preview|
       it "#{preview}: every control is at least 44px tall" do
         visit "/rails/view_components/#{preview}"
         expect(page.evaluate_script("matchMedia('(pointer: coarse)').matches")).to be(true)
