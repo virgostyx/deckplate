@@ -1,3 +1,3 @@
 module Deckplate
-  VERSION = "0.1.0.dev"
+  VERSION = "0.9.0"
 end

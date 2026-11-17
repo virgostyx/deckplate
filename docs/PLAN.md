@@ -56,7 +56,7 @@ Goal: a green empty skeleton and the five technical risks answered by evidence.
    `rails plugin new` with `--mountable`, no default test framework, dummy app at `spec/dummy`
    (check the exact flags in the current Rails guide; keep the existing files). Rename/organise to match
    SPEC §3. `git init`, `.gitignore`, MIT `LICENSE`, README stub (with disclaimer), CHANGELOG, CREDITS.
-2. Gemspec: name `deckplate`, version `0.1.0.dev`, `required_ruby_version >= 3.3`, runtime deps `rails` and
+2. Gemspec: name `deckplate`, version `0.1.0.dev` (now 0.9.0, see CHANGELOG), `required_ruby_version >= 3.3`, runtime deps `rails` and
    `view_component` with verified ranges, `files` per SPEC §3, metadata (no franchise names).
 3. Tooling: RSpec (rspec-rails), SimpleCov (≥ 95 %), rubocop-rails-omakase + `.rubocop.yml`, Capybara + Cuprite,
    axe-core-rspec, Lookbook, Appraisal (Rails 8.0 / 8.1). Create `bin/setup`, `bin/ci`, `bin/dev`,
