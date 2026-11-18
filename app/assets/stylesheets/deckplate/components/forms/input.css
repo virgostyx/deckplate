@@ -14,7 +14,7 @@
   }
   .dp-input:is(textarea) { border-radius: calc(var(--dp-u) * 0.75); resize: vertical; }
   .dp-input::placeholder { color: var(--dp-ink-muted); opacity: 1; }
-  .dp-input:hover { border-color: var(--dp-ink-muted); }
+  @media (hover: hover) { .dp-input:hover { border-color: var(--dp-ink-muted); } }
   .dp-input:focus-visible { border-color: var(--dp-focus); }
   .dp-input[aria-invalid="true"] { border-color: var(--dp-danger); border-width: 3px; }
   .dp-input:disabled,

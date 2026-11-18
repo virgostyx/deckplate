@@ -149,4 +149,18 @@ RSpec.describe "Right-to-left", type: :system, js: true do
       expect(page.evaluate_script("getComputedStyle(document.querySelector('.dp-keypad__input')).direction")).to eq("ltr")
     end
   end
+
+  describe "Frame drawer (narrow screens)" do
+    %w[ltr rtl].each do |dir|
+      it "opens from the side where the layout starts, in #{dir}" do
+        page.current_window.resize_to(375, 800)
+        visit "/rails/view_components/frame/classic?dir=#{dir}"
+        find(".dp-frame__menu-button, button[popovertarget]", match: :first).click
+        wait_until("the drawer") { page.evaluate_script("document.querySelector('.dp-frame__sidebar').matches(':popover-open')") }
+        rect = page.evaluate_script("(function(){ var r = document.querySelector('.dp-frame__sidebar').getBoundingClientRect(); return [ r.left, r.right, window.innerWidth ] })()")
+        left, right, width = rect
+        dir == "rtl" ? expect(right).to(be_within(1).of(width)) : expect(left).to(be_within(1).of(0))
+      end
+    end
+  end
 end

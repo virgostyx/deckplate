@@ -8,7 +8,7 @@ RSpec.describe "base styles and scoping" do
     selectors = stripped.scan(/([^{};]+)\{/).flatten.map(&:strip).reject { _1.start_with?("@") }
                         .reject { _1.match?(/\A(from|to|\d+(\.\d+)?%)(\s*,\s*(from|to|\d+(\.\d+)?%))*\z/) } # @keyframes steps
     offenders = selectors.flat_map { |s| s.split(",").map(&:strip) }
-                         .reject { |s| s.match?(/\A(:root\z|\[data-dp-theme=|\.dp-)/) }
+                         .reject { |s| s.match?(/\A(:root(\[data-dp-native\])?\z|\[data-dp-theme=|\[data-dp-native\] \.dp-|\.dp-)/) } # native rules are scoped under .dp-root (ADR 0019)
     expect(offenders).to eq([])
   end
 

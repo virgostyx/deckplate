@@ -20,7 +20,7 @@
     cursor: pointer;
     transition: filter 50ms linear;
   }
-  .dp-tabs__tab:hover { filter: brightness(1.2); }
+  @media (hover: hover) { .dp-tabs__tab:hover { filter: brightness(1.2); } }
   .dp-tabs__tab[aria-selected="true"] {
     background-color: var(--dp-c);
     color: var(--dp-c-ink);

@@ -60,7 +60,7 @@
     font-size: 1.5rem;
     cursor: pointer;
   }
-  .dp-modal__close:hover { background-color: color-mix(in srgb, currentColor 18%, transparent); }
+  @media (hover: hover) { .dp-modal__close:hover { background-color: color-mix(in srgb, currentColor 18%, transparent); } }
   .dp-modal__body { padding: var(--dp-u); overflow: auto; overflow-wrap: anywhere; }
   .dp-modal__actions {
     display: flex;

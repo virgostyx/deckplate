@@ -52,6 +52,7 @@ RSpec.describe "Turbo compatibility", type: :system, js: true do
     it "the slider readout still follows the keyboard after a back navigation" do
       visit "/rails/view_components/slider/default"
       away_and_back("/slider/default")
+      expect(page).to have_css("input[type='range']") # Turbo restores the page from its cache asynchronously: wait for it before focusing
       focus("input[type='range']")
       press(:Right)
       expect(page).to have_css("output", text: "73%")

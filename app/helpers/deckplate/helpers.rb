@@ -1,6 +1,7 @@
 module Deckplate
   # View helpers, included in every ActionView (see Deckplate::Engine).
   module Helpers
+    NATIVE_AGENT = /(Hotwire|Turbo) Native/i
     PRELOADED_FONTS = %w[antonio-latin share-tech-mono-latin].freeze
     THEME_COOKIE = "dp_theme".freeze
 
@@ -36,8 +37,15 @@ module Deckplate
 
     # Attributes for <html>/<body>: <html <%= tag.attributes(dp_theme_attrs) %>>
     # The theme comes from the dp_theme cookie when it names an enabled theme, so the first paint is right.
+    # For a Hotwire Native client it also carries data-dp-native, so that the stylesheet can adapt (touch targets, tap highlight; ADR 0019).
     def dp_theme_attrs
-      { data: { dp_theme: dp_current_theme.to_s } }
+      { data: { dp_theme: dp_current_theme.to_s, dp_native: ("true" if dp_native?) }.compact }
+    end
+
+    # True for a Hotwire Native client: its user agent contains "Hotwire Native" (or "Turbo Native", the name before the rename).
+    # Same test as turbo-rails' hotwire_native_app?, without needing turbo-rails.
+    def dp_native?
+      request&.user_agent.to_s.match?(NATIVE_AGENT)
     end
 
     # Sound is opt-in (config.sounds): without it this is empty and no controller is attached. The controller listens for `dp:sound`

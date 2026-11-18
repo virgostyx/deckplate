@@ -34,10 +34,15 @@
     text-transform: uppercase;
     cursor: pointer;
   }
-  .dp-menu__item:hover,
   .dp-menu__item:focus-visible {
     background-color: var(--dp-c);
     color: var(--dp-c-ink);
+  }
+  @media (hover: hover) {
+    .dp-menu__item:hover {
+      background-color: var(--dp-c);
+      color: var(--dp-c-ink);
+    }
   }
   .dp-menu__item:focus-visible { outline-offset: -2px; }
   .dp-menu__form { display: contents; }

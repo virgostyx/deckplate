@@ -39,7 +39,7 @@
     border-end-end-radius: var(--dp-pill-r);
   }
 
-  .dp-button:hover { filter: brightness(1.1); }
+  @media (hover: hover) { .dp-button:hover { filter: brightness(1.1); } }
   .dp-button:active { filter: brightness(1.45); }
 
   /* Unavailable: an outline with muted text (its contrast is checked in every theme), never a filled colour */

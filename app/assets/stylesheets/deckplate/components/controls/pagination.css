@@ -24,7 +24,7 @@
     text-decoration: none;
     transition: filter 50ms linear;
   }
-  .dp-pagination__link:is(a):hover { filter: brightness(1.1); }
+  @media (hover: hover) { .dp-pagination__link:is(a):hover { filter: brightness(1.1); } }
   .dp-pagination__link:is(a):active { filter: brightness(1.45); }
   .dp-pagination__link--current {
     background-color: var(--dp-primary);

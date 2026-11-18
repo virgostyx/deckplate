@@ -36,6 +36,19 @@
   }
 
   /* prefers-contrast: more is handled per component (thicker borders, no translucency) */
+
+  /* Hotwire Native (ADR 0019): <html data-dp-native> is added by dp_theme_attrs for the native clients. Larger touch targets (48 px, the Android
+     minimum), no tap highlight, no double-tap delay on controls. */
+  :root[data-dp-native] { --dp-touch-min: 3rem; }
+  [data-dp-native] .dp-root { -webkit-tap-highlight-color: transparent; }
+  [data-dp-native] .dp-root a,
+  [data-dp-native] .dp-root button,
+  [data-dp-native] .dp-root input,
+  [data-dp-native] .dp-root select,
+  [data-dp-native] .dp-root textarea,
+  [data-dp-native] .dp-root summary,
+  [data-dp-native] .dp-root [role="tab"],
+  [data-dp-native] .dp-root [role="switch"] { touch-action: manipulation; }
 }
 
 /* Reduced motion: tokens go near-instant and any running animation is cut short.

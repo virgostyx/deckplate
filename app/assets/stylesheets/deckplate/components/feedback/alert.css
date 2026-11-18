@@ -26,6 +26,6 @@
     color: var(--dp-ink);
     cursor: pointer;
   }
-  .dp-alert__close:hover { background-color: color-mix(in srgb, currentColor 18%, transparent); }
+  @media (hover: hover) { .dp-alert__close:hover { background-color: color-mix(in srgb, currentColor 18%, transparent); } }
   @media (forced-colors: active) { .dp-alert { border: 2px solid CanvasText; } }
 }

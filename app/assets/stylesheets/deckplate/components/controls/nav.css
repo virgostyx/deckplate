@@ -31,7 +31,7 @@
     letter-spacing: 0;
   }
   .dp-nav__label { min-inline-size: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .dp-nav__link:hover { filter: brightness(1.1); }
+  @media (hover: hover) { .dp-nav__link:hover { filter: brightness(1.1); } }
   .dp-nav__link:active { filter: brightness(1.45); }
 
   /* Current page: not colour alone. The block is squared off on the start side and gets a bar at its end. */

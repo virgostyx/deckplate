@@ -71,11 +71,16 @@
   .dp-frame__sidebar { grid-area: sidebar; min-inline-size: 0; }
   .dp-frame__sidebar:popover-open {
     position: fixed;
-    inset: 0 auto 0 0;
+    inset-block: 0;
+    inset-inline: 0 auto; /* opens from the side where the layout starts (the right in RTL) */
     inline-size: min(20rem, 85vw);
     block-size: 100dvh;
     margin: 0;
     padding: var(--dp-u);
+    /* clear of the notch, the home indicator and rounded corners (0 without viewport-fit=cover) */
+    padding-block-start: max(var(--dp-u), env(safe-area-inset-top, 0px));
+    padding-block-end: max(var(--dp-u), env(safe-area-inset-bottom, 0px));
+    padding-inline: max(var(--dp-u), env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
     border: 0;
     border-inline-end: var(--dp-gap) solid var(--dp-primary);
     overflow: auto;
