@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Regenerates config/deckplate/components.yml from the component classes (boots the dummy app to read them).
+set -euo pipefail
+cd "$(dirname "$0")/.."
+exec bundle exec ruby -e '
+  ENV["RAILS_ENV"] ||= "development"
+  require File.expand_path("spec/dummy/config/environment")
+  require File.expand_path("tools/manifest_builder")
+  Rails.autoloaders.main.eager_load
+  DeckplateBuild::ManifestBuilder.new(Dir.pwd).write!
+  puts "config/deckplate/components.yml written"
+'

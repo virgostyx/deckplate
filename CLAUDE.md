@@ -36,6 +36,7 @@ bin/visual                # visual regression run (Playwright, dev-only tool und
 bin/visual --update       # refresh baselines (review the diff images before committing!)
 bin/integration           # generate throwaway Rails apps and test `rails g deckplate:install`
 bin/build-css             # regenerate tokens.css from palette.yml and concatenate CSS sources into deckplate.css
+bin/build-manifest        # regenerate config/deckplate/components.yml from the component classes (a spec fails when it is stale)
 bin/budgets               # print CSS/JS/font sizes against the SPEC section 12 budgets
 ```
 

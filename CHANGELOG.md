@@ -5,6 +5,8 @@ All notable changes are documented here. Format: [Keep a Changelog](https://keep
 ## [Unreleased]
 
 ### Added
+- Component manifest `config/deckplate/components.yml` (Phase 9): every component's parameters, defaults, variants, slots, controllers, stylesheet and previews, generated from the code
+  by `bin/build-manifest` and checked by a spec; guide `docs/guides/manifest.md`. Four components gained the doc comment the manifest needs.
 - `Forms::KeypadComponent` (Phase 9): a numeric code field with an on-screen pad (`dp-keypad`): real `<input>` (physical keyboard, native submit), `length:`, `masked:`, `submit:`,
   digit-count live region, RTL-aware; previews, specs and baselines.
 - `Data::TimelineComponent` (Phase 9): events as an ordered list, state by icon or shape plus hidden text (never colour alone), `aria-current="step"` on the current event,
