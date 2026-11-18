@@ -2017,6 +2017,26 @@
   .dp-bar-graph--vertical .dp-bar-graph__track { grid-row: 2; inline-size: 100%; max-inline-size: 4rem; block-size: 100%; align-items: flex-end; }
   .dp-bar-graph--vertical .dp-bar-graph__label { grid-row: 3; max-inline-size: 100%; }
   .dp-bar-graph--vertical .dp-bar-graph__bar { inline-size: 100%; block-size: calc(var(--dp-value, 0) * 1%); border-radius: var(--dp-pill-r) var(--dp-pill-r) 0 0; }
+  .dp-bar-graph__row--multi { align-items: start; }
+  .dp-bar-graph--grouped .dp-bar-graph__row--multi { grid-template-columns: minmax(4rem, 9rem) minmax(10rem, 1fr); }
+  .dp-bar-graph__tracks { display: grid; gap: 0.25em; min-inline-size: 0; }
+  .dp-bar-graph__line { display: grid; grid-template-columns: minmax(8rem, 1fr) minmax(2.5rem, auto); align-items: center; gap: 0.75em; }
+  .dp-bar-graph--stacked .dp-bar-graph__track { overflow: hidden; }
+  .dp-bar-graph--stacked .dp-bar-graph__bar { border-radius: 0; box-shadow: inset -2px 0 0 var(--dp-bg); }
+  .dp-bar-graph__bar--k1 { background-image: repeating-linear-gradient(135deg, transparent 0 0.3rem, rgb(0 0 0 / 0.45) 0.3rem 0.5rem); }
+  .dp-bar-graph__bar--k2 { background-image: radial-gradient(rgb(0 0 0 / 0.55) 25%, transparent 27%); background-size: 0.5rem 0.5rem; }
+  .dp-bar-graph__bar--k3 { background-image: repeating-linear-gradient(90deg, transparent 0 0.25rem, rgb(0 0 0 / 0.45) 0.25rem 0.45rem); }
+  .dp-bar-graph__legend { display: flex; flex-wrap: wrap; gap: 0.35em 1.25em; margin: 0; padding: 0; list-style: none; font-size: 0.9375rem; color: var(--dp-ink); }
+  .dp-bar-graph__key { display: inline-flex; align-items: center; gap: 0.5em; }
+  .dp-bar-graph__swatch { inline-size: 1.25rem; block-size: 0.75rem; background-color: var(--dp-c); box-shadow: inset 0 0 0 1px var(--dp-line); }
+  .dp-bar-graph--vertical .dp-bar-graph__row--multi { align-items: stretch; }
+  .dp-bar-graph--vertical .dp-bar-graph__tracks { grid-row: 1 / 3; display: flex; align-items: stretch; justify-content: center; gap: 0.25em; inline-size: 100%; }
+  .dp-bar-graph--vertical .dp-bar-graph__line { flex: 1; max-inline-size: 3rem; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 10rem; gap: 0.35em; justify-items: center; }
+  .dp-bar-graph--vertical .dp-bar-graph__line .dp-bar-graph__value { grid-row: 1; }
+  .dp-bar-graph--vertical .dp-bar-graph__line .dp-bar-graph__track { grid-row: 2; }
+  .dp-bar-graph--vertical.dp-bar-graph--stacked .dp-bar-graph__tracks { grid-row: 2; }
+  .dp-bar-graph--vertical.dp-bar-graph--stacked .dp-bar-graph__track { flex-direction: column-reverse; align-items: stretch; }
+  .dp-bar-graph--vertical.dp-bar-graph--stacked .dp-bar-graph__bar { box-shadow: inset 0 2px 0 var(--dp-bg); }
   @media (forced-colors: active) { .dp-bar-graph__bar { background-color: Highlight; } }
 }
 @layer dp.components {

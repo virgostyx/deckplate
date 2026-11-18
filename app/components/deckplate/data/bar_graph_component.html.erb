@@ -2,16 +2,56 @@
   <figcaption class="dp-bar-graph__caption"><%= @label %></figcaption>
   <div class="dp-bar-graph__plot" aria-hidden="true">
     <% @series.each do |text, value| %>
-      <div class="dp-bar-graph__row">
-        <span class="dp-bar-graph__label"><%= text %></span>
-        <span class="dp-bar-graph__track"><%= tag.span(**bar_attributes(value)) %></span>
-        <span class="dp-bar-graph__value"><%= value %></span>
-      </div>
+      <% if multi? %>
+        <div class="dp-bar-graph__row dp-bar-graph__row--multi">
+          <span class="dp-bar-graph__label"><%= text %></span>
+          <span class="dp-bar-graph__tracks">
+            <% if stacked? %>
+              <span class="dp-bar-graph__track"><% value.each_with_index do |part, k| %><%= tag.span(**key_bar_attributes(part, k)) %><% end %></span>
+            <% else %>
+              <% value.each_with_index do |part, k| %>
+                <span class="dp-bar-graph__line"><span class="dp-bar-graph__track"><%= tag.span(**key_bar_attributes(part, k)) %></span><span class="dp-bar-graph__value"><%= part %></span></span>
+              <% end %>
+            <% end %>
+          </span>
+          <% if stacked? %><span class="dp-bar-graph__value"><%= total(value) %></span><% end %>
+        </div>
+      <% else %>
+        <div class="dp-bar-graph__row">
+          <span class="dp-bar-graph__label"><%= text %></span>
+          <span class="dp-bar-graph__track"><%= tag.span(**bar_attributes(value)) %></span>
+          <span class="dp-bar-graph__value"><%= value %></span>
+        </div>
+      <% end %>
     <% end %>
   </div>
+  <% if multi? %>
+    <ul class="dp-bar-graph__legend">
+      <% @keys.each_with_index do |name, k| %>
+        <li class="dp-bar-graph__key <%= color_class(key_color(k)) %>"><span class="dp-bar-graph__swatch dp-bar-graph__bar--k<%= k % 4 %>"></span><%= name %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <div class="dp-sr-only"><table>
     <caption><%= t("deckplate.data.graph", label: @label) %></caption>
-    <thead><tr><th scope="col"><%= t("deckplate.data.graph_item") %></th><th scope="col"><%= t("deckplate.data.graph_value") %></th></tr></thead>
-    <tbody><% @series.each do |text, value| %><tr><th scope="row"><%= text %></th><td><%= value %></td></tr><% end %></tbody>
+    <thead><tr>
+      <th scope="col"><%= t("deckplate.data.graph_item") %></th>
+      <% if multi? %>
+        <% @keys.each do |name| %><th scope="col"><%= name %></th><% end %>
+        <% if stacked? %><th scope="col"><%= t("deckplate.data.graph_total") %></th><% end %>
+      <% else %>
+        <th scope="col"><%= t("deckplate.data.graph_value") %></th>
+      <% end %>
+    </tr></thead>
+    <tbody><% @series.each do |text, value| %>
+      <tr><th scope="row"><%= text %></th>
+        <% if multi? %>
+          <% value.each do |part| %><td><%= part %></td><% end %>
+          <% if stacked? %><td><%= total(value) %></td><% end %>
+        <% else %>
+          <td><%= value %></td>
+        <% end %>
+      </tr>
+    <% end %></tbody>
   </table></div>
 <% end %>

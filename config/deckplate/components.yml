@@ -115,8 +115,11 @@ components:
     - button_group/vertical
   Data::BarGraph:
     class: Deckplate::Data::BarGraphComponent
-    description: Server-rendered bar graph. The bars are decorative; the same data
-      is in a visually hidden table (screen readers).
+    description: 'Server-rendered bar graph. The bars are decorative; the same data
+      is in a visually hidden table (screen readers). With keys:, each item has one
+      value per key ([["Mon", [10, 20]], ...]) shown side by side (grouping: :grouped)
+      or as consecutive segments of one bar (grouping: :stacked). Keys are told apart
+      by colour, pattern and legend name.'
     sheet: data
     css_block: dp-bar-graph
     stylesheet: app/assets/stylesheets/deckplate/components/data/bar-graph.css
@@ -136,11 +139,22 @@ components:
           - horizontal
           - vertical
           default: horizontal
+      grouping:
+        required: false
+        variant:
+          values:
+          - grouped
+          - stacked
+          default: grouped
+      keys:
+        required: false
+        default: nil
       color:
         required: false
         default: ":primary"
     previews:
     - bar_graph/default
+    - bar_graph/multiple
     - bar_graph/variants
   Data::Clock:
     class: Deckplate::Data::ClockComponent

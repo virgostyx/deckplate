@@ -1,0 +1,7 @@
+<% rows = [ [ "Mon", [ 40, 25, 10 ] ], [ "Tue", [ 55, 30, 20 ] ], [ "Wed", [ 35, 45, 15 ] ] ] %>
+<div class="dp-root gx-page"><div style="display: grid; gap: 2rem; max-inline-size: 36rem">
+  <%= render Deckplate::Data::BarGraphComponent.new(label: "Grouped", series: rows, keys: %w[Core Shields Engines]) %>
+  <%= render Deckplate::Data::BarGraphComponent.new(label: "Stacked", grouping: :stacked, series: rows, keys: %w[Core Shields Engines]) %>
+  <%= render Deckplate::Data::BarGraphComponent.new(label: "Grouped, vertical", orientation: :vertical, series: rows, keys: %w[Core Shields Engines]) %>
+  <%= render Deckplate::Data::BarGraphComponent.new(label: "Stacked, vertical", orientation: :vertical, grouping: :stacked, series: rows, keys: %w[Core Shields Engines]) %>
+</div></div>
