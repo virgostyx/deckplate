@@ -14,7 +14,7 @@ const args = Object.fromEntries(process.argv.slice(2).reduce((acc, a, i, all) =>
 
 const base = args.base ?? "http://localhost:3099"
 const update = args.update === true
-const themes = (args.themes ?? "classic,azure,nocturne,daylight,crimson").split(",")
+const themes = args.themes ? args.themes.split(",") : JSON.parse(fs.readFileSync(path.join(here, "themes.json"), "utf8")) // themes.json: written by bin/visual from Deckplate::Configuration::BUILT_IN_THEMES
 const widths = (args.widths ?? "375,768,1280").split(",").map(Number)
 const rtl = args.dir === "rtl" // right-to-left run (ADR 0017): ?dir=rtl, files get an __rtl suffix; use --themes classic --widths 768 for the baseline set
 const previews = JSON.parse(fs.readFileSync(args.previews ?? path.join(here, "previews.json"), "utf8")).filter((p) => !args.only || p.includes(args.only))

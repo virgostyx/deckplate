@@ -79,6 +79,14 @@
     --dp-garnet-ink: #FFFFFF;
     --dp-slate: #5F6577;
     --dp-slate-ink: #FFFFFF;
+    --dp-mint: #99E6B3;
+    --dp-mint-ink: #000000;
+    --dp-teal: #33AA99;
+    --dp-teal-ink: #000000;
+    --dp-lime: #AADD55;
+    --dp-lime-ink: #000000;
+    --dp-coral: #FF9696;
+    --dp-coral-ink: #000000;
   }
 
   .dp-c-pale-canary { --dp-c: var(--dp-pale-canary); --dp-c-ink: var(--dp-pale-canary-ink); }
@@ -120,6 +128,10 @@
   .dp-c-steel { --dp-c: var(--dp-steel); --dp-c-ink: var(--dp-steel-ink); }
   .dp-c-garnet { --dp-c: var(--dp-garnet); --dp-c-ink: var(--dp-garnet-ink); }
   .dp-c-slate { --dp-c: var(--dp-slate); --dp-c-ink: var(--dp-slate-ink); }
+  .dp-c-mint { --dp-c: var(--dp-mint); --dp-c-ink: var(--dp-mint-ink); }
+  .dp-c-teal { --dp-c: var(--dp-teal); --dp-c-ink: var(--dp-teal-ink); }
+  .dp-c-lime { --dp-c: var(--dp-lime); --dp-c-ink: var(--dp-lime-ink); }
+  .dp-c-coral { --dp-c: var(--dp-coral); --dp-c-ink: var(--dp-coral-ink); }
   .dp-c-primary { --dp-c: var(--dp-primary); --dp-c-ink: var(--dp-primary-ink); }
   .dp-c-secondary { --dp-c: var(--dp-secondary); --dp-c-ink: var(--dp-secondary-ink); }
   .dp-c-tertiary { --dp-c: var(--dp-tertiary); --dp-c-ink: var(--dp-tertiary-ink); }

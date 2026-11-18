@@ -9,12 +9,12 @@ RSpec.describe Deckplate::ThemeSwitcherComponent, type: :component do
   it "renders a named group with one toggle button per enabled theme, labelled with the theme's name" do
     render_inline(described_class.new)
     expect(group["aria-label"]).to eq("Theme")
-    expect(buttons.map { _1.text(:all).strip }).to eq(%w[Classic Azure Nocturne Daylight Crimson])
+    expect(buttons.map { _1.text(:all).strip }).to eq([ "Classic", "Azure", "Nocturne", "Daylight", "Crimson", "Verdant", "High contrast" ])
   end
 
   it "uses aria-pressed for the current theme (the default, or the one in the dp_theme cookie)" do
     render_inline(described_class.new)
-    expect(buttons.to_h { [ _1.text(:all).strip, _1["aria-pressed"] ] }).to eq("Classic" => "true", "Azure" => "false", "Nocturne" => "false", "Daylight" => "false", "Crimson" => "false")
+    expect(buttons.to_h { [ _1.text(:all).strip, _1["aria-pressed"] ] }).to eq("Classic" => "true", "Azure" => "false", "Nocturne" => "false", "Daylight" => "false", "Crimson" => "false", "Verdant" => "false", "High contrast" => "false")
     vc_test_request.cookies["dp_theme"] = "daylight"
     render_inline(described_class.new)
     expect(buttons.find { _1["aria-pressed"] == "true" }.text(:all).strip).to eq("Daylight")
@@ -28,10 +28,10 @@ RSpec.describe Deckplate::ThemeSwitcherComponent, type: :component do
   it "wires the controller: the allowed themes, the cookie name and one action per button" do
     render_inline(described_class.new)
     expect(group["data-controller"]).to eq("dp-theme")
-    expect(JSON.parse(group["data-dp-theme-themes-value"])).to eq(%w[classic azure nocturne daylight crimson])
+    expect(JSON.parse(group["data-dp-theme-themes-value"])).to eq(%w[classic azure nocturne daylight crimson verdant high-contrast])
     expect(group["data-dp-theme-cookie-value"]).to eq("dp_theme")
     expect(buttons.map { _1["data-action"] }.uniq).to eq([ "dp-theme#select" ])
-    expect(buttons.map { _1["data-dp-theme-name-param"] }).to eq(%w[classic azure nocturne daylight crimson])
+    expect(buttons.map { _1["data-dp-theme-name-param"] }).to eq(%w[classic azure nocturne daylight crimson verdant high-contrast])
   end
 
   it "offers only the themes the host enabled, including custom ones" do

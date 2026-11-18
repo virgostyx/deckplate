@@ -78,5 +78,7 @@ en:
         nocturne: "Nocturne"
         daylight: "Daylight"
         crimson: "Crimson"
+        verdant: "Verdant"
+        high-contrast: "High contrast"
     sound:
       label: "Sound"

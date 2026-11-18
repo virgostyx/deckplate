@@ -49,6 +49,6 @@ module Dummy
 
     # Lookbook toolbar: a "theme" dropdown that reaches the preview layout as params[:_display][:theme].
     config.lookbook.preview_layout = "preview"
-    config.lookbook.preview_display_options = { theme: %w[classic azure nocturne daylight crimson] }
+    config.lookbook.preview_display_options = { theme: Deckplate::Configuration::BUILT_IN_THEMES.map(&:to_s) }
   end
 end

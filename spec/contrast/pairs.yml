@@ -18,5 +18,7 @@ role_ink_min: 4.5
 roles_as_text: { roles: [primary, secondary, info, success, warning, danger], min: 4.5 }
 # Every role as a UI boundary / large text / icon on the canvas.
 roles_as_ui: { min: 3.0 }
+# The high-contrast theme must do better than AA (ADR 0018): AAA text, 4.5:1 boundaries.
+high_contrast: { text_min: 7.0, ui_min: 4.5 }
 # Palette stops: -ink on the stop (theme independent), skipped nowhere.
 stop_ink_min: 4.5

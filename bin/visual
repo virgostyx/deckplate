@@ -10,6 +10,7 @@ cd "$(dirname "$0")/.."
 PORT="${VISUAL_PORT:-3099}"
 [ -d tools/visual/node_modules ] || (cd tools/visual && npm install --no-audit --no-fund)
 (cd spec/dummy && RAILS_ENV=development bundle exec rails runner ../../tools/visual/previews.rb) > tools/visual/previews.json
+(cd spec/dummy && RAILS_ENV=development bundle exec rails runner "puts Deckplate::Configuration::BUILT_IN_THEMES.map(&:to_s).to_json") > tools/visual/themes.json
 (cd spec/dummy && RAILS_ENV=development bundle exec rails server -p "$PORT" -P tmp/pids/visual.pid -d >/dev/null)
 trap 'kill "$(cat spec/dummy/tmp/pids/visual.pid)" 2>/dev/null || true' EXIT
 for _ in $(seq 1 40); do curl -sf "http://localhost:$PORT/up" >/dev/null && break; sleep 0.5; done

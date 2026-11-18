@@ -1,0 +1,34 @@
+/* Theme verdant: phosphor-terminal greens on a green-tinted near-black */
+@layer dp.tokens {
+  [data-dp-theme="verdant"] {
+    color-scheme: dark;
+    --dp-primary: var(--dp-fern);
+    --dp-primary-ink: var(--dp-fern-ink);
+    --dp-secondary: var(--dp-mint);
+    --dp-secondary-ink: var(--dp-mint-ink);
+    --dp-tertiary: var(--dp-teal);
+    --dp-tertiary-ink: var(--dp-teal-ink);
+    --dp-accent: var(--dp-lilac);
+    --dp-accent-ink: var(--dp-lilac-ink);
+    --dp-muted: var(--dp-gray);
+    --dp-muted-ink: var(--dp-gray-ink);
+    --dp-info: var(--dp-anakiwa);
+    --dp-info-ink: var(--dp-anakiwa-ink);
+    --dp-success: var(--dp-lime);
+    --dp-success-ink: var(--dp-lime-ink);
+    --dp-warning: var(--dp-orange-peel);
+    --dp-warning-ink: var(--dp-orange-peel-ink);
+    --dp-danger: var(--dp-chestnut-rose);
+    --dp-danger-ink: var(--dp-chestnut-rose-ink);
+    --dp-emergency: var(--dp-signal-red);
+    --dp-emergency-ink: var(--dp-signal-red-ink);
+    --dp-canvas: #020A05;
+    --dp-surface: #06140C;
+    --dp-surface-raised: #0D2016;
+    --dp-ink: #B5E8C6;
+    --dp-ink-muted: #7DB892;
+    --dp-line: #4E8C69;
+    --dp-focus: #EFFFF4;
+    --dp-disabled: #4B6055;
+  }
+}

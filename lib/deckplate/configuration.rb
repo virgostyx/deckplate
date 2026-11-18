@@ -1,6 +1,6 @@
 module Deckplate
   class Configuration
-    BUILT_IN_THEMES = %i[classic azure nocturne daylight crimson].freeze
+    BUILT_IN_THEMES = %i[classic azure nocturne daylight crimson verdant high-contrast].freeze
     THEME_NAME = /\A[a-z][a-z0-9]*(-[a-z0-9]+)*\z/
 
     attr_reader :default_theme, :themes

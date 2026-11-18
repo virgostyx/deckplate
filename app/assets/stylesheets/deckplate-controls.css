@@ -405,15 +405,15 @@
   .dp-slider__input::-webkit-slider-runnable-track {
     block-size: var(--_track);
     border-radius: var(--dp-pill-r);
-    background: linear-gradient(to right, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-line) 0);
+    background: linear-gradient(to right, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-track, var(--dp-line)) 0);
   }
   .dp-slider__input::-moz-range-track {
     block-size: var(--_track);
     border-radius: var(--dp-pill-r);
-    background: linear-gradient(to right, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-line) 0);
+    background: linear-gradient(to right, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-track, var(--dp-line)) 0);
   }
-  .dp-slider__input:dir(rtl)::-webkit-slider-runnable-track { background: linear-gradient(to left, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-line) 0); }
-  .dp-slider__input:dir(rtl)::-moz-range-track { background: linear-gradient(to left, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-line) 0); }
+  .dp-slider__input:dir(rtl)::-webkit-slider-runnable-track { background: linear-gradient(to left, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-track, var(--dp-line)) 0); }
+  .dp-slider__input:dir(rtl)::-moz-range-track { background: linear-gradient(to left, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-track, var(--dp-line)) 0); }
   .dp-slider__input::-webkit-slider-thumb {
     appearance: none;
     inline-size: var(--_thumb);

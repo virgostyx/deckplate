@@ -78,5 +78,7 @@ fr:
         nocturne: "Nocturne"
         daylight: "Jour"
         crimson: "Cramoisi"
+        verdant: "Verdant"
+        high-contrast: "Contraste élevé"
     sound:
       label: "Son"

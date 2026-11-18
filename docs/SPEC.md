@@ -181,7 +181,7 @@ rust 883311 · tamarillo 882211 · white FFFFFF · gray 999999.
   All animation disabled/neutralised under `prefers-reduced-motion: reduce` (section 10).
 - Z-index scale: `--dp-z-sticky 10`, `--dp-z-overlay 100`, `--dp-z-modal 200`, `--dp-z-toast 300`.
 
-### 5.5 Themes (v1.0)
+### 5.5 Themes (v1.0, plus two added in Phase 9, ADR 0018)
 
 | Theme | Intent |
 |---|---|
@@ -190,6 +190,8 @@ rust 883311 · tamarillo 882211 · white FFFFFF · gray 999999.
 | `nocturne` | dimmed, low-luminance, for night use |
 | `daylight` | **light** variant: pale canvas, dark ink, still shape-faithful; for print and bright rooms |
 | `crimson` | alert-state theme (reds); also used by `ConditionBanner` when `condition: :critical` |
+| `verdant` | phosphor-terminal greens on a green-tinted near-black |
+| `high-contrast` | black and white with bright roles; text meets WCAG AAA (7:1; the text on the pure-red emergency fill is AA), boundaries 4.5:1 |
 
 Themes only change variables. Selection: `data-dp-theme="classic"` on `<html>` or any subtree
 (nested themes allowed). A cookie (`dp_theme`) lets the server render the correct theme on first paint,

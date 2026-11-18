@@ -113,14 +113,14 @@
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    background: conic-gradient(var(--dp-c) calc(var(--dp-value, 0) * 3.6deg), var(--dp-line) 0);
+    background: conic-gradient(var(--dp-c) calc(var(--dp-value, 0) * 3.6deg), var(--dp-track, var(--dp-line)) 0);
     mask: radial-gradient(farthest-side, transparent calc(100% - var(--_ring)), #000 calc(100% - var(--_ring) + 0.5px));
   }
   .dp-gauge--semicircle .dp-gauge__dial { aspect-ratio: 2; }
   .dp-gauge--semicircle .dp-gauge__dial::before {
     inset: 0 0 auto;
     aspect-ratio: 1;
-    background: conic-gradient(from -90deg, var(--dp-c) calc(var(--dp-value, 0) * 1.8deg), var(--dp-line) 0 180deg, transparent 0);
+    background: conic-gradient(from -90deg, var(--dp-c) calc(var(--dp-value, 0) * 1.8deg), var(--dp-track, var(--dp-line)) 0 180deg, transparent 0);
   }
   .dp-gauge__reading {
     grid-area: 1 / 1;

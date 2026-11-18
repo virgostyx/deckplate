@@ -120,3 +120,15 @@ stops:
   slate:
     hex: "#5F6577"
     ink: "#FFFFFF"
+  mint:
+    hex: "#99E6B3"
+    ink: "#000000"
+  teal:
+    hex: "#33AA99"
+    ink: "#000000"
+  lime:
+    hex: "#AADD55"
+    ink: "#000000"
+  coral:
+    hex: "#FF9696"
+    ink: "#000000"

@@ -1,7 +1,7 @@
 # Deckplate configuration. Every value below is the default; delete what you do not change.
 Deckplate.configure do |c|
   c.default_theme   = :classic
-  c.themes          = %i[classic azure nocturne daylight crimson]
+  c.themes          = %i[classic azure nocturne daylight crimson verdant high-contrast]
   c.sounds          = false                # opt-in, never autoplays (see docs/guides/motion-sound-theme.md)
   c.csp_safe_values = false                # true: no inline style attributes (strict Content-Security-Policy)
   c.strict_colors   = Rails.env.local?     # raise on an unknown colour role

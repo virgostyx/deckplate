@@ -80,6 +80,14 @@
     --dp-garnet-ink: #FFFFFF;
     --dp-slate: #5F6577;
     --dp-slate-ink: #FFFFFF;
+    --dp-mint: #99E6B3;
+    --dp-mint-ink: #000000;
+    --dp-teal: #33AA99;
+    --dp-teal-ink: #000000;
+    --dp-lime: #AADD55;
+    --dp-lime-ink: #000000;
+    --dp-coral: #FF9696;
+    --dp-coral-ink: #000000;
   }
   .dp-c-pale-canary { --dp-c: var(--dp-pale-canary); --dp-c-ink: var(--dp-pale-canary-ink); }
   .dp-c-golden-tanoi { --dp-c: var(--dp-golden-tanoi); --dp-c-ink: var(--dp-golden-tanoi-ink); }
@@ -120,6 +128,10 @@
   .dp-c-steel { --dp-c: var(--dp-steel); --dp-c-ink: var(--dp-steel-ink); }
   .dp-c-garnet { --dp-c: var(--dp-garnet); --dp-c-ink: var(--dp-garnet-ink); }
   .dp-c-slate { --dp-c: var(--dp-slate); --dp-c-ink: var(--dp-slate-ink); }
+  .dp-c-mint { --dp-c: var(--dp-mint); --dp-c-ink: var(--dp-mint-ink); }
+  .dp-c-teal { --dp-c: var(--dp-teal); --dp-c-ink: var(--dp-teal-ink); }
+  .dp-c-lime { --dp-c: var(--dp-lime); --dp-c-ink: var(--dp-lime-ink); }
+  .dp-c-coral { --dp-c: var(--dp-coral); --dp-c-ink: var(--dp-coral-ink); }
   .dp-c-primary { --dp-c: var(--dp-primary); --dp-c-ink: var(--dp-primary-ink); }
   .dp-c-secondary { --dp-c: var(--dp-secondary); --dp-c-ink: var(--dp-secondary-ink); }
   .dp-c-tertiary { --dp-c: var(--dp-tertiary); --dp-c-ink: var(--dp-tertiary-ink); }
@@ -328,6 +340,40 @@
   }
 }
 @layer dp.tokens {
+  [data-dp-theme="high-contrast"] {
+    color-scheme: dark;
+    --dp-primary: var(--dp-white);
+    --dp-primary-ink: var(--dp-white-ink);
+    --dp-secondary: var(--dp-periwinkle);
+    --dp-secondary-ink: var(--dp-periwinkle-ink);
+    --dp-tertiary: var(--dp-lime);
+    --dp-tertiary-ink: var(--dp-lime-ink);
+    --dp-accent: var(--dp-pale-canary);
+    --dp-accent-ink: var(--dp-pale-canary-ink);
+    --dp-muted: var(--dp-gray);
+    --dp-muted-ink: var(--dp-gray-ink);
+    --dp-info: var(--dp-anakiwa);
+    --dp-info-ink: var(--dp-anakiwa-ink);
+    --dp-success: var(--dp-mint);
+    --dp-success-ink: var(--dp-mint-ink);
+    --dp-warning: var(--dp-golden-tanoi);
+    --dp-warning-ink: var(--dp-golden-tanoi-ink);
+    --dp-danger: var(--dp-coral);
+    --dp-danger-ink: var(--dp-coral-ink);
+    --dp-emergency: var(--dp-signal-red);
+    --dp-emergency-ink: var(--dp-signal-red-ink);
+    --dp-canvas: #000000;
+    --dp-surface: #0A0A0A;
+    --dp-surface-raised: #141414;
+    --dp-ink: #FFFFFF;
+    --dp-ink-muted: #D0D0D0;
+    --dp-line: #FFFFFF;
+    --dp-focus: #FFFF00;
+    --dp-disabled: #8A8A8A;
+    --dp-track: #5C5C5C;
+  }
+}
+@layer dp.tokens {
   [data-dp-theme="nocturne"] {
     color-scheme: dark;
     --dp-primary: var(--dp-bourbon);
@@ -358,6 +404,39 @@
     --dp-line: #6A6560;
     --dp-focus: #E0D0B0;
     --dp-disabled: #55524F;
+  }
+}
+@layer dp.tokens {
+  [data-dp-theme="verdant"] {
+    color-scheme: dark;
+    --dp-primary: var(--dp-fern);
+    --dp-primary-ink: var(--dp-fern-ink);
+    --dp-secondary: var(--dp-mint);
+    --dp-secondary-ink: var(--dp-mint-ink);
+    --dp-tertiary: var(--dp-teal);
+    --dp-tertiary-ink: var(--dp-teal-ink);
+    --dp-accent: var(--dp-lilac);
+    --dp-accent-ink: var(--dp-lilac-ink);
+    --dp-muted: var(--dp-gray);
+    --dp-muted-ink: var(--dp-gray-ink);
+    --dp-info: var(--dp-anakiwa);
+    --dp-info-ink: var(--dp-anakiwa-ink);
+    --dp-success: var(--dp-lime);
+    --dp-success-ink: var(--dp-lime-ink);
+    --dp-warning: var(--dp-orange-peel);
+    --dp-warning-ink: var(--dp-orange-peel-ink);
+    --dp-danger: var(--dp-chestnut-rose);
+    --dp-danger-ink: var(--dp-chestnut-rose-ink);
+    --dp-emergency: var(--dp-signal-red);
+    --dp-emergency-ink: var(--dp-signal-red-ink);
+    --dp-canvas: #020A05;
+    --dp-surface: #06140C;
+    --dp-surface-raised: #0D2016;
+    --dp-ink: #B5E8C6;
+    --dp-ink-muted: #7DB892;
+    --dp-line: #4E8C69;
+    --dp-focus: #EFFFF4;
+    --dp-disabled: #4B6055;
   }
 }
 @layer dp.base {
@@ -1531,15 +1610,15 @@
   .dp-slider__input::-webkit-slider-runnable-track {
     block-size: var(--_track);
     border-radius: var(--dp-pill-r);
-    background: linear-gradient(to right, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-line) 0);
+    background: linear-gradient(to right, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-track, var(--dp-line)) 0);
   }
   .dp-slider__input::-moz-range-track {
     block-size: var(--_track);
     border-radius: var(--dp-pill-r);
-    background: linear-gradient(to right, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-line) 0);
+    background: linear-gradient(to right, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-track, var(--dp-line)) 0);
   }
-  .dp-slider__input:dir(rtl)::-webkit-slider-runnable-track { background: linear-gradient(to left, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-line) 0); }
-  .dp-slider__input:dir(rtl)::-moz-range-track { background: linear-gradient(to left, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-line) 0); }
+  .dp-slider__input:dir(rtl)::-webkit-slider-runnable-track { background: linear-gradient(to left, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-track, var(--dp-line)) 0); }
+  .dp-slider__input:dir(rtl)::-moz-range-track { background: linear-gradient(to left, var(--dp-c) calc(var(--dp-pct) * 1%), var(--dp-track, var(--dp-line)) 0); }
   .dp-slider__input::-webkit-slider-thumb {
     appearance: none;
     inline-size: var(--_thumb);
@@ -1996,14 +2075,14 @@
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    background: conic-gradient(var(--dp-c) calc(var(--dp-value, 0) * 3.6deg), var(--dp-line) 0);
+    background: conic-gradient(var(--dp-c) calc(var(--dp-value, 0) * 3.6deg), var(--dp-track, var(--dp-line)) 0);
     mask: radial-gradient(farthest-side, transparent calc(100% - var(--_ring)), #000 calc(100% - var(--_ring) + 0.5px));
   }
   .dp-gauge--semicircle .dp-gauge__dial { aspect-ratio: 2; }
   .dp-gauge--semicircle .dp-gauge__dial::before {
     inset: 0 0 auto;
     aspect-ratio: 1;
-    background: conic-gradient(from -90deg, var(--dp-c) calc(var(--dp-value, 0) * 1.8deg), var(--dp-line) 0 180deg, transparent 0);
+    background: conic-gradient(from -90deg, var(--dp-c) calc(var(--dp-value, 0) * 1.8deg), var(--dp-track, var(--dp-line)) 0 180deg, transparent 0);
   }
   .dp-gauge__reading {
     grid-area: 1 / 1;

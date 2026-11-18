@@ -5,6 +5,8 @@ All notable changes are documented here. Format: [Keep a Changelog](https://keep
 ## [Unreleased]
 
 ### Added
+- Two themes (ADR 0018): `verdant` (phosphor greens) and `high-contrast` (AAA text; the text on the pure-red emergency fill is AA), with four new palette stops (`mint`, `teal`, `lime`, `coral`),
+  a stricter AAA contrast spec for `high-contrast`, an optional `--dp-track` token for meter tracks, and a single source for the theme list (`Configuration::BUILT_IN_THEMES`). Per-theme sound packs for `dp-sound` (seven packs, classic as fallback).
 - Component manifest `config/deckplate/components.yml` (Phase 9): every component's parameters, defaults, variants, slots, controllers, stylesheet and previews, generated from the code
   by `bin/build-manifest` and checked by a spec; guide `docs/guides/manifest.md`. Four components gained the doc comment the manifest needs.
 - `Forms::KeypadComponent` (Phase 9): a numeric code field with an on-screen pad (`dp-keypad`): real `<input>` (physical keyboard, native submit), `length:`, `masked:`, `submit:`,

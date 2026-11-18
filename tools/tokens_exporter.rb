@@ -1,6 +1,7 @@
 require "yaml"
 require "json"
 require "pathname"
+require_relative "../lib/deckplate/configuration"
 
 module DeckplateBuild
   # Exports the palette, the font stacks and every built-in theme as W3C design tokens (JSON; Style Dictionary 4, Tokens Studio, Figma
@@ -9,7 +10,7 @@ module DeckplateBuild
   class TokensExporter
     PATH = "config/deckplate/tokens.json".freeze
     PALETTE = "config/deckplate/palette.yml".freeze
-    THEMES = %w[classic azure nocturne daylight crimson].freeze
+    THEMES = Deckplate::Configuration::BUILT_IN_THEMES.map(&:to_s).freeze
     FOUNDATION = "app/assets/stylesheets/deckplate/foundation.css".freeze
 
     def initialize(root)

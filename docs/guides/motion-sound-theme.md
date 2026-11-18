@@ -11,6 +11,8 @@ Deckplate.configure { |c| c.sounds = true }
 ```
 - Layout: `<body class="dp-root" <%= tag.attributes(dp_sound_attrs) %>>` (or `dp_root`, which adds it). Add `SoundToggleComponent` somewhere visible.
 - Tones are synthesised with WebAudio (no files): `tick` (button click), `confirm` (info/success toast), `alert` (warning), `error` (danger).
+- **Each theme has its own pack of these four tones** (quieter and lower for `nocturne`, soft blips for `verdant`, longer and louder for `high-contrast`, urgent for `crimson`...).
+  The pack is chosen when a tone plays, so the theme switcher changes the sound at once. A custom theme without a pack uses the classic one. Volumes are capped (gain 0.15).
 - Nothing plays before the first user gesture (no AudioContext is created). The mute choice is kept in `localStorage` (`dp-sound-enabled`).
 - Any code can request a tone: `window.dispatchEvent(new CustomEvent("dp:sound", { detail: { tone: "confirm" } }))`. Unknown names are ignored.
 - Sound never carries information alone: every toast and alert also has text and an icon.

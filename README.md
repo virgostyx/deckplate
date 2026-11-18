@@ -63,7 +63,7 @@ Components take plain values: they never touch the database or `current_user`. A
 ```ruby
 Deckplate.configure do |c|
   c.default_theme   = :classic
-  c.themes          = %i[classic azure nocturne daylight crimson]
+  c.themes          = %i[classic azure nocturne daylight crimson verdant high-contrast]
   c.sounds          = false              # opt-in, never autoplays
   c.csp_safe_values = false              # true: no inline style attributes
   c.strict_colors   = Rails.env.local?   # raise on an unknown colour role

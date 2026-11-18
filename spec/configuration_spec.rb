@@ -6,7 +6,7 @@ RSpec.describe Deckplate::Configuration do
   it "has the SPEC section 7 defaults" do
     c = Deckplate.configuration
     expect(c.default_theme).to eq(:classic)
-    expect(c.themes).to eq(%i[classic azure nocturne daylight crimson])
+    expect(c.themes).to eq(%i[classic azure nocturne daylight crimson verdant high-contrast])
     expect(c.sounds).to be(false)
     expect(c.csp_safe_values).to be(false)
     expect(c.form_builder).to be(false)

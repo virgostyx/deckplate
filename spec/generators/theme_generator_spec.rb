@@ -58,7 +58,7 @@ RSpec.describe Deckplate::Generators::ThemeGenerator do
   it "adds the theme to the initializer's list" do
     installed_root
     run("ocean")
-    expect(FixtureApp.read(root, "config/initializers/deckplate.rb")).to include("c.themes          = %i[classic azure nocturne daylight crimson ocean]")
+    expect(FixtureApp.read(root, "config/initializers/deckplate.rb")).to include("c.themes          = %i[classic azure nocturne daylight crimson verdant high-contrast ocean]")
   end
 
   it "prints the line to add when the initializer is missing or customised" do

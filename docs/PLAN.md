@@ -283,7 +283,7 @@ in SPEC §12 are green.
 - ~~Component manifest (`components.yml`) to generate ports (Django, Phoenix, plain HTML) and docs.~~ Done: `config/deckplate/components.yml` (the manifest; the ports are not built), `docs/guides/manifest.md`.
 - ~~Design tokens export (JSON for Style Dictionary / Figma variables).~~ Done: `config/deckplate/tokens.json`, `docs/guides/design-tokens.md`.
 - ~~`Keypad`~~ (done: `Forms::KeypadComponent`), ~~`Timeline`~~ (done: `Data::TimelineComponent`), `Tooltip` extras, richer charts, drag-and-drop-friendly lists.
-- More themes; per-theme sound packs (synthesised).
+- ~~More themes; per-theme sound packs (synthesised).~~ Done: `verdant`, `high-contrast`, seven sound packs (ADR 0018).
 - Hotwire Native considerations (touch density).
 - Pilot adoption in a real application (separate repo; deliberately not part of this project).
 

@@ -4,8 +4,8 @@ require "yaml"
 RSpec.describe "config/deckplate/palette.yml" do
   let(:stops) { YAML.load_file(Deckplate::Engine.root.join("config/deckplate/palette.yml")).fetch("stops") }
 
-  it "has 39 unique, correctly formatted stops with an ink each" do
-    expect(stops.size).to eq(39)
+  it "has 43 unique, correctly formatted stops with an ink each (39 + mint, teal, lime, coral for verdant and high-contrast, ADR 0018)" do
+    expect(stops.size).to eq(43)
     stops.each_value do |s|
       expect(s["hex"]).to match(/\A#\h{6}\z/)
       expect(s["ink"]).to match(/\A#\h{6}\z/)
