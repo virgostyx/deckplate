@@ -252,6 +252,31 @@ components:
     previews:
     - gauge/default
     - gauge/variants
+  Data::LineChart:
+    class: Deckplate::Data::LineChartComponent
+    description: Line chart with axes, computed on the server as inline SVG (no JavaScript,
+      no style attribute). The drawing is decorative; the same data is in a visually
+      hidden table. Lines differ by colour, dash pattern and legend name.
+    sheet: data
+    css_block: dp-line-chart
+    stylesheet: app/assets/stylesheets/deckplate/components/data/line-chart.css
+    html_options: true
+    params:
+      label:
+        required: true
+      x_labels:
+        required: true
+      series:
+        required: true
+      area:
+        required: false
+        default: 'false'
+      threshold:
+        required: false
+        default: nil
+    previews:
+    - line_chart/default
+    - line_chart/variants
   Data::Progress:
     class: Deckplate::Data::ProgressComponent
     description: 'Progress bar (role="progressbar"). value: 0..100, or nil for an

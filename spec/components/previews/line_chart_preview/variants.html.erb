@@ -1,0 +1,6 @@
+<div class="dp-root gx-page"><div class="gx-form" style="max-inline-size: 36rem">
+  <%= render Deckplate::Data::LineChartComponent.new(label: "Power by system", x_labels: %w[Mon Tue Wed Thu Fri], area: true, threshold: [ "Overload", 90 ],
+        series: [ [ "Core", [ 40, 55, 52, 70, 64 ] ], [ "Shields", [ 30, 35, 60, 85, 72 ] ], [ "Engines", [ 10, 20, 15, 25, 18 ] ] ]) %>
+  <%= render Deckplate::Data::LineChartComponent.new(label: "Hull temperature drift", x_labels: %w[a b c d], series: [ [ "Delta", [ -12, -4, 6, 10 ] ] ], threshold: [ "Limit", 8 ]) %>
+  <%= render Deckplate::Data::LineChartComponent.new(label: "Daily readings", x_labels: (1..20).map(&:to_s), series: [ [ "Count", (1..20).map { |n| (n * 7) % 23 } ] ], area: true) %>
+</div></div>

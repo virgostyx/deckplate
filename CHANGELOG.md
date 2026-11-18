@@ -5,6 +5,7 @@ All notable changes are documented here. Format: [Keep a Changelog](https://keep
 ## [Unreleased]
 
 ### Added
+- `LineChart` (`Data::LineChartComponent`, `dp-line-chart`): server-rendered SVG line chart with round-number axes, several series (colour, dash pattern and legend name), optional `area:` fill and labelled `threshold:` line, visually hidden data table, en/fr.
 - `Tooltip` extras: `placement:` (`:top`, `:bottom`, `:start`, `:end`; start/end follow the text direction; flips to the opposite side when it does not fit) and `delay:` (ms before a hover opens it; keyboard focus is never delayed).
 - Hotwire Native support (ADR 0019, guide `docs/guides/hotwire-native.md`): `dp_native?`, `data-dp-native` from `dp_theme_attrs`, 48 px touch targets, no tap highlight, hover styles only under
   `(hover: hover)` everywhere, safe-area insets for toasts and the Frame drawer.

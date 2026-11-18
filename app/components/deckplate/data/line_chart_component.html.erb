@@ -1,0 +1,43 @@
+<%= tag.figure(**chart_attributes) do %>
+  <figcaption class="dp-line-chart__caption"><%= @label %></figcaption>
+  <svg class="dp-line-chart__plot" viewBox="0 0 <%= WIDTH %> <%= HEIGHT %>" focusable="false" aria-hidden="true">
+    <% @ticks.each do |tick| %>
+      <line class="dp-line-chart__grid" x1="<%= LEFT %>" x2="<%= WIDTH - RIGHT %>" y1="<%= y_at(tick) %>" y2="<%= y_at(tick) %>" />
+      <text class="dp-line-chart__y" x="<%= LEFT - 6 %>" y="<%= y_at(tick) %>" text-anchor="end" dominant-baseline="middle"><%= fmt(tick) %></text>
+    <% end %>
+    <% visible_x_labels.each do |text, i| %>
+      <text class="dp-line-chart__x" x="<%= x_at(i) %>" y="<%= HEIGHT - BOTTOM + 16 %>" text-anchor="middle"><%= text %></text>
+    <% end %>
+    <% @series.each_with_index do |(_, values), i| %>
+      <%= tag.g(**series_attributes(i)) do %>
+        <% if @area %><polygon class="dp-line-chart__area" points="<%= area_points(values) %>" /><% end %>
+        <polyline class="dp-line-chart__line" points="<%= line_points(values) %>" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"<% if dash_for(i) %> stroke-dasharray="<%= dash_for(i) %>"<% end %> />
+      <% end %>
+    <% end %>
+    <% if @threshold %>
+      <line class="dp-line-chart__threshold" x1="<%= LEFT %>" x2="<%= WIDTH - RIGHT %>" y1="<%= y_at(@threshold.last) %>" y2="<%= y_at(@threshold.last) %>" />
+      <text class="dp-line-chart__threshold-label" x="<%= WIDTH - RIGHT - 4 %>" y="<%= y_at(@threshold.last) - 4 %>" text-anchor="end"><%= @threshold.first %></text>
+    <% end %>
+  </svg>
+  <% if @series.size > 1 %>
+    <ul class="dp-line-chart__legend">
+      <% @series.each_with_index do |(name, _), i| %>
+        <%= tag.li(class: [ "dp-line-chart__key", color_class(color_for(i)) ]) do %>
+          <svg class="dp-line-chart__swatch" viewBox="0 0 24 4" aria-hidden="true" focusable="false"><line x1="0" x2="24" y1="2" y2="2" stroke="currentColor" stroke-width="3"<% if dash_for(i) %> stroke-dasharray="<%= dash_for(i) %>"<% end %> /></svg><%= name %>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+  <div class="dp-sr-only">
+    <table>
+      <caption><%= t("deckplate.data.graph", label: @label) %></caption>
+      <thead><tr><th scope="col"><%= t("deckplate.data.chart_point") %></th><% @series.each do |name, _| %><th scope="col"><%= name %></th><% end %></tr></thead>
+      <tbody>
+        <% @x_labels.each_with_index do |text, i| %>
+          <tr><th scope="row"><%= text %></th><% @series.each do |_, values| %><td><%= fmt(values[i]) %></td><% end %></tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% if @threshold %><p><%= t("deckplate.data.chart_threshold", label: @threshold.first, value: fmt(@threshold.last)) %></p><% end %>
+  </div>
+<% end %>

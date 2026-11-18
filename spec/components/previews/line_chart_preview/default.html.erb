@@ -1,0 +1,3 @@
+<div class="dp-root gx-page" style="max-inline-size: 36rem">
+  <%= render Deckplate::Data::LineChartComponent.new(label: "Reactor output", x_labels: %w[00h 04h 08h 12h 16h 20h], series: [ [ "Core", [ 40, 55, 52, 70, 64, 80 ] ] ]) %>
+</div>

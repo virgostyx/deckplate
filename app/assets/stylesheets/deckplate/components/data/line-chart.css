@@ -1,0 +1,36 @@
+@layer dp.components {
+  .dp-line-chart { display: grid; gap: 0.6em; margin: 0; min-inline-size: 0; container-type: inline-size; }
+  .dp-line-chart__caption {
+    color: var(--dp-ink);
+    font-family: var(--dp-font-display);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .dp-line-chart__plot {
+    inline-size: 100%;
+    block-size: auto;
+    direction: ltr; /* the time axis and the numbers read left to right in every language */
+    font-family: var(--dp-font-data);
+    font-size: 11px; /* user units of the viewBox: the text scales with the drawing */
+    overflow: visible;
+  }
+  .dp-line-chart__grid { stroke: var(--dp-line); stroke-width: 1; vector-effect: non-scaling-stroke; }
+  .dp-line-chart__y, .dp-line-chart__x { fill: var(--dp-ink); }
+  .dp-line-chart__series, .dp-line-chart__key { color: var(--dp-c); }
+  .dp-line-chart__area { fill: currentColor; fill-opacity: 0.18; stroke: none; }
+  .dp-line-chart__threshold { stroke: var(--dp-danger); stroke-width: 2; stroke-dasharray: 8 4; vector-effect: non-scaling-stroke; }
+  .dp-line-chart__threshold-label { fill: var(--dp-danger); font-weight: 700; paint-order: stroke; stroke: var(--dp-bg); stroke-width: 4px; stroke-linejoin: round; } /* a halo keeps it readable over a line */
+  @container (max-width: 30rem) { .dp-line-chart__plot { font-size: 15px; } } /* the drawing is scaled down on small screens: enlarge its text in user units */
+  .dp-line-chart__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35em 1.25em;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.9375rem;
+  }
+  .dp-line-chart__key { display: inline-flex; align-items: center; gap: 0.5em; }
+  .dp-line-chart__legend .dp-line-chart__key { color: var(--dp-ink); }
+  .dp-line-chart__swatch { inline-size: 1.5rem; block-size: 0.25rem; color: var(--dp-c); overflow: visible; }
+}

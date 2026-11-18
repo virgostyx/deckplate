@@ -53,6 +53,8 @@ en:
       graph: "Data for %{label}"
       graph_item: "Item"
       graph_value: "Value"
+      chart_point: "Point"
+      chart_threshold: "Threshold. %{label}: %{value}"
     alert:
       info: "Information"
       success: "Success"
