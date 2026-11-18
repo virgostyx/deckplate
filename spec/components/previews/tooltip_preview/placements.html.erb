@@ -1,0 +1,21 @@
+<div class="dp-root gx-page">
+  <div class="gx-row" style="gap: 3rem; justify-content: center; padding-block: 4rem">
+    <% %i[top bottom start end].each do |placement| %>
+      <div id="host-<%= placement %>">
+        <%= render(Deckplate::TooltipComponent.new(text: "Placed #{placement}", id: "tip-#{placement}", placement: placement)) do %>
+          <%= render Deckplate::ButtonComponent.new(label: placement.to_s.capitalize, color: :info) %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div id="host-flip" style="position: fixed; inset-block-start: 0; inset-inline-start: 50%">
+    <%= render(Deckplate::TooltipComponent.new(text: "Asked for top, flips under", id: "tip-flip", placement: :top)) do %>
+      <%= render Deckplate::ButtonComponent.new(label: "Flip", color: :warning) %>
+    <% end %>
+  </div>
+  <div id="host-slow">
+    <%= render(Deckplate::TooltipComponent.new(text: "Opens after half a second", id: "tip-slow", delay: 500)) do %>
+      <%= render Deckplate::ButtonComponent.new(label: "Slow", color: :primary) %>
+    <% end %>
+  </div>
+</div>

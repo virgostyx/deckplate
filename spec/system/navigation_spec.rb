@@ -161,6 +161,68 @@ RSpec.describe "Navigation components behaviour", type: :system, js: true do
     end
   end
 
+  describe "Tooltip placement and delay" do
+    def rect(selector) = page.evaluate_script("(function(){ var r = document.querySelector(#{selector.to_json}).getBoundingClientRect(); return {l: r.left, r: r.right, t: r.top, b: r.bottom} })()").transform_keys(&:to_sym)
+    def open_tip(id) = page.execute_script("document.querySelector('#{id} button').focus()")
+    def shown?(id) = page.evaluate_script("document.querySelector('#{id}').matches(':popover-open')")
+
+    before { visit "/rails/view_components/tooltip/placements" }
+
+    it "opens above, under, and on either side of the host" do
+      { "top" => :t, "bottom" => :b, "start" => :l, "end" => :r }.each_key do |placement|
+        open_tip("#host-#{placement}")
+        wait_until("tip #{placement}") { shown?("#tip-#{placement}") }
+        tip = rect("#tip-#{placement}")
+        host = rect("#host-#{placement} .dp-tooltip")
+        case placement
+        when "top" then expect(tip[:b]).to be <= host[:t]
+        when "bottom" then expect(tip[:t]).to be >= host[:b]
+        when "start" then expect(tip[:r]).to be <= host[:l] + 1
+        when "end" then expect(tip[:l]).to be >= host[:r] - 1
+        end
+        press(:Escape)
+      end
+    end
+
+    it "flips to the other side when the bubble would leave the viewport" do
+      open_tip("#host-flip")
+      wait_until("flipped tip") { shown?("#tip-flip") }
+      tip = rect("#tip-flip")
+      host = rect("#host-flip .dp-tooltip")
+      expect(tip[:t]).to be >= host[:b] # asked for top, but the host sits at the top edge
+      expect(tip[:t]).to be >= 0
+    end
+
+    it "keeps the bubble inside the viewport" do
+      %w[top bottom start end flip].each do |id|
+        open_tip("#host-#{id}")
+        wait_until("tip #{id}") { shown?("#tip-#{id}") }
+        tip = rect("#tip-#{id}")
+        width, height = page.evaluate_script("[innerWidth, innerHeight]")
+        expect([ tip[:l], tip[:t] ]).to all(be >= 0)
+        expect(tip[:r]).to be <= width
+        expect(tip[:b]).to be <= height
+        press(:Escape)
+      end
+    end
+
+    it "waits for the delay on hover, cancels when the pointer leaves, but shows at once on keyboard focus" do
+      find("#host-slow button").hover
+      expect(shown?("#tip-slow")).to be(false)
+      wait_until("delayed tip") { shown?("#tip-slow") }
+      find(".gx-page").hover
+      expect(shown?("#tip-slow")).to be(false)
+
+      find("#host-slow button").hover
+      find(".gx-page").hover
+      sleep 0.7 # longer than the 500 ms delay
+      expect(shown?("#tip-slow")).to be(false)
+
+      open_tip("#host-slow")
+      expect(shown?("#tip-slow")).to be(true)
+    end
+  end
+
   describe "Modal (dp-modal)" do
     before { visit "/rails/view_components/modal/default" }
 

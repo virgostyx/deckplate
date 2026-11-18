@@ -10,7 +10,7 @@ no locale for it. Components follow the direction (ADR 0017); the layout, the Fr
 - **Frame slots**: `with_top_start_corner` / `with_bottom_start_corner` (the old `with_*_left_corner` names still work). Panel `corners: :start`
   (or `:left`) closes the side where the text starts.
 - **Icons that point a direction** (chevrons) are flipped. Other icons are not.
-- **Slider fill** starts on the side where the value starts. **Tooltip and Menu** open aligned on the side where the text starts.
+- **Slider fill** starts on the side where the value starts. **Tooltip and Menu** open aligned on the side where the text starts; a `Tooltip` with `placement: :start` or `:end` follows the text direction.
 
 ## What stays left to right
 Data: a Readout's number and unit, and a Clock, are isolated as left-to-right text inside an RTL page, so "72.4 kW" and "18.4 °C" keep their characters

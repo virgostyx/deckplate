@@ -82,6 +82,18 @@ RSpec.describe "Right-to-left", type: :system, js: true do
         expect(edge(".dp-tooltip__bubble", dir)).to be_within(2).of(edge(".dp-tooltip", dir))
       end
 
+      it "a tooltip placed at the start side opens on the side where the text starts, in #{dir}" do
+        visit "/rails/view_components/tooltip/placements?dir=#{dir}"
+        page.execute_script("document.querySelector('#host-start button').focus()")
+        wait_until("the tooltip") { page.evaluate_script("document.querySelector('#tip-start').matches(':popover-open')") }
+        tip, host = %w[#tip-start #host-start\ .dp-tooltip].map { |sel| page.evaluate_script("(function(){ var r = document.querySelector(#{sel.to_json}).getBoundingClientRect(); return [r.left, r.right] })()") }
+        if dir == "rtl"
+          expect(tip.first).to be >= host.last - 1
+        else
+          expect(tip.last).to be <= host.first + 1
+        end
+      end
+
       it "a menu opens under its trigger, aligned on the start side, in #{dir}" do
         visit "/rails/view_components/menu/default?dir=#{dir}"
         find(".dp-menu button", match: :first).click

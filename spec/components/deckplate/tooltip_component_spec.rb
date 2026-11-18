@@ -30,4 +30,24 @@ RSpec.describe Deckplate::TooltipComponent, type: :component do
   it "rejects an empty text" do
     expect { described_class.new(text: "") }.to raise_error(ArgumentError, /text/)
   end
+
+  it "places the bubble under the host and opens without delay by default" do
+    render_inline(described_class.new(text: "T", id: "t")) { "x" }
+    host = page.find(".dp-tooltip", visible: :all)
+    expect(host["data-dp-tooltip-placement-value"]).to eq("bottom")
+    expect(host["data-dp-tooltip-delay-value"]).to eq("0")
+  end
+
+  it "accepts a placement and a delay" do
+    render_inline(described_class.new(text: "T", id: "t", placement: :start, delay: 400)) { "x" }
+    host = page.find(".dp-tooltip", visible: :all)
+    expect(host["data-dp-tooltip-placement-value"]).to eq("start")
+    expect(host["data-dp-tooltip-delay-value"]).to eq("400")
+  end
+
+  it "rejects an unknown placement and a negative or non-integer delay" do
+    expect { described_class.new(text: "T", placement: :middle) }.to raise_error(ArgumentError, /placement/)
+    expect { described_class.new(text: "T", delay: -1) }.to raise_error(ArgumentError, /delay/)
+    expect { described_class.new(text: "T", delay: "fast") }.to raise_error(ArgumentError, /delay/)
+  end
 end

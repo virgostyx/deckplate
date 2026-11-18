@@ -1597,8 +1597,15 @@ components:
     params:
       text:
         required: true
+      placement:
+        required: false
+        default: ":bottom"
+      delay:
+        required: false
+        default: '0'
     previews:
     - tooltip/default
+    - tooltip/placements
   TopNav:
     class: Deckplate::TopNavComponent
     description: 'Secondary, tab-like links (sections of the current area). Not an
