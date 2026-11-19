@@ -1,0 +1,13 @@
+<%= tag.div(**wrapper_attributes) do %>
+  <ol class="dp-sortable__list" aria-label="<%= @label %>" data-dp-sortable-target="list">
+    <% @items.each do |id, text| %>
+      <li class="dp-sortable__item" data-dp-sortable-id="<%= id %>">
+        <span class="dp-sortable__grip" aria-hidden="true" data-action="pointerdown->dp-sortable#grab"><%= helpers.dp_icon(:grip) %></span>
+        <span class="dp-sortable__label"><%= text %></span>
+        <span class="dp-sortable__moves"><%= move_button(text, -1, :chevron_up) %><%= move_button(text, 1, :chevron_down) %></span>
+        <% if @name %><%= hidden_field_tag(@name, id, id: nil) %><% end %>
+      </li>
+    <% end %>
+  </ol>
+  <div class="dp-sr-only" role="status" data-dp-sortable-target="status"></div>
+<% end %>

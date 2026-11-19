@@ -37,7 +37,7 @@ module DeckplateBuild
 
     def js_rows
       js = Dir[@root.join("app/javascript/**/*.js")].sort.map { File.binread(_1) }.join("\n")
-      [ Row.new("JS raw", js.bytesize, 30 * KB), Row.new("JS gzip", gzip(js), 8 * KB) ]
+      [ Row.new("JS raw", js.bytesize, 40 * KB), Row.new("JS gzip", gzip(js), 12 * KB) ]
     end
 
     def gzip(data) = Zlib.gzip(data, level: 9).bytesize

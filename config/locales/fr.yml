@@ -32,6 +32,10 @@ fr:
       clear: "Effacer tout"
       delete: "Supprimer le dernier chiffre"
       status: "Chiffres saisis : %{number}"
+    sortable:
+      move_up: "Monter %{item}"
+      move_down: "Descendre %{item}"
+      moved: "%{item} déplacé en position %{position} sur %{total}"
     timeline:
       states:
         done: "Terminé"

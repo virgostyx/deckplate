@@ -282,7 +282,7 @@ in SPEC §12 are green.
 - ~~RTL support (logical corner names, mirrored frame).~~ Done: ADR 0017, `docs/guides/rtl.md`.
 - ~~Component manifest (`components.yml`) to generate ports (Django, Phoenix, plain HTML) and docs.~~ Done: `config/deckplate/components.yml` (the manifest; the ports are not built), `docs/guides/manifest.md`.
 - ~~Design tokens export (JSON for Style Dictionary / Figma variables).~~ Done: `config/deckplate/tokens.json`, `docs/guides/design-tokens.md`.
-- ~~`Keypad`~~ (done: `Forms::KeypadComponent`), ~~`Timeline`~~ (done: `Data::TimelineComponent`), ~~`Tooltip` extras~~ (done: `placement:` with flip, `delay:`), ~~richer charts~~ (done: ~~`LineChart` with axes, area and threshold~~ done; ~~grouped/stacked `BarGraph`~~ done; ~~`Donut`~~ done), drag-and-drop-friendly lists.
+- ~~`Keypad`~~ (done: `Forms::KeypadComponent`), ~~`Timeline`~~ (done: `Data::TimelineComponent`), ~~`Tooltip` extras~~ (done: `placement:` with flip, `delay:`), ~~richer charts~~ (done: ~~`LineChart` with axes, area and threshold~~ done; ~~grouped/stacked `BarGraph`~~ done; ~~`Donut`~~ done), ~~drag-and-drop-friendly lists~~ (done: `Data::SortableListComponent`, ADR 0020).
 - ~~More themes; per-theme sound packs (synthesised).~~ Done: `verdant`, `high-contrast`, seven sound packs (ADR 0018).
 - ~~Hotwire Native considerations (touch density).~~ Done: ADR 0019, `docs/guides/hotwire-native.md` (not tested on a device).
 - Pilot adoption in a real application (separate repo; deliberately not part of this project).

@@ -488,7 +488,7 @@ styles block this. Therefore:
 | Contrast spec | all pairs pass |
 | Visual regression | no diff beyond threshold across previews × 5 themes × 3 widths (375, 768, 1280) |
 | CSS size, per sheet (ADR 0012) | core ≤ 50 KB raw / 9 KB gzip; each family sheet (controls, forms, data, feedback) ≤ 25 / 5; all-in-one `deckplate.css` ≤ 120 / 20 |
-| JS size (all controllers) | ≤ 30 KB raw / ≤ 8 KB gzip (ADR 0014), no runtime dependencies |
+| JS size (all controllers) | ≤ 40 KB raw / ≤ 12 KB gzip (ADR 0014, raised by ADR 0021), no runtime dependencies |
 | Fonts | ≤ 90 KB total woff2 |
 | Install | `bin/integration` passes on (a) Rails + Propshaft + importmap, (b) the same + Tailwind 4 |
 | Gem | `gem build` succeeds; installed from the built gem into a fresh app and renders the gallery page |

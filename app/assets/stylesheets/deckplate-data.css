@@ -319,6 +319,44 @@
   }
 }
 @layer dp.components {
+  .dp-sortable { display: grid; gap: 0.5em; min-inline-size: 0; }
+  .dp-sortable__list { display: grid; gap: 0.35em; margin: 0; padding: 0; list-style: none; }
+  .dp-sortable__item {
+    display: flex;
+    align-items: center;
+    gap: 0.75em;
+    padding: 0.35em 0.5em;
+    border: 1px solid var(--dp-line);
+    border-radius: calc(var(--dp-u) * 0.5);
+    background-color: var(--dp-surface-raised);
+    color: var(--dp-ink);
+  }
+  .dp-sortable__item--dragging { border-color: var(--dp-focus); box-shadow: 0 0 0 2px var(--dp-focus); }
+  .dp-sortable__label { flex: 1; min-inline-size: 0; overflow-wrap: anywhere; }
+  .dp-sortable__grip, .dp-sortable__moves { display: none; }
+  .dp-sortable[data-dp-sortable-ready] .dp-sortable__grip { display: inline-flex; }
+  .dp-sortable[data-dp-sortable-ready] .dp-sortable__moves { display: inline-flex; gap: 0.25em; }
+  .dp-sortable__grip { color: var(--dp-ink); cursor: grab; touch-action: none; user-select: none; padding-inline: 0.15em; }
+  .dp-sortable__grip .dp-icon { inline-size: 1.5em; block-size: 1.5em; stroke-width: 3.5; }
+  .dp-sortable__item--dragging .dp-sortable__grip { cursor: grabbing; }
+  .dp-sortable__move {
+    display: inline-grid;
+    place-items: center;
+    inline-size: var(--dp-touch-min, 2.25rem);
+    block-size: var(--dp-touch-min, 2.25rem);
+    padding: 0;
+    border: 1px solid var(--dp-line);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--dp-ink);
+    cursor: pointer;
+  }
+  .dp-sortable__move .dp-icon { inline-size: 1.25em; block-size: 1.25em; }
+  .dp-sortable__move:disabled { opacity: 0.4; cursor: not-allowed; }
+  @media (hover: hover) { .dp-sortable__move:not(:disabled):hover { background-color: var(--dp-line); } }
+  @media (forced-colors: active) { .dp-sortable__item--dragging { outline: 2px solid Highlight; } }
+}
+@layer dp.components {
   .dp-sparkline {
     display: inline-block;
     inline-size: 6rem;

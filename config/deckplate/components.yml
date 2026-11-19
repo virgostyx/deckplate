@@ -369,6 +369,30 @@ components:
     previews:
     - readout/default
     - readout/states
+  Data::SortableList:
+    class: Deckplate::Data::SortableListComponent
+    description: 'A list the user can put in order: a pointer drag on the grip, or
+      the move up / move down buttons that exist for every item (keyboard, touch,
+      screen readers: no drag is ever required, WCAG 2.5.7). The order is kept in
+      the DOM, announced politely, sent to the page as a `dp-sortable:reorder` event
+      ({ ids }) and, with name:, submitted with a form as one hidden field per item
+      (dp-sortable).'
+    sheet: data
+    css_block: dp-sortable
+    stylesheet: app/assets/stylesheets/deckplate/components/data/sortable.css
+    controllers:
+    - dp-sortable
+    html_options: true
+    params:
+      label:
+        required: true
+      items:
+        required: true
+      name:
+        required: false
+        default: nil
+    previews:
+    - sortable_list/default
   Data::Sparkline:
     class: Deckplate::Data::SparklineComponent
     description: Tiny trend line as an inline SVG polyline, computed on the server

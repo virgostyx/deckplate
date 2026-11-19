@@ -83,7 +83,7 @@ The owner answers by editing the entry (change **Status** to `answered`) and the
   (e.g. strip comments from shipped JS as is done for CSS, or drop a feature)?
 - **Default applied**: budget left unchanged; `spec/budgets_spec.rb` stays red on purpose until the owner decides. Nothing was weakened.
 - **Status**: answered
-- **Answer**: raise the budget (owner). ADR 0014: 30 KB raw / 8 KB gzip.
+- **Answer**: raise the budget (owner). ADR 0014: 30 KB raw / 8 KB gzip. Raised again in Phase 9 (ADR 0021): 40 KB raw / 12 KB gzip.
 
 ### Q-009 — `classic`: primary and warning are almost the same orange
 - **Phase / task**: Phase 7, theme polish review

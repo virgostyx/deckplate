@@ -32,6 +32,10 @@ en:
       clear: "Clear"
       delete: "Delete last digit"
       status: "Digits entered: %{number}"
+    sortable:
+      move_up: "Move %{item} up"
+      move_down: "Move %{item} down"
+      moved: "%{item} moved to position %{position} of %{total}"
     timeline:
       states:
         done: "Completed"

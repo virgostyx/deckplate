@@ -5,6 +5,7 @@ All notable changes are documented here. Format: [Keep a Changelog](https://keep
 ## [Unreleased]
 
 ### Added
+- `SortableList` (`Data::SortableListComponent`, `dp-sortable`, ADR 0020): a reorderable list with move up / move down buttons for every item and a pointer drag on a grip, an announced move, a `dp-sortable:reorder` event and optional hidden form fields. JS budget raised to 40 KB raw / 12 KB gzip (ADR 0021).
 - `Donut` (`Data::DonutComponent`, `dp-donut`): server-rendered SVG ring for the shares of a whole, with the total (or a `center:` text) in the middle, a legend giving each slice's value and share, and a hidden data table. Slices are told apart by colour and by text, not by colour alone; colours repeat after eight slices.
 - `BarGraph` with several values per item: `keys:` names them, `grouping: :grouped` (side by side) or `:stacked` (one bar, with a total). Keys differ by colour, pattern and legend name; the hidden table gains one column per key (and a Total when stacked).
 - `LineChart` (`Data::LineChartComponent`, `dp-line-chart`): server-rendered SVG line chart with round-number axes, several series (colour, dash pattern and legend name), optional `area:` fill and labelled `threshold:` line, visually hidden data table, en/fr.
