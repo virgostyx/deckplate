@@ -1,0 +1,27 @@
+<%= tag.figure(**donut_attributes) do %>
+  <figcaption class="dp-donut__caption"><%= @label %></figcaption>
+  <div class="dp-donut__body">
+    <div class="dp-donut__chart">
+      <svg class="dp-donut__plot" viewBox="0 0 36 36" focusable="false" aria-hidden="true">
+        <circle class="dp-donut__track" cx="18" cy="18" r="14" fill="none" />
+        <g transform="rotate(-90 18 18)">
+          <% slices.each do |slice| %>
+            <circle class="dp-donut__slice <%= color_for(slice[:index]) %>" cx="18" cy="18" r="14" fill="none" stroke="currentColor" pathLength="100"
+                    stroke-dasharray="<%= slice[:length] %> <%= (100 - slice[:length]).round(2) %>" stroke-dashoffset="<%= slice[:offset] %>" />
+          <% end %>
+        </g>
+      </svg>
+      <div class="dp-donut__center"><span class="dp-donut__figure"><%= center_text.first %></span> <span class="dp-donut__caption-small"><%= center_text.last %></span></div>
+    </div>
+    <ul class="dp-donut__legend">
+      <% @series.each_with_index do |(name, value), i| %>
+        <li class="dp-donut__key <%= color_for(i) %>"><span class="dp-donut__swatch"></span><%= name %> <span class="dp-donut__amount"><%= fmt(value) %> (<%= percent(value) %>%)</span></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="dp-sr-only"><table>
+    <caption><%= t("deckplate.data.graph", label: @label) %></caption>
+    <thead><tr><th scope="col"><%= t("deckplate.data.graph_item") %></th><th scope="col"><%= t("deckplate.data.graph_value") %></th><th scope="col"><%= t("deckplate.data.graph_share") %></th></tr></thead>
+    <tbody><% @series.each do |name, value| %><tr><th scope="row"><%= name %></th><td><%= fmt(value) %></td><td><%= percent(value) %>%</td></tr><% end %></tbody>
+  </table></div>
+<% end %>

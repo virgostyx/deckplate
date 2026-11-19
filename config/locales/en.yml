@@ -54,6 +54,7 @@ en:
       graph_item: "Item"
       graph_value: "Value"
       graph_total: "Total"
+      graph_share: "Share"
       chart_point: "Point"
       chart_threshold: "Threshold. %{label}: %{value}"
     alert:

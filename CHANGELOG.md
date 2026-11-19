@@ -5,6 +5,7 @@ All notable changes are documented here. Format: [Keep a Changelog](https://keep
 ## [Unreleased]
 
 ### Added
+- `Donut` (`Data::DonutComponent`, `dp-donut`): server-rendered SVG ring for the shares of a whole, with the total (or a `center:` text) in the middle, a legend giving each slice's value and share, and a hidden data table. Slices are told apart by colour and by text, not by colour alone; colours repeat after eight slices.
 - `BarGraph` with several values per item: `keys:` names them, `grouping: :grouped` (side by side) or `:stacked` (one bar, with a total). Keys differ by colour, pattern and legend name; the hidden table gains one column per key (and a Total when stacked).
 - `LineChart` (`Data::LineChartComponent`, `dp-line-chart`): server-rendered SVG line chart with round-number axes, several series (colour, dash pattern and legend name), optional `area:` fill and labelled `threshold:` line, visually hidden data table, en/fr.
 - `Tooltip` extras: `placement:` (`:top`, `:bottom`, `:start`, `:end`; start/end follow the text direction; flips to the opposite side when it does not fit) and `delay:` (ms before a hover opens it; keyboard focus is never delayed).

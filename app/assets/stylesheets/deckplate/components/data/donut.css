@@ -1,0 +1,30 @@
+@layer dp.components {
+  .dp-donut { display: grid; gap: 0.6em; margin: 0; min-inline-size: 0; }
+  .dp-donut__caption {
+    color: var(--dp-ink);
+    font-family: var(--dp-font-display);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .dp-donut__body { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; }
+  .dp-donut__chart { position: relative; inline-size: 11rem; flex: none; }
+  .dp-donut__plot { display: block; inline-size: 100%; block-size: auto; }
+  .dp-donut__track { stroke: var(--dp-surface-raised); stroke-width: 5; }
+  .dp-donut__slice { color: var(--dp-c); stroke-width: 5; }
+  .dp-donut__center {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    color: var(--dp-ink);
+    line-height: 1.1;
+  }
+  .dp-donut__figure { font-family: var(--dp-font-data); font-size: 1.5rem; font-variant-numeric: tabular-nums; }
+  .dp-donut__caption-small { font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .dp-donut__legend { display: grid; gap: 0.35em; margin: 0; padding: 0; list-style: none; color: var(--dp-ink); font-size: 0.9375rem; }
+  .dp-donut__key { display: flex; align-items: center; gap: 0.6em; }
+  .dp-donut__swatch { flex: none; inline-size: 1rem; block-size: 1rem; background-color: var(--dp-c); border-radius: 50%; }
+  .dp-donut__amount { font-family: var(--dp-font-data); font-variant-numeric: tabular-nums; margin-inline-start: auto; padding-inline-start: 1em; }
+  @media (forced-colors: active) { .dp-donut__slice { color: Highlight; } }
+}

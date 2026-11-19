@@ -1,0 +1,6 @@
+<div class="dp-root gx-page"><div style="display: grid; gap: 2rem; max-inline-size: 34rem">
+  <%= render Deckplate::Data::DonutComponent.new(label: "Custom centre", center: [ "75%", "Charge" ], series: [ [ "Charged", 75 ], [ "Empty", 25 ] ]) %>
+  <%= render Deckplate::Data::DonutComponent.new(label: "Zero values and a long name", series: [ [ "Decks sealed", 0 ], [ "A name that is quite a bit longer than the others", 4 ], [ "Open", 12.5 ] ]) %>
+  <%= render Deckplate::Data::DonutComponent.new(label: "One slice", series: [ [ "All hands", 212 ] ]) %>
+  <%= render Deckplate::Data::DonutComponent.new(label: "Many slices", series: (1..10).map { |n| [ "Deck #{n}", n * 3 ] }) %>
+</div></div>

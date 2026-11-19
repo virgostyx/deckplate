@@ -237,6 +237,27 @@ components:
     previews:
     - data_list/default
     - data_list/rich
+  Data::Donut:
+    class: Deckplate::Data::DonutComponent
+    description: 'Share of a whole as a ring, computed on the server as inline SVG
+      (no JavaScript, no style attribute). The drawing is decorative: every slice
+      is also named, with its value and share, in the legend and in a visually hidden
+      table.'
+    sheet: data
+    css_block: dp-donut
+    stylesheet: app/assets/stylesheets/deckplate/components/data/donut.css
+    html_options: true
+    params:
+      label:
+        required: true
+      series:
+        required: true
+      center:
+        required: false
+        default: nil
+    previews:
+    - donut/default
+    - donut/variants
   Data::Gauge:
     class: Deckplate::Data::GaugeComponent
     description: 'Radial or semicircular gauge (role="meter"), pure CSS. value: 0..100.
