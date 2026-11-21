@@ -19,7 +19,7 @@ The harness lives in `tools/visual/spikes/s2-elbow/` (dev-only; run `node elbow.
 | **A2 = A with the fillet tile enlarged by 1px onto the arms** | **0 everywhere** | **0 everywhere** | **0 everywhere** | **yes** |
 | B  canvas-coloured `::after` | up to 428 px at 1.25/1.75 | 0 | 0 | **no, 100 % leak** |
 
-Reference comparison (`LCARS-24.2/classic-standard.html` at 1280×800, studied only): elbow column ≈ 180px, bar ≈ 20px,
+Reference comparison (a local standalone mock-up at 1280×800, studied only, not in this repository): elbow column ≈ 180px, bar ≈ 20px,
 outer radius ≈ 90px, inner radius ≈ 40px, gap between stacked pieces ≈ 8px. At u = 22px that is col ≈ 8u, bar ≈ 0.9u,
 r ≈ 4u, ri ≈ 1.8u, gap ≈ 0.4u: the SPEC §5.4 starting values (col 6u, bar 1.25u, r 3u, ri 1.5u) are a little small/thick;
 retune in Phase 2 task 7.

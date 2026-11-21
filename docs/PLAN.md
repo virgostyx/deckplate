@@ -72,7 +72,7 @@ Goal: a green empty skeleton and the five technical risks answered by evidence.
 | ID | Question | How to answer | ADR |
 |---|---|---|---|
 | S1 | How does an engine ship CSS, fonts and JS with Propshaft + importmap? Does tailwindcss-rails 4.x pick up engine stylesheets, and what does a host need to add? | read current docs/source of Propshaft, importmap-rails, tailwindcss-rails; build two throwaway host apps (with/without Tailwind 4); check digested font URLs resolve | 0001 |
-| S2 | Elbow technique: `mask` radial-gradient vs canvas-coloured pseudo-element | implement both with the variables of SPEC §6.4; Playwright screenshots at DPR 1/1.25/1.5/2 and zoom 100–200 %; compare against reference pages (`~/Projects/LCARS-24.2/classic-standard.html`, `~/Projects/lcars/lcars/index.html`) for proportions | 0002 |
+| S2 | Elbow technique: `mask` radial-gradient vs canvas-coloured pseudo-element | implement both with the variables of SPEC §6.4; Playwright screenshots at DPR 1/1.25/1.5/2 and zoom 100–200 %; compare against local reference pages (not in this repository) for proportions | 0002 |
 | S3 | Cascade layer order with Tailwind 4 (`theme, base, components, utilities`): can host utilities override `dp.*` without `!important` in both link orders? What prelude must the installer add? | throwaway page with both stylesheets; assertions in Playwright on computed styles | 0003 |
 | S4 | Stimulus controller delivery from an engine via importmap: `pin_all_from` + `eagerLoadControllersFrom` vs explicit `registerDeckplate(application)`; works with Turbo morph; cache-busting in development | throwaway app; test connect/disconnect on Turbo visit, cache restore and morph | 0004 |
 | S5 | ViewComponent 4 API in an engine: slots, sidecar assets, preview paths, test helpers; Lookbook with engine components and a theme toolbar | read v4 docs; minimal `ButtonComponent` + preview + spec | 0005 |
@@ -135,7 +135,7 @@ Goal: the signature look. This phase decides whether the library "feels right" �
    `48rem`, `fixed:` (`100dvh`) option. **[T]** system spec on 375/768/1280 widths: sidebar visible/collapsed,
    no horizontal scroll, main scrolls independently.
 7. **Reference comparison**: build a "classic console" preview that reproduces the proportions of
-   `~/Projects/LCARS-24.2/classic-standard.html` using only Deckplate components. Take side-by-side
+   a local reference mock-up (not in this repository) using only Deckplate components. Take side-by-side
    screenshots; tune the starting values of SPEC §5.4 until proportions match closely (not pixel-copying
    — proportions, spacing rhythm, corner radii). Record final values in SPEC §5.4.
 
@@ -255,12 +255,11 @@ CSP-safe mode verified.
 6. **Legal and originality checklist** (all must be true before any public release; otherwise keep the gem
    private, e.g. `gem "deckplate", path:` or a private git remote):
    - [ ] repo-wide search finds no franchise/studio/designer names or marks in code, CSS, docs, metadata,
-         package files, screenshots or git history intended for publication. The dev-only files
-         (`CLAUDE.md`, `docs/`) are not part of the gem but name the local reference folders: scrub or
-         remove those mentions before the repository itself is made public;
-         *(2026-11-17 run: the built gem, all tracked files outside the dev docs, commit messages and file names in git history: no match. Still
-         to do by the owner before the repo is public: `CLAUDE.md`, `docs/PLAN.md`, `docs/SPEC.md` and `docs/adr/0002-elbow-technique.md` name the
-         local reference folders; the git history carries the author's personal e-mail address.)*
+         package files, screenshots or git history intended for publication;
+         *(2026-11-17 run: the built gem, all tracked files outside the dev docs, commit messages and file names in git history: no match.
+         2026-11-21: the mentions of the local reference folders were removed from `CLAUDE.md`, `CREDITS.md`, `docs/PLAN.md`, `docs/SPEC.md` and
+         `docs/adr/0002-elbow-technique.md`. Still to do by the owner before the repo is public: the earlier versions of those files and the git history
+         carry those mentions and the author's personal e-mail address, so publish from a fresh history rather than this one.)*
    - [x] no studio assets (audio, images, logos, original typefaces) in the repo or the gem
          *(2026-11-17: the only binary files outside the screenshot baselines are the three OFL woff2 fonts; sounds are synthesised)*;
    - [x] fonts and their OFL licence files present; CREDITS.md complete *(2026-11-17)*;

@@ -12,4 +12,4 @@ Files are the woff2 subsets served by Google Fonts (retrieved 2026-11-15); licen
 
 ## Techniques studied but not copied
 
-See CLAUDE.md "Local reference material". No third-party code is included.
+Public projects and mock-ups were studied for techniques and proportions only and reimplemented independently. No third-party code, audio, image or font (other than the fonts above) is included.

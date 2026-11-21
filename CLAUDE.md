@@ -72,30 +72,22 @@ Deckplate is inspired by the visual language of a well-known TV franchise's comp
   product: not in gem name, module, class names, CSS classes, component names, docs headlines, metadata,
   commit messages that end up in the public history, or marketing copy. Use neutral words
   ("console", "starship-bridge style", "retro-futuristic").
-  (Example: no `Stardate` component; the generic one is `Clock`/`Timestamp`.)
+  (Example: a date and time component is called `Clock`/`Timestamp`, never after a term from the franchise.)
 - Do **not** ship or copy studio assets: logos, audio, images, screenshots, the original typefaces.
   Sounds are synthesised with WebAudio (original beeps). Fonts: only SIL OFL fonts (Antonio, Share Tech Mono),
   with their licence files included.
 - Colour hex values and generic colour names (e.g. "neon carrot", "anakiwa") are fine.
 - Code from other projects is **not copied** unless its licence allows it and attribution is added to
-  `CREDITS.md`. The reference projects below are for studying techniques only.
+  `CREDITS.md`. Reference material is for studying techniques only (see "Reference material" below).
 - README must carry a short non-affiliation disclaimer.
 - The author is not a lawyer: before the first public release, run the legal checklist in PLAN.md Phase 8.
   Until then, treat the gem as private/internal.
 
-## Local reference material (read-only, never modify, never vendor into this repo)
+## Reference material
 
-On the developer's machine under `~/Projects/`:
-
-| Path | What it is | Use |
-|---|---|---|
-| `lcars/` | clone of joernweissenborn/lcars (MIT; Stylus sources in `lcars/stylus/`) | study the elbow/bar technique and class structure; do not copy its audio files |
-| `LCARS_styleguide/LCARS_STYLE_GUIDE.md` and `LCARS_LIVING_STYLE_GUIDE.html` | the author's own earlier style guide (colour table, rules, component inventory, Rails/Django drafts) | primary source for palette, semantic colour rules, component inventory (Appendix A) |
-| `LCARS-24.2/` | six standalone HTML themes (classic, lower-decks, nemesis-blue; standard/ultra) | visual reference for proportions and themes; open in a browser, screenshot, compare. Licence unknown: reference only, do not copy code, fonts or audio |
-| `lcars-css/` | another small Sass-based library (mttaggart/lcars-css, MIT, jQuery-dependent) | reference only; do not copy code (if ever reused, add attribution to `CREDITS.md`) |
-
-Note the old guide uses franchise-specific names in places (class names, "stardate", "red alert"). Translate
-them to the neutral Deckplate vocabulary defined in SPEC.md.
+Earlier style guides, mock-ups and small open-source libraries on the developer's machine were studied for techniques and proportions only. They are
+not part of this repository, are never vendored into it, and no code, audio, font or image from them is copied. Anything reused later needs a compatible
+licence and an entry in `CREDITS.md`. Names found in such material are translated to the neutral Deckplate vocabulary defined in SPEC.md.
 
 ## Repository map (target)
 

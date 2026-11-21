@@ -131,7 +131,7 @@ and `color: var(--dp-c-ink)`. This avoids generating bg/text class pairs per col
 
 ### 5.2 Palette stops (starting table — port from the author's style guide §2.1, with fixes)
 
-Source: `~/Projects/LCARS_styleguide/LCARS_STYLE_GUIDE.md` §2.1. Port the hex values; **apply these corrections**:
+Source: the author's earlier style guide (not in this repository), §2.1. Port the hex values; **apply these corrections**:
 - `atomic-tangerine` and `sandy-brown` are both `#FF9966` → keep one stop (`atomic-tangerine`).
 - Rename `red-alert` (`#FF0000`) to `signal-red` (neutral vocabulary; not `emergency`, which is a *role* name and would make
   `--dp-emergency: var(--dp-emergency)` a cycle).
