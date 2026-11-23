@@ -26,6 +26,7 @@
     color: var(--dp-c-ink);
   }
   .dp-tabs__panel {
+    min-inline-size: 0;
     margin-block-start: var(--dp-gap);
     padding: var(--dp-u);
     border-block-start: calc(0.25 * var(--dp-u)) solid var(--dp-c);
