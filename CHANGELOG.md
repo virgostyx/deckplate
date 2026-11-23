@@ -14,6 +14,7 @@ All notable changes are documented here. Format: [Keep a Changelog](https://keep
   `(hover: hover)` everywhere, safe-area insets for toasts and the Frame drawer.
 
 ### Fixed
+- `Modal` keeps its scrolling body keyboard-focusable as the content changes while the dialog is open (a Turbo Frame that loads late, a window resize): the tab stop appears when the body starts to scroll and goes away when it stops (axe `scrollable-region-focusable`).
 - The Frame drawer (narrow screens) opened from the physical left in right-to-left text; it now opens from the start side.
 - Two themes (ADR 0018): `verdant` (phosphor greens) and `high-contrast` (AAA text; the text on the pure-red emergency fill is AA), with four new palette stops (`mint`, `teal`, `lime`, `coral`),
   a stricter AAA contrast spec for `high-contrast`, an optional `--dp-track` token for meter tracks, and a single source for the theme list (`Configuration::BUILT_IN_THEMES`). Per-theme sound packs for `dp-sound` (seven packs, classic as fallback).
