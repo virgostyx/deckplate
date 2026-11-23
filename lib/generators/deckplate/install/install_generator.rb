@@ -11,6 +11,7 @@ module Deckplate
 
       LAYER_PRELUDE = "@layer theme, base, dp, components, utilities;".freeze
       LAYOUT = "app/views/layouts/application.html.erb".freeze
+      LANG_ATTRIBUTE = 'lang="<%= I18n.locale %>"'.freeze # a page without a language fails axe html-has-lang
       STIMULUS_INDEX = "app/javascript/controllers/index.js".freeze
       TAILWIND_SOURCE = "app/assets/tailwind/application.css".freeze
       BRIDGE_FILE = "app/assets/tailwind/deckplate-bridge.css".freeze
@@ -125,9 +126,10 @@ module Deckplate
         return content if content.include?("dp_theme_attrs")
 
         if content.match?(/<html>/)
-          content.sub("<html>", "<html <%= tag.attributes(dp_theme_attrs) %>>")
+          content.sub("<html>", "<html #{LANG_ATTRIBUTE} <%= tag.attributes(dp_theme_attrs) %>>")
         elsif (match = content.match(/<html( [^<>]*)>/)) # plain attributes only
-          content.sub(match[0], "<html#{match[1]} <%= tag.attributes(dp_theme_attrs) %>>")
+          lang = match[1].match?(/\blang=/) ? "" : " #{LANG_ATTRIBUTE}"
+          content.sub(match[0], "<html#{match[1]}#{lang} <%= tag.attributes(dp_theme_attrs) %>>")
         else
           note_manual(:layout, "<html> holds ERB or is missing")
           content
