@@ -11,6 +11,7 @@ export default class extends Controller {
   }
 
   disconnect() {
+    this.stopWatchingBody()
     if (this.dialogTarget.open) this.dialogTarget.close()
     this.unlock()
   }
@@ -20,6 +21,7 @@ export default class extends Controller {
     if (!this.dialogTarget.open) this.dialogTarget.showModal()
     document.documentElement.classList.add("dp-scroll-lock")
     this.makeScrollableBodyFocusable()
+    this.watchBody()
   }
 
   // A scrolling region must be reachable with the keyboard (WCAG 2.1.1). Only when it actually scrolls, to avoid an extra tab stop.
@@ -28,6 +30,24 @@ export default class extends Controller {
     if (!body) return
     if (body.scrollHeight > body.clientHeight) body.tabIndex = 0
     else body.removeAttribute("tabindex")
+  }
+
+  // The content can change while the dialog is open (a Turbo Frame that loads later) and the window can be resized:
+  // re-check then, so the tab stop appears and disappears with the scrollbar.
+  watchBody() {
+    const body = this.dialogTarget.querySelector(".dp-modal__body")
+    if (!body || this.bodyObserver) return
+    const check = () => this.makeScrollableBodyFocusable()
+    this.bodyObserver = new MutationObserver(check)
+    this.bodyObserver.observe(body, { childList: true, subtree: true, characterData: true })
+    this.bodyResizer = new ResizeObserver(check)
+    this.bodyResizer.observe(body)
+  }
+
+  stopWatchingBody() {
+    this.bodyObserver?.disconnect()
+    this.bodyResizer?.disconnect()
+    this.bodyObserver = this.bodyResizer = null
   }
 
   close() {
@@ -40,6 +60,7 @@ export default class extends Controller {
   }
 
   closed() {
+    this.stopWatchingBody()
     this.unlock()
     if (this.opener?.isConnected) this.opener.focus()
     this.opener = null

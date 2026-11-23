@@ -295,6 +295,16 @@ RSpec.describe "Navigation components behaviour", type: :system, js: true do
       expect(attribute(".dp-modal__body", "tabindex")).to be_nil
     end
 
+    it "follows the content: focusable once it grows past the dialog after opening, and not any more when it shrinks (G-8)" do
+      visit "/rails/view_components/modal/default"
+      find("button", text: /open dialog/i).click
+      expect(attribute(".dp-modal__body", "tabindex")).to be_nil
+      page.execute_script("document.querySelector('.dp-modal__body').insertAdjacentHTML('beforeend', '<div id=\"late\" style=\"block-size: 3000px\">late content</div>')")
+      expect(page).to have_css(".dp-modal__body[tabindex='0']")
+      page.execute_script("document.getElementById('late').remove()")
+      expect(page).to have_no_css(".dp-modal__body[tabindex]")
+    end
+
     it "scrolls its body, not the page, when the content is long" do
       visit "/rails/view_components/modal/long"
       body = page.evaluate_script("(function(){var b=document.querySelector('.dp-modal__body'); return [b.scrollHeight, b.clientHeight]})()")
