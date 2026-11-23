@@ -14,6 +14,7 @@
   /* Header bar */
   .dp-panel__header {
     display: flex;
+    flex-wrap: wrap;   /* a long status pill drops below the title instead of squeezing it to nothing */
     align-items: center;
     gap: var(--dp-u);
     min-block-size: var(--dp-bar);
