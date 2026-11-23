@@ -1,10 +1,10 @@
 module Deckplate
   module Forms
-    # Native <select>. options: ["A", ["Label", "value"], :sym] or { "Group" => [...] }. include_blank: true | "Prompt".
+    # Native <select>. options (may be empty): ["A", ["Label", "value"], :sym] or { "Group" => [...] }. include_blank: true | "Prompt".
     class SelectComponent < ControlComponent
       def initialize(options:, value: nil, include_blank: false, **html)
         super(**html)
-        raise ArgumentError, "options is required (an Array or a Hash of groups)" if options.blank?
+        raise ArgumentError, "options is required (an Array or a Hash of groups; may be empty)" if options.nil?
 
         @options = options
         @value = value

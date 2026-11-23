@@ -104,6 +104,11 @@ RSpec.describe Deckplate::FormBuilder, type: :helper do
       expect(html).to have_css("option[value='explorer'][selected]")
     end
 
+    it "renders a select over an empty list (a relation with no rows yet)" do
+      html = form { |f| f.dp_select :role, [], include_blank: "Nothing yet" }
+      expect(html).to have_css("select#ship_role option", count: 1, text: "Nothing yet")
+    end
+
     it "renders a check box with Rails' hidden unchecked value, checked from the boolean attribute" do
       html = form { |f| f.dp_check_box :shields }
       expect(html).to have_css("input[type='hidden'][name='ship[shields]'][value='0']", visible: :all)

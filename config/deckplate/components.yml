@@ -957,8 +957,8 @@ components:
     - range/states
   Forms::Select:
     class: Deckplate::Forms::SelectComponent
-    description: 'Native <select>. options: ["A", ["Label", "value"], :sym] or { "Group"
-      => [...] }. include_blank: true | "Prompt".'
+    description: 'Native <select>. options (may be empty): ["A", ["Label", "value"],
+      :sym] or { "Group" => [...] }. include_blank: true | "Prompt".'
     extends: Forms::Control
     sheet: forms
     html_options: true
