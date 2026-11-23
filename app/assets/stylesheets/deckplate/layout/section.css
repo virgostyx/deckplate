@@ -1,6 +1,7 @@
 @layer dp.layout {
   .dp-section {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);   /* an implicit auto column would grow with a wide table */
     gap: calc(0.5 * var(--dp-u));
     min-inline-size: 0;
   }
@@ -22,6 +23,7 @@
     overflow-wrap: anywhere;
   }
   .dp-section__body {
+    min-inline-size: 0;
     padding-inline-start: 0.75em;
     border-inline-start: calc(0.25 * var(--dp-u)) solid var(--dp-c);
   }

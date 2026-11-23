@@ -16,6 +16,7 @@ All notable changes are documented here. Format: [Keep a Changelog](https://keep
 ### Fixed
 - `dp_select` / `Forms::SelectComponent` no longer raise on an empty list of options (a form with no choices yet is normal); only a missing (`nil`) list is rejected.
 - `Panel` header bar wraps (`flex-wrap`) so a long status pill drops below the title instead of squeezing it to a column of single letters on a phone.
+- A wide `Table` inside a `Section` no longer widens the page: the section grid has a `minmax(0, 1fr)` column, so the table scrolls inside its own wrapper (the `Tabs` panel gets `min-inline-size: 0` too).
 - The Frame drawer (narrow screens) opened from the physical left in right-to-left text; it now opens from the start side.
 - Two themes (ADR 0018): `verdant` (phosphor greens) and `high-contrast` (AAA text; the text on the pure-red emergency fill is AA), with four new palette stops (`mint`, `teal`, `lime`, `coral`),
   a stricter AAA contrast spec for `high-contrast`, an optional `--dp-track` token for meter tracks, and a single source for the theme list (`Configuration::BUILT_IN_THEMES`). Per-theme sound packs for `dp-sound` (seven packs, classic as fallback).

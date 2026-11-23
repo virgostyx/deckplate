@@ -1186,6 +1186,7 @@
 @layer dp.layout {
   .dp-section {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: calc(0.5 * var(--dp-u));
     min-inline-size: 0;
   }
@@ -1207,6 +1208,7 @@
     overflow-wrap: anywhere;
   }
   .dp-section__body {
+    min-inline-size: 0;
     padding-inline-start: 0.75em;
     border-inline-start: calc(0.25 * var(--dp-u)) solid var(--dp-c);
   }
@@ -1691,6 +1693,7 @@
     color: var(--dp-c-ink);
   }
   .dp-tabs__panel {
+    min-inline-size: 0;
     margin-block-start: var(--dp-gap);
     padding: var(--dp-u);
     border-block-start: calc(0.25 * var(--dp-u)) solid var(--dp-c);
