@@ -35,7 +35,7 @@ RSpec.describe Deckplate::Generators::InstallGenerator do
     it "adds the font preload and the stylesheet before the app stylesheet, the theme attributes on <html> and dp-root on <body>" do
       run_install
       layout = FixtureApp.read(root, "app/views/layouts/application.html.erb")
-      expect(layout).to include("<html <%= tag.attributes(dp_theme_attrs) %>>")
+      expect(layout).to include('<html lang="<%= I18n.locale %>" <%= tag.attributes(dp_theme_attrs) %>>')
       expect(layout).to include('<body class="dp-root">')
       expect(layout).to include("<%= dp_font_tags %>")
       expect(layout.index('stylesheet_link_tag "deckplate"')).to be < layout.index("stylesheet_link_tag :app")
@@ -46,6 +46,14 @@ RSpec.describe Deckplate::Generators::InstallGenerator do
       run_install
       layout = FixtureApp.read(root, "app/views/layouts/application.html.erb")
       FixtureApp::LAYOUT.lines.each { |line| expect(layout).to include(line.strip) unless line.match?(/<html>|<body>/) }
+    end
+
+    it "gives <html> a lang attribute (axe html-has-lang), without duplicating one the layout already has" do
+      FixtureApp.write(root, "app/views/layouts/application.html.erb", FixtureApp::LAYOUT.sub("<html>", '<html lang="fr">'))
+      run_install
+      html_tag = FixtureApp.read(root, "app/views/layouts/application.html.erb")[/<html[^>]*>\z?/m]
+      expect(html_tag.scan("lang=").size).to eq(1)
+      expect(html_tag).to include('lang="fr"', "dp_theme_attrs")
     end
 
     it "adds dp-root to an existing body class instead of replacing it" do
