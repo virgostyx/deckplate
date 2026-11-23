@@ -42,4 +42,12 @@ RSpec.describe Deckplate::Forms::SelectComponent, type: :component do
   it "rejects missing options" do
     expect { build(options: nil) }.to raise_error(ArgumentError, /options/)
   end
+
+  it "accepts an empty list: a form with no choices yet is normal" do
+    render_inline(build(options: [], include_blank: "No ships yet"))
+    expect(page.all("option").map(&:text)).to eq([ "No ships yet" ])
+    render_inline(build(options: {}))
+    expect(page).to have_css("select.dp-input")
+    expect(page).to have_no_css("option")
+  end
 end
